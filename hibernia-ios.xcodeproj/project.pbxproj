@@ -12,6 +12,10 @@
 		AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729728E21AE5001628E2 /* Assets.xcassets */; };
 		AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */; };
 		AE6A72A428E21B31001628E2 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6A72A328E21B31001628E2 /* NetworkExtension.framework */; };
+		AE7D104428ECA65C006BEB18 /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104328ECA65C006BEB18 /* IAPService.swift */; };
+		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
+		AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */; };
+		AE7D104A28ECDB00006BEB18 /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = AE7D104928ECDB00006BEB18 /* Products.storekit */; };
 		AEFCD1BF28E87C38008D9694 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AEFCD1BE28E87C38008D9694 /* FirebaseAuth */; };
 		AEFCD1C128E87C38008D9694 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AEFCD1C028E87C38008D9694 /* FirebaseFirestoreSwift */; };
 		AEFCD1C428E87DD4008D9694 /* TunnelKit in Frameworks */ = {isa = PBXBuildFile; productRef = AEFCD1C328E87DD4008D9694 /* TunnelKit */; };
@@ -37,6 +41,10 @@
 		AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "hibernia-ios.entitlements"; sourceTree = "<group>"; };
 		AE6A72A328E21B31001628E2 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		AE7D104328ECA65C006BEB18 /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
+		AE7D104528ECA7CC006BEB18 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPSubscriptionService.swift; sourceTree = "<group>"; };
+		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = file; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
 		AEFCD1C828E882A1008D9694 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
@@ -57,6 +65,7 @@
 				AE6A72A428E21B31001628E2 /* NetworkExtension.framework in Frameworks */,
 				AEFCD1BF28E87C38008D9694 /* FirebaseAuth in Frameworks */,
 				AEFCD1C128E87C38008D9694 /* FirebaseFirestoreSwift in Frameworks */,
+				AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */,
 				AEFCD1C428E87DD4008D9694 /* TunnelKit in Frameworks */,
 				AEFCD1C628E87DD4008D9694 /* TunnelKitOpenVPN in Frameworks */,
 			);
@@ -68,6 +77,8 @@
 		AE27976B28E6584F00DDACF5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AE7D104328ECA65C006BEB18 /* IAPService.swift */,
+				AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
 				AE27976928E6584A00DDACF5 /* AuthService.swift */,
 			);
@@ -113,6 +124,7 @@
 				AE27976D28E6586200DDACF5 /* Views */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
 				AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */,
+				AE7D104928ECDB00006BEB18 /* Products.storekit */,
 				AE27976B28E6584F00DDACF5 /* Services */,
 				AE6A729728E21AE5001628E2 /* Assets.xcassets */,
 				AE6A729928E21AE5001628E2 /* Preview Content */,
@@ -131,6 +143,7 @@
 		AE6A72A228E21B31001628E2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE7D104528ECA7CC006BEB18 /* StoreKit.framework */,
 				AE6A72A328E21B31001628E2 /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
@@ -216,6 +229,7 @@
 				AEFCD1D728EC6D0C008D9694 /* Comfortaa-Bold.ttf in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
 				AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */,
+				AE7D104A28ECDB00006BEB18 /* Products.storekit in Resources */,
 				AEFCD1C928E882A2008D9694 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,12 +242,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEFCD1DA28EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift in Sources */,
+				AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */,
 				AEFCD1C728E87E22008D9694 /* AuthService.swift in Sources */,
 				AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */,
 				AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */,
 				AE6A729628E21AE4001628E2 /* MainView.swift in Sources */,
 				AEFCD1D328EA1945008D9694 /* CountrySelectorView.swift in Sources */,
 				AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */,
+				AE7D104428ECA65C006BEB18 /* IAPService.swift in Sources */,
 				AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */,
 				AEFCD1D128EA1909008D9694 /* VPNConnectButton.swift in Sources */,
 				AEFCD1D528EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift in Sources */,
@@ -377,6 +393,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -413,6 +430,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

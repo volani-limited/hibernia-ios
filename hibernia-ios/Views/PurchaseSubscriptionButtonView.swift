@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct PurchaseSubscriptionButtonView: View {
-    @State private var isPressed = false
+    @EnvironmentObject var subscriptionService: IAPSubscriptionService
+    
     var body: some View {
         Button {
-            isPressed = true
+            Task {
+                if subscriptionService.processing != true {
+                    try? await subscriptionService.subscribe()
+                }
+            }
         } label: {
             HStack(alignment: .bottom) {
                 Image(systemName: "wand.and.stars")

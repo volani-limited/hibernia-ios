@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-   // @EnvironmentObject var authService: AuthService
+    @EnvironmentObject var authService: AuthService
     @State private var isToggled = false
     @State private var isOpen = false
     
@@ -21,16 +21,19 @@ struct MainView: View {
                     Text("Hibernia VPN")
                         .font(.custom("Comfortaa", size: 30))
                         .foregroundStyle(LinearGradient(.highlightStart, .highlightEnd))
+                    
                     Spacer().frame(height: geometry.size.width/4)
+                    
                     PurchaseSubscriptionButtonView()
+                    
                     VPNConnectButton()
                 }.frame(width: geometry.size.width, height:geometry.size.height)
-                
+
                 CountrySelectorView()
                     .frame(width: geometry.size.width, height:geometry.size.height)
                     .offset(x: geometry.size.width - 5)
                 
-                CountrySelectorButtonView(isOpen: $isOpen, geometry: geometry)
+                ViewSwitcherBarButtonView(isOpen: $isOpen, geometry: geometry)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .position(x: geometry.size.width / 2, y: geometry.size.height - 80)
                 }
@@ -41,19 +44,26 @@ struct MainView: View {
                     .frame(width: geometry.size.width*2, height: geometry.size.height)
                     .offset(x: geometry.size.width/2))
             .offset(x: isOpen ? -geometry.size.width + dragAmount : dragAmount)
-            .gesture(DragGesture().onChanged { value in
-                dragAmount = value.translation.width
+            /*.gesture(DragGesture().onChanged { value in
+                if value.translation.width.sign == .minus || isOpen {
+                    dragAmount = value.translation.width
+                }
             }.onEnded { value in
                 dragAmount = 0
                 if abs(value.translation.width) > (geometry.size.width - 50) / 2 {
                     if value.translation.width.sign == .plus {
-                        isOpen = false
+                        withAnimation {
+                            isOpen = false
+                        }
+                        
                     } else {
-                        isOpen = true
+                        withAnimation {
+                            isOpen = true
+                        }
                     }
                 }
                
-            })
+            })*/
         }
     }
 }

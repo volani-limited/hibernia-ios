@@ -7,32 +7,21 @@
 
 import SwiftUI
 
-struct NeumorphicBackground<S: Shape>: View {
+struct NeumorphicShape<S: Shape>: View {
     var isHighlighted: Bool
     var shape: S
 
     var body: some View {
         if isHighlighted {
             shape
-                .shadow(color: Color.backgroundStart, radius: 10, x: 10, y: 10)
-                .shadow(color: Color.backgroundEnd, radius: 10, x: -5, y: -5)
+                .fill(
+                    LinearGradient(Color.backgroundStart, Color.backgroundEnd)
+                    .shadow(.inner(color: .backgroundEnd,radius: 3, x: 3, y: 3))
+                    .shadow(.inner(color: .backgroundStart, radius: 3, x: -3, y: -3))
+                )
         } else {
             shape
-                .shadow(color: Color.backgroundEnd, radius: 10, x: 10, y: 10)
-                .shadow(color: Color.backgroundStart, radius: 10, x: -5, y: -5)
-        }
-    }
-}
-
-struct NeumorphicBackgroundViewModifier: ViewModifier {
-    var isHighlighted: Bool
-    func body(content: Content) -> some View {
-        if isHighlighted {
-            content
-                .shadow(color: Color.backgroundStart, radius: 10, x: 10, y: 10)
-                .shadow(color: Color.backgroundEnd, radius: 10, x: -5, y: -5)
-        } else {
-            content
+                .fill(LinearGradient(Color.backgroundStart, Color.backgroundEnd))
                 .shadow(color: Color.backgroundEnd, radius: 10, x: 10, y: 10)
                 .shadow(color: Color.backgroundStart, radius: 10, x: -5, y: -5)
         }
@@ -87,6 +76,8 @@ struct MainButtonToggleStyle: ToggleStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         Button(action: {
+            let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+            feedbackGenerator.impactOccurred()
             isProcessing = true
             //configuration.isOn.toggle() // start process
         }) {
@@ -100,35 +91,6 @@ struct MainButtonToggleStyle: ToggleStyle {
         .opacity(isEnabled ? 1 : 0.4)
     }
 }
-/*
-struct NeumorphicButtonStyle<S: Shape>: ButtonStyle {
-    var shape: S
-    func makeBody(configuration: Self.Configuration) -> some View {
-        if configuration.isPressed {
-            shape
-                .fill(Color.backgroundStart)
-                .overlay(
-                    shape
-                        .stroke(Color.gray, lineWidth: 4)
-                        .blur(radius: 4)
-                        .offset(x: 2, y: 2)
-                        .mask(Circle().fill(LinearGradient(Color.black, Color.clear)))
-                )
-                .overlay(
-                    shape
-                        .stroke(Color.white, lineWidth: 8)
-                        .blur(radius: 4)
-                        .offset(x: -2, y: -2)
-                        .mask(Circle().fill(LinearGradient(Color.clear, Color.black)))
-                )
-        } else {
-            configuration.label
-            .fill(Color.backgroundStart)
-                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: -5, y: -5)
-                    .shadow(color: Color.white.opacity(0.7), radius: 10, x: 10, y: 10)
-        }
-    }
-}*/
 
 struct NeumorphicButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
@@ -136,16 +98,43 @@ struct NeumorphicButtonStyle: ButtonStyle {
             .padding()
             .padding(.leading, 45)
             .padding(.trailing, 45)
+            .background(NeumorphicShape(isHighlighted: configuration.isPressed, shape: Capsule()))
+        
+            /*.padding()
+            .padding(.leading, 45)
+            .padding(.trailing, 45)
             /*.background(configuration.isPressed ?
                         Capsule().fill(LinearGradient(.backgroundStart, .backgroundEnd)).background(NeumorphicBackground(isHighlighted: true, shape: Capsule())) : Capsule().fill(LinearGradient(.backgroundStart, .backgroundEnd)).background(NeumorphicBackground(isHighlighted: false, shape: Capsule())))*/
             .background(Capsule().fill(LinearGradient(.backgroundStart, .backgroundEnd))
-                .modifier(NeumorphicBackgroundViewModifier(isHighlighted: configuration.isPressed)))
+                .modifier(NeumorphicBackgroundViewModifier(isHighlighted: configuration.isPressed)))*/
         
     }
 }
 
 struct NeumorphicPreviews: PreviewProvider {
     static var previews: some View {
-        PurchaseSubscriptionButtonView()
+        NeumorphicShape(isHighlighted: true, shape: RoundedRectangle(cornerRadius: 5)).frame(width: 300, height: 60)
     }
 }
+
+
+/*
+ Color(uiColor: blend(colors: [UIColor(Color.backgroundStart), UIColor(Color.backgroundEnd)]))
+ LinearGradient(Gradient(colors: [.black, .white]), startPoint: .topLeading, endPoint: .bottomTrailing))
+ */
+
+/*.fill(LinearGradient(Color.backgroundStart, Color.backgroundEnd))
+.overlay(
+    shape
+        .stroke(Color.backgroundEnd, lineWidth: 4)
+        .blur(radius: 4)
+        .offset(x: 2, y: 2)
+        .mask(shape.fill(LinearGradient(Color.black, Color.clear)))
+)
+.overlay(
+    shape
+        .stroke(Color.backgroundStart, lineWidth: 8)
+        .blur(radius: 4)
+        .offset(x: -2, y: -2)
+        .mask(shape.fill(LinearGradient(Color.clear, Color.black)))
+    )*/

@@ -17,7 +17,7 @@ struct PurchaseSubscriptionButtonView: View {
                 Image(systemName: "wand.and.stars")
                     .bold()
                     .foregroundColor(.highlightStart)
-                Text("Subscribe").font(.custom("Comfortaa", size: 16))
+                Text("Subscribe to Connect").font(.custom("Comfortaa", size: 16))
                     .bold()
                     .foregroundColor(.highlightStart)
             }

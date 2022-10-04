@@ -17,7 +17,6 @@ struct VPNConnectButton: View {
                     Image(systemName: "power")
                         .font(.system(size: 45, weight: .heavy))
                         .foregroundColor(.highlightStart)
-                    //.shadow(color: Color.highlightEnd, radius: 4)
                 }.disabled(false)
                     .toggleStyle(MainButtonToggleStyle())
             }.frame(width: geometry.size.width, height: geometry.size.height)

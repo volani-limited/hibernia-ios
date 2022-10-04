@@ -22,10 +22,8 @@ struct CountrySelectorView: View {
                             .foregroundColor(.highlightEnd)
                             .padding()
                             .background(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(LinearGradient(.backgroundStart, .backgroundEnd))
-                                    .modifier(NeumorphicBackgroundViewModifier(isHighlighted: destination == vpnService.destination))
-                                .frame(width: geometry.size.width - 50)
+                                NeumorphicShape(isHighlighted: destination == vpnService.destination, shape: RoundedRectangle(cornerRadius: 5))
+                                    .frame(width: geometry.size.width - 50)
                             )
                             .onTapGesture {
                                 vpnService.destination = destination

@@ -23,7 +23,7 @@
 		AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */; };
 		AEFCD1D128EA1909008D9694 /* VPNConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D028EA1909008D9694 /* VPNConnectButton.swift */; };
 		AEFCD1D328EA1945008D9694 /* CountrySelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */; };
-		AEFCD1D528EBB7CC008D9694 /* CountrySelectorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D428EBB7CC008D9694 /* CountrySelectorButtonView.swift */; };
+		AEFCD1D528EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D428EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift */; };
 		AEFCD1D728EC6D0C008D9694 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */; };
 		AEFCD1DA28EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */; };
 /* End PBXBuildFile section */
@@ -43,7 +43,7 @@
 		AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicViews.swift; sourceTree = "<group>"; };
 		AEFCD1D028EA1909008D9694 /* VPNConnectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectButton.swift; sourceTree = "<group>"; };
 		AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectorView.swift; sourceTree = "<group>"; };
-		AEFCD1D428EBB7CC008D9694 /* CountrySelectorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectorButtonView.swift; sourceTree = "<group>"; };
+		AEFCD1D428EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwitcherBarButtonView.swift; sourceTree = "<group>"; };
 		AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
 		AEFCD1D828EC6D4B008D9694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseSubscriptionButtonView.swift; sourceTree = "<group>"; };
@@ -68,6 +68,7 @@
 		AE27976B28E6584F00DDACF5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
 				AE27976928E6584A00DDACF5 /* AuthService.swift */,
 			);
 			path = Services;
@@ -76,14 +77,11 @@
 		AE27976D28E6586200DDACF5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */,
 				AE6A729528E21AE4001628E2 /* MainView.swift */,
+				AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */,
 				AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */,
 				AEFCD1D028EA1909008D9694 /* VPNConnectButton.swift */,
-				AEFCD1D428EBB7CC008D9694 /* CountrySelectorButtonView.swift */,
-				AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */,
-				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
-				AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */,
+				AEFCD1D428EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -111,6 +109,7 @@
 				AEFCD1D828EC6D4B008D9694 /* Info.plist */,
 				AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */,
 				AEFCD1C828E882A1008D9694 /* GoogleService-Info.plist */,
+				AE7D104228EC9D96006BEB18 /* Helpers */,
 				AE27976D28E6586200DDACF5 /* Views */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
 				AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */,
@@ -135,6 +134,15 @@
 				AE6A72A328E21B31001628E2 /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE7D104228EC9D96006BEB18 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */,
+				AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,7 +236,7 @@
 				AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */,
 				AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */,
 				AEFCD1D128EA1909008D9694 /* VPNConnectButton.swift in Sources */,
-				AEFCD1D528EBB7CC008D9694 /* CountrySelectorButtonView.swift in Sources */,
+				AEFCD1D528EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

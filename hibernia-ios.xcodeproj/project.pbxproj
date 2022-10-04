@@ -23,6 +23,7 @@
 		AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */; };
 		AEFCD1D128EA1909008D9694 /* VPNConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D028EA1909008D9694 /* VPNConnectView.swift */; };
 		AEFCD1D328EA1945008D9694 /* CountrySelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */; };
+		AEFCD1D528EBB7CC008D9694 /* CountrySelectorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D428EBB7CC008D9694 /* CountrySelectorButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicViews.swift; sourceTree = "<group>"; };
 		AEFCD1D028EA1909008D9694 /* VPNConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectView.swift; sourceTree = "<group>"; };
 		AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectorView.swift; sourceTree = "<group>"; };
+		AEFCD1D428EBB7CC008D9694 /* CountrySelectorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectorButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			children = (
 				AE6A729528E21AE4001628E2 /* MainView.swift */,
 				AEFCD1D028EA1909008D9694 /* VPNConnectView.swift */,
+				AEFCD1D428EBB7CC008D9694 /* CountrySelectorButtonView.swift */,
 				AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
 				AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */,
@@ -215,6 +218,7 @@
 				AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */,
 				AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */,
 				AEFCD1D128EA1909008D9694 /* VPNConnectView.swift in Sources */,
+				AEFCD1D528EBB7CC008D9694 /* CountrySelectorButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

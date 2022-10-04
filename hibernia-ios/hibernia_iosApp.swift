@@ -11,15 +11,17 @@ import Firebase
 @main
 struct hibernia_iosApp: App {
     var authService: AuthService
+    var vpnService: VPNService
     
     init() {
         FirebaseApp.configure()
         authService = AuthService()
+        vpnService = VPNService()
     }
 
     var body: some Scene {
         WindowGroup {
-            MainView().environmentObject(authService)
+            MainView().environmentObject(authService).environmentObject(vpnService)
         }
     }
 }

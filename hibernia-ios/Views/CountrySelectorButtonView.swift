@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct CountrySelectorButtonView: View {
+    @EnvironmentObject var vpnService: VPNService
     @Binding var isOpen: Bool
+
     var geometry: GeometryProxy
+
     var body: some View {
         ZStack(alignment: isOpen ? .trailing : .leading) {
             RoundedRectangle(cornerRadius: 5)
                 .fill(LinearGradient(.backgroundStart, .backgroundEnd))
                 .frame(width: geometry.size.width * 2 - 50, height: 80)
-            .background(NeumorphicBackground(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5)))
+                .modifier(NeumorphicBackgroundViewModifier(isHighlighted: false))
            
             HStack {
                     Spacer().frame(maxWidth: isOpen ? .infinity : 20)
-                Text("London").foregroundColor(.highlightEnd).font(.custom("Comfortaa", size: 20))
-                Text("🇬🇧").font(.system(size: 25))
+                Text(vpnService.destination.rawValue).foregroundColor(.highlightEnd).font(.custom("Comfortaa", size: 20))
                     Spacer().frame(maxWidth: isOpen ? 5 : .infinity)
                     Image(systemName: isOpen ? "chevron.backward" : "chevron.forward")
                     .foregroundColor(.highlightEnd)

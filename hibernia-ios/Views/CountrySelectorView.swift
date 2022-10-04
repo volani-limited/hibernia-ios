@@ -8,14 +8,30 @@
 import SwiftUI
 
 struct CountrySelectorView: View {
+    @EnvironmentObject var vpnService: VPNService
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 //RoundedRectangle(cornerRadius: 25).foregroundColor(.backgroundEnd).frame(width: geometry.size.width + 50).edgesIgnoringSafeArea(.all)
                 //if let errorDescription = authService.authServiceError?.localizedDescription {
                 VStack {
-                    Text("France")
-                    Text("Germany")
+                    ForEach(VPNDestination.allCases, id: \.self) { destination in
+                        Text(destination.rawValue)
+                            .font(.custom("Comfortaa", size: 20))
+                            .foregroundColor(.highlightEnd)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .fill(LinearGradient(.backgroundStart, .backgroundEnd))
+                                    .modifier(NeumorphicBackgroundViewModifier(isHighlighted: destination == vpnService.destination))
+                                .frame(width: geometry.size.width - 50)
+                            )
+                            .onTapGesture {
+                                vpnService.destination = destination
+                            }
+                    }
+                    Spacer()
                 }
             }.frame(width: geometry.size.width, height: geometry.size.height)
         }

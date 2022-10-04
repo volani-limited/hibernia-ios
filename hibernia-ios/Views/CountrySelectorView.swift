@@ -15,7 +15,7 @@ struct CountrySelectorView: View {
             ZStack {
                 //RoundedRectangle(cornerRadius: 25).foregroundColor(.backgroundEnd).frame(width: geometry.size.width + 50).edgesIgnoringSafeArea(.all)
                 //if let errorDescription = authService.authServiceError?.localizedDescription {
-                VStack {
+                VStack(alignment: .center) {
                     ForEach(VPNDestination.allCases, id: \.self) { destination in
                         Text(destination.rawValue)
                             .font(.custom("Comfortaa", size: 20))
@@ -26,6 +26,8 @@ struct CountrySelectorView: View {
                                     .frame(width: geometry.size.width - 50)
                             )
                             .onTapGesture {
+                                let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+                                feedbackGenerator.impactOccurred()
                                 vpnService.destination = destination
                             }
                     }

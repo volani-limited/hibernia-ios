@@ -16,7 +16,7 @@ struct NeumorphicShape<S: Shape>: View {
             shape
                 .fill(
                     LinearGradient(Color.backgroundStart, Color.backgroundEnd)
-                    .shadow(.inner(color: .backgroundEnd,radius: 3, x: 3, y: 3))
+                    .shadow(.inner(color: .backgroundEnd, radius: 3, x: 3, y: 3))
                     .shadow(.inner(color: .backgroundStart, radius: 3, x: -3, y: -3))
                 )
         } else {

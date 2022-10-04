@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var authService: AuthService
+    @EnvironmentObject var subscriptionService: IAPSubscriptionService
+
     @State private var isToggled = false
     @State private var isOpen = false
     
@@ -21,17 +23,20 @@ struct MainView: View {
                     Text("Hibernia VPN")
                         .font(.custom("Comfortaa", size: 30))
                         .foregroundStyle(LinearGradient(.highlightStart, .highlightEnd))
-                    
+                    if let error = subscriptionService.error {
+                        Text(error.localizedDescription)
+                    }
                     Spacer().frame(height: geometry.size.width/4)
+                    if !subscriptionService.subscribed {
+                        PurchaseSubscriptionButtonView()
+                    }
                     
-                    PurchaseSubscriptionButtonView()
-                    
-                    VPNConnectButton()
+                    VPNConnectButton().disabled(!subscriptionService.subscribed)
                 }.frame(width: geometry.size.width, height:geometry.size.height)
 
                 CountrySelectorView()
                     .frame(width: geometry.size.width, height:geometry.size.height)
-                    .offset(x: geometry.size.width - 5)
+                    .offset(x: geometry.size.width)
                 
                 ViewSwitcherBarButtonView(isOpen: $isOpen, geometry: geometry)
                     .frame(width: geometry.size.width, height: geometry.size.height)

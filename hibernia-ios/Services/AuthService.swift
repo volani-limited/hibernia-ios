@@ -59,5 +59,9 @@ class AuthService: ObservableObject {
         }
     }
     
+    func getAuthToken() -> UInt64 {
+        //user?.getIDToken()
+    }
+    
 }
 

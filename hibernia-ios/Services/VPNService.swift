@@ -17,6 +17,8 @@ class VPNService: ObservableObject {
         connecting = false
         destination = .london
     }
+    
+    func connect(_ destination: VPNDestination, transactionID: UInt64, authKey: A)
 }
 
 enum VPNDestination: String , CaseIterable {

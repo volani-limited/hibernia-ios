@@ -12,10 +12,30 @@ struct NeumorphicBackground<S: Shape>: View {
     var shape: S
 
     var body: some View {
-        shape
-            .fill(LinearGradient(.backgroundStart, .backgroundEnd))
-            .shadow(color: Color.backgroundStart, radius: 10, x: 5, y: 5)
-            .shadow(color: Color.backgroundEnd, radius: 10, x: -5, y: -5)
+        if isHighlighted {
+            shape
+                .shadow(color: Color.backgroundStart, radius: 10, x: 10, y: 10)
+                .shadow(color: Color.backgroundEnd, radius: 10, x: -5, y: -5)
+        } else {
+            shape
+                .shadow(color: Color.backgroundEnd, radius: 10, x: 10, y: 10)
+                .shadow(color: Color.backgroundStart, radius: 10, x: -5, y: -5)
+        }
+    }
+}
+
+struct NeumorphicBackgroundViewModifier: ViewModifier {
+    var isHighlighted: Bool
+    func body(content: Content) -> some View {
+        if isHighlighted {
+            content
+                .shadow(color: Color.backgroundStart, radius: 10, x: 10, y: 10)
+                .shadow(color: Color.backgroundEnd, radius: 10, x: -5, y: -5)
+        } else {
+            content
+                .shadow(color: Color.backgroundEnd, radius: 10, x: 10, y: 10)
+                .shadow(color: Color.backgroundStart, radius: 10, x: -5, y: -5)
+        }
     }
 }
 
@@ -108,5 +128,24 @@ struct NeumorphicButtonStyle<S: Shape>: ButtonStyle {
                     .shadow(color: Color.white.opacity(0.7), radius: 10, x: 10, y: 10)
         }
     }
+}*/
+
+struct NeumorphicButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .padding(.leading, 45)
+            .padding(.trailing, 45)
+            /*.background(configuration.isPressed ?
+                        Capsule().fill(LinearGradient(.backgroundStart, .backgroundEnd)).background(NeumorphicBackground(isHighlighted: true, shape: Capsule())) : Capsule().fill(LinearGradient(.backgroundStart, .backgroundEnd)).background(NeumorphicBackground(isHighlighted: false, shape: Capsule())))*/
+            .background(Capsule().fill(LinearGradient(.backgroundStart, .backgroundEnd))
+                .modifier(NeumorphicBackgroundViewModifier(isHighlighted: configuration.isPressed)))
+        
+    }
 }
-*/
+
+struct NeumorphicPreviews: PreviewProvider {
+    static var previews: some View {
+        PurchaseSubscriptionButtonView()
+    }
+}

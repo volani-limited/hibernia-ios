@@ -17,8 +17,14 @@ struct MainView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                VPNConnectView()
-                    .frame(width: geometry.size.width, height:geometry.size.height)
+                VStack {
+                    Text("Hibernia VPN")
+                        .font(.custom("Comfortaa", size: 30))
+                        .foregroundStyle(LinearGradient(.highlightStart, .highlightEnd))
+                    Spacer().frame(height: geometry.size.width/4)
+                    PurchaseSubscriptionButtonView()
+                    VPNConnectButton()
+                }.frame(width: geometry.size.width, height:geometry.size.height)
                 
                 CountrySelectorView()
                     .frame(width: geometry.size.width, height:geometry.size.height)
@@ -48,23 +54,12 @@ struct MainView: View {
                 }
                
             })
-        }//.scaleEffect(0.3)
-    }
-    
-    func closePage() {
-        withAnimation {
-            isOpen = false
-        }
-    }
-    func openPage(){
-        withAnimation {
-            isOpen = true
         }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView().scaleEffect(1)
+        MainView()//.scaleEffect(0.5)
     }
 }

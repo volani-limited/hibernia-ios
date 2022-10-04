@@ -21,9 +21,11 @@
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
 		AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNService.swift */; };
 		AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */; };
-		AEFCD1D128EA1909008D9694 /* VPNConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D028EA1909008D9694 /* VPNConnectView.swift */; };
+		AEFCD1D128EA1909008D9694 /* VPNConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D028EA1909008D9694 /* VPNConnectButton.swift */; };
 		AEFCD1D328EA1945008D9694 /* CountrySelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */; };
 		AEFCD1D528EBB7CC008D9694 /* CountrySelectorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D428EBB7CC008D9694 /* CountrySelectorButtonView.swift */; };
+		AEFCD1D728EC6D0C008D9694 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */; };
+		AEFCD1DA28EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,9 +41,12 @@
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
 		AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicViews.swift; sourceTree = "<group>"; };
-		AEFCD1D028EA1909008D9694 /* VPNConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectView.swift; sourceTree = "<group>"; };
+		AEFCD1D028EA1909008D9694 /* VPNConnectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectButton.swift; sourceTree = "<group>"; };
 		AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectorView.swift; sourceTree = "<group>"; };
 		AEFCD1D428EBB7CC008D9694 /* CountrySelectorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectorButtonView.swift; sourceTree = "<group>"; };
+		AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		AEFCD1D828EC6D4B008D9694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseSubscriptionButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +76,10 @@
 		AE27976D28E6586200DDACF5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */,
 				AE6A729528E21AE4001628E2 /* MainView.swift */,
-				AEFCD1D028EA1909008D9694 /* VPNConnectView.swift */,
+				AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */,
+				AEFCD1D028EA1909008D9694 /* VPNConnectButton.swift */,
 				AEFCD1D428EBB7CC008D9694 /* CountrySelectorButtonView.swift */,
 				AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
@@ -84,7 +91,6 @@
 		AE6A728728E21AE3001628E2 = {
 			isa = PBXGroup;
 			children = (
-				AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */,
 				AE6A729228E21AE3001628E2 /* hibernia-ios */,
 				AE6A729128E21AE3001628E2 /* Products */,
 				AE6A72A228E21B31001628E2 /* Frameworks */,
@@ -102,6 +108,8 @@
 		AE6A729228E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AEFCD1D828EC6D4B008D9694 /* Info.plist */,
+				AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */,
 				AEFCD1C828E882A1008D9694 /* GoogleService-Info.plist */,
 				AE27976D28E6586200DDACF5 /* Views */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
@@ -197,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEFCD1D728EC6D0C008D9694 /* Comfortaa-Bold.ttf in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
 				AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */,
 				AEFCD1C928E882A2008D9694 /* GoogleService-Info.plist in Resources */,
@@ -210,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEFCD1DA28EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift in Sources */,
 				AEFCD1C728E87E22008D9694 /* AuthService.swift in Sources */,
 				AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */,
 				AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */,
@@ -217,7 +227,7 @@
 				AEFCD1D328EA1945008D9694 /* CountrySelectorView.swift in Sources */,
 				AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */,
 				AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */,
-				AEFCD1D128EA1909008D9694 /* VPNConnectView.swift in Sources */,
+				AEFCD1D128EA1909008D9694 /* VPNConnectButton.swift in Sources */,
 				AEFCD1D528EBB7CC008D9694 /* CountrySelectorButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,6 +361,7 @@
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "hibernia-ios/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Hibernia VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -386,6 +397,7 @@
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "hibernia-ios/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Hibernia VPN";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

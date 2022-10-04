@@ -17,13 +17,18 @@ struct MainView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                VPNConnectView(isOpen: $isOpen)
+                VPNConnectView()
                     .frame(width: geometry.size.width, height:geometry.size.height)
                 
                 CountrySelectorView()
                     .frame(width: geometry.size.width, height:geometry.size.height)
                     .offset(x: geometry.size.width - 5)
+                
+                CountrySelectorButtonView(isOpen: $isOpen, geometry: geometry)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .position(x: geometry.size.width / 2, y: geometry.size.height - 80)
                 }
+
             .background(
                 LinearGradient(Color.backgroundStart, Color.backgroundEnd)
                     .edgesIgnoringSafeArea(.all)

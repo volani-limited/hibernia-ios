@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+
+import SwiftUI
+import TunnelKitCore
+import TunnelKitManager
+import TunnelKitOpenVPN
+
 struct VPNConnectButton: View {
     @EnvironmentObject var authService: AuthService
     @EnvironmentObject var vpnService: VPNService
@@ -20,7 +26,7 @@ struct VPNConnectButton: View {
                     feedbackGenerator.impactOccurred()
                     Task {
                         let authKey = await authService.getAuthToken()
-                        await vpnService.connect(transactionID: subscriptionService.originalTransactionID!, authKey: authKey)
+                        await vpnService.connect(transactionID: 0, authKey: "")                        
                     }
                 } label: {
                     Image(systemName: "power")
@@ -28,7 +34,13 @@ struct VPNConnectButton: View {
                         .foregroundColor(.highlightStart)
                 }
                 .buttonStyle(MainButtonStyle(isProcessing: (vpnService.status != .connected) == (vpnService.status != .disconnected), isDepressed: vpnService.status == .connected))
-                .disabled(!subscriptionService.subscribed || (vpnService.status != .connected) == (vpnService.status != .disconnected))
+                .disabled(false)//!subscriptionService.subscribed || (vpnService.status != .connected) == (vpnService.status != .disconnected))
+                .onAppear {
+                    Task {
+                        print("preparing")
+                        await vpnService.prepare()
+                    }
+                }
             }.frame(width: geometry.size.width, height: geometry.size.height)
         }
     }

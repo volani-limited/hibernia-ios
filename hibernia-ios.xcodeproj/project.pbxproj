@@ -15,9 +15,11 @@
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
 		AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */; };
 		AE7D104C28EE53C5006BEB18 /* ErrorDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */; };
-		AE7D104F28EE72E2006BEB18 /* TunnelKit in Frameworks */ = {isa = PBXBuildFile; productRef = AE7D104E28EE72E2006BEB18 /* TunnelKit */; };
-		AE7D105128EE72E3006BEB18 /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = AE7D105028EE72E3006BEB18 /* TunnelKitOpenVPN */; };
-		AE7D105328EE72E3006BEB18 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = AE7D105228EE72E3006BEB18 /* TunnelKitOpenVPNAppExtension */; };
+		AEB4AC6A28EF79170076D0F6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6A72A328E21B31001628E2 /* NetworkExtension.framework */; };
+		AEB4AC6D28EF79170076D0F6 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */; };
+		AEB4AC7228EF79170076D0F6 /* OpenVPNTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */; };
+		AEB4AC7928EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = AEB4AC7828EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension */; };
 		AEFCD1BF28E87C38008D9694 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AEFCD1BE28E87C38008D9694 /* FirebaseAuth */; };
 		AEFCD1C128E87C38008D9694 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AEFCD1C028E87C38008D9694 /* FirebaseFirestoreSwift */; };
 		AEFCD1C728E87E22008D9694 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE27976928E6584A00DDACF5 /* AuthService.swift */; };
@@ -32,6 +34,30 @@
 		AEFCD1DA28EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AEB4AC7028EF79170076D0F6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE6A728828E21AE3001628E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AEB4AC6828EF79170076D0F6;
+			remoteInfo = OpenVPNTunnel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AEB4AC4F28EF72540076D0F6 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AEB4AC7228EF79170076D0F6 /* OpenVPNTunnel.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		AE27976928E6584A00DDACF5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,8 +69,12 @@
 		AE6A72A328E21B31001628E2 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		AE7D104528ECA7CC006BEB18 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPSubscriptionService.swift; sourceTree = "<group>"; };
-		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = file; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
+		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
 		AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDisplayView.swift; sourceTree = "<group>"; };
+		AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OpenVPNTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		AEB4AC6E28EF79170076D0F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEB4AC6F28EF79170076D0F6 /* OpenVPNTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenVPNTunnel.entitlements; sourceTree = "<group>"; };
 		AEFCD1C828E882A1008D9694 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
@@ -66,9 +96,16 @@
 				AEFCD1BF28E87C38008D9694 /* FirebaseAuth in Frameworks */,
 				AEFCD1C128E87C38008D9694 /* FirebaseFirestoreSwift in Frameworks */,
 				AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */,
-				AE7D105328EE72E3006BEB18 /* TunnelKitOpenVPNAppExtension in Frameworks */,
-				AE7D105128EE72E3006BEB18 /* TunnelKitOpenVPN in Frameworks */,
-				AE7D104F28EE72E2006BEB18 /* TunnelKit in Frameworks */,
+				AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEB4AC6628EF79170076D0F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEB4AC7928EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension in Frameworks */,
+				AEB4AC6A28EF79170076D0F6 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				AE6A729228E21AE3001628E2 /* hibernia-ios */,
+				AEB4AC6B28EF79170076D0F6 /* OpenVPNTunnel */,
 				AE6A729128E21AE3001628E2 /* Products */,
 				AE6A72A228E21B31001628E2 /* Frameworks */,
 			);
@@ -111,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				AE6A729028E21AE3001628E2 /* hibernia-ios.app */,
+				AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,6 +198,16 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		AEB4AC6B28EF79170076D0F6 /* OpenVPNTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */,
+				AEB4AC6E28EF79170076D0F6 /* Info.plist */,
+				AEB4AC6F28EF79170076D0F6 /* OpenVPNTunnel.entitlements */,
+			);
+			path = OpenVPNTunnel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,22 +218,42 @@
 				AE6A728C28E21AE3001628E2 /* Sources */,
 				AE6A728D28E21AE3001628E2 /* Frameworks */,
 				AE6A728E28E21AE3001628E2 /* Resources */,
+				AEB4AC4F28EF72540076D0F6 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AEB4AC7128EF79170076D0F6 /* PBXTargetDependency */,
 			);
 			name = "hibernia-ios";
 			packageProductDependencies = (
 				AEFCD1BE28E87C38008D9694 /* FirebaseAuth */,
 				AEFCD1C028E87C38008D9694 /* FirebaseFirestoreSwift */,
-				AE7D104E28EE72E2006BEB18 /* TunnelKit */,
-				AE7D105028EE72E3006BEB18 /* TunnelKitOpenVPN */,
-				AE7D105228EE72E3006BEB18 /* TunnelKitOpenVPNAppExtension */,
+				AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */,
 			);
 			productName = "hibernia-ios";
 			productReference = AE6A729028E21AE3001628E2 /* hibernia-ios.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AEB4AC6828EF79170076D0F6 /* OpenVPNTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AEB4AC7328EF79170076D0F6 /* Build configuration list for PBXNativeTarget "OpenVPNTunnel" */;
+			buildPhases = (
+				AEB4AC6528EF79170076D0F6 /* Sources */,
+				AEB4AC6628EF79170076D0F6 /* Frameworks */,
+				AEB4AC6728EF79170076D0F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenVPNTunnel;
+			packageProductDependencies = (
+				AEB4AC7828EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension */,
+			);
+			productName = OpenVPNTunnel;
+			productReference = AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -199,6 +268,9 @@
 					AE6A728F28E21AE3001628E2 = {
 						CreatedOnToolsVersion = 14.0;
 					};
+					AEB4AC6828EF79170076D0F6 = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 				};
 			};
 			buildConfigurationList = AE6A728B28E21AE3001628E2 /* Build configuration list for PBXProject "hibernia-ios" */;
@@ -212,13 +284,14 @@
 			mainGroup = AE6A728728E21AE3001628E2;
 			packageReferences = (
 				AEFCD1BD28E87C37008D9694 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				AE7D104D28EE72E2006BEB18 /* XCRemoteSwiftPackageReference "tunnelkit" */,
+				AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */,
 			);
 			productRefGroup = AE6A729128E21AE3001628E2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				AE6A728F28E21AE3001628E2 /* hibernia-ios */,
+				AEB4AC6828EF79170076D0F6 /* OpenVPNTunnel */,
 			);
 		};
 /* End PBXProject section */
@@ -232,6 +305,13 @@
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
 				AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */,
 				AEFCD1C928E882A2008D9694 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AEB4AC6728EF79170076D0F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +337,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AEB4AC6528EF79170076D0F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AEB4AC6D28EF79170076D0F6 /* PacketTunnelProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AEB4AC7128EF79170076D0F6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AEB4AC6828EF79170076D0F6 /* OpenVPNTunnel */;
+			targetProxy = AEB4AC7028EF79170076D0F6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AE6A729C28E21AE5001628E2 /* Debug */ = {
@@ -377,9 +473,11 @@
 		AE6A729F28E21AE5001628E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
@@ -402,6 +500,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
@@ -414,9 +513,11 @@
 		AE6A72A028E21AE5001628E2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
@@ -439,12 +540,71 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AEB4AC7428EF79170076D0F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = OpenVPNTunnel/OpenVPNTunnel.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AY446Y6M9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenVPNTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenVPNTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPN.Tunnel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AEB4AC7528EF79170076D0F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = OpenVPNTunnel/OpenVPNTunnel.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AY446Y6M9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenVPNTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenVPNTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPN.Tunnel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -469,10 +629,19 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		AEB4AC7328EF79170076D0F6 /* Build configuration list for PBXNativeTarget "OpenVPNTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AEB4AC7428EF79170076D0F6 /* Debug */,
+				AEB4AC7528EF79170076D0F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AE7D104D28EE72E2006BEB18 /* XCRemoteSwiftPackageReference "tunnelkit" */ = {
+		AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/passepartoutvpn/tunnelkit.git";
 			requirement = {
@@ -491,19 +660,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AE7D104E28EE72E2006BEB18 /* TunnelKit */ = {
+		AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AE7D104D28EE72E2006BEB18 /* XCRemoteSwiftPackageReference "tunnelkit" */;
-			productName = TunnelKit;
-		};
-		AE7D105028EE72E3006BEB18 /* TunnelKitOpenVPN */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AE7D104D28EE72E2006BEB18 /* XCRemoteSwiftPackageReference "tunnelkit" */;
+			package = AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */;
 			productName = TunnelKitOpenVPN;
 		};
-		AE7D105228EE72E3006BEB18 /* TunnelKitOpenVPNAppExtension */ = {
+		AEB4AC7828EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AE7D104D28EE72E2006BEB18 /* XCRemoteSwiftPackageReference "tunnelkit" */;
+			package = AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */;
 			productName = TunnelKitOpenVPNAppExtension;
 		};
 		AEFCD1BE28E87C38008D9694 /* FirebaseAuth */ = {

@@ -14,7 +14,7 @@ struct PurchaseSubscriptionButtonView: View {
         Button {
             Task {
                 if subscriptionService.processing != true {
-                    try? await subscriptionService.subscribe()
+                    await subscriptionService.subscribe()
                 }
             }
         } label: {
@@ -26,7 +26,9 @@ struct PurchaseSubscriptionButtonView: View {
                     .bold()
                     .foregroundColor(.highlightStart)
             }
-        }.buttonStyle(NeumorphicButtonStyle())
+        }
+        .buttonStyle(NeumorphicButtonStyle())
+        .disabled(subscriptionService.processing)
     }
 }
 

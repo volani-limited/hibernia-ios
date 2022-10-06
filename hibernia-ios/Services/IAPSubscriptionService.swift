@@ -19,8 +19,9 @@ class IAPSubscriptionService: ObservableObject {
     
     @Published var subscribed: Bool = false
     @Published var processing: Bool = false
-    @Published var error: Error?
-    
+    @Published var iapSubscriptionServiceError: Error?
+    @Published var retryHandler: (@MainActor () async -> ())?
+
     var originalTransactionID: UInt64?
 
     var subscriptionProduct: Product?
@@ -30,7 +31,7 @@ class IAPSubscriptionService: ObservableObject {
         updateListenerTask = listenForTransactions()
 
         Task {
-            subscriptionProduct = await getSubscriptionProduct()
+            await setSubscriptionProduct()
             await updateSubscriptionStatus()
         }
     }
@@ -38,17 +39,22 @@ class IAPSubscriptionService: ObservableObject {
     deinit {
         updateListenerTask?.cancel()
     }
+    
+    @MainActor func setSubscriptionProduct() async {
+        do {
+            self.subscriptionProduct = try await getProduct(productIdentifier: IAPSubscriptionService.subscriptionProductId)
+        } catch {
+            self.iapSubscriptionServiceError = error
+            self.subscriptionProduct = nil
 
+            self.retryHandler = setSubscriptionProduct
+        }
+    }
     
     @MainActor
-    func getSubscriptionProduct() async -> Product? {
-        do {
-            let products = try await Product.products(for: Array(arrayLiteral: IAPSubscriptionService.subscriptionProductId))
-            return products[0]
-        } catch {
-            self.error = error
-            return nil
-        }
+    func getProduct(productIdentifier: ProductIdentifier) async throws -> Product? {
+        let products = try await Product.products(for: Array(arrayLiteral: productIdentifier))
+        return products[0]
     }
     
     @MainActor
@@ -60,6 +66,7 @@ class IAPSubscriptionService: ObservableObject {
                 let transaction = try checkVerified(result)
                 print("Successfully verified subscription")
                 originalTransactionID = transaction.originalID
+                print("original tr " + originalTransactionID!.description)
                 subscribed = true
             } else {
                 print("User not subscribed")
@@ -67,8 +74,34 @@ class IAPSubscriptionService: ObservableObject {
             }
         } catch {
             print("Could not verify subscription")
-            self.error = error
+            self.iapSubscriptionServiceError = error
+            
+            retryHandler = updateSubscriptionStatus
+        
             subscribed = false
+        }
+        processing = false
+    }
+    
+    @MainActor
+    func subscribe() async {
+        processing = true
+        do {
+            let result = try await subscriptionProduct?.purchase()
+            
+            switch result {
+            case .success(let verificationResult):
+                let transaction = try checkVerified(verificationResult)
+
+                await updateSubscriptionStatus()
+                
+                await transaction.finish()
+            default:
+                return
+            }
+        } catch {
+            self.iapSubscriptionServiceError = error
+            retryHandler = subscribe
         }
     }
     
@@ -79,33 +112,9 @@ class IAPSubscriptionService: ObservableObject {
                     let transaction = try self.checkVerified(result)
                     
                     await self.updateSubscriptionStatus()
-                    self.processing = false
                     await transaction.finish()
                 }
             }
-        }
-    }
-    
-    @MainActor
-    func subscribe() async {
-        processing = true
-        do {
-            let result = try await subscriptionProduct!.purchase()
-            
-            switch result {
-            case .success(let verificationResult):
-                let transaction = try checkVerified(verificationResult)
-                
-                processing = false
-                await updateSubscriptionStatus()
-                
-                await transaction.finish()
-            default:
-                processing = false
-                return
-            }
-        } catch {
-            self.error = error
         }
     }
     

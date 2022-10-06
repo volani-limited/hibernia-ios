@@ -11,6 +11,8 @@
 		<string>packet-tunnel-provider</string>
 	</array>
 	<key>com.apple.security.application-groups</key>
-	<array/>
+	<array>
+		<string>group.hibernia</string>
+	</array>
 </dict>
 </plist>

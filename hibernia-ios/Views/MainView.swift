@@ -29,7 +29,7 @@ struct MainView: View {
                         PurchaseSubscriptionButtonView()
                     }
                     
-                    VPNConnectButton().disabled(!subscriptionService.subscribed)
+                    VPNConnectButton()//.disabled(!subscriptionService.subscribed)
                 }.frame(width: geometry.size.width, height:geometry.size.height)
 
                 CountrySelectorView()

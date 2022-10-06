@@ -6,17 +6,10 @@
 //
 
 import Foundation
-import Firebase
 
 import TunnelKitCore
 import TunnelKitManager
 import TunnelKitOpenVPN
-
-import TunnelKitOpenVPNAppExtension
-
-class PacketTunnelProvider: OpenVPNTunnelProvider {
-}
-
 
 class VPNService: ObservableObject {
     static let tunnelIdentifier = "uk.co.volani.hibernia-ios.OpenVPN.Tunnel"
@@ -50,18 +43,25 @@ class VPNService: ObservableObject {
         )
     }
     
-    @MainActor
+    func prepare() async {
+        await vpn.prepare()
+    }
+    
     func connect(transactionID: UInt64, authKey: String) async {
         do {
             self.configuration = try await self.requestConfiguration(destination: self.destination, transactionID: transactionID, authKey: authKey)
             
-            let providerConfiguration = OpenVPN.ProviderConfiguration("Hibernia VPN", appGroup: "group.hibernia", configuration: self.configuration!)
+            let providerConfiguration = OpenVPN.ProviderConfiguration("Hibernia VPN", appGroup: "group.uk.co.volani.hibernia-ios", configuration: self.configuration!)
             
-            try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: nil, after: .seconds(2))
+            try await vpn.reconnect("uk.co.volani.hibernia-ios.OpenVPN.Tunnel", configuration: providerConfiguration, extra: nil, after: .seconds(2))
         } catch {
             self.vpnServiceError = error
         }
     }
+    
+   /* func wrappertest(providerConfiguration: OpenVPNProviderConfiguration) {
+        vpn.reconnect(tunnelIdentifier, configuration: providerConfiguration, extra: nil, after: .seconds(2))
+    }*/
     
     func disconnect() {
         Task {
@@ -77,10 +77,7 @@ class VPNService: ObservableObject {
         
         if let httpsResponse = response as? HTTPURLResponse, httpsResponse.statusCode == 200 {
             let decodedData = try JSONDecoder().decode(ConfigurationResponse.self, from: data)
-            print(decodedData.response)
-            print(decodedData.configuration[5])
-            
-            let parser = try OpenVPN.ConfigurationParser.parsed(fromLines: decodedData.configuration)
+            let parser = try OpenVPN.ConfigurationParser.parsed(fromContents: decodedData.configuration)
             
             return parser.configuration
         } else {
@@ -92,7 +89,7 @@ class VPNService: ObservableObject {
         status = notification.vpnStatus
         print("VPNStatusDidChange: \(status)")
     }
-    
+
     @objc private func VPNDidFail(notification: Notification) {
         print("VPNStatusDidFail: \(notification.vpnError.localizedDescription)")
     }
@@ -100,7 +97,7 @@ class VPNService: ObservableObject {
 
 struct ConfigurationResponse: Codable {
     let response: String
-    let configuration: [String]
+    let configuration: String
 }
 
 enum VPNDestination: String , CaseIterable {

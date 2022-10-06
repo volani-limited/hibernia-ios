@@ -10,7 +10,6 @@ import SwiftUI
 struct ViewSwitcherBarButtonView: View {
     @EnvironmentObject var vpnService: VPNService
     @Binding var isOpen: Bool
-    //var dragAmount: CGFloat
 
     var geometry: GeometryProxy
 
@@ -35,7 +34,6 @@ struct ViewSwitcherBarButtonView: View {
             }
             .padding()
             .frame(width: geometry.size.width - 50)
-            //.offset(x: -dragAmount)
         }.offset(x: geometry.size.width / 2)
             .onTapGesture {
                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)

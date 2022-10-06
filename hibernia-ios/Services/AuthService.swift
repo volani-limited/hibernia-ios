@@ -59,9 +59,8 @@ class AuthService: ObservableObject {
         }
     }
     
-    func getAuthToken() -> UInt64 {
-        //user?.getIDToken()
+    func getAuthToken() async -> String  {
+        return try! await user!.getIDToken()
     }
-    
 }
 

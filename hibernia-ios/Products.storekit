@@ -1,0 +1,54 @@
+{
+  "identifier" : "ABF486D7",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6443544329",
+    "_developerTeamID" : "2AY446Y6M9",
+    "_lastSynchronizedDate" : 686611205.715096
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21022208",
+      "localizations" : [
+
+      ],
+      "name" : "Hibernia Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "2.49",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "1646980445",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "One month subscription for Hibernia VPN",
+              "displayName" : "Hibernia 1-Month",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "hp1m",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Hibernia Premium 1-Month",
+          "subscriptionGroupID" : "21022208",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

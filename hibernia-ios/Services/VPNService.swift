@@ -52,6 +52,10 @@ class VPNService: ObservableObject {
         )
     }
     
+    deinit {
+        destinationUpdater?.cancel()
+    }
+
     func prepare() async {
         await vpn.prepare()
     }

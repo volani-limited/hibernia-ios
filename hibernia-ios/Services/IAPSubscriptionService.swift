@@ -7,6 +7,7 @@
 
 import Foundation
 import StoreKit
+import Combine
 
 typealias ProductIdentifier = String
 
@@ -17,19 +18,26 @@ public enum StoreError: Error {
 class IAPSubscriptionService: ObservableObject {
     static let subscriptionProductId = "hp1m"
     
-    @Published var subscribed: Bool = false
+   // @Published var subscribed: Bool = false
     @Published var processing: Bool = false
     @Published var iapSubscriptionServiceError: Error?
     @Published var retryHandler: (@MainActor () async -> ())?
 
-    var originalTransactionID: UInt64?
+    @Published var originalTransactionID: UInt64?
 
     var subscriptionProduct: Product?
     var updateListenerTask: Task<Void, Error>? = nil
+    var subscriptionStatusUpdater: AnyCancellable?
     
     init() {
         updateListenerTask = listenForTransactions()
-
+        
+        let defaults = UserDefaults.standard
+        originalTransactionID = UInt64(defaults.integer(forKey: "transactionID"))
+        
+        subscriptionStatusUpdater = $originalTransactionID.sink { value in
+            defaults.set(value, forKey: "transactionID")
+        }
         Task {
             await setSubscriptionProduct()
             await updateSubscriptionStatus()
@@ -38,6 +46,7 @@ class IAPSubscriptionService: ObservableObject {
     
     deinit {
         updateListenerTask?.cancel()
+        subscriptionStatusUpdater?.cancel()
     }
     
     @MainActor func setSubscriptionProduct() async {
@@ -69,10 +78,9 @@ class IAPSubscriptionService: ObservableObject {
                 let transaction = try checkVerified(result)
                 print("Successfully verified subscription")
                 originalTransactionID = transaction.originalID
-                subscribed = true
             } else {
                 print("User not subscribed")
-                subscribed = false
+                originalTransactionID = nil
             }
             self.iapSubscriptionServiceError = nil
             self.retryHandler = nil
@@ -82,7 +90,7 @@ class IAPSubscriptionService: ObservableObject {
             
             retryHandler = updateSubscriptionStatus
         
-            subscribed = false
+            originalTransactionID = nil
         }
         processing = false
     }
@@ -96,8 +104,6 @@ class IAPSubscriptionService: ObservableObject {
             switch result {
             case .success(let verificationResult):
                 let transaction = try checkVerified(verificationResult)
-
-                await updateSubscriptionStatus()
                 
                 await transaction.finish()
             case .userCancelled:
@@ -111,6 +117,8 @@ class IAPSubscriptionService: ObservableObject {
                     self.iapSubscriptionServiceError = nil
                 }
             }
+            
+            await updateSubscriptionStatus()
         } catch {
             self.iapSubscriptionServiceError = error
             retryHandler = subscribe

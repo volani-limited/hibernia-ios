@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 import TunnelKitCore
 import TunnelKitManager
@@ -22,13 +23,20 @@ class VPNService: ObservableObject {
     
     var configuration: OpenVPN.Configuration?
     
+    var destinationUpdater: AnyCancellable?
+    
     var vpn: NetworkExtensionVPN
 
     init() {
         vpn = NetworkExtensionVPN()
         status = .disconnected
 
-        destination = .london
+        let defaults = UserDefaults.standard
+        destination = VPNDestination(rawValue: defaults.string(forKey: "destination") ?? "lon")!
+        
+        destinationUpdater = $destination.sink { value in
+            defaults.set(value.rawValue, forKey: "destination")
+        }
         
         NotificationCenter.default.addObserver(
             self,
@@ -56,6 +64,7 @@ class VPNService: ObservableObject {
             let providerConfiguration = OpenVPN.ProviderConfiguration("HiberniaVPN", appGroup: VPNService.appGroup, configuration: self.configuration!)
             
             try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: nil, after: .seconds(2))
+            self.vpnServiceError = nil
         } catch {
             self.vpnServiceError = error
         }
@@ -68,7 +77,7 @@ class VPNService: ObservableObject {
     }
     
     func requestConfiguration(destination: VPNDestination, transactionID: UInt64, authKey: String) async throws -> OpenVPN.Configuration {
-        let url = URL(string: "https://sandbox-provision-certificate-xgpoqrynja-ew.a.run.app?token=\(authKey)&subscription_id=\(transactionID)&location=\(destination.code)")
+        let url = URL(string: "https://sandbox-provision-certificate-xgpoqrynja-ew.a.run.app?token=\(authKey)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
         let request = URLRequest(url: url!)
         
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -99,18 +108,18 @@ struct ConfigurationResponse: Codable {
 }
 
 enum VPNDestination: String , CaseIterable {
-    case london = "London 🇬🇧"
-    case singapore = "Singapore 🇸🇬"
-    case newyork = "New York 🇺🇸"
+    case lon
+    case sgy
+    case nyc
     
-    var code: String {
+    var displayed: String {
         switch self {
-        case .london:
-            return "lon"
-        case .singapore:
-            return "sgy"
-        case .newyork:
-            return "nyc"
+        case .lon:
+            return "London 🇬🇧"
+        case .sgy:
+            return "Singapore 🇸🇬"
+        case .nyc:
+            return "New York 🇺🇸"
         }
     }
 }

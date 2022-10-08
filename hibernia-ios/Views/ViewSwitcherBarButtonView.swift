@@ -21,7 +21,7 @@ struct ViewSwitcherBarButtonView: View {
             HStack {
                 Spacer().frame(maxWidth: isOpen ? .infinity : 20)
                 
-                Text(vpnService.destination.rawValue)
+                Text(vpnService.destination.displayed)
                     .foregroundColor(.highlightEnd)
                     .font(.custom("Comfortaa", size: 20))
                     

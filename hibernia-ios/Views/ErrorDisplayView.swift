@@ -18,20 +18,18 @@ struct ErrorDisplayView: View {
                 Button {
                     if let retry = authService.retryHandler {
                         retry()
-                
-                        authService.authServiceError = nil
                     }
                 } label: {
-                    HStack {
+                    HStack(spacing: 10) {
                         Text(authError.localizedDescription)
                             .font(.custom("Comfortaa", size: 20))
                             .foregroundColor(.red)
                             .padding()
-                            .background(
-                                NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))
-                            )
                         Image(systemName: "arrow.clockwise")
                     }
+                    .background(
+                        NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))
+                    )
                 }
             }
             
@@ -41,38 +39,37 @@ struct ErrorDisplayView: View {
                         if let retry = subscriptionService.retryHandler {
                             await retry()
                         }
-                        subscriptionService.iapSubscriptionServiceError = nil
                     }
                 } label: {
-                    HStack {
+                    HStack(spacing: 10) {
                         Text(subsciptionError.localizedDescription)
                             .font(.custom("Comfortaa", size: 20))
                             .foregroundColor(.red)
                             .padding()
-                            .background(
-                                NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))
-                            )
                         Image(systemName: "arrow.clockwise")
                     }
+                    .background(
+                        NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))
+                    )
                 }
             }
             
             if let vpnError = vpnService.vpnServiceError {
                 Button {
-                    Task {
-                        if let retry = vpnService.retryHandler {
-                            await retry()
-                        }
-                        vpnService.vpnServiceError = nil
+                    if let retry = vpnService.retryHandler {
+                         retry()
                     }
                 } label: {
-                    Text(vpnError.localizedDescription)
-                        .font(.custom("Comfortaa", size: 20))
-                        .foregroundColor(.red)
-                        .padding()
-                        .background(
-                            NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))
-                        )
+                    HStack(spacing: 10) {
+                        Text(vpnError.localizedDescription)
+                            .font(.custom("Comfortaa", size: 20))
+                            .foregroundColor(.red)
+                            .padding()
+                        Image(systemName: "arrow.clockwise")
+                    }
+                    .background(
+                        NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))
+                    )
                 }
             }
         }

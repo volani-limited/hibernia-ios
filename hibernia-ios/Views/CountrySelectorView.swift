@@ -15,7 +15,7 @@ struct CountrySelectorView: View {
             ZStack {
                 VStack(alignment: .center) {
                     ForEach(VPNDestination.allCases, id: \.self) { destination in
-                        Text(destination.rawValue)
+                        Text(destination.displayed)
                             .font(.custom("Comfortaa", size: 20))
                             .foregroundColor(.highlightEnd)
                             .padding()

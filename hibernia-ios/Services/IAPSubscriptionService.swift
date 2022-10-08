@@ -43,6 +43,9 @@ class IAPSubscriptionService: ObservableObject {
     @MainActor func setSubscriptionProduct() async {
         do {
             self.subscriptionProduct = try await getProduct(productIdentifier: IAPSubscriptionService.subscriptionProductId)
+            
+            self.iapSubscriptionServiceError = nil
+            self.retryHandler = nil
         } catch {
             self.iapSubscriptionServiceError = error
             self.subscriptionProduct = nil
@@ -71,6 +74,8 @@ class IAPSubscriptionService: ObservableObject {
                 print("User not subscribed")
                 subscribed = false
             }
+            self.iapSubscriptionServiceError = nil
+            self.retryHandler = nil
         } catch {
             print("Could not verify subscription")
             self.iapSubscriptionServiceError = error
@@ -85,6 +90,7 @@ class IAPSubscriptionService: ObservableObject {
     @MainActor
     func subscribe() async {
         processing = true
+        self.iapSubscriptionServiceError = nil
         do {
             let result = try await subscriptionProduct?.purchase()
             
@@ -95,8 +101,16 @@ class IAPSubscriptionService: ObservableObject {
                 await updateSubscriptionStatus()
                 
                 await transaction.finish()
+            case .userCancelled:
+                processing = false
+            case .pending:
+                processing = true
             default:
-                return
+                processing = false
+                self.iapSubscriptionServiceError = IAPSubscriptionServiceError.couldNotPurchase
+                self.retryHandler = { () -> Void in
+                    self.iapSubscriptionServiceError = nil
+                }
             }
         } catch {
             self.iapSubscriptionServiceError = error
@@ -125,4 +139,8 @@ class IAPSubscriptionService: ObservableObject {
                 return transaction
         }
     }
+}
+
+enum IAPSubscriptionServiceError: Error {
+    case couldNotPurchase
 }

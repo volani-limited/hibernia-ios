@@ -43,13 +43,16 @@ struct ColorfulBackground<S: Shape>: View {
                     .overlay(shape.stroke(LinearGradient(Color.highlightStart, Color.highlightEnd), lineWidth: 5).shadow(color: Color.highlightStart, radius: 2))
                     .shadow(color: Color.backgroundStart, radius: 10, x: 5, y: 5)
                     .shadow(color: Color.backgroundEnd, radius: 10, x: -5, y: -5)
+                    .onAppear {
+                        isAnimating = false
+                    }
             } else if isProcessing {
                 shape.fill(LinearGradient(Color.backgroundStart, Color.backgroundEnd))
                 .overlay(
                     shape.trim(from: 0.0, to: 0.7)
                         .stroke(LinearGradient(Color.highlightStart, Color.highlightEnd), lineWidth: 5)
                         .rotationEffect(Angle(degrees: isAnimating ? 360 : 0))
-                        .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
+                        .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false), value: isAnimating)
                         .onAppear {
                             isAnimating = true
                         }
@@ -62,7 +65,9 @@ struct ColorfulBackground<S: Shape>: View {
                     .fill(LinearGradient(Color.backgroundStart, Color.backgroundEnd))
                     .overlay(shape.stroke(LinearGradient(Color.highlightStart, Color.highlightEnd), lineWidth: 5).shadow(color: Color.highlightStart, radius: 1))
                     .shadow(color: Color.backgroundStart, radius: 10, x: -10, y: -10)
-                    .shadow(color: Color.backgroundEnd, radius: 10, x: 10, y: 10)
+                    .shadow(color: Color.backgroundEnd, radius: 10, x: 10, y: 10).onAppear {
+                        isAnimating = false
+                    }
                     
             }
         }

@@ -11,24 +11,29 @@ struct PurchaseSubscriptionButtonView: View {
     @EnvironmentObject var subscriptionService: IAPSubscriptionService
     
     var body: some View {
-        Button {
-            Task {
-                if subscriptionService.processing != true {
-                    await subscriptionService.subscribe()
+        ZStack {
+            Button {
+                Task {
+                    if subscriptionService.processing != true {
+                        await subscriptionService.subscribe()
+                    }
+                }
+            } label: {
+                HStack(alignment: .bottom) {
+                    Image(systemName: "wand.and.stars")
+                        .bold()
+                        .foregroundColor(.highlightStart)
+                    Text("Subscribe to Connect").font(.custom("Comfortaa", size: 16))
+                        .bold()
+                        .foregroundColor(.highlightStart)
                 }
             }
-        } label: {
-            HStack(alignment: .bottom) {
-                Image(systemName: "wand.and.stars")
-                    .bold()
-                    .foregroundColor(.highlightStart)
-                Text("Subscribe to Connect").font(.custom("Comfortaa", size: 16))
-                    .bold()
-                    .foregroundColor(.highlightStart)
+            .buttonStyle(NeumorphicButtonStyle())
+            .disabled(subscriptionService.processing)
+            if subscriptionService.processing {
+                ProgressView()
             }
         }
-        .buttonStyle(NeumorphicButtonStyle())
-        .disabled(subscriptionService.processing)
     }
 }
 

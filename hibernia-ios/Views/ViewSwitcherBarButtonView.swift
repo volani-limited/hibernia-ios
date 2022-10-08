@@ -30,7 +30,6 @@ struct ViewSwitcherBarButtonView: View {
                 
                 Image(systemName: isOpen ? "chevron.backward" : "chevron.forward")
                     .foregroundColor(.highlightEnd)
-                    
             }
             .padding()
             .frame(width: geometry.size.width - 50)

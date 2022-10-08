@@ -66,6 +66,7 @@ class VPNService: ObservableObject {
             try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: nil, after: .seconds(2))
         } catch {
             self.vpnServiceError = error
+            self.status = .disconnected
         }
     }
     
@@ -110,11 +111,14 @@ enum VPNDestination: String , CaseIterable {
     case lon
     case sgy
     case nyc
+    case lonab
     
     var displayed: String {
         switch self {
         case .lon:
             return "London 🇬🇧"
+        case .lonab:
+            return "London AdBlock ⛔ 🇬🇧"
         case .sgy:
             return "Singapore 🇸🇬"
         case .nyc:

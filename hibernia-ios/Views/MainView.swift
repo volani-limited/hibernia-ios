@@ -25,12 +25,12 @@ struct MainView: View {
                         .foregroundStyle(LinearGradient(.highlightStart, .highlightEnd))
                     
                     Spacer().frame(height: geometry.size.width/4)
-                    if !subscriptionService.subscribed {
+                    if subscriptionService.originalTransactionID == nil {
                         PurchaseSubscriptionButtonView()
                     }
                     ErrorDisplayView()
                     
-                    VPNConnectButton().disabled(!subscriptionService.subscribed)
+                    VPNConnectButton().disabled(subscriptionService.originalTransactionID == nil)
                 }.frame(width: geometry.size.width, height:geometry.size.height)
 
                 CountrySelectorView()

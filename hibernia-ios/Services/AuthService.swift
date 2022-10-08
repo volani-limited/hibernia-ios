@@ -55,8 +55,6 @@ class AuthService: ObservableObject {
                 print("Could not sign in user")
             } else {
                 print("User anonymously signed in")
-                self?.authServiceError = nil
-                self?.retryHandler = nil
             }
         }
     }

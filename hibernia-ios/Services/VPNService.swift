@@ -12,7 +12,8 @@ import TunnelKitManager
 import TunnelKitOpenVPN
 
 class VPNService: ObservableObject {
-    static let tunnelIdentifier = "uk.co.volani.hibernia-ios.OpenVPN.Tunnel"
+    static let tunnelIdentifier = "uk.co.volani.hibernia-ios.OpenVPNTunnel"
+    static let appGroup = "group.uk.co.volani.hibernia-ios"
     
     @Published var status: VPNStatus
     @Published var destination: VPNDestination
@@ -47,21 +48,18 @@ class VPNService: ObservableObject {
         await vpn.prepare()
     }
     
+    @MainActor
     func connect(transactionID: UInt64, authKey: String) async {
         do {
             self.configuration = try await self.requestConfiguration(destination: self.destination, transactionID: transactionID, authKey: authKey)
             
-            let providerConfiguration = OpenVPN.ProviderConfiguration("Hibernia VPN", appGroup: "group.uk.co.volani.hibernia-ios", configuration: self.configuration!)
+            let providerConfiguration = OpenVPN.ProviderConfiguration("HiberniaVPN", appGroup: VPNService.appGroup, configuration: self.configuration!)
             
-            try await vpn.reconnect("uk.co.volani.hibernia-ios.OpenVPN.Tunnel", configuration: providerConfiguration, extra: nil, after: .seconds(2))
+            try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: nil, after: .seconds(2))
         } catch {
             self.vpnServiceError = error
         }
     }
-    
-   /* func wrappertest(providerConfiguration: OpenVPNProviderConfiguration) {
-        vpn.reconnect(tunnelIdentifier, configuration: providerConfiguration, extra: nil, after: .seconds(2))
-    }*/
     
     func disconnect() {
         Task {

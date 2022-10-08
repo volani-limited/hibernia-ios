@@ -66,7 +66,6 @@ class IAPSubscriptionService: ObservableObject {
                 let transaction = try checkVerified(result)
                 print("Successfully verified subscription")
                 originalTransactionID = transaction.originalID
-                print("original tr " + originalTransactionID!.description)
                 subscribed = true
             } else {
                 print("User not subscribed")

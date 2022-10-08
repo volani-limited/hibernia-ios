@@ -20,7 +20,7 @@ struct MainView: View {
         GeometryReader { geometry in
             ZStack {
                 VStack {
-                    Text("Hibernia VPN")
+                    Text("HiberniaVPN")
                         .font(.custom("Comfortaa", size: 30))
                         .foregroundStyle(LinearGradient(.highlightStart, .highlightEnd))
                     
@@ -28,8 +28,9 @@ struct MainView: View {
                     if !subscriptionService.subscribed {
                         PurchaseSubscriptionButtonView()
                     }
+                    ErrorDisplayView()
                     
-                    VPNConnectButton()//.disabled(!subscriptionService.subscribed)
+                    VPNConnectButton().disabled(!subscriptionService.subscribed)
                 }.frame(width: geometry.size.width, height:geometry.size.height)
 
                 CountrySelectorView()
@@ -39,6 +40,7 @@ struct MainView: View {
                 ViewSwitcherBarButtonView(isOpen: $isOpen, geometry: geometry)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .position(x: geometry.size.width / 2, y: geometry.size.height - 80)
+                    .disabled(vpnService.status != .disconnected)
             }
             .background(
                 LinearGradient(Color.backgroundStart, Color.backgroundEnd)

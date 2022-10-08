@@ -90,7 +90,6 @@ class IAPSubscriptionService: ObservableObject {
     @MainActor
     func subscribe() async {
         processing = true
-        self.iapSubscriptionServiceError = nil
         do {
             let result = try await subscriptionProduct?.purchase()
             

@@ -64,7 +64,6 @@ class VPNService: ObservableObject {
             let providerConfiguration = OpenVPN.ProviderConfiguration("HiberniaVPN", appGroup: VPNService.appGroup, configuration: self.configuration!)
             
             try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: nil, after: .seconds(2))
-            self.vpnServiceError = nil
         } catch {
             self.vpnServiceError = error
         }

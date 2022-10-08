@@ -19,6 +19,9 @@ struct ErrorDisplayView: View {
                     if let retry = authService.retryHandler {
                         retry()
                     }
+                    
+                    authService.authServiceError = nil
+                    authService.retryHandler = nil
                 } label: {
                     HStack(spacing: 10) {
                         Text(authError.localizedDescription)
@@ -40,6 +43,8 @@ struct ErrorDisplayView: View {
                             await retry()
                         }
                     }
+                    subscriptionService.iapSubscriptionServiceError = nil
+                    subscriptionService.retryHandler = nil
                 } label: {
                     HStack(spacing: 10) {
                         Text(subsciptionError.localizedDescription)
@@ -59,6 +64,8 @@ struct ErrorDisplayView: View {
                     if let retry = vpnService.retryHandler {
                          retry()
                     }
+                    vpnService.vpnServiceError = nil
+                    vpnService.retryHandler = nil
                 } label: {
                     HStack(spacing: 10) {
                         Text(vpnError.localizedDescription)

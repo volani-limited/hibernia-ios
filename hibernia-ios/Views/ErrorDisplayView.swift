@@ -24,10 +24,16 @@ struct ErrorDisplayView: View {
                     authService.retryHandler = nil
                 } label: {
                     HStack(spacing: 10) {
-                        Text(authError.localizedDescription)
-                            .font(.custom("Comfortaa", size: 20))
-                            .foregroundColor(.red)
-                            .padding()
+                        VStack {
+                            Text("Error authenticating device")
+                                .font(.custom("Comfortaa", size: 20))
+                                .foregroundColor(.red)
+                                .padding()
+                            Text(authError.localizedDescription)
+                                .font(.custom("Comfortaa", size: 10))
+                                .foregroundColor(.red)
+                                .padding()
+                        }
                         Image(systemName: "arrow.clockwise")
                     }
                     .background(
@@ -47,10 +53,16 @@ struct ErrorDisplayView: View {
                     subscriptionService.retryHandler = nil
                 } label: {
                     HStack(spacing: 10) {
-                        Text(subsciptionError.localizedDescription)
-                            .font(.custom("Comfortaa", size: 20))
-                            .foregroundColor(.red)
-                            .padding()
+                        VStack {
+                            Text("Error processing subscription")
+                                .font(.custom("Comfortaa", size: 20))
+                                .foregroundColor(.red)
+                                .padding()
+                            Text(subsciptionError.localizedDescription)
+                                .font(.custom("Comfortaa", size: 10))
+                                .foregroundColor(.red)
+                                .padding()
+                        }
                         Image(systemName: "arrow.clockwise")
                     }
                     .background(
@@ -61,6 +73,10 @@ struct ErrorDisplayView: View {
             
             if let vpnError = vpnService.vpnServiceError {
                 Button {
+                    Task {
+                        await subscriptionService.updateSubscriptionStatus()
+                    }
+                    
                     if let retry = vpnService.retryHandler {
                          retry()
                     }
@@ -68,10 +84,17 @@ struct ErrorDisplayView: View {
                     vpnService.retryHandler = nil
                 } label: {
                     HStack(spacing: 10) {
-                        Text(vpnError.localizedDescription)
-                            .font(.custom("Comfortaa", size: 20))
-                            .foregroundColor(.red)
-                            .padding()
+                        VStack {
+                            Text("Error processing subscription")
+                                .font(.custom("Comfortaa", size: 20))
+                                .foregroundColor(.red)
+                                .padding()
+                            Text(vpnError.localizedDescription)
+                                .font(.custom("Comfortaa", size: 10))
+                                .foregroundColor(.red)
+                                .padding()
+                        }
+                        
                         Image(systemName: "arrow.clockwise")
                     }
                     .background(

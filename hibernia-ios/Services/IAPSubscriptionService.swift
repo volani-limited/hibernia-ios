@@ -30,14 +30,15 @@ class IAPSubscriptionService: ObservableObject {
     var subscriptionStatusUpdater: AnyCancellable?
     
     init() {
-        updateListenerTask = listenForTransactions()
-        
         let defaults = UserDefaults.standard
         originalTransactionID = UInt64(defaults.integer(forKey: "transactionID"))
         
         subscriptionStatusUpdater = $originalTransactionID.sink { value in
             defaults.set(value, forKey: "transactionID")
         }
+        
+        updateListenerTask = listenForTransactions()
+        
         Task {
             await setSubscriptionProduct()
             await updateSubscriptionStatus()

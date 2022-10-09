@@ -86,11 +86,18 @@ class VPNService: ObservableObject {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        if let httpsResponse = response as? HTTPURLResponse, httpsResponse.statusCode == 200 {
+        
+        guard let httpsResponse = response as? HTTPURLResponse else {
+            throw VPNError.configurationRequestError
+        }
+        
+        if  httpsResponse.statusCode == 200 {
             let decodedData = try JSONDecoder().decode(ConfigurationResponse.self, from: data)
             let parser = try OpenVPN.ConfigurationParser.parsed(fromContents: decodedData.configuration)
             
             return parser.configuration
+        } else if httpsResponse.statusCode == 402 {
+            throw VPNError.subscriptionPaymentError
         } else {
             throw VPNError.configurationRequestError
         }
@@ -132,6 +139,16 @@ enum VPNDestination: String , CaseIterable {
 }
 
 
-enum VPNError: Error {
+enum VPNError: LocalizedError {
     case configurationRequestError
+    case subscriptionPaymentError
+    
+    public var errorDescription: String? {
+        switch self {
+        case .configurationRequestError:
+            return "Configuration request failed."
+        case .subscriptionPaymentError:
+            return "Subscription could not be verified."
+        }
+    }
 }

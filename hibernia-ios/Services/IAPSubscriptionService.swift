@@ -121,6 +121,7 @@ class IAPSubscriptionService: ObservableObject {
             
             await updateSubscriptionStatus()
         } catch {
+            processing = false
             self.iapSubscriptionServiceError = error
             retryHandler = subscribe
         }

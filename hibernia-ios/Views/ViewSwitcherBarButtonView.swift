@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ViewSwitcherBarButtonView: View {
     @EnvironmentObject var vpnService: VPNService
+    @Environment(\.colorScheme) var colorScheme
     @Binding var isOpen: Bool
 
     var geometry: GeometryProxy
@@ -22,9 +23,8 @@ struct ViewSwitcherBarButtonView: View {
                 Spacer().frame(maxWidth: isOpen ? .infinity : 20)
                 
                 Text(vpnService.destination.displayed)
-                    .foregroundColor(.highlightEnd)
+                    .foregroundColor(colorScheme == .dark ? .highlightStart : .highlightEnd)
                     .font(.custom("Comfortaa", size: 20))
-                    
                 
                 Spacer().frame(maxWidth: isOpen ? 5 : .infinity)
                 

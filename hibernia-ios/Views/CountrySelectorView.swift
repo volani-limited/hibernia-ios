@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CountrySelectorView: View {
     @EnvironmentObject var vpnService: VPNService
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var presentingAlert: Bool = false
     
     var body: some View {
@@ -18,7 +20,7 @@ struct CountrySelectorView: View {
                     ForEach(VPNDestination.allCases, id: \.self) { destination in
                         Text(destination.displayed)
                             .font(.custom("Comfortaa", size: 20))
-                            .foregroundColor(.highlightEnd)
+                            .foregroundColor(colorScheme == .dark ? .highlightStart : .highlightEnd)
                             .padding()
                             .background(
                                 NeumorphicShape(isHighlighted: destination == vpnService.destination, shape: RoundedRectangle(cornerRadius: 5))

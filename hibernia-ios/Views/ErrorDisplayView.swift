@@ -24,17 +24,17 @@ struct ErrorDisplayView: View {
                     authService.retryHandler = nil
                 } label: {
                     HStack(spacing: 10) {
-                        VStack {
+                        VStack(spacing: 5) {
                             Text("Error authenticating device")
                                 .font(.custom("Comfortaa", size: 20))
                                 .foregroundColor(.red)
-                                .padding()
                             Text(authError.localizedDescription)
                                 .font(.custom("Comfortaa", size: 10))
                                 .foregroundColor(.red)
-                                .padding()
-                        }
+                                
+                        }.padding()
                         Image(systemName: "arrow.clockwise")
+                            .padding()
                     }
                     .background(
                         NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))
@@ -53,17 +53,17 @@ struct ErrorDisplayView: View {
                     subscriptionService.retryHandler = nil
                 } label: {
                     HStack(spacing: 10) {
-                        VStack {
+                        VStack(spacing: 5) {
                             Text("Error processing subscription")
                                 .font(.custom("Comfortaa", size: 20))
                                 .foregroundColor(.red)
-                                .padding()
+                                
                             Text(subsciptionError.localizedDescription)
                                 .font(.custom("Comfortaa", size: 10))
                                 .foregroundColor(.red)
-                                .padding()
-                        }
+                        }.padding()
                         Image(systemName: "arrow.clockwise")
+                            .padding()
                     }
                     .background(
                         NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))
@@ -84,18 +84,17 @@ struct ErrorDisplayView: View {
                     vpnService.retryHandler = nil
                 } label: {
                     HStack(spacing: 10) {
-                        VStack {
+                        VStack(spacing: 5) {
                             Text("Error processing subscription")
                                 .font(.custom("Comfortaa", size: 20))
                                 .foregroundColor(.red)
-                                .padding()
+                                
                             Text(vpnError.localizedDescription)
                                 .font(.custom("Comfortaa", size: 10))
                                 .foregroundColor(.red)
-                                .padding()
-                        }
-                        
+                        }.padding()
                         Image(systemName: "arrow.clockwise")
+                            .padding()
                     }
                     .background(
                         NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))

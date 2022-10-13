@@ -49,6 +49,7 @@ struct ErrorDisplayView: View {
                             await retry()
                         }
                     }
+                    
                     subscriptionService.iapSubscriptionServiceError = nil
                     subscriptionService.retryHandler = nil
                 } label: {
@@ -80,6 +81,7 @@ struct ErrorDisplayView: View {
                     if let retry = vpnService.retryHandler {
                          retry()
                     }
+                    
                     vpnService.vpnServiceError = nil
                     vpnService.retryHandler = nil
                 } label: {

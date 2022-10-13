@@ -107,6 +107,9 @@ class IAPSubscriptionService: ObservableObject {
                 let transaction = try checkVerified(verificationResult)
                 
                 await transaction.finish()
+                
+                self.iapSubscriptionServiceError = nil
+                self.retryHandler = nil
             case .userCancelled:
                 processing = false
             case .pending:
@@ -140,7 +143,7 @@ class IAPSubscriptionService: ObservableObject {
         }
     }
     
-    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T{
+    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         switch result {
             case .unverified:
                 throw StoreError.failedVerification

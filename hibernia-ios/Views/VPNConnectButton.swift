@@ -27,8 +27,9 @@ struct VPNConnectButton: View {
                     case .disconnected:
                         vpnService.status = .connecting
                         Task {
-                            let authKey = await authService.getAuthToken()
-                            await vpnService.connect(transactionID: subscriptionService.originalTransactionID!, authKey: authKey)
+                            if let authKey = await authService.getAuthToken() {
+                                await vpnService.connect(transactionID: subscriptionService.originalTransactionID!, authKey: authKey)
+                            }
                         }
                         
                     case .connected, .connecting, .disconnecting:

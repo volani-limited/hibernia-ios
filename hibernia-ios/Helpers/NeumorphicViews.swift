@@ -51,7 +51,7 @@ struct ColorfulBackground<S: Shape>: View {
     var isHighlighted: Bool
     var isProcessing: Bool
     var shape: S
-    
+
     @State private var isAnimating =  false
 
     var body: some View {

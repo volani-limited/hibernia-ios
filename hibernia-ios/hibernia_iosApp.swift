@@ -9,8 +9,6 @@ import SwiftUI
 import Firebase
 import SwiftyBeaver
 
-private let log = SwiftyBeaver.self
-
 @main
 struct hibernia_iosApp: App {
     var authService: AuthService
@@ -22,10 +20,6 @@ struct hibernia_iosApp: App {
         authService = AuthService()
         vpnService = VPNService()
         subscriptionService = IAPSubscriptionService()
-        let logDestination = ConsoleDestination()
-        logDestination.minLevel = .debug
-        logDestination.format = "$DHH:mm:ss$d $L $N.$F:$l - $M"
-        log.addDestination(logDestination)
     }
 
     var body: some Scene {

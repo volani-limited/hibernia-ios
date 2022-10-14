@@ -11,8 +11,6 @@ struct CountrySelectorView: View {
     @EnvironmentObject var vpnService: VPNService
     @Environment(\.colorScheme) var colorScheme
     
-    @State var presentingAlert: Bool = false
-    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -25,16 +23,11 @@ struct CountrySelectorView: View {
                             .background(
                                 NeumorphicShape(isHighlighted: destination == vpnService.destination, shape: RoundedRectangle(cornerRadius: 5))
                                     .frame(width: geometry.size.width - 50)
-                            ).alert(isPresented: $presentingAlert) {
-                                Alert(title: Text("Warning"), message: Text("London AdBlock is experimental!\nYou may experience connection issues."))
-                            }
+                            )
                             .onTapGesture {
                                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
                                 feedbackGenerator.impactOccurred()
                                 vpnService.destination = destination
-                                if destination == .lonab {
-                                    presentingAlert = true
-                                }
                             }
                     }
                     Spacer()

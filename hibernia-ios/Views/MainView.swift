@@ -54,6 +54,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()//.scaleEffect(0.5)
+        MainView()
     }
 }

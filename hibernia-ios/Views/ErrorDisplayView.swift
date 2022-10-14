@@ -35,6 +35,7 @@ struct ErrorDisplayView: View {
                         }.padding()
                         Image(systemName: "arrow.clockwise")
                             .padding()
+                            .foregroundColor(.highlightStart)
                     }
                     .background(
                         NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))
@@ -65,6 +66,7 @@ struct ErrorDisplayView: View {
                         }.padding()
                         Image(systemName: "arrow.clockwise")
                             .padding()
+                            .foregroundColor(.highlightStart)
                     }
                     .background(
                         NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))
@@ -87,7 +89,7 @@ struct ErrorDisplayView: View {
                 } label: {
                     HStack(spacing: 10) {
                         VStack(spacing: 5) {
-                            Text("Error processing subscription")
+                            Text("Error connecting to VPN")
                                 .font(.custom("Comfortaa", size: 20))
                                 .foregroundColor(.red)
                                 
@@ -97,6 +99,7 @@ struct ErrorDisplayView: View {
                         }.padding()
                         Image(systemName: "arrow.clockwise")
                             .padding()
+                            .foregroundColor(.highlightStart)
                     }
                     .background(
                         NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 5))

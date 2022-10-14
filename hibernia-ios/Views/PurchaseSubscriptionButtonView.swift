@@ -15,6 +15,7 @@ struct PurchaseSubscriptionButtonView: View {
             Button {
                 Task {
                     if subscriptionService.processing != true {
+                        await subscriptionService.setSubscriptionProduct()
                         await subscriptionService.subscribe()
                     }
                 }

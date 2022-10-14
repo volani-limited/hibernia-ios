@@ -39,11 +39,10 @@ struct VPNConnectButton: View {
                     }
                 } label: {
                     Image(systemName: "power")
-                        .font(.system(size: 45, weight: .heavy))
+                        .font(.system(size: 55, weight: .heavy))
                         .foregroundColor(.highlightStart)
                 }
                 .buttonStyle(MainButtonStyle(isProcessing: (vpnService.status != .connected) == (vpnService.status != .disconnected), isDepressed: vpnService.status == .connected))
-                .disabled(subscriptionService.originalTransactionID == nil)
                 
                 Text(vpnService.status.rawValue.capitalized).font(.custom("Comfortaa", size: 15))
                     .foregroundColor(.highlightStart)

@@ -87,7 +87,6 @@ struct ColorfulBackground<S: Shape>: View {
                     .shadow(color: Color.backgroundEnd, radius: 10, x: 10, y: 10).onAppear {
                         isAnimating = false
                     }
-                    
             }
         }
     }

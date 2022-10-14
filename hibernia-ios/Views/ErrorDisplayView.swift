@@ -26,10 +26,10 @@ struct ErrorDisplayView: View {
                     HStack(spacing: 10) {
                         VStack(spacing: 5) {
                             Text("Error authenticating device")
-                                .font(.custom("Comfortaa", size: 20))
+                                .font(.custom("Comfortaa", size: 15))
                                 .foregroundColor(.red)
                             Text(authError.localizedDescription)
-                                .font(.custom("Comfortaa", size: 10))
+                                .font(.custom("Comfortaa", size: 9))
                                 .foregroundColor(.red)
                                 
                         }.padding()
@@ -57,11 +57,11 @@ struct ErrorDisplayView: View {
                     HStack(spacing: 10) {
                         VStack(spacing: 5) {
                             Text("Error processing subscription")
-                                .font(.custom("Comfortaa", size: 20))
+                                .font(.custom("Comfortaa", size: 15))
                                 .foregroundColor(.red)
                                 
                             Text(subsciptionError.localizedDescription)
-                                .font(.custom("Comfortaa", size: 10))
+                                .font(.custom("Comfortaa", size: 9))
                                 .foregroundColor(.red)
                         }.padding()
                         Image(systemName: "arrow.clockwise")
@@ -90,11 +90,11 @@ struct ErrorDisplayView: View {
                     HStack(spacing: 10) {
                         VStack(spacing: 5) {
                             Text("Error connecting to VPN")
-                                .font(.custom("Comfortaa", size: 20))
+                                .font(.custom("Comfortaa", size: 15))
                                 .foregroundColor(.red)
                                 
                             Text(vpnError.localizedDescription)
-                                .font(.custom("Comfortaa", size: 10))
+                                .font(.custom("Comfortaa", size: 9))
                                 .foregroundColor(.red)
                         }.padding()
                         Image(systemName: "arrow.clockwise")

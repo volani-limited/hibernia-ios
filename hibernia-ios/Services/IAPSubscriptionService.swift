@@ -18,7 +18,6 @@ public enum StoreError: Error {
 class IAPSubscriptionService: ObservableObject {
     static let subscriptionProductId = "hp1m"
     
-   // @Published var subscribed: Bool = false
     @Published var processing: Bool = false
     @Published var iapSubscriptionServiceError: Error?
     @Published var retryHandler: (@MainActor () async -> ())?
@@ -112,8 +111,14 @@ class IAPSubscriptionService: ObservableObject {
                 self.retryHandler = nil
             case .userCancelled:
                 processing = false
+                
+                self.iapSubscriptionServiceError = nil
+                self.retryHandler = nil
             case .pending:
                 processing = true
+                
+                self.iapSubscriptionServiceError = nil
+                self.retryHandler = nil
             default:
                 processing = false
                 self.iapSubscriptionServiceError = IAPSubscriptionServiceError.couldNotPurchase

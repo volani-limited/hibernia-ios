@@ -59,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE0EB82128F8EADA002939F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE27976928E6584A00DDACF5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 		AE6A729228E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AE0EB82128F8EADA002939F9 /* Info.plist */,
 				AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */,
 				AEFCD1C828E882A1008D9694 /* GoogleService-Info.plist */,
 				AE7D104228EC9D96006BEB18 /* Helpers */,
@@ -477,7 +479,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -517,7 +519,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -555,7 +557,7 @@
 				CODE_SIGN_ENTITLEMENTS = OpenVPNTunnel/OpenVPNTunnel.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OpenVPNTunnel/Info.plist;
@@ -585,7 +587,7 @@
 				CODE_SIGN_ENTITLEMENTS = OpenVPNTunnel/OpenVPNTunnel.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OpenVPNTunnel/Info.plist;

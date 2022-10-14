@@ -28,7 +28,7 @@ struct MainView: View {
                     if subscriptionService.originalTransactionID == nil {
                         PurchaseSubscriptionButtonView()
                     }
-                    ErrorDisplayView()
+                    ErrorDisplayView().padding()
                     
                     VPNConnectButton().disabled(subscriptionService.originalTransactionID == nil)
                 }.frame(width: geometry.size.width, height:geometry.size.height)

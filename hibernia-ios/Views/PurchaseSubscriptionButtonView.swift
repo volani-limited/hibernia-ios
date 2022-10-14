@@ -37,7 +37,7 @@ struct PurchaseSubscriptionButtonView: View {
                 }
             }
             
-            Text("[Remember, HiberniaVPN collects no data.](https://hiberniavpn.com)")
+            Text("[Legal](https://hiberniavpn.com#legal)")
                 .font(.custom("Comfortaa", size: 12))
                 .foregroundColor(.highlightStart)
                 .padding()

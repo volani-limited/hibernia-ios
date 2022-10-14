@@ -18,7 +18,6 @@ public enum StoreError: Error {
 class IAPSubscriptionService: ObservableObject {
     static let subscriptionProductId = "hp1m"
     
-   // @Published var subscribed: Bool = false
     @Published var processing: Bool = false
     @Published var iapSubscriptionServiceError: Error?
     @Published var retryHandler: (@MainActor () async -> ())?
@@ -107,10 +106,19 @@ class IAPSubscriptionService: ObservableObject {
                 let transaction = try checkVerified(verificationResult)
                 
                 await transaction.finish()
+                
+                self.iapSubscriptionServiceError = nil
+                self.retryHandler = nil
             case .userCancelled:
                 processing = false
+                
+                self.iapSubscriptionServiceError = nil
+                self.retryHandler = nil
             case .pending:
                 processing = true
+                
+                self.iapSubscriptionServiceError = nil
+                self.retryHandler = nil
             default:
                 processing = false
                 self.iapSubscriptionServiceError = IAPSubscriptionServiceError.couldNotPurchase
@@ -140,7 +148,7 @@ class IAPSubscriptionService: ObservableObject {
         }
     }
     
-    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T{
+    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         switch result {
             case .unverified:
                 throw StoreError.failedVerification

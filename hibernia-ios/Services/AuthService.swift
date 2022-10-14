@@ -23,7 +23,7 @@ class AuthService: ObservableObject {
         }
     }
     
-    private func registerAuthStateDidChangeListener () {
+    private func registerAuthStateDidChangeListener() {
         if let handle = userStateHandle {
             Auth.auth().removeStateDidChangeListener(handle) // Remove handle if it exists already
         }
@@ -47,7 +47,7 @@ class AuthService: ObservableObject {
         }
     }
     
-    func signInAnonymously() -> Void {
+    func signInAnonymously() {
         Auth.auth().signInAnonymously() { [weak self] authResult, error in
             if let error = error {
                 self?.authServiceError = error
@@ -59,8 +59,14 @@ class AuthService: ObservableObject {
         }
     }
     
-    func getAuthToken() async -> String  {
-        return try! await user!.getIDToken()
+    func getAuthToken() async -> String?  {
+        do {
+            let token = try await user!.getIDToken()
+            return token
+        } catch {
+            authServiceError = error
+            return nil
+        }
     }
 }
 

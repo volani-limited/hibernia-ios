@@ -68,6 +68,9 @@ class VPNService: ObservableObject {
             let providerConfiguration = OpenVPN.ProviderConfiguration("HiberniaVPN", appGroup: VPNService.appGroup, configuration: self.configuration!)
             
             try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: nil, after: .seconds(2))
+            
+            self.vpnServiceError = nil
+            self.retryHandler = nil
         } catch {
             self.vpnServiceError = error
             self.status = .disconnected
@@ -81,7 +84,7 @@ class VPNService: ObservableObject {
     }
     
     func requestConfiguration(destination: VPNDestination, transactionID: UInt64, authKey: String) async throws -> OpenVPN.Configuration {
-        let url = URL(string: "https://sandbox-provision-certificate-xgpoqrynja-ew.a.run.app?token=\(authKey)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
+        let url = URL(string: "https://provision-configuration-1-xgpoqrynja-lm.a.run.app?token=\(authKey)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
         let request = URLRequest(url: url!)
         
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -122,14 +125,11 @@ enum VPNDestination: String , CaseIterable {
     case lon
     case sgy
     case nyc
-    case lonab
     
     var displayed: String {
         switch self {
         case .lon:
             return "London 🇬🇧"
-        case .lonab:
-            return "London AdBlock ⛔ 🇬🇧"
         case .sgy:
             return "Singapore 🇸🇬"
         case .nyc:

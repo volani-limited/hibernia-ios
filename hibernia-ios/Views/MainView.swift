@@ -48,32 +48,12 @@ struct MainView: View {
                     .frame(width: geometry.size.width*2, height: geometry.size.height)
                     .offset(x: geometry.size.width/2))
             .offset(x: isOpen ? -geometry.size.width + dragAmount : dragAmount)
-            /*.gesture(DragGesture().onChanged { value in
-                if value.translation.width.sign == .minus || isOpen {
-                    dragAmount = value.translation.width
-                }
-            }.onEnded { value in
-                dragAmount = 0
-                if abs(value.translation.width) > (geometry.size.width - 50) / 2 {
-                    if value.translation.width.sign == .plus {
-                        withAnimation {
-                            isOpen = false
-                        }
-                        
-                    } else {
-                        withAnimation {
-                            isOpen = true
-                        }
-                    }
-                }
-               
-            })*/
         }
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()//.scaleEffect(0.5)
+        MainView()
     }
 }

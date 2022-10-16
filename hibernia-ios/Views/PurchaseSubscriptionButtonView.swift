@@ -14,8 +14,9 @@ struct PurchaseSubscriptionButtonView: View {
         VStack {
             ZStack {
                 Button {
-                    Task {
-                        if subscriptionService.processing != true {
+                    if subscriptionService.processing != true {
+                        subscriptionService.processing = true
+                        Task {
                             await subscriptionService.setSubscriptionProduct()
                             await subscriptionService.subscribe()
                         }

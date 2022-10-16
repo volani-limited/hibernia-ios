@@ -71,6 +71,7 @@ class IAPSubscriptionService: ObservableObject {
     
     @MainActor
     func updateSubscriptionStatus() async {
+        processing = true
         let result = await Transaction.currentEntitlement(for: IAPSubscriptionService.subscriptionProductId)
         
         do {

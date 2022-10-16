@@ -26,8 +26,16 @@ class IAPSubscriptionService: ObservableObject {
 
     var subscriptionProduct: Product?
     var updateListenerTask: Task<Void, Error>? = nil
+    var subscriptionStatusUpdater: AnyCancellable?
     
     init() {
+        let defaults = UserDefaults.standard
+        originalTransactionID = UInt64(defaults.integer(forKey: "transactionID"))
+        
+        subscriptionStatusUpdater = $originalTransactionID.sink { value in
+            defaults.set(value, forKey: "transactionID")
+        }
+        
         updateListenerTask = listenForTransactions()
         
         Task {
@@ -38,6 +46,7 @@ class IAPSubscriptionService: ObservableObject {
     
     deinit {
         updateListenerTask?.cancel()
+        subscriptionStatusUpdater?.cancel()
     }
     
     @MainActor func setSubscriptionProduct() async {

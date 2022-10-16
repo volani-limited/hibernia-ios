@@ -78,11 +78,12 @@ class IAPSubscriptionService: ObservableObject {
             self.retryHandler = nil
         } catch {
             print("Could not verify subscription")
-            self.iapSubscriptionServiceError = error
-            
-            retryHandler = updateSubscriptionStatus
-        
             originalTransactionID = nil
+            
+            self.iapSubscriptionServiceError = error
+            self.retryHandler = updateSubscriptionStatus
+        
+            
         }
         processing = false
     }

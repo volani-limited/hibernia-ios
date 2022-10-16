@@ -71,6 +71,7 @@ class IAPSubscriptionService: ObservableObject {
     
     @MainActor
     func updateSubscriptionStatus() async {
+        processing = true
         let result = await Transaction.currentEntitlement(for: IAPSubscriptionService.subscriptionProductId)
         
         do {
@@ -86,11 +87,12 @@ class IAPSubscriptionService: ObservableObject {
             self.retryHandler = nil
         } catch {
             print("Could not verify subscription")
-            self.iapSubscriptionServiceError = error
-            
-            retryHandler = updateSubscriptionStatus
-        
             originalTransactionID = nil
+            
+            self.iapSubscriptionServiceError = error
+            self.retryHandler = updateSubscriptionStatus
+        
+            
         }
         processing = false
     }

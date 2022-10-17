@@ -24,7 +24,7 @@ class IAPSubscriptionService: ObservableObject {
 
     @Published var originalTransactionID: UInt64?
 
-    var subscriptionProduct: Product?
+    @Published var subscriptionProduct: Product?
     var updateListenerTask: Task<Void, Error>? = nil
     var subscriptionStatusUpdater: AnyCancellable?
     

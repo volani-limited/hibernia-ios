@@ -11,7 +11,7 @@ struct PurchaseSubscriptionButtonView: View {
     @EnvironmentObject var subscriptionService: IAPSubscriptionService
     
     var body: some View {
-        VStack {
+        VStack() {
             ZStack {
                 Button {
                     if subscriptionService.processing != true {
@@ -25,7 +25,7 @@ struct PurchaseSubscriptionButtonView: View {
                     HStack(alignment: .bottom) {
                         Image(systemName: "wand.and.stars")
                             .foregroundColor(.highlightStart)
-                        Text("Subscribe to Connect")
+                        Text("Subscribe to Hibernia")
                             .font(.custom("Comfortaa", size: 16))
                             .bold()
                             .foregroundColor(.highlightStart)
@@ -37,11 +37,15 @@ struct PurchaseSubscriptionButtonView: View {
                     ProgressView()
                 }
             }
-            
-            Text("[Legal](https://hiberniavpn.com#legal)")
-                .font(.custom("Comfortaa", size: 12))
-                .foregroundColor(.highlightStart)
-                .padding()
+            VStack(spacing: 5) {
+                Text("Auto-renews for " + (subscriptionService.subscriptionProduct?.displayPrice ?? "unknown") + " per month\nafter a 3 day trial until cancelled.")
+                    .font(.custom("Comfortaa", size: 12))
+                    .foregroundColor(.highlightEnd)
+                Text("[Terms of service and privacy policy](https://hiberniavpn.com#legal)")
+                    //.underline(true)
+                    .font(.custom("Comfortaa", size: 12))
+                    .foregroundColor(.highlightStart)
+            }.padding(.top, 10)
         }
     }
 }

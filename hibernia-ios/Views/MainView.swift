@@ -27,6 +27,7 @@ struct MainView: View {
                     Spacer().frame(height: geometry.size.width/4)
                     if subscriptionService.originalTransactionID == nil {
                         PurchaseSubscriptionButtonView()
+                            .disabled(subscriptionService.subscriptionProduct == nil)
                     }
                     ErrorDisplayView().padding()
                     

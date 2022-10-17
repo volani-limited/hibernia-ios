@@ -111,12 +111,15 @@ struct MainButtonStyle: ButtonStyle {
 
 struct NeumorphicButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) var isEnabled
+    
+    var isProcessing: Bool
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
             .padding(.leading, 45)
             .padding(.trailing, 45)
-            .background(NeumorphicShape(isHighlighted: (configuration.isPressed || !isEnabled), shape: Capsule()))
+            .background(NeumorphicShape(isHighlighted: (configuration.isPressed || isProcessing), shape: Capsule()))
     }
 }
 

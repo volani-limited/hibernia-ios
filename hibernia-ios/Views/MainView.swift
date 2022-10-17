@@ -24,15 +24,16 @@ struct MainView: View {
                         .font(.custom("Comfortaa", size: 30))
                         .foregroundStyle(LinearGradient(.highlightStart, .highlightEnd))
                     
-                    Spacer().frame(height: geometry.size.width/4)
+                    Spacer().frame(height: geometry.size.height/10)
                     if subscriptionService.originalTransactionID == nil {
                         PurchaseSubscriptionButtonView()
                             .disabled(subscriptionService.subscriptionProduct == nil)
                     }
-                    ErrorDisplayView().padding()
+                    ErrorDisplayView().padding(.top)
                     
                     VPNConnectButton().disabled(subscriptionService.originalTransactionID == nil)
-                }.frame(width: geometry.size.width, height:geometry.size.height)
+                }.frame(width: geometry.size.width, height:geometry.size.height - 80)
+                    .offset(y: -40)
 
                 CountrySelectorView()
                     .frame(width: geometry.size.width, height:geometry.size.height)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PurchaseSubscriptionButtonView: View {
     @EnvironmentObject var subscriptionService: IAPSubscriptionService
+    @Environment(\.isEnabled) var isEnabled
     
     var body: some View {
         VStack() {
@@ -31,7 +32,7 @@ struct PurchaseSubscriptionButtonView: View {
                             .foregroundColor(.highlightStart)
                     }
                 }
-                .buttonStyle(NeumorphicButtonStyle())
+                .buttonStyle(NeumorphicButtonStyle(isProcessing: subscriptionService.processing))
                 .disabled(subscriptionService.processing)
                 if subscriptionService.processing {
                     ProgressView()
@@ -41,12 +42,21 @@ struct PurchaseSubscriptionButtonView: View {
                 Text("Auto-renews for " + (subscriptionService.subscriptionProduct?.displayPrice ?? "unknown") + " per month\nafter a 3 day trial until cancelled.")
                     .font(.custom("Comfortaa", size: 12))
                     .foregroundColor(.highlightEnd)
-                Text("[Terms of service and privacy policy](https://hiberniavpn.com#legal)")
-                    //.underline(true)
+                Button {
+                    Task {
+                        await subscriptionService.restorePurchases()
+                    }
+                } label: {
+                    Text("Restore Purchases")
+                        .font(.custom("Comfortaa", size: 14))
+                        .foregroundColor(.highlightStart)
+                }
+                Link("Terms of service and privacy policy", destination: URL(string: "https://hiberniavpn.com#legal")!)
                     .font(.custom("Comfortaa", size: 12))
                     .foregroundColor(.highlightStart)
             }.padding(.top, 10)
         }
+        .overlay(!isEnabled ? ProgressView() : nil)
     }
 }
 

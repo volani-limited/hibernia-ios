@@ -49,7 +49,8 @@ class IAPSubscriptionService: ObservableObject {
         subscriptionStatusUpdater?.cancel()
     }
     
-    @MainActor func setSubscriptionProduct() async {
+    @MainActor
+    func setSubscriptionProduct() async {
         do {
             self.subscriptionProduct = try await getProduct(productIdentifier: IAPSubscriptionService.subscriptionProductId)
             
@@ -60,6 +61,16 @@ class IAPSubscriptionService: ObservableObject {
             self.subscriptionProduct = nil
 
             self.retryHandler = setSubscriptionProduct
+        }
+    }
+    
+    @MainActor
+    func restorePurchases() async {
+        do {
+            try await AppStore.sync()
+        } catch {
+            self.iapSubscriptionServiceError = error
+            self.retryHandler = nil
         }
     }
     

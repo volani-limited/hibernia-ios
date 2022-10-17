@@ -89,7 +89,6 @@ class VPNService: ObservableObject {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        
         guard let httpsResponse = response as? HTTPURLResponse else {
             throw VPNError.configurationRequestError
         }

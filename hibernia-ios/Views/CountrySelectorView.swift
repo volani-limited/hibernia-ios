@@ -30,7 +30,6 @@ struct CountrySelectorView: View {
                                 vpnService.destination = destination
                             }
                     }
-                    Spacer()
                 }
             }.frame(width: geometry.size.width, height: geometry.size.height)
         }

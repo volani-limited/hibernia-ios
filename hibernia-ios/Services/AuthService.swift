@@ -61,7 +61,7 @@ class AuthService: ObservableObject {
     
     func getAuthToken() async -> String?  {
         do {
-            let token = try await user!.getIDToken()
+            let token = try await user?.getIDToken()
             return token
         } catch {
             authServiceError = error

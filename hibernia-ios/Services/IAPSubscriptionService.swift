@@ -68,6 +68,7 @@ class IAPSubscriptionService: ObservableObject {
     func restorePurchases() async {
         do {
             try await AppStore.sync()
+            await updateSubscriptionStatus()
         } catch {
             self.iapSubscriptionServiceError = error
             self.retryHandler = nil

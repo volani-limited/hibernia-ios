@@ -84,7 +84,7 @@ class VPNService: ObservableObject {
     }
     
     func requestConfiguration(destination: VPNDestination, transactionID: UInt64, authKey: String) async throws -> OpenVPN.Configuration {
-        let url = URL(string: "https://sandbox-provision-certificate-xgpoqrynja-ew.a.run.app?token=\(authKey)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
+        let url = URL(string: "https://provision-configuration-1-xgpoqrynja-lm.a.run.app?token=\(authKey)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
         let request = URLRequest(url: url!)
         
         let (data, response) = try await URLSession.shared.data(for: request)

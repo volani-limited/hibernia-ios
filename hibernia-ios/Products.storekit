@@ -9,7 +9,7 @@
   "settings" : {
     "_applicationInternalID" : "6443544329",
     "_developerTeamID" : "2AY446Y6M9",
-    "_lastSynchronizedDate" : 686611205.715096
+    "_lastSynchronizedDate" : 688593777.80437601
   },
   "subscriptionGroups" : [
     {
@@ -30,17 +30,22 @@
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "1646980445",
-          "introductoryOffer" : null,
+          "introductoryOffer" : {
+            "internalID" : "F45E97B5",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P3D"
+          },
           "localizations" : [
             {
-              "description" : "One month subscription for Hibernia VPN",
+              "description" : "Monthly renewing subscription for Hibernia",
               "displayName" : "Hibernia 1-Month",
               "locale" : "en_GB"
             }
           ],
           "productID" : "hp1m",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Hibernia Premium 1-Month",
+          "referenceName" : "Hibernia 1-Month",
           "subscriptionGroupID" : "21022208",
           "type" : "RecurringSubscription"
         }

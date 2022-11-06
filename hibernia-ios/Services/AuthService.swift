@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 class AuthService: ObservableObject {
     @Published var user: User?
@@ -14,12 +15,28 @@ class AuthService: ObservableObject {
     @Published var authServiceError: Error?
     @Published var retryHandler: (() -> Void)?
     
+    @Published var serviceMessage: String?
+
     private var userStateHandle: AuthStateDidChangeListenerHandle?
     
+    private var database: Firestore
+    
     init() {
+        database = Firestore.firestore()
         registerAuthStateDidChangeListener()
+        
         if user == nil {
             signInAnonymously()
+        }
+    }
+    
+    private func retrieveServiceMessage() {
+        let ref = database.collection("config").document("serviceMessage")
+        
+        ref.getDocument() { (document, error) in
+            if let document = document, document.exists {
+                self.serviceMessage = document.get("message") as? String
+            }
         }
     }
     
@@ -27,11 +44,11 @@ class AuthService: ObservableObject {
         if let handle = userStateHandle {
             Auth.auth().removeStateDidChangeListener(handle) // Remove handle if it exists already
         }
-        self.userStateHandle = Auth.auth().addStateDidChangeListener { [ weak self] (auth, user) in // Add handle and handle cases
+        self.userStateHandle = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in // Add handle and handle cases
             self?.user = user
             if let user = user {
                 print("User state changed, uid: " + user.uid)
-               
+                self?.retrieveServiceMessage()
             } else {
                 print("User state changed, user signed out.")
             }

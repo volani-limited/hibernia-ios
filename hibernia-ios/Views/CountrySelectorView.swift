@@ -14,25 +14,27 @@ struct CountrySelectorView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                VStack(alignment: .center) {
-                    ForEach(VPNDestination.allCases, id: \.self) { destination in
-                        Text(destination.displayed)
-                            .font(.custom("Comfortaa", size: 20))
-                            .foregroundColor(colorScheme == .dark ? .highlightStart : .highlightEnd)
-                            .padding()
-                            .background(
-                                NeumorphicShape(isHighlighted: destination == vpnService.destination, shape: RoundedRectangle(cornerRadius: 5))
-                                    .frame(width: geometry.size.width - 50)
-                            )
-                            .onTapGesture {
-                                let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
-                                feedbackGenerator.impactOccurred()
-                                vpnService.destination = destination
-                            }
-                    }
-                    Spacer()
+                ScrollView {
+                    VStack(alignment: .center) {
+                        ForEach(VPNDestination.allCases, id: \.self) { destination in
+                            Text(destination.displayed)
+                                .font(.custom("Comfortaa", size: 20))
+                                .foregroundColor(colorScheme == .dark ? .highlightStart : .highlightEnd)
+                                .padding()
+                                .background(
+                                    NeumorphicShape(isHighlighted: destination == vpnService.destination, shape: RoundedRectangle(cornerRadius: 5))
+                                        .frame(width: geometry.size.width - 50)
+                                )
+                                .onTapGesture {
+                                    let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+                                    feedbackGenerator.impactOccurred()
+                                    vpnService.destination = destination
+                                }
+                        }
+                        Spacer()
+                    }.frame(width: geometry.size.width, height: geometry.size.height)
                 }
-            }.frame(width: geometry.size.width, height: geometry.size.height)
+            }
         }
     }
 }

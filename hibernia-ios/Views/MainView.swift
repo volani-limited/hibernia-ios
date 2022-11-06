@@ -13,8 +13,10 @@ struct MainView: View {
     @EnvironmentObject var vpnService: VPNService
 
     @State private var isOpen = false
+    @State private var presentDetailsAlert = false
     
     @State var dragAmount = CGFloat(0)
+    
     
     var body: some View {
         GeometryReader { geometry in
@@ -23,12 +25,41 @@ struct MainView: View {
                     Text("HiberniaVPN")
                         .font(.custom("Comfortaa", size: 30))
                         .foregroundStyle(LinearGradient(.highlightStart, .highlightEnd))
+                        .onTapGesture {
+                            presentDetailsAlert = true
+                        }
+                        .alert(isPresented: $presentDetailsAlert, content: {
+                            Alert(
+                                title: Text("Credits"),
+                                message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.1.0, B11"),
+                                dismissButton: .cancel()
+                            )
+                        })
                     
                     Spacer().frame(height: geometry.size.height/10)
                     if subscriptionService.originalTransactionID == nil {
                         PurchaseSubscriptionButtonView()
                             .disabled(subscriptionService.subscriptionProduct == nil)
                     }
+                    
+                    if let serviceMessage = authService.serviceMessage, !serviceMessage.isEmpty {
+                        HStack(spacing: 10) {
+                            VStack(spacing: 5) {
+                                Text(serviceMessage)
+                                    .font(.custom("Comfortaa", size: 13))
+                                    .foregroundColor(.highlightStart)
+                            }.padding()
+                            Image(systemName: "xmark")
+                                .padding()
+                                .foregroundColor(.highlightEnd)
+                        }
+                        .background(
+                            NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 10))
+                        ).onTapGesture {
+                            authService.serviceMessage = nil
+                        }
+                    }
+                    
                     ErrorDisplayView().padding(.top)
                     
                     VPNConnectButton().disabled(subscriptionService.originalTransactionID == nil)

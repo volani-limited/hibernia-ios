@@ -15,13 +15,14 @@
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
 		AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */; };
 		AE7D104C28EE53C5006BEB18 /* ErrorDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */; };
+		AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152829174DF60039689C /* FirebaseAuth */; };
+		AEA6152B29174DF60039689C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152A29174DF60039689C /* FirebaseFirestore */; };
+		AEA6152D29174DF60039689C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152C29174DF60039689C /* FirebaseFirestoreSwift */; };
 		AEB4AC6A28EF79170076D0F6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6A72A328E21B31001628E2 /* NetworkExtension.framework */; };
 		AEB4AC6D28EF79170076D0F6 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */; };
 		AEB4AC7228EF79170076D0F6 /* OpenVPNTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */; };
 		AEB4AC7928EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = AEB4AC7828EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension */; };
-		AEFCD1BF28E87C38008D9694 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AEFCD1BE28E87C38008D9694 /* FirebaseAuth */; };
-		AEFCD1C128E87C38008D9694 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AEFCD1C028E87C38008D9694 /* FirebaseFirestoreSwift */; };
 		AEFCD1C728E87E22008D9694 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE27976928E6584A00DDACF5 /* AuthService.swift */; };
 		AEFCD1C928E882A2008D9694 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEFCD1C828E882A1008D9694 /* GoogleService-Info.plist */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
@@ -93,10 +94,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE6A72A428E21B31001628E2 /* NetworkExtension.framework in Frameworks */,
-				AEFCD1BF28E87C38008D9694 /* FirebaseAuth in Frameworks */,
-				AEFCD1C128E87C38008D9694 /* FirebaseFirestoreSwift in Frameworks */,
 				AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */,
 				AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */,
+				AEA6152B29174DF60039689C /* FirebaseFirestore in Frameworks */,
+				AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */,
+				AEA6152D29174DF60039689C /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,9 +229,10 @@
 			);
 			name = "hibernia-ios";
 			packageProductDependencies = (
-				AEFCD1BE28E87C38008D9694 /* FirebaseAuth */,
-				AEFCD1C028E87C38008D9694 /* FirebaseFirestoreSwift */,
 				AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */,
+				AEA6152829174DF60039689C /* FirebaseAuth */,
+				AEA6152A29174DF60039689C /* FirebaseFirestore */,
+				AEA6152C29174DF60039689C /* FirebaseFirestoreSwift */,
 			);
 			productName = "hibernia-ios";
 			productReference = AE6A729028E21AE3001628E2 /* hibernia-ios.app */;
@@ -283,8 +286,8 @@
 			);
 			mainGroup = AE6A728728E21AE3001628E2;
 			packageReferences = (
-				AEFCD1BD28E87C37008D9694 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */,
+				AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = AE6A729128E21AE3001628E2 /* Products */;
 			projectDirPath = "";
@@ -497,7 +500,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -537,7 +540,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -569,7 +572,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -599,7 +602,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -643,6 +646,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/passepartoutvpn/tunnelkit.git";
@@ -651,17 +662,24 @@
 				kind = branch;
 			};
 		};
-		AEFCD1BD28E87C37008D9694 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AEA6152829174DF60039689C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		AEA6152A29174DF60039689C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		AEA6152C29174DF60039689C /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
 		AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */;
@@ -671,16 +689,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */;
 			productName = TunnelKitOpenVPNAppExtension;
-		};
-		AEFCD1BE28E87C38008D9694 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AEFCD1BD28E87C37008D9694 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		AEFCD1C028E87C38008D9694 /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AEFCD1BD28E87C37008D9694 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

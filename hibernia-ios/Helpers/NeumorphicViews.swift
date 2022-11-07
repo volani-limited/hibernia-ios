@@ -105,7 +105,7 @@ struct MainButtonStyle: ButtonStyle {
         .background(
             ColorfulBackground(isHighlighted: isDepressed, isProcessing: isProcessing, shape: Circle())
         )
-        .opacity(isEnabled ? 1 : 0.4)
+        .opacity(isEnabled == !isProcessing ? 1 : 0.4) // Boolean XOR so not 
     }
 }
 

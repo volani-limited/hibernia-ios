@@ -17,8 +17,6 @@ struct VPNConnectButton: View {
     @EnvironmentObject var vpnService: VPNService
     @EnvironmentObject var subscriptionService: IAPSubscriptionService
 
-    @State private var vpnServiceTask: Task<Void, Error>?
-    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -28,22 +26,14 @@ struct VPNConnectButton: View {
                     switch vpnService.status {
                     case .disconnected:
                         vpnService.status = .connecting
-                        vpnServiceTask = Task {
+                        Task {
                             if let authKey = await authService.getAuthToken() {
                                 await vpnService.connect(transactionID: subscriptionService.originalTransactionID!, authKey: authKey)
-                            } else {
-                                vpnService.status = .disconnected
                             }
                         }
                         
-                    case .connected:
-                        vpnServiceTask = Task {
-                            vpnService.disconnect()
-                        }
-                    case .connecting, .disconnecting:
-                        vpnServiceTask?.cancel()
-
-                        vpnServiceTask = Task {
+                    case .connected, .connecting, .disconnecting:
+                        Task {
                             vpnService.disconnect()
                         }
                     }

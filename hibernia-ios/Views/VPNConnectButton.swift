@@ -32,10 +32,12 @@ struct VPNConnectButton: View {
                             }
                         }
                         
-                    case .connected, .connecting, .disconnecting:
+                    case .connected:
                         Task {
                             vpnService.disconnect()
                         }
+                    case .connecting, .disconnecting:
+                        break
                     }
                 } label: {
                     Image(systemName: "power")
@@ -43,7 +45,8 @@ struct VPNConnectButton: View {
                         .foregroundColor(.highlightStart)
                 }
                 .buttonStyle(MainButtonStyle(isProcessing: (vpnService.status != .connected) == (vpnService.status != .disconnected), isDepressed: vpnService.status == .connected))
-                
+                .disabled(vpnService.status == .connecting || vpnService.status == .disconnecting) // Won't gray out due to condition on opacity change in ButtonStyle
+                 
                 Text(vpnService.status.rawValue.capitalized).font(.custom("Comfortaa", size: 15))
                     .foregroundColor(.highlightStart)
                     .padding()

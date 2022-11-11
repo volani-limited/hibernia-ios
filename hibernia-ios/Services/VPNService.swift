@@ -79,6 +79,10 @@ class VPNService: ObservableObject {
             self.vpnServiceError = nil
             self.retryHandler = nil
         } catch {
+            if let urlError = error as? URLError, urlError.code == URLError.Code.cancelled {
+                return
+            }
+
             self.vpnServiceError = error
             self.status = .disconnected
         }

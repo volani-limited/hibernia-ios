@@ -15,7 +15,7 @@ public enum StoreError: Error {
     case failedVerification
 }
 
-class IAPSubscriptionService: ObservableObject {
+class IAPSubscriptionService: NSObject, ObservableObject {
     static let subscriptionProductId = "hp1m"
     
     @Published var processing: Bool = false
@@ -28,15 +28,19 @@ class IAPSubscriptionService: ObservableObject {
     var updateListenerTask: Task<Void, Error>? = nil
     var subscriptionStatusUpdater: AnyCancellable?
     
-    init() {
+    override init() {
         let defaults = UserDefaults.standard
         originalTransactionID = UInt64(defaults.integer(forKey: "transactionID"))
+        
+        super.init()
         
         subscriptionStatusUpdater = $originalTransactionID.sink { value in
             defaults.set(value, forKey: "transactionID")
         }
         
         updateListenerTask = listenForTransactions()
+        
+        SKPaymentQueue.default().add(self)
         
         Task {
             await setSubscriptionProduct()
@@ -140,8 +144,6 @@ class IAPSubscriptionService: ObservableObject {
                     self.iapSubscriptionServiceError = nil
                 }
             }
-            
-            await updateSubscriptionStatus()
         } catch {
             processing = false
             self.iapSubscriptionServiceError = error
@@ -169,6 +171,16 @@ class IAPSubscriptionService: ObservableObject {
             case .verified(let transaction):
                 return transaction
         }
+    }
+}
+
+extension IAPSubscriptionService: SKPaymentTransactionObserver {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        // Implementation not needed due to Transaction.updates listener above.
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+        return true
     }
 }
 

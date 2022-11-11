@@ -24,7 +24,7 @@
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
         "branch" : "master",
-        "revision" : "c66588d9487ebb186e36d501f3f441425c74f9dd"
+        "revision" : "0b1cb06f8325ab44a1f3187605a74669c969bf42"
       }
     },
     {
@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/gtm-session-fetcher.git",
       "state" : {
-        "revision" : "d4289da23e978f37c344ea6a386e5546e2466294",
-        "version" : "2.1.0"
+        "revision" : "efda500b6d9858d38a76dbfbfa396bd644692e4a",
+        "version" : "3.0.0"
       }
     },
     {
@@ -113,8 +113,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "88c7d15e1242fdb6ecbafbc7926426a19be1e98a",
-        "version" : "1.20.2"
+        "revision" : "ab3a58b7209a17d781c0d1dbb3e1ff3da306bae8",
+        "version" : "1.20.3"
       }
     },
     {
@@ -132,7 +132,7 @@
       "location" : "https://github.com/passepartoutvpn/tunnelkit.git",
       "state" : {
         "branch" : "master",
-        "revision" : "9f5de0fc553506ced06c5a22180612c916c76385"
+        "revision" : "47281cafc99dcfd0bdf60d41b3357cdbb33875fa"
       }
     },
     {

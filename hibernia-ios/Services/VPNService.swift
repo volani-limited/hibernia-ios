@@ -12,6 +12,8 @@ import TunnelKitCore
 import TunnelKitManager
 import TunnelKitOpenVPN
 
+import NetworkExtension
+
 class VPNService: ObservableObject {
     static let tunnelIdentifier = "uk.co.volani.hibernia-ios.OpenVPNTunnel"
     static let appGroup = "group.uk.co.volani.hibernia-ios"
@@ -66,12 +68,21 @@ class VPNService: ObservableObject {
             self.configuration = try await self.requestConfiguration(destination: self.destination, transactionID: transactionID, authKey: authKey)
             
             let providerConfiguration = OpenVPN.ProviderConfiguration("HiberniaVPN", appGroup: VPNService.appGroup, configuration: self.configuration!)
+           
+            var configurationExtras = NetworkExtensionExtra()
             
-            try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: nil, after: .seconds(2))
+            configurationExtras.disconnectsOnSleep = false
+            configurationExtras.onDemandRules = [NEOnDemandRuleConnect()]
+            
+            try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: configurationExtras, after: .seconds(1))
             
             self.vpnServiceError = nil
             self.retryHandler = nil
         } catch {
+            if let urlError = error as? URLError, urlError.code == URLError.Code.cancelled {
+                return
+            }
+
             self.vpnServiceError = error
             self.status = .disconnected
         }

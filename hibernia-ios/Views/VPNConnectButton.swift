@@ -17,6 +17,8 @@ struct VPNConnectButton: View {
     @EnvironmentObject var vpnService: VPNService
     @EnvironmentObject var subscriptionService: IAPSubscriptionService
 
+    @State private var vpnServiceTask: Task<Void, Error>?
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -26,17 +28,25 @@ struct VPNConnectButton: View {
                     switch vpnService.status {
                     case .disconnected:
                         vpnService.status = .connecting
-                        Task {
+                        vpnServiceTask = Task {
                             if let authKey = await authService.getAuthToken() {
                                 await vpnService.connect(transactionID: subscriptionService.originalTransactionID!, authKey: authKey)
+                            } else {
+                                vpnService.status = .disconnected
                             }
                         }
                         
                     case .connected:
-                        Task {
+                        vpnServiceTask = Task {
                             vpnService.disconnect()
                         }
-                    case .connecting, .disconnecting:
+                    case .connecting:
+                        vpnServiceTask?.cancel()
+
+                        vpnServiceTask = Task {
+                            vpnService.disconnect()
+                        }
+                    case .disconnecting:
                         break
                     }
                 } label: {
@@ -45,8 +55,8 @@ struct VPNConnectButton: View {
                         .foregroundColor(.highlightStart)
                 }
                 .buttonStyle(MainButtonStyle(isProcessing: (vpnService.status != .connected) == (vpnService.status != .disconnected), isDepressed: vpnService.status == .connected))
-                .disabled(vpnService.status == .connecting || vpnService.status == .disconnecting) // Won't gray out due to condition on opacity change in ButtonStyle
-                 
+                .disabled(vpnService.status == .disconnecting)
+                
                 Text(vpnService.status.rawValue.capitalized).font(.custom("Comfortaa", size: 15))
                     .foregroundColor(.highlightStart)
                     .padding()

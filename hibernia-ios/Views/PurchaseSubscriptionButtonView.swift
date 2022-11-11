@@ -26,7 +26,7 @@ struct PurchaseSubscriptionButtonView: View {
                     HStack(alignment: .bottom) {
                         Image(systemName: "wand.and.stars")
                             .foregroundColor(.highlightStart)
-                        Text("Subscribe to Hibernia")
+                        Text("Subscribe to Connect")
                             .font(.custom("Comfortaa", size: 16))
                             .bold()
                             .foregroundColor(.highlightStart)

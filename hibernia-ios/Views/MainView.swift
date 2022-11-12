@@ -6,17 +6,20 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
 
 struct MainView: View {
-    @EnvironmentObject var authService: AuthService
     @EnvironmentObject var subscriptionService: IAPSubscriptionService
     @EnvironmentObject var vpnService: VPNService
 
     @State private var isOpen = false
+    
+    @State private var serviceMessage: String?
+    
     @State private var presentDetailsAlert = false
     
     @State var dragAmount = CGFloat(0)
-    
     
     var body: some View {
         GeometryReader { geometry in
@@ -31,7 +34,7 @@ struct MainView: View {
                         .alert(isPresented: $presentDetailsAlert, content: {
                             Alert(
                                 title: Text("Credits"),
-                                message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.2.1 (16)"),
+                                message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.3.0 (17)"),
                                 dismissButton: .cancel()
                             )
                         })
@@ -42,7 +45,7 @@ struct MainView: View {
                             .disabled(subscriptionService.subscriptionProduct == nil)
                     }
                     
-                    if let serviceMessage = authService.serviceMessage, !serviceMessage.isEmpty {
+                    if let serviceMessage = serviceMessage, !serviceMessage.isEmpty {
                         HStack(spacing: 10) {
                             VStack(spacing: 5) {
                                 Text(serviceMessage)
@@ -56,7 +59,7 @@ struct MainView: View {
                         .background(
                             NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 10))
                         ).onTapGesture {
-                            authService.serviceMessage = nil
+                            self.serviceMessage = nil
                         }
                     }
                     
@@ -81,6 +84,16 @@ struct MainView: View {
                     .frame(width: geometry.size.width*2, height: geometry.size.height)
                     .offset(x: geometry.size.width/2))
             .offset(x: isOpen ? -geometry.size.width + dragAmount : dragAmount)
+        }
+        .onAppear {
+            let db = Firestore.firestore()
+            let ref = db.collection("config").document("serviceMessage")
+            
+            ref.getDocument() { (document, error) in
+               if let document = document, document.exists {
+                   self.serviceMessage = document.get("message") as? String
+               }
+            }
         }
     }
 }

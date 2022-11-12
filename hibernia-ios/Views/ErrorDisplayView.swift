@@ -8,41 +8,11 @@
 import SwiftUI
 
 struct ErrorDisplayView: View {
-    @EnvironmentObject var authService: AuthService
     @EnvironmentObject var subscriptionService: IAPSubscriptionService
     @EnvironmentObject var vpnService: VPNService
     
     var body: some View {
         VStack {
-            if let authError = authService.authServiceError {
-                Button {
-                    if let retry = authService.retryHandler {
-                        retry()
-                    }
-                    
-                    authService.authServiceError = nil
-                    authService.retryHandler = nil
-                } label: {
-                    HStack(spacing: 10) {
-                        VStack(spacing: 5) {
-                            Text("Error authenticating device")
-                                .font(.custom("Comfortaa", size: 14))
-                                .foregroundColor(.red)
-                            Text(authError.localizedDescription)
-                                .font(.custom("Comfortaa", size: 8))
-                                .foregroundColor(.red)
-                                
-                        }.padding()
-                        Image(systemName: "arrow.clockwise")
-                            .padding()
-                            .foregroundColor(.highlightStart)
-                    }
-                    .background(
-                        NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 10))
-                    )
-                }
-            }
-            
             if let subsciptionError = subscriptionService.iapSubscriptionServiceError {
                 Button {
                     Task {

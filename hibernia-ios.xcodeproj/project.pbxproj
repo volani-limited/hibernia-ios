@@ -15,6 +15,8 @@
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
 		AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */; };
 		AE7D104C28EE53C5006BEB18 /* ErrorDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */; };
+		AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */; };
+		AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */; };
 		AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152829174DF60039689C /* FirebaseAuth */; };
 		AEA6152B29174DF60039689C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152A29174DF60039689C /* FirebaseFirestore */; };
 		AEA6152D29174DF60039689C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152C29174DF60039689C /* FirebaseFirestoreSwift */; };
@@ -23,7 +25,6 @@
 		AEB4AC7228EF79170076D0F6 /* OpenVPNTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */; };
 		AEB4AC7928EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = AEB4AC7828EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension */; };
-		AEFCD1C728E87E22008D9694 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE27976928E6584A00DDACF5 /* AuthService.swift */; };
 		AEFCD1C928E882A2008D9694 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEFCD1C828E882A1008D9694 /* GoogleService-Info.plist */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
 		AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNService.swift */; };
@@ -61,7 +62,6 @@
 
 /* Begin PBXFileReference section */
 		AE0EB82128F8EADA002939F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AE27976928E6584A00DDACF5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
 		AE6A729528E21AE4001628E2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -73,6 +73,7 @@
 		AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPSubscriptionService.swift; sourceTree = "<group>"; };
 		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
 		AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDisplayView.swift; sourceTree = "<group>"; };
+		AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAttestAppCheckProviderFactory.swift; sourceTree = "<group>"; };
 		AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OpenVPNTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		AEB4AC6E28EF79170076D0F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 				AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */,
 				AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */,
 				AEA6152B29174DF60039689C /* FirebaseFirestore in Frameworks */,
+				AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */,
 				AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */,
 				AEA6152D29174DF60039689C /* FirebaseFirestoreSwift in Frameworks */,
 			);
@@ -117,7 +119,7 @@
 		AE27976B28E6584F00DDACF5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AE27976928E6584A00DDACF5 /* AuthService.swift */,
+				AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
 				AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */,
 			);
@@ -233,6 +235,7 @@
 				AEA6152829174DF60039689C /* FirebaseAuth */,
 				AEA6152A29174DF60039689C /* FirebaseFirestore */,
 				AEA6152C29174DF60039689C /* FirebaseFirestoreSwift */,
+				AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */,
 			);
 			productName = "hibernia-ios";
 			productReference = AE6A729028E21AE3001628E2 /* hibernia-ios.app */;
@@ -328,8 +331,8 @@
 				AE7D104C28EE53C5006BEB18 /* ErrorDisplayView.swift in Sources */,
 				AEFCD1DA28EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift in Sources */,
 				AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */,
-				AEFCD1C728E87E22008D9694 /* AuthService.swift in Sources */,
 				AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */,
+				AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */,
 				AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */,
 				AE6A729628E21AE4001628E2 /* MainView.swift in Sources */,
 				AEFCD1D328EA1945008D9694 /* CountrySelectorView.swift in Sources */,
@@ -500,7 +503,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -540,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -572,7 +575,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -602,7 +605,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -665,6 +668,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
 		AEA6152829174DF60039689C /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

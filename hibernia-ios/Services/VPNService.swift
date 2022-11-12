@@ -14,6 +14,8 @@ import TunnelKitOpenVPN
 
 import NetworkExtension
 
+import FirebaseAppCheck
+
 class VPNService: ObservableObject {
     static let tunnelIdentifier = "uk.co.volani.hibernia-ios.OpenVPNTunnel"
     static let appGroup = "group.uk.co.volani.hibernia-ios"
@@ -63,9 +65,9 @@ class VPNService: ObservableObject {
     }
     
     @MainActor
-    func connect(transactionID: UInt64, authKey: String) async {
+    func connect(transactionID: UInt64) async {
         do {
-            self.configuration = try await self.requestConfiguration(destination: self.destination, transactionID: transactionID, authKey: authKey)
+            self.configuration = try await self.requestConfiguration(destination: self.destination, transactionID: transactionID)
             
             let providerConfiguration = OpenVPN.ProviderConfiguration("HiberniaVPN", appGroup: VPNService.appGroup, configuration: self.configuration!)
            
@@ -94,8 +96,11 @@ class VPNService: ObservableObject {
         }
     }
     
-    func requestConfiguration(destination: VPNDestination, transactionID: UInt64, authKey: String) async throws -> OpenVPN.Configuration {
-        let url = URL(string: "https://provision-configuration-1-xgpoqrynja-lm.a.run.app?token=\(authKey)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
+    func requestConfiguration(destination: VPNDestination, transactionID: UInt64) async throws -> OpenVPN.Configuration {
+        let appCheckToken = try await AppCheck.appCheck().token(forcingRefresh: false)
+        
+        let url = URL(string: "https://sandbox-provision-certificate-xgpoqrynja-ew.a.run.app?token=\(appCheckToken.token)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
+
         let request = URLRequest(url: url!)
         
         let (data, response) = try await URLSession.shared.data(for: request)

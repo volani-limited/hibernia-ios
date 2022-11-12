@@ -7,24 +7,26 @@
 
 import SwiftUI
 import Firebase
-import SwiftyBeaver
+import FirebaseAppCheck
 
 @main
 struct hibernia_iosApp: App {
-    var authService: AuthService
     var vpnService: VPNService
     var subscriptionService: IAPSubscriptionService
     
     init() {
+        let providerFactory = AppAttestAppCheckProviderFactory()
+        AppCheck.setAppCheckProviderFactory(providerFactory)
+        
         FirebaseApp.configure()
-        authService = AuthService()
+        
         vpnService = VPNService()
         subscriptionService = IAPSubscriptionService()
     }
 
     var body: some Scene {
         WindowGroup {
-            MainView().environmentObject(authService).environmentObject(vpnService).environmentObject(subscriptionService)
+            MainView().environmentObject(vpnService).environmentObject(subscriptionService)
         }
     }
 }

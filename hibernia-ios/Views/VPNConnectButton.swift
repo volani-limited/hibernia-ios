@@ -13,7 +13,6 @@ import TunnelKitManager
 import TunnelKitOpenVPN
 
 struct VPNConnectButton: View {
-    @EnvironmentObject var authService: AuthService
     @EnvironmentObject var vpnService: VPNService
     @EnvironmentObject var subscriptionService: IAPSubscriptionService
 
@@ -29,11 +28,7 @@ struct VPNConnectButton: View {
                     case .disconnected:
                         vpnService.status = .connecting
                         vpnServiceTask = Task {
-                            if let authKey = await authService.getAuthToken() {
-                                await vpnService.connect(transactionID: subscriptionService.originalTransactionID!, authKey: authKey)
-                            } else {
-                                vpnService.status = .disconnected
-                            }
+                            await vpnService.connect(transactionID: subscriptionService.originalTransactionID!)
                         }
                         
                     case .connected:

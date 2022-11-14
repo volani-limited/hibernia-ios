@@ -99,7 +99,7 @@ class VPNService: ObservableObject {
     func requestConfiguration(destination: VPNDestination, transactionID: UInt64) async throws -> OpenVPN.Configuration {
         let appCheckToken = try await AppCheck.appCheck().token(forcingRefresh: false)
         
-        let url = URL(string: "https://sandbox-provision-certificate-xgpoqrynja-ew.a.run.app?app_token=\(appCheckToken.token)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
+        let url = URL(string: "https://provision-configuration-1-xgpoqrynja-lm.a.run.app?app_token=\(appCheckToken.token)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
 
         let request = URLRequest(url: url!)
         

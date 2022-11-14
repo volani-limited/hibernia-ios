@@ -34,7 +34,7 @@ struct MainView: View {
                         .alert(isPresented: $presentDetailsAlert, content: {
                             Alert(
                                 title: Text("Credits"),
-                                message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.3.0 (18)"),
+                                message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.3.0 (19)"),
                                 dismissButton: .cancel()
                             )
                         })

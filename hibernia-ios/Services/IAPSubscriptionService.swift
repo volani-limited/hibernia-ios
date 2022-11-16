@@ -82,6 +82,11 @@ class IAPSubscriptionService: NSObject, ObservableObject {
     @MainActor
     func getProduct(productIdentifier: ProductIdentifier) async throws -> Product? {
         let products = try await Product.products(for: Array(arrayLiteral: productIdentifier))
+        
+        if products.isEmpty {
+            throw IAPSubscriptionServiceError.couldNotRetrieveProducts
+        }
+        
         return products[0]
     }
     
@@ -107,7 +112,6 @@ class IAPSubscriptionService: NSObject, ObservableObject {
             
             self.iapSubscriptionServiceError = error
             self.retryHandler = updateSubscriptionStatus
-        
             
         }
         processing = false
@@ -186,4 +190,5 @@ extension IAPSubscriptionService: SKPaymentTransactionObserver {
 
 enum IAPSubscriptionServiceError: Error {
     case couldNotPurchase
+    case couldNotRetrieveProducts
 }

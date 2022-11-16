@@ -100,7 +100,6 @@ struct MainButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .padding(30)
             .contentShape(Circle())
         .background(
             ColorfulBackground(isHighlighted: isDepressed, isProcessing: isProcessing, shape: Circle())

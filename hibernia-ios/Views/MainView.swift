@@ -68,10 +68,15 @@ struct MainView: View {
                     VPNConnectButton().disabled(subscriptionService.originalTransactionID == nil)
                 }.frame(width: geometry.size.width, height:geometry.size.height - 80)
                     .offset(y: -40)
-
-                CountrySelectorView()
-                    .frame(width: geometry.size.width, height:geometry.size.height)
+                
+                VStack {
+                    CountrySelectorView()
+                    KeepAliveEnableButtonView()
+                        .padding()
+                        .offset(y: -160)
+                }.frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: geometry.size.width)
+                
                 
                 ViewSwitcherBarButtonView(isOpen: $isOpen, geometry: geometry)
                     .frame(width: geometry.size.width, height: geometry.size.height)

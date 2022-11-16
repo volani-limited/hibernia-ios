@@ -14,11 +14,8 @@ struct MainView: View {
     @EnvironmentObject var vpnService: VPNService
 
     @State private var isOpen = false
-    
     @State private var serviceMessage: String?
-    
     @State private var presentDetailsAlert = false
-    
     @State var dragAmount = CGFloat(0)
     
     var body: some View {
@@ -89,6 +86,19 @@ struct MainView: View {
                     .frame(width: geometry.size.width*2, height: geometry.size.height)
                     .offset(x: geometry.size.width/2))
             .offset(x: isOpen ? -geometry.size.width + dragAmount : dragAmount)
+            .gesture(DragGesture().onChanged { value in
+                            dragAmount = value.translation.width
+                        }.onEnded { value in
+                            dragAmount = 0
+                            if abs(value.translation.width) > (geometry.size.width - 50) / 2 {
+                                if value.translation.width.sign == .plus {
+                                    isOpen = false
+                                } else {
+                                    isOpen = true
+                                }
+                            }
+                           
+                        })
         }
         .onAppear {
             let db = Firestore.firestore()

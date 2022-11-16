@@ -33,6 +33,7 @@ struct ViewSwitcherBarButtonView: View {
             }
             .padding()
             .frame(width: geometry.size.width - 50)
+            .animation(.linear, value: isOpen)
         }.offset(x: geometry.size.width / 2)
             .onTapGesture {
                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)

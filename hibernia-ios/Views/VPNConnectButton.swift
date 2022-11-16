@@ -24,6 +24,7 @@ struct VPNConnectButton: View {
                 Button {
                     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
                     feedbackGenerator.impactOccurred()
+                    
                     switch vpnService.status {
                     case .disconnected:
                         vpnService.status = .connecting

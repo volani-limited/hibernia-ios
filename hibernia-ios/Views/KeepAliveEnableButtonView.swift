@@ -22,6 +22,9 @@ struct KeepAliveEnableButtonView: View {
             }
             Spacer()
             Button {
+                let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+                feedbackGenerator.impactOccurred()
+                
                 vpnService.keepAlive.toggle()
             } label: {
                 Image(systemName: "power")

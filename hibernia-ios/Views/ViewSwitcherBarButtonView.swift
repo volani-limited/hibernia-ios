@@ -10,6 +10,7 @@ import SwiftUI
 struct ViewSwitcherBarButtonView: View {
     @EnvironmentObject var vpnService: VPNService
     @Environment(\.colorScheme) var colorScheme
+
     @Binding var isOpen: Bool
 
     var geometry: GeometryProxy
@@ -38,9 +39,9 @@ struct ViewSwitcherBarButtonView: View {
             .onTapGesture {
                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
                 feedbackGenerator.impactOccurred()
-            withAnimation {
-                isOpen.toggle()
-            }
+                withAnimation {
+                    isOpen.toggle()
+                }
         }
     }
 }

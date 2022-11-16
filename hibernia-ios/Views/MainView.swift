@@ -87,18 +87,29 @@ struct MainView: View {
                     .offset(x: geometry.size.width/2))
             .offset(x: isOpen ? -geometry.size.width + dragAmount : dragAmount)
             .gesture(DragGesture().onChanged { value in
-                            dragAmount = value.translation.width
-                        }.onEnded { value in
-                            dragAmount = 0
-                            if abs(value.translation.width) > (geometry.size.width - 50) / 2 {
-                                if value.translation.width.sign == .plus {
-                                    isOpen = false
-                                } else {
-                                    isOpen = true
-                                }
-                            }
-                           
-                        })
+                if isOpen {
+                    if value.translation.width.sign == .plus {
+                        dragAmount = value.translation.width
+                    }
+                } else {
+                    if value.translation.width.sign == .minus {
+                        dragAmount = value.translation.width
+                    }
+                }
+            }.onEnded { value in
+                dragAmount = 0
+                if abs(value.predictedEndTranslation.width) > (geometry.size.width - 60) {
+                    let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+                    feedbackGenerator.impactOccurred()
+
+                    if value.translation.width.sign == .plus {
+                        isOpen = false
+                    } else {
+                        isOpen = true
+                    }
+                }
+               
+            })
         }
         .onAppear {
             let db = Firestore.firestore()

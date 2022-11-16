@@ -25,11 +25,11 @@ class VPNService: ObservableObject {
     @Published var vpnServiceError: Error?
     @Published var retryHandler: (() -> Void)?
     
-    var configuration: OpenVPN.Configuration?
+    @Published var keepAlive: Bool
     
-    var destinationUpdater: AnyCancellable?
-    
-    var vpn: NetworkExtensionVPN
+    private var configuration: OpenVPN.Configuration?
+    private var subscriptions: Set<AnyCancellable>
+    private var vpn: NetworkExtensionVPN
 
     init() {
         vpn = NetworkExtensionVPN()
@@ -38,9 +38,17 @@ class VPNService: ObservableObject {
         let defaults = UserDefaults.standard
         destination = VPNDestination(rawValue: defaults.string(forKey: "destination") ?? "lon") ?? .lon
         
-        destinationUpdater = $destination.sink { value in
+        keepAlive = defaults.bool(forKey: "keepAlive")
+        
+        subscriptions = Set<AnyCancellable>()
+        
+        subscriptions.insert($destination.sink { value in
             defaults.set(value.rawValue, forKey: "destination")
-        }
+        })
+        subscriptions.insert($keepAlive.sink { value in
+            defaults.set(value, forKey: "keepAlive")
+        })
+        
         
         NotificationCenter.default.addObserver(
             self,
@@ -57,7 +65,7 @@ class VPNService: ObservableObject {
     }
     
     deinit {
-        destinationUpdater?.cancel()
+        subscriptions.map({ $0.cancel() })
     }
 
     func prepare() async {

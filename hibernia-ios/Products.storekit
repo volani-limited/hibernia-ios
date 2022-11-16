@@ -9,7 +9,7 @@
   "settings" : {
     "_applicationInternalID" : "6443544329",
     "_developerTeamID" : "2AY446Y6M9",
-    "_lastSynchronizedDate" : 688593777.80437601
+    "_lastSynchronizedDate" : 690231254.05890298
   },
   "subscriptionGroups" : [
     {
@@ -24,14 +24,50 @@
 
           ],
           "codeOffers" : [
-
+            {
+              "eligibility" : [
+                "new"
+              ],
+              "internalID" : "0A133BB9",
+              "isStackable" : false,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "free",
+              "referenceName" : "One Month Free",
+              "subscriptionPeriod" : "P1M"
+            },
+            {
+              "eligibility" : [
+                "new",
+                "existing",
+                "expired"
+              ],
+              "internalID" : "C4257F28",
+              "isStackable" : false,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "free",
+              "referenceName" : "One Month Free 2",
+              "subscriptionPeriod" : "P1M"
+            },
+            {
+              "eligibility" : [
+                "new",
+                "existing",
+                "expired"
+              ],
+              "internalID" : "7F836A15",
+              "isStackable" : false,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "free",
+              "referenceName" : "One Year Free",
+              "subscriptionPeriod" : "P1Y"
+            }
           ],
           "displayPrice" : "2.49",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "1646980445",
           "introductoryOffer" : {
-            "internalID" : "F45E97B5",
+            "internalID" : "A044A924",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P3D"

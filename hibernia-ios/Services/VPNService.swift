@@ -25,22 +25,50 @@ class VPNService: ObservableObject {
     @Published var vpnServiceError: Error?
     @Published var retryHandler: (() -> Void)?
     
-    var configuration: OpenVPN.Configuration?
+    @Published var keepAlive: Bool
+    @Published var connectedTime: String
     
-    var destinationUpdater: AnyCancellable?
+    var timer: SimpleTimerService
     
-    var vpn: NetworkExtensionVPN
+    private var configuration: OpenVPN.Configuration?
+    private var subscriptions: Set<AnyCancellable>
+    private var vpn: NetworkExtensionVPN
 
     init() {
         vpn = NetworkExtensionVPN()
         status = .disconnected
+        timer = SimpleTimerService()
+        connectedTime = "--:--"
 
         let defaults = UserDefaults.standard
         destination = VPNDestination(rawValue: defaults.string(forKey: "destination") ?? "lon") ?? .lon
         
-        destinationUpdater = $destination.sink { value in
+        keepAlive = defaults.bool(forKey: "keepAlive")
+        
+        subscriptions = Set<AnyCancellable>()
+        
+        subscriptions.insert($destination.sink { value in
             defaults.set(value.rawValue, forKey: "destination")
-        }
+        })
+        subscriptions.insert($keepAlive.sink { value in
+            defaults.set(value, forKey: "keepAlive")
+        })
+        
+        timer.$elapsedTime.map {
+            let formatter = DateComponentsFormatter() //Use dateFormatter to convert date interval into minutes and seconds
+            
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.zeroFormattingBehavior = .pad
+            formatter.unitsStyle = .positional
+            
+            
+            if let output = formatter.string(from: $0) {
+                return output // return this value
+            } else {
+                return  "--:--" // if formatter fails return blank value
+            }
+        }.assign(to: &$connectedTime)
+        
         
         NotificationCenter.default.addObserver(
             self,
@@ -57,7 +85,7 @@ class VPNService: ObservableObject {
     }
     
     deinit {
-        destinationUpdater?.cancel()
+        subscriptions.map({ $0.cancel() })
     }
 
     func prepare() async {
@@ -124,6 +152,13 @@ class VPNService: ObservableObject {
     @objc private func VPNStatusDidChange(notification: Notification) {
         status = notification.vpnStatus
         print("VPNStatusDidChange: \(status)")
+        
+        if status == .connected {
+            timer.reset()
+            timer.start()
+        } else if status == .disconnecting {
+            timer.stop()
+        }
     }
 
     @objc private func VPNDidFail(notification: Notification) {

@@ -20,10 +20,11 @@ struct VPNConnectButton: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            VStack(alignment: .center) {
                 Button {
                     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
                     feedbackGenerator.impactOccurred()
+                    
                     switch vpnService.status {
                     case .disconnected:
                         vpnService.status = .connecting
@@ -47,21 +48,27 @@ struct VPNConnectButton: View {
                 } label: {
                     Image(systemName: "power")
                         .font(.system(size: 55, weight: .heavy))
-                        .foregroundColor(.highlightStart)
+                        .foregroundColor(vpnService.status == .connected ? .white : .highlightStart)
+                        .padding(30)
                 }
                 .buttonStyle(MainButtonStyle(isProcessing: (vpnService.status != .connected) == (vpnService.status != .disconnected), isDepressed: vpnService.status == .connected))
                 .disabled(vpnService.status == .disconnecting)
                 
                 Text(vpnService.status.rawValue.capitalized).font(.custom("Comfortaa", size: 15))
                     .foregroundColor(.highlightStart)
-                    .padding()
+                    .padding(.top)
                 
-                .onAppear {
-                    Task {
-                        await vpnService.prepare()
-                    }
+                if vpnService.status == .connected {
+                    Text(vpnService.connectedTime).font(.custom("Comfortaa", size: 15))
+                        .foregroundColor(.highlightStart)
+                        .padding(.bottom)
                 }
             }.frame(width: geometry.size.width, height: geometry.size.height)
+            .onAppear {
+                Task {
+                    await vpnService.prepare()
+                }
+            }
         }
     }
     

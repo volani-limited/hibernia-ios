@@ -13,11 +13,11 @@ struct KeepAliveEnableButtonView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("Keep alive")
-                    .font(.custom("Comfortaa", size: 13))
+                Text("Always-on")
+                    .font(.custom("Comfortaa", size: 16))
                     .foregroundColor(.highlightStart)
-                Text("Automatically reconnects if the VPN connection is lost")
-                    .font(.custom("Comfortaa", size: 9))
+                Text("Automatically reconnect if the connection is lost")
+                    .font(.custom("Comfortaa", size: 11))
                     .foregroundColor(.highlightStart)
         
             }

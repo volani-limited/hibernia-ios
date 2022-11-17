@@ -61,6 +61,8 @@ class IAPSubscriptionService: NSObject, ObservableObject {
             self.iapSubscriptionServiceError = nil
             self.retryHandler = nil
         } catch {
+            self.processing = false
+            
             self.iapSubscriptionServiceError = error
             self.subscriptionProduct = nil
 
@@ -112,7 +114,6 @@ class IAPSubscriptionService: NSObject, ObservableObject {
             
             self.iapSubscriptionServiceError = error
             self.retryHandler = updateSubscriptionStatus
-            processing = false
             
         }
         processing = false
@@ -150,7 +151,6 @@ class IAPSubscriptionService: NSObject, ObservableObject {
                 }
             }
         } catch {
-            processing = false
             self.iapSubscriptionServiceError = error
             retryHandler = subscribe
         }

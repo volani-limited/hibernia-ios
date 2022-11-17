@@ -112,6 +112,7 @@ class IAPSubscriptionService: NSObject, ObservableObject {
             
             self.iapSubscriptionServiceError = error
             self.retryHandler = updateSubscriptionStatus
+            processing = false
             
         }
         processing = false
@@ -153,6 +154,7 @@ class IAPSubscriptionService: NSObject, ObservableObject {
             self.iapSubscriptionServiceError = error
             retryHandler = subscribe
         }
+        processing = false
     }
     
     func listenForTransactions() -> Task<Void, Error> {

@@ -56,14 +56,19 @@ struct VPNConnectButton: View {
                 
                 Text(vpnService.status.rawValue.capitalized).font(.custom("Comfortaa", size: 15))
                     .foregroundColor(.highlightStart)
-                    .padding()
+                    .padding(.top)
                 
-                .onAppear {
-                    Task {
-                        await vpnService.prepare()
-                    }
+                if vpnService.status == .connected {
+                    Text(vpnService.connectedTime).font(.custom("Comfortaa", size: 15))
+                        .foregroundColor(.highlightStart)
+                        .padding(.bottom)
                 }
             }.frame(width: geometry.size.width, height: geometry.size.height)
+            .onAppear {
+                Task {
+                    await vpnService.prepare()
+                }
+            }
         }
     }
     

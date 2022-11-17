@@ -26,6 +26,9 @@ class VPNService: ObservableObject {
     @Published var retryHandler: (() -> Void)?
     
     @Published var keepAlive: Bool
+    @Published var connectedTime: String
+    
+    var timer: SimpleTimerService
     
     private var configuration: OpenVPN.Configuration?
     private var subscriptions: Set<AnyCancellable>
@@ -34,6 +37,8 @@ class VPNService: ObservableObject {
     init() {
         vpn = NetworkExtensionVPN()
         status = .disconnected
+        timer = SimpleTimerService()
+        connectedTime = "--:--"
 
         let defaults = UserDefaults.standard
         destination = VPNDestination(rawValue: defaults.string(forKey: "destination") ?? "lon") ?? .lon
@@ -48,6 +53,21 @@ class VPNService: ObservableObject {
         subscriptions.insert($keepAlive.sink { value in
             defaults.set(value, forKey: "keepAlive")
         })
+        
+        timer.$elapsedTime.map {
+            let formatter = DateComponentsFormatter() //Use dateFormatter to convert date interval into minutes and seconds
+            
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.zeroFormattingBehavior = .pad
+            formatter.unitsStyle = .positional
+            
+            
+            if let output = formatter.string(from: $0) {
+                return output // return this value
+            } else {
+                return  "--:--" // if formatter fails return blank value
+            }
+        }.assign(to: &$connectedTime)
         
         
         NotificationCenter.default.addObserver(
@@ -132,6 +152,13 @@ class VPNService: ObservableObject {
     @objc private func VPNStatusDidChange(notification: Notification) {
         status = notification.vpnStatus
         print("VPNStatusDidChange: \(status)")
+        
+        if status == .connected {
+            timer.reset()
+            timer.start()
+        } else if status == .disconnecting {
+            timer.stop()
+        }
     }
 
     @objc private func VPNDidFail(notification: Notification) {

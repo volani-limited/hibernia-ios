@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AE1D376B29256138003A46F4 /* KeepAliveEnableButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376A29256138003A46F4 /* KeepAliveEnableButtonView.swift */; };
+		AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */; };
 		AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */; };
 		AE6A729628E21AE4001628E2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729528E21AE4001628E2 /* MainView.swift */; };
 		AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729728E21AE5001628E2 /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		AE0EB82128F8EADA002939F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE1D376A29256138003A46F4 /* KeepAliveEnableButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepAliveEnableButtonView.swift; sourceTree = "<group>"; };
+		AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTimerService.swift; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
 		AE6A729528E21AE4001628E2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
+				AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */,
 				AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */,
 			);
 			path = Services;
@@ -344,6 +347,7 @@
 				AE1D376B29256138003A46F4 /* KeepAliveEnableButtonView.swift in Sources */,
 				AEFCD1D128EA1909008D9694 /* VPNConnectButton.swift in Sources */,
 				AEFCD1D528EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift in Sources */,
+				AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,7 +511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -547,7 +551,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -579,7 +583,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -609,7 +613,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

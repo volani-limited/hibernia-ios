@@ -19,6 +19,7 @@ struct KeepAliveEnableButtonView: View {
                 Text("Automatically reconnects if the VPN connection is lost")
                     .font(.custom("Comfortaa", size: 9))
                     .foregroundColor(.highlightStart)
+        
             }
             Spacer()
             Button {
@@ -29,7 +30,7 @@ struct KeepAliveEnableButtonView: View {
             } label: {
                 Image(systemName: "power")
                     .font(.system(size: 10, weight: .bold))
-                    .foregroundColor(.highlightStart)
+                    .foregroundColor(vpnService.keepAlive ? .white : .highlightStart)
                     .padding()
             }
             .buttonStyle(MainButtonStyle(isProcessing: false, isDepressed: vpnService.keepAlive))

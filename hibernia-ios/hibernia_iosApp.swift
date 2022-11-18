@@ -15,8 +15,13 @@ struct hibernia_iosApp: App {
     var subscriptionService: IAPSubscriptionService
     
     init() {
-        let providerFactory = AppAttestAppCheckProviderFactory()
-        AppCheck.setAppCheckProviderFactory(providerFactory)
+        if ProcessInfo.processInfo.isiOSAppOnMac {
+            let providerFactory = DeviceCheckAppCheckProviderFactory()
+            AppCheck.setAppCheckProviderFactory(providerFactory)
+        } else {
+            let providerFactory = AppAttestAppCheckProviderFactory()
+            AppCheck.setAppCheckProviderFactory(providerFactory)
+        }
         
         FirebaseApp.configure()
         

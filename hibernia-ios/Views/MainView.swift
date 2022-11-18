@@ -31,7 +31,7 @@ struct MainView: View {
                         .alert(isPresented: $presentDetailsAlert, content: {
                             Alert(
                                 title: Text("Credits"),
-                                message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.0 (21)"),
+                                message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.1 (23)"),
                                 dismissButton: .cancel()
                             )
                         })
@@ -68,6 +68,7 @@ struct MainView: View {
                 
                 VStack {
                     CountrySelectorView()
+                        .disabled(vpnService.status != .disconnected)
                     KeepAliveEnableButtonView()
                         .padding()
                         .offset(y: -160)
@@ -78,7 +79,6 @@ struct MainView: View {
                 ViewSwitcherBarButtonView(isOpen: $isOpen, geometry: geometry)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .position(x: geometry.size.width / 2, y: geometry.size.height - 80)
-                    .disabled(vpnService.status != .disconnected)
             }
             .background(
                 LinearGradient(Color.backgroundStart, Color.backgroundEnd)

@@ -15,9 +15,13 @@ struct hibernia_iosApp: App {
     var subscriptionService: IAPSubscriptionService
     
     init() {
+    #if targetEnvironment(macCatalyst)
+        let providerFactory = DeviceCHeckAppCheckProviderFactory()
+    #else
         let providerFactory = AppAttestAppCheckProviderFactory()
-        AppCheck.setAppCheckProviderFactory(providerFactory)
+    #endif
         
+        AppCheck.setAppCheckProviderFactory(providerFactory)
         FirebaseApp.configure()
         
         vpnService = VPNService()

@@ -62,6 +62,8 @@ struct VPNConnectButton: View {
                     Text(vpnService.connectedTime).font(.custom("Comfortaa", size: 15))
                         .foregroundColor(.highlightStart)
                         .padding(.bottom)
+                } else {
+                    Spacer().frame(height: 15)
                 }
             }.frame(width: geometry.size.width, height: geometry.size.height)
             .onAppear {

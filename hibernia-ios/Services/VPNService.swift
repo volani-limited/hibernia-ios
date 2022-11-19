@@ -175,6 +175,9 @@ enum VPNDestination: String , CaseIterable {
     case lon
     case sgy
     case nyc
+    case tor
+    case tyo
+    case syd
     
     var displayed: String {
         switch self {
@@ -184,6 +187,12 @@ enum VPNDestination: String , CaseIterable {
             return "Singapore 🇸🇬"
         case .nyc:
             return "New York 🇺🇸"
+        case .tor:
+            return "Toronto 🇨🇦"
+        case .tyo:
+            return "Tokyo 🇯🇵"
+        case .syd:
+            return "Sydney 🇦🇺"
         }
     }
 }

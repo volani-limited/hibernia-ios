@@ -127,7 +127,7 @@ class VPNService: ObservableObject {
     func requestConfiguration(destination: VPNDestination, transactionID: UInt64) async throws -> OpenVPN.Configuration {
         let appCheckToken = try await AppCheck.appCheck().token(forcingRefresh: false)
         
-        let url = URL(string: "https://provision-configuration-1-xgpoqrynja-lm.a.run.app?app_token=\(appCheckToken.token)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
+        let url = URL(string: "https://provision-configuration-1-xgpoqrynja-lm.a.run.app?app_token=\(appCheckToken.token)&subscription_id=\(transactionID)&location=\(destination.tlc)")
 
         let request = URLRequest(url: url!)
         
@@ -171,29 +171,30 @@ struct ConfigurationResponse: Codable {
     let configuration: String
 }
 
-enum VPNDestination: String , CaseIterable {
-    case lon
-    case sgy
-    case nyc
-    case tor
-    case tyo
-    case syd
+struct VPNDestination {
+    var tlc: String
+    var displayed: String
+
+    init(tlc: String, displayed: String) {
+        self.tlc = tlc
+        self.displayed = displayed
+    }
     
-    var displayed: String {
-        switch self {
-        case .lon:
-            return "London 🇬🇧"
-        case .sgy:
-            return "Singapore 🇸🇬"
-        case .nyc:
-            return "New York 🇺🇸"
-        case .tor:
-            return "Toronto 🇨🇦"
-        case .tyo:
-            return "Tokyo 🇯🇵"
-        case .syd:
-            return "Sydney 🇦🇺"
+    static func load(from snapshot: DocumentSnapshot) throws -> [VPNDestination] {
+        guard let data = snapshot.data() else {
+            throw VPNError.destinationLoadError
         }
+        
+        let tlcs = data["codes"]
+        let displayedNames = data["displayedNames"]
+        
+        var output = [VPNDestination]()
+        
+        for (index, tlc) in tlcs.enumerated() {
+            output.append(VPNDestination(tlc: tlc, displayed: displayedNames[index]))
+        }
+        
+        return output
     }
 }
 
@@ -201,6 +202,7 @@ enum VPNDestination: String , CaseIterable {
 enum VPNError: LocalizedError {
     case configurationRequestError
     case subscriptionPaymentError
+    case destinationLoadError
     
     public var errorDescription: String? {
         switch self {
@@ -208,6 +210,8 @@ enum VPNError: LocalizedError {
             return "Configuration request failed."
         case .subscriptionPaymentError:
             return "Subscription could not be verified."
+        case .destinationLoadError:
+            return "Could not load destinations."
         }
     }
 }

@@ -52,7 +52,7 @@ struct VPNConnectButton: View {
                         .padding(30)
                 }
                 .buttonStyle(MainButtonStyle(isProcessing: (vpnService.status != .connected) == (vpnService.status != .disconnected), isDepressed: vpnService.status == .connected))
-                .disabled(vpnService.status == .disconnecting)
+                .disabled(vpnService.status == .connected)
                 
                 Text(vpnService.status.rawValue.capitalized).font(.custom("Comfortaa", size: 15))
                     .foregroundColor(.highlightStart)

@@ -102,7 +102,10 @@ class VPNService: ObservableObject {
             var configurationExtras = NetworkExtensionExtra()
             
             configurationExtras.disconnectsOnSleep = false
-            configurationExtras.onDemandRules = [NEOnDemandRuleConnect()]
+            
+            if keepAlive {
+                configurationExtras.onDemandRules = [NEOnDemandRuleConnect()]
+            }
             
             try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: configurationExtras, after: .seconds(1))
             

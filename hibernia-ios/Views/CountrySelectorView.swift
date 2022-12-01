@@ -32,8 +32,8 @@ struct CountrySelectorView: View {
                                 }
                         }
                         Spacer()
-                    }.frame(width: geometry.size.width, height: geometry.size.height)
-                }
+                    }.frame(maxWidth: .infinity)
+                }.frame(width: geometry.size.width, height: geometry.size.height - 105)
             }
         }
     }

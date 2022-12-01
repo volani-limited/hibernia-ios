@@ -34,7 +34,7 @@ struct KeepAliveEnableButtonView: View {
                     .padding()
             }
             .buttonStyle(MainButtonStyle(isProcessing: false, isDepressed: vpnService.keepAlive))
-            .disabled(vpnService.status == .connected)
+            .disabled(vpnService.status != .disconnected)
         }
         .padding()
         .background(

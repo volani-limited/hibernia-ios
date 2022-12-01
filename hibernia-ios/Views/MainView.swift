@@ -31,7 +31,7 @@ struct MainView: View {
                         .alert(isPresented: $presentDetailsAlert, content: {
                             Alert(
                                 title: Text("Credits"),
-                                message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.3 (27)"),
+                                message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.4 (28)"),
                                 dismissButton: .cancel()
                             )
                         })
@@ -71,7 +71,7 @@ struct MainView: View {
                         .disabled(vpnService.status != .disconnected)
                     KeepAliveEnableButtonView()
                         .padding()
-                        .offset(y: -160)
+                        .offset(y: -130)
                 }.frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: geometry.size.width)
                 

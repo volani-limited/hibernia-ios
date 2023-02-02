@@ -28,14 +28,20 @@ struct MainView: View {
                         .onTapGesture {
                             presentDetailsAlert = true
                         }
-                        .alert(isPresented: $presentDetailsAlert, content: {
-                            Alert(
-                                title: Text("Credits"),
-                                message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.4 (28)"),
-                                dismissButton: .cancel()
-                            )
-                        })
-                    
+                        .alert(isPresented: $presentDetailsAlert, content: { (subscriptionService.originalTransactionID != nil) ?
+                                Alert(
+                                    title: Text("Credits"),
+                                    message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.5 (29)\n\n Subscription ID: " + subscriptionService.originalTransactionID!.description),
+                                    dismissButton: .cancel()
+                                )
+                            :
+                                Alert(
+                                    title: Text("Credits"),
+                                    message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.5 (29)"),
+                                    dismissButton: .cancel()
+                                )
+                            })
+
                     Spacer().frame(height: geometry.size.height/10)
                     if subscriptionService.originalTransactionID == nil {
                         PurchaseSubscriptionButtonView()

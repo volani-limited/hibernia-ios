@@ -8,6 +8,7 @@
 import Foundation
 import StoreKit
 import Combine
+import RevenueCat
 
 typealias ProductIdentifier = String
 
@@ -33,6 +34,12 @@ class IAPSubscriptionService: NSObject, ObservableObject {
         originalTransactionID = UInt64(defaults.integer(forKey: "transactionID"))
         
         super.init()
+        
+        Purchases.configure(
+          with: Configuration.Builder(withAPIKey: "appl_dFHGAJLCuWiOtNQROyLQFnqYLZF")
+            .with(observerMode: true)
+            .build()
+        )
         
         subscriptionStatusUpdater = $originalTransactionID.sink { value in
             defaults.set(value, forKey: "transactionID")

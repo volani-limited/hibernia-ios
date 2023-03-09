@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE0212E629BA678300B63047 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = AE0212E529BA678300B63047 /* ReceiptParser */; };
+		AE0212E829BA678300B63047 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = AE0212E729BA678300B63047 /* RevenueCat */; };
+		AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0212EB29BA696400B63047 /* GoogleService-Info.plist */; };
 		AE1D376B29256138003A46F4 /* KeepAliveEnableButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376A29256138003A46F4 /* KeepAliveEnableButtonView.swift */; };
 		AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */; };
 		AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */; };
@@ -28,7 +31,6 @@
 		AEB4AC7228EF79170076D0F6 /* OpenVPNTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */; };
 		AEB4AC7928EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = AEB4AC7828EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension */; };
-		AEFCD1C928E882A2008D9694 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEFCD1C828E882A1008D9694 /* GoogleService-Info.plist */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
 		AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNService.swift */; };
 		AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */; };
@@ -64,6 +66,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE0212EB29BA696400B63047 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE0EB82128F8EADA002939F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE1D376A29256138003A46F4 /* KeepAliveEnableButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepAliveEnableButtonView.swift; sourceTree = "<group>"; };
 		AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTimerService.swift; sourceTree = "<group>"; };
@@ -84,7 +87,6 @@
 		AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		AEB4AC6E28EF79170076D0F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEB4AC6F28EF79170076D0F6 /* OpenVPNTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenVPNTunnel.entitlements; sourceTree = "<group>"; };
-		AEFCD1C828E882A1008D9694 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
 		AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicViews.swift; sourceTree = "<group>"; };
@@ -105,7 +107,9 @@
 				AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */,
 				AEA6152B29174DF60039689C /* FirebaseFirestore in Frameworks */,
 				AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */,
+				AE0212E829BA678300B63047 /* RevenueCat in Frameworks */,
 				AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */,
+				AE0212E629BA678300B63047 /* ReceiptParser in Frameworks */,
 				AEA6152D29174DF60039689C /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,9 +174,9 @@
 		AE6A729228E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXGroup;
 			children = (
-				AE0EB82128F8EADA002939F9 /* Info.plist */,
 				AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */,
-				AEFCD1C828E882A1008D9694 /* GoogleService-Info.plist */,
+				AE0EB82128F8EADA002939F9 /* Info.plist */,
+				AE0212EB29BA696400B63047 /* GoogleService-Info.plist */,
 				AE7D104228EC9D96006BEB18 /* Helpers */,
 				AE27976D28E6586200DDACF5 /* Views */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
@@ -245,6 +249,8 @@
 				AEA6152A29174DF60039689C /* FirebaseFirestore */,
 				AEA6152C29174DF60039689C /* FirebaseFirestoreSwift */,
 				AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */,
+				AE0212E529BA678300B63047 /* ReceiptParser */,
+				AE0212E729BA678300B63047 /* RevenueCat */,
 			);
 			productName = "hibernia-ios";
 			productReference = AE6A729028E21AE3001628E2 /* hibernia-ios.app */;
@@ -300,6 +306,7 @@
 			packageReferences = (
 				AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */,
 				AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = AE6A729128E21AE3001628E2 /* Products */;
 			projectDirPath = "";
@@ -317,9 +324,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEFCD1D728EC6D0C008D9694 /* Comfortaa-Bold.ttf in Resources */,
+				AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
 				AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */,
-				AEFCD1C928E882A2008D9694 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,7 +522,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.5;
+				MARKETING_VERSION = 1.4.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -555,7 +562,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.5;
+				MARKETING_VERSION = 1.4.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -587,7 +594,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.4;
+				MARKETING_VERSION = 1.4.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -617,7 +624,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.4;
+				MARKETING_VERSION = 1.4.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -661,6 +668,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -680,6 +695,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AE0212E529BA678300B63047 /* ReceiptParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = ReceiptParser;
+		};
+		AE0212E729BA678300B63047 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
 		AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

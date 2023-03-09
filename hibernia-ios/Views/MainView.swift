@@ -31,13 +31,13 @@ struct MainView: View {
                         .alert(isPresented: $presentDetailsAlert, content: { (subscriptionService.originalTransactionID != nil) ?
                                 Alert(
                                     title: Text("Credits"),
-                                    message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.6 (39)\n\n Subscription ID: " + subscriptionService.originalTransactionID!.description),
+                                    message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.6 (40)\n\n Subscription ID: " + subscriptionService.originalTransactionID!.description),
                                     dismissButton: .cancel()
                                 )
                             :
                                 Alert(
                                     title: Text("Credits"),
-                                    message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.6 (39)"),
+                                    message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.6 (40)"),
                                     dismissButton: .cancel()
                                 )
                             })

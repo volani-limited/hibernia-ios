@@ -31,13 +31,13 @@ struct MainView: View {
                         .alert(isPresented: $presentDetailsAlert, content: { (subscriptionService.originalTransactionID != nil) ?
                                 Alert(
                                     title: Text("Credits"),
-                                    message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.5 (29)\n\n Subscription ID: " + subscriptionService.originalTransactionID!.description),
+                                    message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.6 (39)\n\n Subscription ID: " + subscriptionService.originalTransactionID!.description),
                                     dismissButton: .cancel()
                                 )
                             :
                                 Alert(
                                     title: Text("Credits"),
-                                    message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.5 (29)"),
+                                    message: Text("Made with ❤️ in the South of England\nHibernia contains code licensed under the MPL, https://github.com/passepartoutvpn/tunnelkit\n\nV1.4.6 (39)"),
                                     dismissButton: .cancel()
                                 )
                             })
@@ -69,8 +69,10 @@ struct MainView: View {
                     ErrorDisplayView().padding(.top)
                     
                     VPNConnectButton().disabled(subscriptionService.originalTransactionID == nil)
+                        .position(x: geometry.size.width/2, y: geometry.size.height/2 - 140)
                 }.frame(width: geometry.size.width, height:geometry.size.height - 80)
                     .offset(y: -40)
+                    
                 
                 VStack {
                     CountrySelectorView()

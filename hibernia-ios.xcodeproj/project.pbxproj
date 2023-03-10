@@ -10,7 +10,7 @@
 		AE0212E629BA678300B63047 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = AE0212E529BA678300B63047 /* ReceiptParser */; };
 		AE0212E829BA678300B63047 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = AE0212E729BA678300B63047 /* RevenueCat */; };
 		AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0212EB29BA696400B63047 /* GoogleService-Info.plist */; };
-		AE1D376B29256138003A46F4 /* KeepAliveEnableButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376A29256138003A46F4 /* KeepAliveEnableButtonView.swift */; };
+		AE1D376B29256138003A46F4 /* ConnectionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376A29256138003A46F4 /* ConnectionToolbar.swift */; };
 		AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */; };
 		AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */; };
 		AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */; };
@@ -68,7 +68,7 @@
 /* Begin PBXFileReference section */
 		AE0212EB29BA696400B63047 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE0EB82128F8EADA002939F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AE1D376A29256138003A46F4 /* KeepAliveEnableButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepAliveEnableButtonView.swift; sourceTree = "<group>"; };
+		AE1D376A29256138003A46F4 /* ConnectionToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionToolbar.swift; sourceTree = "<group>"; };
 		AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTimerService.swift; sourceTree = "<group>"; };
 		AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCheckAppCheckProviderFactory.swift; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,7 +145,7 @@
 				AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */,
 				AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */,
 				AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */,
-				AE1D376A29256138003A46F4 /* KeepAliveEnableButtonView.swift */,
+				AE1D376A29256138003A46F4 /* ConnectionToolbar.swift */,
 				AEFCD1D028EA1909008D9694 /* VPNConnectButton.swift */,
 				AEFCD1D428EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift */,
 			);
@@ -174,16 +174,16 @@
 		AE6A729228E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
+				AE7D104928ECDB00006BEB18 /* Products.storekit */,
 				AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */,
+				AE6A729728E21AE5001628E2 /* Assets.xcassets */,
 				AE0EB82128F8EADA002939F9 /* Info.plist */,
 				AE0212EB29BA696400B63047 /* GoogleService-Info.plist */,
+				AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */,
 				AE7D104228EC9D96006BEB18 /* Helpers */,
 				AE27976D28E6586200DDACF5 /* Views */,
-				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
-				AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */,
-				AE7D104928ECDB00006BEB18 /* Products.storekit */,
 				AE27976B28E6584F00DDACF5 /* Services */,
-				AE6A729728E21AE5001628E2 /* Assets.xcassets */,
 				AE6A729928E21AE5001628E2 /* Preview Content */,
 			);
 			path = "hibernia-ios";
@@ -355,7 +355,7 @@
 				AEFCD1D328EA1945008D9694 /* CountrySelectorView.swift in Sources */,
 				AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */,
 				AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */,
-				AE1D376B29256138003A46F4 /* KeepAliveEnableButtonView.swift in Sources */,
+				AE1D376B29256138003A46F4 /* ConnectionToolbar.swift in Sources */,
 				AEFCD1D128EA1909008D9694 /* VPNConnectButton.swift in Sources */,
 				AEFCD1D528EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift in Sources */,
 				AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */,

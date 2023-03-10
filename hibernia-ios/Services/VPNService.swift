@@ -26,6 +26,7 @@ class VPNService: ObservableObject {
     @Published var retryHandler: (() -> Void)?
     
     @Published var keepAlive: Bool
+    @Published var killSwitch: Bool
     @Published var connectedTime: String
     
     var timer: SimpleTimerService
@@ -44,6 +45,7 @@ class VPNService: ObservableObject {
         destination = VPNDestination(rawValue: defaults.string(forKey: "destination") ?? "lon") ?? .lon
         
         keepAlive = defaults.bool(forKey: "keepAlive")
+        killSwitch = defaults.bool(forKey: "keepAlive")
         
         subscriptions = Set<AnyCancellable>()
         
@@ -52,6 +54,9 @@ class VPNService: ObservableObject {
         })
         subscriptions.insert($keepAlive.sink { value in
             defaults.set(value, forKey: "keepAlive")
+        })
+        subscriptions.insert($killSwitch.sink { value in
+            defaults.set(value, forKey: "killSwitch")
         })
         
         timer.$elapsedTime.map {

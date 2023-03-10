@@ -69,10 +69,8 @@ struct MainView: View {
                     ErrorDisplayView().padding(.top)
                     
                     VPNConnectButton().disabled(subscriptionService.originalTransactionID == nil)
-                        .position(x: geometry.size.width/2, y: geometry.size.height/2 - 140)
                 }.frame(width: geometry.size.width, height:geometry.size.height - 80)
                     .offset(y: -40)
-                    
                 
                 VStack {
                     CountrySelectorView()

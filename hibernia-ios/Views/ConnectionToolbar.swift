@@ -43,7 +43,7 @@ struct ConnectionToolbar: View {
                     Text("Kill switch")
                         .font(.custom("Comfortaa", size: 16))
                         .foregroundColor(.highlightStart)
-                    Text("Prevent insecure connections if VPN connection  islost")
+                    Text("Prevent internet access if VPN connection is lost")
                         .font(.custom("Comfortaa", size: 11))
                         .foregroundColor(.highlightStart)
                     

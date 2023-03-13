@@ -183,12 +183,10 @@ enum VPNDestination: String , CaseIterable {
     case lon
     case sgy
     case nyc
-    case tor
     case tyo
     case syd
     case dal
     case fra
-    case fre
     case mum
     
     var displayed: String {

@@ -118,6 +118,15 @@
       }
     },
     {
+      "identity" : "qonversion-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/qonversion/qonversion-ios-sdk",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "3b337a67352ae4e2fd07197ce74282e8fb8beee0"
+      }
+    },
+    {
       "identity" : "swift-protobuf",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",

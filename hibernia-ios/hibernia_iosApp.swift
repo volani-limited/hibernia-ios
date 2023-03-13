@@ -8,6 +8,8 @@
 import SwiftUI
 import Firebase
 import FirebaseAppCheck
+import Qonversion
+import RevenueCat
 
 @main
 struct hibernia_iosApp: App {
@@ -27,6 +29,16 @@ struct hibernia_iosApp: App {
         
         vpnService = VPNService()
         subscriptionService = IAPSubscriptionService()
+        
+        let config = Qonversion.Configuration(projectKey: "_VyGtgouQv_ECvbgQyoG0lseCF24vnp-", launchMode: .analytics)
+        Qonversion.initWithConfig(config)
+        
+        Purchases.configure(
+          with: Configuration.Builder(withAPIKey: "appl_dFHGAJLCuWiOtNQROyLQFnqYLZF")
+            .with(observerMode: true)
+            .build()
+        )
+        
     }
 
     var body: some Scene {

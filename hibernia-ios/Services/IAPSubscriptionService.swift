@@ -35,12 +35,6 @@ class IAPSubscriptionService: NSObject, ObservableObject {
         
         super.init()
         
-        Purchases.configure(
-          with: Configuration.Builder(withAPIKey: "appl_dFHGAJLCuWiOtNQROyLQFnqYLZF")
-            .with(observerMode: true)
-            .build()
-        )
-        
         subscriptionStatusUpdater = $originalTransactionID.sink { value in
             defaults.set(value, forKey: "transactionID")
         }

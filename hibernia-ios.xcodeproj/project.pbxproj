@@ -18,6 +18,7 @@
 		AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729728E21AE5001628E2 /* Assets.xcassets */; };
 		AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */; };
 		AE6A72A428E21B31001628E2 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6A72A328E21B31001628E2 /* NetworkExtension.framework */; };
+		AE6F8AF829BFD97C00FDE418 /* Qonversion in Frameworks */ = {isa = PBXBuildFile; productRef = AE6F8AF729BFD97C00FDE418 /* Qonversion */; };
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
 		AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */; };
 		AE7D104C28EE53C5006BEB18 /* ErrorDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */; };
@@ -106,6 +107,7 @@
 				AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */,
 				AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */,
 				AEA6152B29174DF60039689C /* FirebaseFirestore in Frameworks */,
+				AE6F8AF829BFD97C00FDE418 /* Qonversion in Frameworks */,
 				AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */,
 				AE0212E829BA678300B63047 /* RevenueCat in Frameworks */,
 				AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */,
@@ -251,6 +253,7 @@
 				AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */,
 				AE0212E529BA678300B63047 /* ReceiptParser */,
 				AE0212E729BA678300B63047 /* RevenueCat */,
+				AE6F8AF729BFD97C00FDE418 /* Qonversion */,
 			);
 			productName = "hibernia-ios";
 			productReference = AE6A729028E21AE3001628E2 /* hibernia-ios.app */;
@@ -307,6 +310,7 @@
 				AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */,
 				AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */,
 			);
 			productRefGroup = AE6A729128E21AE3001628E2 /* Products */;
 			projectDirPath = "";
@@ -522,7 +526,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.7;
+				MARKETING_VERSION = 1.4.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -562,7 +566,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4.7;
+				MARKETING_VERSION = 1.4.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -594,7 +598,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.7;
+				MARKETING_VERSION = 1.4.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -624,7 +628,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.7;
+				MARKETING_VERSION = 1.4.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -676,6 +680,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/qonversion/qonversion-ios-sdk";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -704,6 +716,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = RevenueCat;
+		};
+		AE6F8AF729BFD97C00FDE418 /* Qonversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */;
+			productName = Qonversion;
 		};
 		AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;

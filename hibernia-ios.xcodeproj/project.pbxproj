@@ -131,8 +131,7 @@
 		AE27976B28E6584F00DDACF5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */,
-				AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */,
+				AE6F94D029C9D38C00B006E3 /* AppCheck */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
 				AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */,
 				AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */,
@@ -206,6 +205,15 @@
 				AE6A72A328E21B31001628E2 /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE6F94D029C9D38C00B006E3 /* AppCheck */ = {
+			isa = PBXGroup;
+			children = (
+				AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */,
+				AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */,
+			);
+			path = AppCheck;
 			sourceTree = "<group>";
 		};
 		AE7D104228EC9D96006BEB18 /* Helpers */ = {

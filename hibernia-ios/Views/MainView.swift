@@ -92,7 +92,7 @@ struct MainView: View {
                     .frame(width: geometry.size.width*2, height: geometry.size.height)
                     .offset(x: geometry.size.width/2))
             .offset(x: isOpen ? -geometry.size.width + dragAmount : dragAmount)
-            .gesture(DragGesture().onChanged { value in
+            .gesture(DragGesture().onChanged { value in // Gesture implementation for switching views
                 if isOpen {
                     if value.translation.width.sign == .plus {
                         dragAmount = value.translation.width
@@ -119,7 +119,7 @@ struct MainView: View {
         }
         .onAppear {
             let db = Firestore.firestore()
-            let ref = db.collection("config").document("serviceMessage")
+            let ref = db.collection("config").document("serviceMessage") // Present service message if it exists
             
             ref.getDocument() { (document, error) in
                if let document = document, document.exists {

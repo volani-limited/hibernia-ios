@@ -17,10 +17,11 @@ import NetworkExtension
 import FirebaseAppCheck
 
 class VPNService: ObservableObject {
-    static let tunnelIdentifier = "uk.co.volani.hibernia-ios.OpenVPNTunnel"
+    static let tunnelIdentifier = "uk.co.volani.hibernia-ios.OpenVPNTunnel" // Define identifiers
     static let appGroup = "group.uk.co.volani.hibernia-ios"
+    static let caEndpoint = "https://provision-configuration-1-xgpoqrynja-lm.a.run.app"
     
-    @Published var status: VPNStatus
+    @Published var status: VPNStatus // Define published varibles
     @Published var destination: VPNDestination
     @Published var vpnServiceError: Error?
     @Published var retryHandler: (() -> Void)?
@@ -41,7 +42,7 @@ class VPNService: ObservableObject {
         timer = SimpleTimerService()
         connectedTime = "--:--"
 
-        let defaults = UserDefaults.standard
+        let defaults = UserDefaults.standard // Load data from userdefaults
         destination = VPNDestination(rawValue: defaults.string(forKey: "destination") ?? "lon") ?? .lon
         
         keepAlive = defaults.bool(forKey: "keepAlive")
@@ -60,7 +61,7 @@ class VPNService: ObservableObject {
         })
         
         timer.$elapsedTime.map {
-            let formatter = DateComponentsFormatter() //Use dateFormatter to convert date interval into minutes and seconds
+            let formatter = DateComponentsFormatter() // Use dateFormatter to convert date interval into minutes and seconds
             
             formatter.allowedUnits = [.hour, .minute, .second]
             formatter.zeroFormattingBehavior = .pad
@@ -72,10 +73,10 @@ class VPNService: ObservableObject {
             } else {
                 return  "--:--" // if formatter fails return blank value
             }
-        }.assign(to: &$connectedTime)
+        }.assign(to: &$connectedTime) // Assign elapsed time to published varible
         
         
-        NotificationCenter.default.addObserver(
+        NotificationCenter.default.addObserver( // Add notification observers to VPN manager
             self,
             selector: #selector(VPNStatusDidChange(notification:)),
             name: VPNNotification.didChangeStatus,
@@ -90,7 +91,7 @@ class VPNService: ObservableObject {
     }
     
     deinit {
-        subscriptions.map({ $0.cancel() })
+        subscriptions.map({ $0.cancel() }) // Remove subscriptions if manager removed.
     }
 
     func prepare() async {
@@ -98,7 +99,7 @@ class VPNService: ObservableObject {
     }
     
     @MainActor
-    func connect(transactionID: UInt64) async {
+    func connect(transactionID: UInt64) async { // Connect by first retreiving configuration, creating provider configuration and connecting to the VPN
         do {
             self.configuration = try await self.requestConfiguration(destination: self.destination, transactionID: transactionID)
             
@@ -107,6 +108,7 @@ class VPNService: ObservableObject {
             var configurationExtras = NetworkExtensionExtra()
             
             configurationExtras.disconnectsOnSleep = false
+            configurationExtras.killSwitch = killSwitch
             
             if keepAlive {
                 configurationExtras.onDemandRules = [NEOnDemandRuleConnect()]
@@ -114,11 +116,11 @@ class VPNService: ObservableObject {
             
             try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: configurationExtras, after: .seconds(1))
             
-            self.vpnServiceError = nil
+            self.vpnServiceError = nil // set error to nill if connection successful
             self.retryHandler = nil
         } catch {
             if let urlError = error as? URLError, urlError.code == URLError.Code.cancelled {
-                return
+                return // Hide error if cancelled
             }
 
             self.vpnServiceError = error
@@ -133,31 +135,31 @@ class VPNService: ObservableObject {
     }
     
     func requestConfiguration(destination: VPNDestination, transactionID: UInt64) async throws -> OpenVPN.Configuration {
-        let appCheckToken = try await AppCheck.appCheck().token(forcingRefresh: false)
+        let appCheckToken = try await AppCheck.appCheck().token(forcingRefresh: false) // Get app check token
         
-        let url = URL(string: "https://provision-configuration-1-xgpoqrynja-lm.a.run.app?app_token=\(appCheckToken.token)&subscription_id=\(transactionID)&location=\(destination.rawValue)")
+        let url = URL(string: VPNService.caEndpoint + "?app_token=\(appCheckToken.token)&subscription_id=\(transactionID)&location=\(destination.rawValue)") // Create request url
 
         let request = URLRequest(url: url!)
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        guard let httpsResponse = response as? HTTPURLResponse else {
+        guard let httpsResponse = response as? HTTPURLResponse else { // Make request and handle error
             throw VPNError.configurationRequestError
         }
         
         if  httpsResponse.statusCode == 200 {
             let decodedData = try JSONDecoder().decode(ConfigurationResponse.self, from: data)
-            let parser = try OpenVPN.ConfigurationParser.parsed(fromContents: decodedData.configuration)
+            let parser = try OpenVPN.ConfigurationParser.parsed(fromContents: decodedData.configuration) // Decode configuration and return
             
             return parser.configuration
-        } else if httpsResponse.statusCode == 402 {
+        } else if httpsResponse.statusCode == 402 { // If return is due to payment error display this
             throw VPNError.subscriptionPaymentError
         } else {
             throw VPNError.configurationRequestError
         }
     }
     
-    @objc private func VPNStatusDidChange(notification: Notification) {
+    @objc private func VPNStatusDidChange(notification: Notification) { // start and stop timer for status change
         status = notification.vpnStatus
         print("VPNStatusDidChange: \(status)")
         
@@ -179,7 +181,7 @@ struct ConfigurationResponse: Codable {
     let configuration: String
 }
 
-enum VPNDestination: String , CaseIterable {
+enum VPNDestination: String , CaseIterable { // Define destinations
     case lon
     case sgy
     case nyc
@@ -216,7 +218,7 @@ enum VPNError: LocalizedError {
     case configurationRequestError
     case subscriptionPaymentError
     
-    public var errorDescription: String? {
+    public var errorDescription: String? { // Define VPN specific errors
         switch self {
         case .configurationRequestError:
             return "Configuration request failed."

@@ -15,7 +15,7 @@ struct CountrySelectorView: View {
         GeometryReader { geometry in
             ZStack {
                 ScrollView {
-                    VStack(alignment: .center) {
+                    VStack(alignment: .center) { // Present VPN destinations as defined in enum and set selected destination on tap
                         ForEach(VPNDestination.allCases, id: \.self) { destination in
                             Text(destination.displayed)
                                 .font(.custom("Comfortaa", size: 20))
@@ -31,6 +31,7 @@ struct CountrySelectorView: View {
                                     vpnService.destination = destination
                                 }
                         }
+
                         Spacer()
                     }.frame(maxWidth: .infinity)
                 }.frame(width: geometry.size.width, height: geometry.size.height - 105)

@@ -23,6 +23,7 @@
 		AE6F8AFD29C8C99600FDE418 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AE6F8AFC29C8C99600FDE418 /* FirebaseFirestoreSwift */; };
 		AE6F8AFF29C8C99600FDE418 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = AE6F8AFE29C8C99600FDE418 /* FirebaseMessaging */; };
 		AE6F8B0129C8C99600FDE418 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AE6F8B0029C8C99600FDE418 /* FirebaseRemoteConfigSwift */; };
+		AE6F94D229C9D91700B006E3 /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6F94D129C9D91700B006E3 /* RemoteConfigService.swift */; };
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
 		AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */; };
 		AE7D104C28EE53C5006BEB18 /* ErrorDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */; };
@@ -79,6 +80,7 @@
 		AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "hibernia-ios.entitlements"; sourceTree = "<group>"; };
 		AE6A72A328E21B31001628E2 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		AE6F94D129C9D91700B006E3 /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
 		AE7D104528ECA7CC006BEB18 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPSubscriptionService.swift; sourceTree = "<group>"; };
 		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
@@ -133,6 +135,7 @@
 			children = (
 				AE6F94D029C9D38C00B006E3 /* AppCheck */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
+				AE6F94D129C9D91700B006E3 /* RemoteConfigService.swift */,
 				AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */,
 				AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */,
 			);
@@ -363,6 +366,7 @@
 				AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */,
 				AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */,
 				AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */,
+				AE6F94D229C9D91700B006E3 /* RemoteConfigService.swift in Sources */,
 				AE6A729628E21AE4001628E2 /* MainView.swift in Sources */,
 				AEFCD1D328EA1945008D9694 /* CountrySelectorView.swift in Sources */,
 				AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */,

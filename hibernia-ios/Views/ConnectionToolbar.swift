@@ -11,18 +11,20 @@ struct ConnectionToolbar: View {
     @EnvironmentObject var vpnService: VPNService
     
     var body: some View {
-        VStack {
+        VStack { // Small pane with buttons for always-on and kill switch modes
             HStack {
                 VStack(alignment: .leading) {
                     Text("Always-on")
                         .font(.custom("Comfortaa", size: 16))
                         .foregroundColor(.highlightStart)
+
                     Text("Automatically reconnect if the connection is lost")
                         .font(.custom("Comfortaa", size: 11))
                         .foregroundColor(.highlightStart)
-                    
                 }
+
                 Spacer()
+
                 Button {
                     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
                     feedbackGenerator.impactOccurred()
@@ -34,10 +36,12 @@ struct ConnectionToolbar: View {
                         .foregroundColor(vpnService.keepAlive ? .white : .highlightStart)
                         .padding()
                 }
-                .buttonStyle(MainButtonStyle(isProcessing: false, isDepressed: vpnService.keepAlive))
+                .buttonStyle(NeumorphicMainButtonStyle(isProcessing: false, isDepressed: vpnService.keepAlive))
                 .disabled(vpnService.status != .disconnected)
             }
+            
             Divider().padding()
+
             HStack {
                 VStack(alignment: .leading) {
                     Text("Kill switch")
@@ -48,7 +52,9 @@ struct ConnectionToolbar: View {
                         .foregroundColor(.highlightStart)
                     
                 }
+
                 Spacer()
+
                 Button {
                     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
                     feedbackGenerator.impactOccurred()
@@ -60,13 +66,12 @@ struct ConnectionToolbar: View {
                         .foregroundColor(vpnService.killSwitch ? .white : .highlightStart)
                         .padding()
                 }
-                .buttonStyle(MainButtonStyle(isProcessing: false, isDepressed: vpnService.killSwitch))
+                .buttonStyle(NeumorphicMainButtonStyle(isProcessing: false, isDepressed: vpnService.killSwitch))
                 .disabled(vpnService.status != .disconnected)
             }
         }.padding()
             .background(
                 NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 10))
             )
-        
     }
 }

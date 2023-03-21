@@ -11,7 +11,7 @@ struct ErrorDisplayView: View {
     @EnvironmentObject var subscriptionService: IAPSubscriptionService
     @EnvironmentObject var vpnService: VPNService
     
-    var body: some View {
+    var body: some View { // Present error and attach retry handler for retry button
         VStack {
             if let subsciptionError = subscriptionService.iapSubscriptionServiceError {
                 Button {
@@ -34,6 +34,7 @@ struct ErrorDisplayView: View {
                                 .font(.custom("Comfortaa", size: 8))
                                 .foregroundColor(.red)
                         }.padding()
+
                         Image(systemName: "arrow.clockwise")
                             .padding()
                             .foregroundColor(.highlightStart)
@@ -67,6 +68,7 @@ struct ErrorDisplayView: View {
                                 .font(.custom("Comfortaa", size: 8))
                                 .foregroundColor(.red)
                         }.padding()
+
                         Image(systemName: "arrow.clockwise")
                             .padding()
                             .foregroundColor(.highlightStart)

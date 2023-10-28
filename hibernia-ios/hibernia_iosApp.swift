@@ -15,6 +15,8 @@ import RevenueCat
 struct hibernia_iosApp: App {
     var vpnService: VPNService
     var subscriptionService: IAPSubscriptionService
+    var rcService: FirebaseRemoteConfigService
+    
     
     init() {
         if ProcessInfo.processInfo.isiOSAppOnMac { // Configure Firebase AppCheck
@@ -29,6 +31,7 @@ struct hibernia_iosApp: App {
         
         vpnService = VPNService() // Instantiate local services
         subscriptionService = IAPSubscriptionService()
+        rcService = FirebaseRemoteConfigService()
         
         let config = Qonversion.Configuration(projectKey: "_VyGtgouQv_ECvbgQyoG0lseCF24vnp-", launchMode: .analytics)
         Qonversion.initWithConfig(config)

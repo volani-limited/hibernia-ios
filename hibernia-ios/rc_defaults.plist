@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>locations</key>
+  <string>{"lon":"London","nyc":"New York","sgy":"Sydney","tyo":"Tokyo","fra":"Frankfurt"}</string>
+  <key>service_message</key>
+  <string></string>
+  <key>gesture_enabled</key>
+  <string>true</string>
+</dict>
+</plist>

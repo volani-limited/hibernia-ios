@@ -16,6 +16,7 @@ struct MainView: View {
     @State private var isOpen = false
     @State private var serviceMessage: String?
     @State private var presentDetailsAlert = false
+    @State private var presentStatusView = false
     @State var dragAmount = CGFloat(0)
     
     var body: some View {
@@ -42,28 +43,28 @@ struct MainView: View {
                                 )
                             })
 
-                    Spacer().frame(height: geometry.size.height/10)
+                    HStack {
+                        Image(systemName: "megaphone")
+                            .foregroundColor(.highlightStart)
+                        Text("Service status & updates")
+                            .font(.custom("Comfortaa", size: 13))
+                            .foregroundColor(.highlightStart)
+                    }
+                    .padding()
+                    .background(
+                        NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 10))
+                    ).onTapGesture {
+                        presentStatusView = true
+                    }.fullScreenCover(isPresented: $presentStatusView) {
+                        SafariWebView(url: URL(string: "https://status.hiberniavpn.com")!)
+                            .ignoresSafeArea()
+                    }
+                    
+                    Spacer().frame(height: geometry.size.height / 20)
+                    
                     if subscriptionService.originalTransactionID == nil {
                         PurchaseSubscriptionButtonView()
                             .disabled(subscriptionService.subscriptionProduct == nil)
-                    }
-                    
-                    if let serviceMessage = serviceMessage, !serviceMessage.isEmpty {
-                        HStack(spacing: 10) {
-                            VStack(spacing: 5) {
-                                Text(serviceMessage)
-                                    .font(.custom("Comfortaa", size: 13))
-                                    .foregroundColor(.highlightStart)
-                            }.padding()
-                            Image(systemName: "xmark")
-                                .padding()
-                                .foregroundColor(.highlightEnd)
-                        }
-                        .background(
-                            NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 10))
-                        ).onTapGesture {
-                            self.serviceMessage = nil
-                        }
                     }
                     
                     ErrorDisplayView().padding(.top)
@@ -102,8 +103,9 @@ struct MainView: View {
                         dragAmount = value.translation.width
                     }
                 }
-            }.onEnded { value in
-                dragAmount = 0
+            }
+            .onEnded { value in
+                dragAmount = .zero
                 if abs(value.predictedEndTranslation.width) > (geometry.size.width - 60) {
                     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
                     feedbackGenerator.impactOccurred()
@@ -114,7 +116,6 @@ struct MainView: View {
                         isOpen = true
                     }
                 }
-               
             })
         }
         .onAppear {

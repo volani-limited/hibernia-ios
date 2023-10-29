@@ -17,7 +17,7 @@ struct hibernia_iosApp: App {
     var subscriptionService: IAPSubscriptionService
     
     init() {
-        if ProcessInfo.processInfo.isiOSAppOnMac {
+        if ProcessInfo.processInfo.isiOSAppOnMac { // Configure Firebase AppCheck
             let providerFactory = DeviceCheckAppCheckProviderFactory()
             AppCheck.setAppCheckProviderFactory(providerFactory)
         } else {
@@ -27,13 +27,13 @@ struct hibernia_iosApp: App {
         
         FirebaseApp.configure()
         
-        vpnService = VPNService()
+        vpnService = VPNService() // Instantiate local services
         subscriptionService = IAPSubscriptionService()
         
         let config = Qonversion.Configuration(projectKey: "_VyGtgouQv_ECvbgQyoG0lseCF24vnp-", launchMode: .analytics)
         Qonversion.initWithConfig(config)
         
-        Purchases.configure(
+        Purchases.configure( // Configure Qonversion and RevenueCat SDKs
           with: Configuration.Builder(withAPIKey: "appl_dFHGAJLCuWiOtNQROyLQFnqYLZF")
             .with(observerMode: true)
             .build()

@@ -47,7 +47,7 @@ struct NeumorphicShape<S: Shape>: View {
     }
 }
 
-struct ColorfulBackground<S: Shape>: View {
+struct NeumorphicMainButtonBackground<S: Shape>: View {
     var isHighlighted: Bool
     var isProcessing: Bool
     var shape: S
@@ -92,7 +92,7 @@ struct ColorfulBackground<S: Shape>: View {
     }
 }
 
-struct MainButtonStyle: ButtonStyle {
+struct NeumorphicMainButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) var isEnabled
 
     var isProcessing: Bool
@@ -102,7 +102,7 @@ struct MainButtonStyle: ButtonStyle {
         configuration.label
             .contentShape(Circle())
         .background(
-            ColorfulBackground(isHighlighted: isDepressed, isProcessing: isProcessing, shape: Circle())
+            NeumorphicMainButtonBackground(isHighlighted: isDepressed, isProcessing: isProcessing, shape: Circle())
         )
         .opacity(isEnabled ? 1 : 0.4) // Boolean XOR so not 
     }

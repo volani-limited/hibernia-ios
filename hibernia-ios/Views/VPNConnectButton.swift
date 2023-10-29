@@ -25,7 +25,7 @@ struct VPNConnectButton: View {
                     let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
                     feedbackGenerator.impactOccurred()
                     
-                    switch vpnService.status {
+                    switch vpnService.status { // Define button action based on VPN status
                     case .disconnected:
                         vpnService.status = .connecting
                         vpnServiceTask = Task {
@@ -51,7 +51,7 @@ struct VPNConnectButton: View {
                         .foregroundColor(vpnService.status == .connected ? .white : .highlightStart)
                         .padding(30)
                 }
-                .buttonStyle(MainButtonStyle(isProcessing: (vpnService.status != .connected) == (vpnService.status != .disconnected), isDepressed: vpnService.status == .connected))
+                .buttonStyle(NeumorphicMainButtonStyle(isProcessing: (vpnService.status != .connected) == (vpnService.status != .disconnected), isDepressed: vpnService.status == .connected))
                 .disabled(vpnService.status == .disconnecting)
                 
                 Text(vpnService.status.rawValue.capitalized).font(.custom("Comfortaa", size: 15))
@@ -65,7 +65,8 @@ struct VPNConnectButton: View {
                 } else {
                     Spacer().frame(height: 15)
                 }
-            }.frame(width: geometry.size.width, height: geometry.size.height)
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
             .onAppear {
                 Task {
                     await vpnService.prepare()

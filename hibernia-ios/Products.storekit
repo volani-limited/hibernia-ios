@@ -9,7 +9,55 @@
   "settings" : {
     "_applicationInternalID" : "6443544329",
     "_developerTeamID" : "2AY446Y6M9",
-    "_lastSynchronizedDate" : 690231254.05890298
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 714061681.26872694,
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
   },
   "subscriptionGroups" : [
     {
@@ -28,7 +76,18 @@
               "eligibility" : [
                 "new"
               ],
-              "internalID" : "0A133BB9",
+              "internalID" : "65225CE8",
+              "isStackable" : false,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "free",
+              "referenceName" : "ONEWEEKFREE",
+              "subscriptionPeriod" : "P1W"
+            },
+            {
+              "eligibility" : [
+                "new"
+              ],
+              "internalID" : "D1F41280",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -37,11 +96,11 @@
             },
             {
               "eligibility" : [
-                "new",
+                "expired",
                 "existing",
-                "expired"
+                "new"
               ],
-              "internalID" : "C4257F28",
+              "internalID" : "98EF3FB4",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -50,38 +109,111 @@
             },
             {
               "eligibility" : [
-                "new",
                 "existing",
-                "expired"
+                "expired",
+                "new"
               ],
-              "internalID" : "7F836A15",
+              "internalID" : "EBB32C40",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
               "referenceName" : "One Year Free",
               "subscriptionPeriod" : "P1Y"
+            },
+            {
+              "eligibility" : [
+                "new"
+              ],
+              "internalID" : "D2A5D57B",
+              "isStackable" : false,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "free",
+              "referenceName" : "Two Weeks Free",
+              "subscriptionPeriod" : "P2W"
+            },
+            {
+              "eligibility" : [
+                "new"
+              ],
+              "internalID" : "124F8BC4",
+              "isStackable" : false,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "free",
+              "referenceName" : "Two Weeks Free 2",
+              "subscriptionPeriod" : "P2W"
+            },
+            {
+              "displayPrice" : "1.19",
+              "eligibility" : [
+                "new",
+                "expired"
+              ],
+              "internalID" : "35B9FC5E",
+              "isStackable" : true,
+              "numberOfPeriods" : 12,
+              "paymentMode" : "payAsYouGo",
+              "referenceName" : "Hibernia Reddit 3",
+              "subscriptionPeriod" : "P1M"
+            },
+            {
+              "displayPrice" : "0.99",
+              "eligibility" : [
+                "new"
+              ],
+              "internalID" : "9A283F9F",
+              "isStackable" : true,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "payAsYouGo",
+              "referenceName" : "Hibernia Reddit Deal",
+              "subscriptionPeriod" : "P1M"
+            },
+            {
+              "displayPrice" : "1.19",
+              "eligibility" : [
+                "new",
+                "expired"
+              ],
+              "internalID" : "03662962",
+              "isStackable" : true,
+              "numberOfPeriods" : 12,
+              "paymentMode" : "payAsYouGo",
+              "referenceName" : "Hibernia Reddit Deal 23",
+              "subscriptionPeriod" : "P1M"
+            },
+            {
+              "displayPrice" : "1.19",
+              "eligibility" : [
+                "new",
+                "expired"
+              ],
+              "internalID" : "5577C9BC",
+              "isStackable" : true,
+              "numberOfPeriods" : 12,
+              "paymentMode" : "payAsYouGo",
+              "referenceName" : "Hibernia Reddit 2",
+              "subscriptionPeriod" : "P1M"
             }
           ],
-          "displayPrice" : "2.49",
+          "displayPrice" : "1.99",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "1646980445",
           "introductoryOffer" : {
-            "internalID" : "A044A924",
+            "internalID" : "22B286EB",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P3D"
           },
           "localizations" : [
             {
-              "description" : "Monthly renewing subscription for Hibernia",
+              "description" : "One month of premium VPN",
               "displayName" : "Hibernia 1-Month",
               "locale" : "en_GB"
             }
           ],
           "productID" : "hp1m",
           "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "Hibernia 1-Month",
+          "referenceName" : "Hibernia Standard 1-Month",
           "subscriptionGroupID" : "21022208",
           "type" : "RecurringSubscription"
         }
@@ -89,7 +221,7 @@
     }
   ],
   "version" : {
-    "major" : 2,
+    "major" : 3,
     "minor" : 0
   }
 }

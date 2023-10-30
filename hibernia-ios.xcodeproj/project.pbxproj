@@ -23,8 +23,6 @@
 		AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */; };
 		AE7D104C28EE53C5006BEB18 /* ErrorDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */; };
 		AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85D1C72AED7D830080B6EB /* SafariWebView.swift */; };
-		AE85D1CA2AED7DA40080B6EB /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE85D1C92AED7DA30080B6EB /* rc_defaults.plist */; };
-		AE85D1CC2AED7DB90080B6EB /* FirebaseRemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85D1CB2AED7DB90080B6EB /* FirebaseRemoteConfigService.swift */; };
 		AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */; };
 		AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */; };
 		AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152829174DF60039689C /* FirebaseAuth */; };
@@ -87,8 +85,6 @@
 		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
 		AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDisplayView.swift; sourceTree = "<group>"; };
 		AE85D1C72AED7D830080B6EB /* SafariWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
-		AE85D1C92AED7DA30080B6EB /* rc_defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = rc_defaults.plist; path = "hibernia-ios/rc_defaults.plist"; sourceTree = SOURCE_ROOT; };
-		AE85D1CB2AED7DB90080B6EB /* FirebaseRemoteConfigService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigService.swift; sourceTree = "<group>"; };
 		AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAttestAppCheckProviderFactory.swift; sourceTree = "<group>"; };
 		AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OpenVPNTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
@@ -139,7 +135,6 @@
 			children = (
 				AE6F94D029C9D38C00B006E3 /* AppCheck */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
-				AE85D1CB2AED7DB90080B6EB /* FirebaseRemoteConfigService.swift */,
 				AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */,
 				AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */,
 			);
@@ -189,7 +184,6 @@
 				AE6A729728E21AE5001628E2 /* Assets.xcassets */,
 				AE0EB82128F8EADA002939F9 /* Info.plist */,
 				AE0212EB29BA696400B63047 /* GoogleService-Info.plist */,
-				AE85D1C92AED7DA30080B6EB /* rc_defaults.plist */,
 				AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */,
 				AE7D104228EC9D96006BEB18 /* Helpers */,
 				AE27976D28E6586200DDACF5 /* Views */,
@@ -354,7 +348,6 @@
 			files = (
 				AEFCD1D728EC6D0C008D9694 /* Comfortaa-Bold.ttf in Resources */,
 				AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */,
-				AE85D1CA2AED7DA40080B6EB /* rc_defaults.plist in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
 				AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */,
 			);
@@ -388,7 +381,6 @@
 				AE1D376B29256138003A46F4 /* ConnectionToolbar.swift in Sources */,
 				AEFCD1D128EA1909008D9694 /* VPNConnectButton.swift in Sources */,
 				AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */,
-				AE85D1CC2AED7DB90080B6EB /* FirebaseRemoteConfigService.swift in Sources */,
 				AEFCD1D528EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift in Sources */,
 				AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */,
 			);

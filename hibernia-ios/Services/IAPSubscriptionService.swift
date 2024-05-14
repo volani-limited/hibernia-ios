@@ -18,16 +18,15 @@ public enum StoreError: Error {
 
 class IAPSubscriptionService: NSObject, ObservableObject {
     static let subscriptionProductID = "hp1m" // Define standard vpn IAP subscription product Id
-    
+
     @Published var processing: Bool = false // Setup published varibles and error retry handler
     @Published var iapSubscriptionServiceError: Error?
-    @Published var retryHandler: (@MainActor () async -> ())?
-
+    
     @Published var originalTransactionID: UInt64?
     @Published var subscriptionProduct: Product?
     
-    var updateListenerTask: Task<Void, Error>? = nil
-    var subscriptionStatusSubscription: AnyCancellable?
+    private var updateListenerTask: Task<Void, Error>? = nil
+    private var subscriptionStatusSubscription: AnyCancellable?
     
     override init() {
         let defaults = UserDefaults.standard
@@ -44,7 +43,6 @@ class IAPSubscriptionService: NSObject, ObservableObject {
         SKPaymentQueue.default().add(self) // Add self to payment queue for app store originating transactions
         
         Task {
-            await setSubscriptionProduct()
             await updateSubscriptionStatus() // Check subscription status
         }
     }
@@ -54,32 +52,16 @@ class IAPSubscriptionService: NSObject, ObservableObject {
         subscriptionStatusSubscription?.cancel()
     }
     
+    
     @MainActor
-    func setSubscriptionProduct() async { // Set product and handle error
-        do {
-            self.subscriptionProduct = try await getProduct(productIdentifier: IAPSubscriptionService.subscriptionProductID)
-            
-            self.iapSubscriptionServiceError = nil
-            self.retryHandler = nil
-        } catch {
-            self.processing = false
-            
-            self.iapSubscriptionServiceError = error
-            self.subscriptionProduct = nil
-
-            self.retryHandler = setSubscriptionProduct
-        }
+    func loadSubscriptionProduct() async throws {
+        self.subscriptionProduct = try await getProduct(productIdentifier: IAPSubscriptionService.subscriptionProductID)
     }
     
     @MainActor
-    func restorePurchases() async {
-        do {
+    func restorePurchases() async throws {
             try await AppStore.sync()
             await updateSubscriptionStatus()
-        } catch {
-            self.iapSubscriptionServiceError = error
-            self.retryHandler = nil
-        }
     }
     
     @MainActor
@@ -94,7 +76,7 @@ class IAPSubscriptionService: NSObject, ObservableObject {
     }
     
     @MainActor
-    func updateSubscriptionStatus() async {
+    func updateSubscriptionStatus() async { // TODO: Check offline support
         processing = true
         let result = await Transaction.currentEntitlement(for: IAPSubscriptionService.subscriptionProductID) // Get and validate current entitlement
         
@@ -108,54 +90,34 @@ class IAPSubscriptionService: NSObject, ObservableObject {
                 originalTransactionID = nil
             }
             self.iapSubscriptionServiceError = nil
-            self.retryHandler = nil
         } catch {
             print("Could not verify subscription")
             originalTransactionID = nil
             
             self.iapSubscriptionServiceError = error
-            self.retryHandler = updateSubscriptionStatus
             
         }
         processing = false
     }
     
     @MainActor
-    func subscribe() async {
-        processing = true
-        do {
-            let result = try await subscriptionProduct?.purchase() // Purchase product and handle result
+    func subscribe() async throws {
+        let result = try await subscriptionProduct?.purchase() // Purchase product and handle result
+        
+        switch result {
+        case .success(let verificationResult):
+            let transaction = try checkVerified(verificationResult)
             
-            switch result {
-            case .success(let verificationResult):
-                let transaction = try checkVerified(verificationResult)
-                
-                await transaction.finish()
-                
-                self.iapSubscriptionServiceError = nil
-                self.retryHandler = nil
-            case .userCancelled:
-                processing = false
-                
-                self.iapSubscriptionServiceError = nil
-                self.retryHandler = nil
-            case .pending:
-                processing = true
-                
-                self.iapSubscriptionServiceError = nil
-                self.retryHandler = nil
-            default:
-                processing = false
-                self.iapSubscriptionServiceError = IAPSubscriptionServiceError.couldNotPurchase
-                self.retryHandler = { () -> Void in
-                    self.iapSubscriptionServiceError = nil
-                }
-            }
-        } catch {
-            self.iapSubscriptionServiceError = error
-            retryHandler = subscribe
+            await transaction.finish()
+            
+            self.iapSubscriptionServiceError = nil
+        case .userCancelled: // TODO: Confirm appropriate syntax
+            return
+        case .pending:
+            return
+        default:
+            throw IAPSubscriptionServiceError.couldNotPurchase
         }
-        processing = false
     }
     
     func listenForTransactions() -> Task<Void, Error> { // Listen for transactions and process accordingly

@@ -30,20 +30,19 @@ struct hibernia_iosApp: App {
         vpnService = VPNService() // Instantiate local services
         subscriptionService = IAPSubscriptionService()
         
-        let config = Qonversion.Configuration(projectKey: "_VyGtgouQv_ECvbgQyoG0lseCF24vnp-", launchMode: .analytics)
+        /*let config = Qonversion.Configuration(projectKey: "_VyGtgouQv_ECvbgQyoG0lseCF24vnp-", launchMode: .analytics)
         Qonversion.initWithConfig(config)
         
         Purchases.configure( // Configure Qonversion and RevenueCat SDKs
           with: Configuration.Builder(withAPIKey: "appl_dFHGAJLCuWiOtNQROyLQFnqYLZF")
             .with(observerMode: true)
             .build()
-        )
-        
+        )*/
     }
 
     var body: some Scene {
         WindowGroup {
-            MainView().environmentObject(vpnService).environmentObject(subscriptionService)
+            RootView().environmentObject(vpnService).environmentObject(subscriptionService)
         }
     }
 }

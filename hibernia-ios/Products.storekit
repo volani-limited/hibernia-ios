@@ -8,9 +8,12 @@
   ],
   "settings" : {
     "_applicationInternalID" : "6443544329",
+    "_askToBuyEnabled" : false,
     "_developerTeamID" : "2AY446Y6M9",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 714061681.26872694,
+    "_lastSynchronizedDate" : 737209181.36773098,
+    "_locale" : "en_US",
+    "_storefront" : "GBR",
     "_storeKitErrors" : [
       {
         "current" : null,
@@ -76,7 +79,7 @@
               "eligibility" : [
                 "new"
               ],
-              "internalID" : "65225CE8",
+              "internalID" : "EB9A6B7E",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -87,7 +90,7 @@
               "eligibility" : [
                 "new"
               ],
-              "internalID" : "D1F41280",
+              "internalID" : "D1F9A9E7",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -96,11 +99,11 @@
             },
             {
               "eligibility" : [
-                "expired",
+                "new",
                 "existing",
-                "new"
+                "expired"
               ],
-              "internalID" : "98EF3FB4",
+              "internalID" : "71726F31",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -109,11 +112,11 @@
             },
             {
               "eligibility" : [
-                "existing",
+                "new",
                 "expired",
-                "new"
+                "existing"
               ],
-              "internalID" : "EBB32C40",
+              "internalID" : "369AE3FE",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -124,7 +127,7 @@
               "eligibility" : [
                 "new"
               ],
-              "internalID" : "D2A5D57B",
+              "internalID" : "AD5A1234",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -135,7 +138,7 @@
               "eligibility" : [
                 "new"
               ],
-              "internalID" : "124F8BC4",
+              "internalID" : "63085720",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -148,23 +151,11 @@
                 "new",
                 "expired"
               ],
-              "internalID" : "35B9FC5E",
+              "internalID" : "5C39615A",
               "isStackable" : true,
               "numberOfPeriods" : 12,
               "paymentMode" : "payAsYouGo",
               "referenceName" : "Hibernia Reddit 3",
-              "subscriptionPeriod" : "P1M"
-            },
-            {
-              "displayPrice" : "0.99",
-              "eligibility" : [
-                "new"
-              ],
-              "internalID" : "9A283F9F",
-              "isStackable" : true,
-              "numberOfPeriods" : 1,
-              "paymentMode" : "payAsYouGo",
-              "referenceName" : "Hibernia Reddit Deal",
               "subscriptionPeriod" : "P1M"
             },
             {
@@ -173,7 +164,7 @@
                 "new",
                 "expired"
               ],
-              "internalID" : "03662962",
+              "internalID" : "E21E0D1A",
               "isStackable" : true,
               "numberOfPeriods" : 12,
               "paymentMode" : "payAsYouGo",
@@ -183,14 +174,26 @@
             {
               "displayPrice" : "1.19",
               "eligibility" : [
-                "new",
-                "expired"
+                "expired",
+                "new"
               ],
-              "internalID" : "5577C9BC",
+              "internalID" : "45C18644",
               "isStackable" : true,
               "numberOfPeriods" : 12,
               "paymentMode" : "payAsYouGo",
               "referenceName" : "Hibernia Reddit 2",
+              "subscriptionPeriod" : "P1M"
+            },
+            {
+              "displayPrice" : "0.99",
+              "eligibility" : [
+                "new"
+              ],
+              "internalID" : "2A7C7471",
+              "isStackable" : true,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "payAsYouGo",
+              "referenceName" : "Hibernia Reddit Deal",
               "subscriptionPeriod" : "P1M"
             }
           ],
@@ -199,7 +202,7 @@
           "groupNumber" : 1,
           "internalID" : "1646980445",
           "introductoryOffer" : {
-            "internalID" : "22B286EB",
+            "internalID" : "842EAFD4",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P3D"

@@ -1,0 +1,41 @@
+//
+//  LocationSelectorItemView.swift
+//  hibernia-ios
+//
+//  Created by Oliver Bevan on 08/03/2024.
+//
+
+import SwiftUI
+
+struct LocationSelectorItemView: View {
+    @EnvironmentObject var vpnService: VPNService
+    @Binding var presentingLocationSelectorView: Bool
+    
+    var body: some View {
+        VStack {
+            Text("Location")
+                .foregroundStyle(Color.titleText)
+                .bold()
+            HStack() {
+                Text(vpnService.destination.displayed)
+                    .bold()
+                    .foregroundStyle(Color.text)
+                Button {
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
+                    
+                    withAnimation {
+                        presentingLocationSelectorView = true
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .foregroundStyle(Color.titleText)
+                }.buttonStyle(NeumorphicButtonStyle(shape: Circle()))
+            }
+            .padding(8)
+            .background(
+                NeumorphicShape(isHighlighted: true, shape: Capsule())
+            )
+        }
+    }
+}

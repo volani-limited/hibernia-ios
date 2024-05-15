@@ -14,7 +14,10 @@ struct LocationSelectorView: View {
     var body: some View {
         VStack {
             ZStack {
-                Text("Location")
+                Text("Locations")
+                    .bold()
+                    .font(.custom("Comfortaa", size: 30))
+                    .foregroundColor(.titleText)
                 HStack {
                     Button {
                         let generator = UIImpactFeedbackGenerator(style: .light)
@@ -23,8 +26,8 @@ struct LocationSelectorView: View {
                             presenting = false
                         }
                     } label: {
-                        Image(systemName: "arrow.backward") //TODO: use in neumorphic button circle
-                            .foregroundColor(.white)
+                        Image(systemName: "arrow.backward")
+                            .foregroundColor(.text)
                     }
                     .padding()
                     .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
@@ -34,7 +37,7 @@ struct LocationSelectorView: View {
             ScrollView {
                 VStack(alignment: .center) {
                    ForEach(VPNDestination.allCases, id: \.self) { destination in
-                       LocationSelectorRowView(location: destination, highlighted: )
+                       LocationSelectorRowView(location: destination, isHighlighted: vpnService.destination == destination)
                            .onTapGesture {
                                let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
                                feedbackGenerator.impactOccurred()
@@ -42,6 +45,8 @@ struct LocationSelectorView: View {
                            }
                    }
                }
+            .padding()
+            .padding(.top, 10)
             }
         }
     }

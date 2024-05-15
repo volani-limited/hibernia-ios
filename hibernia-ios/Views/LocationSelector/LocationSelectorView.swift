@@ -10,6 +10,8 @@ import SwiftUI
 struct LocationSelectorView: View {
     @EnvironmentObject var vpnService: VPNService
     @Binding var presenting: Bool
+    
+    @StateObject var locationPingService = LocationPingService()
 
     var body: some View {
         VStack {
@@ -37,7 +39,7 @@ struct LocationSelectorView: View {
             ScrollView {
                 VStack(alignment: .center) {
                    ForEach(VPNDestination.allCases, id: \.self) { destination in
-                       LocationSelectorRowView(location: destination, isHighlighted: vpnService.destination == destination)
+                       LocationSelectorRowView(location: destination, pingGraphValue: locationPingService., isHighlighted: vpnService.destination == destination)
                            .onTapGesture {
                                let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
                                feedbackGenerator.impactOccurred()

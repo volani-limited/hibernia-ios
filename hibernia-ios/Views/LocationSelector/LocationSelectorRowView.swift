@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LocationSelectorRowView: View {
     var location: VPNDestination
+    var pingGraphValue: Double
     var isHighlighted: Bool
     
     var body: some View {
@@ -16,7 +17,13 @@ struct LocationSelectorRowView: View {
             Text(location.displayed)
                 .font(.custom("Comfortaa", size: 24))
                 .foregroundStyle(Color.text)
+            
             Spacer()
+            
+            CapsulePingGraphView(value: pingGraphValue)
+                .frame(width: 13, height: 16)
+                .padding(.trailing)
+            
             Image(systemName: isHighlighted ? "checkmark.circle" : "circle")
                 .foregroundStyle(isHighlighted ? Color.turquoise : Color.text)
                 .shadow(color: isHighlighted ? Color.turquoise : Color.text, radius: 4)

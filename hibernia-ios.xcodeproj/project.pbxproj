@@ -17,6 +17,8 @@
 		AE22C7E82BEE9294003B8ED7 /* VPNControlStatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7E72BEE9294003B8ED7 /* VPNControlStatusContainerView.swift */; };
 		AE22C7EC2BF0EAF2003B8ED7 /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE22C7EB2BF0EAF0003B8ED7 /* Comfortaa-VariableFont_wght.ttf */; };
 		AE22C7EF2BF0EBD3003B8ED7 /* SubscribeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7EE2BF0EBD3003B8ED7 /* SubscribeModalView.swift */; };
+		AE22C7F12BF50B80003B8ED7 /* LocationPingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7F02BF50B7F003B8ED7 /* LocationPingService.swift */; };
+		AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */; };
 		AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */; };
 		AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729728E21AE5001628E2 /* Assets.xcassets */; };
 		AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */; };
@@ -84,6 +86,8 @@
 		AE22C7E72BEE9294003B8ED7 /* VPNControlStatusContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNControlStatusContainerView.swift; sourceTree = "<group>"; };
 		AE22C7EB2BF0EAF0003B8ED7 /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		AE22C7EE2BF0EBD3003B8ED7 /* SubscribeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeModalView.swift; sourceTree = "<group>"; };
+		AE22C7F02BF50B7F003B8ED7 /* LocationPingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPingService.swift; sourceTree = "<group>"; };
+		AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePingGraphView.swift; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
 		AE6A729728E21AE5001628E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -165,10 +169,12 @@
 		AE27976B28E6584F00DDACF5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AE6C9C872BF51F1D0057E088 /* SwiftyPingPublisher */,
 				AE6F94D029C9D38C00B006E3 /* AppCheck */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
 				AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */,
 				AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */,
+				AE22C7F02BF50B7F003B8ED7 /* LocationPingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -243,6 +249,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AE6C9C872BF51F1D0057E088 /* SwiftyPingPublisher */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SwiftyPingPublisher;
+			sourceTree = "<group>";
+		};
 		AE6F94D029C9D38C00B006E3 /* AppCheck */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +298,7 @@
 			children = (
 				AEC2C8BD2B9B379900E210F7 /* LocationSelectorView.swift */,
 				AEC2C8C02B9B37E900E210F7 /* LocationSelectorRowView.swift */,
+				AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */,
 			);
 			path = LocationSelector;
 			sourceTree = "<group>";
@@ -400,6 +414,7 @@
 				AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */,
+				AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */,
 			);
 			productRefGroup = AE6A729128E21AE3001628E2 /* Products */;
 			projectDirPath = "";
@@ -470,12 +485,14 @@
 				AEC2C8BE2B9B379900E210F7 /* LocationSelectorView.swift in Sources */,
 				AEC2C8BA2B9B376800E210F7 /* SlideOverContainerView.swift in Sources */,
 				AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */,
+				AE22C7F12BF50B80003B8ED7 /* LocationPingService.swift in Sources */,
 				AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */,
 				AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */,
 				AEC2C8C12B9B37E900E210F7 /* LocationSelectorRowView.swift in Sources */,
 				AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */,
 				AEFCD1D128EA1909008D9694 /* VPNConnectButtonView.swift in Sources */,
 				AEC2C8BC2B9B378F00E210F7 /* TabBarContainerView.swift in Sources */,
+				AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */,
 				AEC2C8C52B9B381000E210F7 /* TabBarSelectorView.swift in Sources */,
 				AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */,
 				AE22C7E82BEE9294003B8ED7 /* VPNControlStatusContainerView.swift in Sources */,
@@ -796,6 +813,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.0.0;
+			};
+		};
+		AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/samiyr/SwiftyPing.git";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 		AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */ = {

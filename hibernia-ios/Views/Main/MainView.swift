@@ -16,7 +16,7 @@ struct MainView: View {
         GeometryReader { geometry in
             VStack {
                 Text("HiberniaVPN")
-                    .bold()
+                    .fontWeight(.black)
                     .font(.custom("Comfortaa", size: 40))
                     .foregroundColor(.titleText)
                     .padding()
@@ -24,7 +24,6 @@ struct MainView: View {
                 VPNControlStatusContainerView(presentingSubscribeModalView: $presentingSubscribeModalView)
                 
                 LocationSelectorItemView(presentingLocationSelectorView: $presentingLocationSelectorView)
-                
             }
             .frame(height: geometry.size.height * 0.8)
             .sheet(isPresented: $presentingSubscribeModalView) {

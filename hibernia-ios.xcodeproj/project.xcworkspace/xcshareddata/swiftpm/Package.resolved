@@ -1,4 +1,5 @@
 {
+  "originHash" : "c09c288ccae1346e0f85a229676ba016a721f812fa8129bf1961366a60b6da30",
   "pins" : [
     {
       "identity" : "abseil-cpp-swiftpm",
@@ -95,8 +96,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/passepartoutvpn/openssl-apple",
       "state" : {
-        "revision" : "757c074af45e4f2514fe63f649ccdde966183e90",
-        "version" : "1.1.11700"
+        "revision" : "0edc07c7a0e4ec2ca0f448dd68314241ccc925b3",
+        "version" : "3.2.107"
       }
     },
     {
@@ -145,12 +146,21 @@
       }
     },
     {
-      "identity" : "tunnelkit",
+      "identity" : "swiftyping",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/passepartoutvpn/tunnelkit.git",
+      "location" : "https://github.com/samiyr/SwiftyPing.git",
       "state" : {
         "branch" : "master",
-        "revision" : "47281cafc99dcfd0bdf60d41b3357cdbb33875fa"
+        "revision" : "05591bc0047e41e0e1d98135c6bc457192a72d39"
+      }
+    },
+    {
+      "identity" : "tunnelkit",
+      "kind" : "remoteSourceControl",
+      "location" : "git@github.com:volani-limited/tunnelkit.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "f5eb9aa7c017fe9a077bd31854469d684db19a1d"
       }
     },
     {
@@ -158,10 +168,9 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/passepartoutvpn/wireguard-apple",
       "state" : {
-        "revision" : "d3b8f1ac6f3361d69bd3daf8aee3c43012c6ec0b",
-        "version" : "1.0.16"
+        "revision" : "b79f0f150356d8200a64922ecf041dd020140aa0"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

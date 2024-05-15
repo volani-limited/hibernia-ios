@@ -52,6 +52,7 @@ struct VPNConnectButtonView: View {
             Image(systemName: "power")
                 .font(.system(size: 55, weight: .heavy))
                 .foregroundColor(vpnService.status == .connected ? .white : .turquoise)
+                .shadow(color: vpnService.status == .connected ? .white : .turquoise, radius: 15)
                 .padding(30)
         }
         .buttonStyle(NeumorphicMainButtonStyle(isProcessing: (vpnService.status != .connected) == (vpnService.status != .disconnected), isDepressed: vpnService.status == .connected))

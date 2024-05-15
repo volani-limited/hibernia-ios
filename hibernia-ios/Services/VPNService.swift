@@ -172,7 +172,7 @@ class VPNService: ObservableObject {
         case .connecting:
             status = .connecting
         case .disconnected:
-            status = .connected
+            status = .disconnected
         case .disconnecting:
             status = .disconnecting
         }

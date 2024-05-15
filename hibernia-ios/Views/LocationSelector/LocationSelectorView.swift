@@ -34,9 +34,7 @@ struct LocationSelectorView: View {
             ScrollView {
                 VStack(alignment: .center) {
                    ForEach(VPNDestination.allCases, id: \.self) { destination in
-                       Text(destination.displayed)
-                           .font(.custom("Comfortaa", size: 20))
-                           .padding()
+                       LocationSelectorRowView(location: destination, highlighted: )
                            .onTapGesture {
                                let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
                                feedbackGenerator.impactOccurred()

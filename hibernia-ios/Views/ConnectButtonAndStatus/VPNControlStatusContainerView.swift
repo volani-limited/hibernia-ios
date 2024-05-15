@@ -18,7 +18,7 @@ struct VPNControlStatusContainerView: View {
         case .requestingConfiguration:
             return 0.25
         case .connecting:
-            return 0.25
+            return 0.5
         case .connected:
             return 1.0
         case .disconnecting:
@@ -37,7 +37,7 @@ struct VPNControlStatusContainerView: View {
         case .connected:
             return Color.turquoise
         case .disconnecting:
-            return Color.vRed
+            return Color.vOrange
         case .disconnected:
             return Color.clear
         }
@@ -52,17 +52,17 @@ struct VPNControlStatusContainerView: View {
                     ArcProgressView(progress: statusProgress, color: statusColor)
                         .frame(width: 155, height: 155)
                     
-                    Text(vpnService.status.rawValue.capitalized).font(.custom("Comfortaa", size: 15))
-                        .foregroundColor(.turquoise)
+                    Text(vpnService.status.rawValue)
+                        .font(.custom("Comfortaa", size: 18))
+                        .bold()
+                        .foregroundColor(.titleText)
                         .padding(.top)
                     
-                    if vpnService.status == .connected {
-                        Text(vpnService.connectedTime).font(.custom("Comfortaa", size: 15))
-                            .foregroundColor(.turquoise)
-                            .padding(.bottom)
-                    } else {
-                        Spacer().frame(height: 15)
-                    }
+                    Text(vpnService.connectedTime)
+                        .font(.custom("Comfortaa", size: 15))
+                        .foregroundColor(.text)
+                        .padding(.bottom)
+                        .opacity(vpnService.status == .connected ? 1 : 0)
                 }.offset(y: 45)
             }
             .frame(width: geometry.size.width, height: geometry.size.height)

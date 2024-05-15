@@ -22,7 +22,8 @@ struct ArcProgressView: View {
                 .trim(from: 0, to: progress / 3.33)
                 .stroke(color, style: StrokeStyle(lineWidth: 6, lineCap: .round))
                 .rotationEffect(Angle(degrees: -216 - (108*progress)))
-                .shadow(radius: 15)
+                .shadow(color: color, radius: 15)
+                .animation(.linear, value: progress)
         }
     }
 }

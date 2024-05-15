@@ -84,31 +84,32 @@ struct NeumorphicMainButtonBackground<S: Shape>: View {
                 shape
                     .fill(LinearGradient(Color.vBlue, Color.turquoise))
                     .overlay(shape.stroke(LinearGradient(Color.turquoise, Color.vBlue), lineWidth: 5).shadow(color: Color.turquoise, radius: 2))
-                    .shadow(color: Color.vShadow, radius: 10, x: 5, y: 5)
+                    .shadow(color: Color.white, radius: 10, x: 5, y: 5)
                     .shadow(color: Color.vShadow, radius: 10, x: -5, y: -5)
                     .onAppear {
                         isAnimating = false
                     }
             } else if isProcessing {
-                shape.fill(Color.vShadow)
-                .overlay(
-                    shape.trim(from: 0.0, to: 0.7)
-                        .stroke(LinearGradient(Color.turquoise, Color.vBlue), lineWidth: 5)
-                        .rotationEffect(Angle(degrees: isAnimating ? 360 : 0))
-                        .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false), value: isAnimating)
-                        .onAppear {
-                            isAnimating = true
-                        }
-                )
-                .shadow(color: Color.vShadow, radius: 10, x: -10, y: -10)
-                .shadow(color: Color.vShadow, radius: 10, x: 10, y: 10)
-                .opacity(0.7)
+                shape
+                    .fill(Color.background)
+                    .overlay(
+                        shape.trim(from: 0.0, to: 0.8)
+                            .stroke(LinearGradient(Color.turquoise, Color.vBlue), lineWidth: 5)
+                            .rotationEffect(Angle(degrees: isAnimating ? 360 : 0))
+                            .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false), value: isAnimating)
+                            .onAppear {
+                                isAnimating = true
+                            }
+                    )
+                    .shadow(color: Color.white, radius: 10, x: -10, y: -10)
+                    .shadow(color: Color.vShadow, radius: 10, x: 10, y: 10)
+                    .opacity(0.7)
             } else {
                 shape
                     .fill(Color.background)
                     .overlay(shape.stroke(LinearGradient(Color.turquoise, Color.vBlue), lineWidth: 5)
                         .shadow(color: Color.turquoise, radius: 1))
-                    .shadow(color: Color.background, radius: 10, x: -10, y: -10)
+                    .shadow(color: Color.white, radius: 10, x: -10, y: -10)
                     .shadow(color: Color.vShadow, radius: 10, x: 10, y: 10)
                     .onAppear {
                         isAnimating = false

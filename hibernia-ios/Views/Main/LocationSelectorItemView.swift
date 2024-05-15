@@ -14,12 +14,14 @@ struct LocationSelectorItemView: View {
     var body: some View {
         VStack {
             Text("Location")
+                .font(.custom("Comfortaa", size: 17))
                 .foregroundStyle(Color.titleText)
                 .bold()
             HStack() {
                 Text(vpnService.destination.displayed)
-                    .bold()
+                    .font(.custom("Comfortaa", size: 16))
                     .foregroundStyle(Color.text)
+                    .bold()
                 Button {
                     let generator = UIImpactFeedbackGenerator(style: .light)
                     generator.impactOccurred()

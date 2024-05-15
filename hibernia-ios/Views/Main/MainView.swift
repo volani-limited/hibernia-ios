@@ -18,7 +18,7 @@ struct MainView: View {
                 Text("HiberniaVPN")
                     .bold()
                     .font(.custom("Comfortaa", size: 40))
-                    .foregroundColor(.vBlue)
+                    .foregroundColor(.titleText)
                     .padding()
                 
                 VPNControlStatusContainerView(presentingSubscribeModalView: $presentingSubscribeModalView)

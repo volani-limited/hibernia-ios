@@ -9,16 +9,35 @@ import SwiftUI
 
 struct LocationSelectorRowView: View {
     var location: VPNDestination
+    
+    var ping: Double
     var pingGraphValue: Double
+
     var isHighlighted: Bool
+    var isNearest: Bool
     
     var body: some View {
         HStack {
-            Text(location.displayed)
-                .font(.custom("Comfortaa", size: 24))
-                .foregroundStyle(Color.text)
+            HStack(spacing: 0) {
+                Text(location.displayed.prefix(1))
+                    .font(.custom("Comfortaa", size: 24))
+                Text(location.displayed.suffix(from: location.displayed.index(location.displayed.startIndex, offsetBy: 1)))
+                    .font(.custom("Comfortaa", size: 24))
+                    .foregroundStyle(isNearest ? Color.turquoise : Color.text)
+                    .shadow(color: isNearest ? .turquoise : .clear, radius: 5)
+            }
             
             Spacer()
+            
+            HStack(alignment: .lastTextBaseline, spacing: 0) {
+                Text((ping*1000).formatted(.number.precision(.fractionLength(0))))
+                    .font(.custom("Comfortaa", size: 16))
+                    .bold()
+                    .foregroundStyle(Color.text)
+                Text("ms")
+                    .font(.custom("Comfortaa", size: 12))
+                    .foregroundStyle(Color.text)
+            }
             
             CapsulePingGraphView(value: pingGraphValue)
                 .frame(width: 13, height: 16)

@@ -38,18 +38,21 @@ struct LocationSelectorView: View {
             }
             ScrollView {
                 VStack(alignment: .center) {
-                   ForEach(VPNDestination.allCases, id: \.self) { destination in
-                       LocationSelectorRowView(location: destination, pingGraphValue: locationPingService., isHighlighted: vpnService.destination == destination)
-                           .onTapGesture {
-                               let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
-                               feedbackGenerator.impactOccurred()
-                               vpnService.destination = destination
-                           }
-                   }
-               }
-            .padding()
-            .padding(.top, 10)
+                    ForEach(VPNDestination.allCases, id: \.self) { destination in
+                        LocationSelectorRowView(location: destination, ping: locationPingService.pings[destination]!, pingGraphValue: locationPingService.pingProportions[destination]!, isHighlighted: vpnService.destination == destination, isNearest: locationPingService.pings[destination]! == locationPingService.pings.values.min()!)
+                            .onTapGesture {
+                                let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+                                feedbackGenerator.impactOccurred()
+                                vpnService.destination = destination
+                            }
+                    }
+                }
+                .padding()
+                .padding(.top, 10)
             }
+        }
+        .onAppear {
+            locationPingService.beginUpdating()
         }
     }
 }

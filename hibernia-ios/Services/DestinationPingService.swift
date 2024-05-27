@@ -31,18 +31,20 @@ class DestinationPingService: ObservableObject {
             pingResults.updateValue(nil, forKey: destination)
         }
         
-        for destination in pingResults.keys {
-            let hostname = destination.rawValue + "-1.vpn.hiberniavpn.com"
-            Task {
-                do {
-                    let averagePing = try await getAveragePing(hostname: hostname, interval: 1, timeout: 2, attempts: 5)
-                    
-                    pingResults[destination] = .success(averagePing)
-                    processingFirstResult = false
-                } catch let error as PingError {
-                    pingResults[destination] = .failure(error)
-                } catch {
-                    fatalError("Unhandled error pinging: \(error)")
+        Task {
+            await withTaskGroup(of: Double.self) { group in
+                for destination in pingResults.keys {
+                    let hostname = destination.rawValue + "-1.vpn.hiberniavpn.com"
+                    do {
+                        let averagePing = try await getAveragePing(hostname: hostname, interval: 1, timeout: 2, attempts: 5)
+                        
+                        pingResults[destination] = .success(averagePing)
+                        processingFirstResult = false
+                    } catch let error as PingError {
+                        pingResults[destination] = .failure(error)
+                    } catch {
+                        fatalError("Unhandled error pinging: \(error)")
+                    }
                 }
             }
         }

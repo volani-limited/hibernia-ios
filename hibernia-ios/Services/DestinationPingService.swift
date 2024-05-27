@@ -8,6 +8,7 @@
 import Foundation
 import SwiftyPing
 
+@MainActor
 class DestinationPingService: ObservableObject {
     //@Published var pingResults: [DestinationPingResult] Updating a single ping will require all pings to be updated (as the new ping has the potential to change the min/max and therefore all ping proportions
     
@@ -23,7 +24,6 @@ class DestinationPingService: ObservableObject {
         }
     }
     
-    @MainActor
     func pingAllDestinations() {
         processingFirstResult = true
         
@@ -32,9 +32,8 @@ class DestinationPingService: ObservableObject {
         }
         
         for destination in pingResults.keys {
+            let hostname = destination.rawValue + "-1.vpn.hiberniavpn.com"
             Task {
-                let hostname = destination.rawValue + "-1.vpn.hiberniavpn.com"
-                
                 do {
                     let averagePing = try await getAveragePing(hostname: hostname, interval: 1, timeout: 2, attempts: 5)
                     
@@ -55,12 +54,12 @@ class DestinationPingService: ObservableObject {
         manager.targetCount = attempts
             
         return try await withCheckedThrowingContinuation { continuation in
-                manager.finished = { pingResult in
-                    guard let roundtrip = pingResult.roundtrip else {
-                        continuation.resume(throwing: PingError.requestError)
-                        return
-                    }
-                    continuation.resume(returning: roundtrip.average)
+            manager.finished = { pingResult in
+                guard let roundtrip = pingResult.roundtrip else {
+                    continuation.resume(throwing: PingError.requestError)
+                    return
+                }
+                continuation.resume(returning: roundtrip.average)
             }
             try! manager.startPinging()
         }

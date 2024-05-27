@@ -11,7 +11,7 @@ struct LocationSelectorView: View {
     @EnvironmentObject var vpnService: VPNService
     @Binding var presenting: Bool
     
-    @StateObject var locationPingService = LocationPingService()
+    @StateObject var destinationPingService = DestinationPingService()
 
     var body: some View {
         VStack {
@@ -33,13 +33,28 @@ struct LocationSelectorView: View {
                     }
                     .padding()
                     .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
+                    
                     Spacer()
+
+                    Button {
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                        
+                        destinationPingService.pingAllDestinations()
+                    } label: {
+                        Image(systemName: "arrow.counterclockwise")
+                            .foregroundColor(.text)
+                    }
+                    .padding()
+                    .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
+                    .disabled(destinationPingService.processingFirstResult)
+                    .opacity(destinationPingService.processingFirstResult ? 0 : 1)
                 }
             }
             ScrollView {
                 VStack(alignment: .center) {
                     ForEach(VPNDestination.allCases, id: \.self) { destination in
-                        LocationSelectorRowView(location: destination, ping: locationPingService.pings[destination]!, pingGraphValue: locationPingService.pingProportions[destination]!, isHighlighted: vpnService.destination == destination, isNearest: locationPingService.pings[destination]! == locationPingService.pings.values.min()!)
+                        LocationSelectorRowView(destination: destination, pingResult: destinationPingService.pingResults[destination]!, isHighlighted: vpnService.destination == destination)
                             .onTapGesture {
                                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
                                 feedbackGenerator.impactOccurred()
@@ -52,7 +67,7 @@ struct LocationSelectorView: View {
             }
         }
         .onAppear {
-            locationPingService.beginUpdating()
+            destinationPingService.pingAllDestinations()
         }
     }
 }

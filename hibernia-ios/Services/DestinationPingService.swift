@@ -9,19 +9,49 @@ import Foundation
 import SwiftyPing
 
 class DestinationPingService: ObservableObject {
-    @Published var pingResults: [DestinationPingResult]
+    //@Published var pingResults: [DestinationPingResult] Updating a single ping will require all pings to be updated (as the new ping has the potential to change the min/max and therefore all ping proportions
+    
+    @Published var pingResults: [VPNDestination: Result<(ping: Double, pingProportion: Double, isNearest: Bool), PingError>?]
+    @Published var processingFirstResult: Bool
     
     init() {
-        pingResults = VPNDestination.allCases.map { return DestinationPingResult(destination: $0) }
+        pingResults = [VPNDestination: Result<(ping: Double, pingProportion: Double, isNearest: Bool), PingError>?]()
+        processingFirstResult = false
+        
+        VPNDestination.allCases.forEach { destination in
+            pingResults.updateValue(nil, forKey: destination)
+        }
     }
     
-    func pingAllDestinations() async {
-        let pings = pingResults.map { }
-
-        pings = pings.map {
-            do {
-                let averagePing = try getAveragePing(hostname: $0.destination + "-1.hiberniavpn.com", interval: 1, timeout: 2, attempts: 5)
+    @MainActor
+    func pingAllDestinations() {
+        processingFirstResult = true
+        
+        VPNDestination.allCases.forEach { destination in
+            pingResults.updateValue(nil, forKey: destination)
+        }
+        
+        for destination in pingResults.keys {
+            Task {
+                let hostname = destination.rawValue + "-1.vpn.hiberniavpn.com"
                 
+                do {
+                    let averagePing = try await getAveragePing(hostname: hostname, interval: 1, timeout: 2, attempts: 5)
+                    
+                    let minPing = pingResults.values.compactMap{ $0 }.filter { $0.isSuccess }.map { try! $0.get().ping }.min() ?? averagePing
+                    let maxPing = pingResults.values.compactMap{ $0 }.filter { $0.isSuccess }.map { try! $0.get().ping }.max() ?? averagePing
+                    
+                    let pingProportion = (averagePing - maxPing) / (minPing - maxPing)
+                    
+                    let nearest = averagePing == minPing
+                    
+                    pingResults[destination] = .success((ping: averagePing, pingProportion: pingProportion, isNearest: nearest))
+                    processingFirstResult = false
+                } catch let error as PingError {
+                    pingResults[destination] = .failure(error)
+                } catch {
+                    fatalError("Unhandled error pinging: \(error)")
+                }
             }
         }
     }
@@ -39,6 +69,11 @@ class DestinationPingService: ObservableObject {
                     }
                     continuation.resume(returning: roundtrip.average)
             }
+            try! manager.startPinging()
         }
     }
+}
+
+extension Result {
+    var isSuccess: Bool { if case .success = self { return true } else { return false } }
 }

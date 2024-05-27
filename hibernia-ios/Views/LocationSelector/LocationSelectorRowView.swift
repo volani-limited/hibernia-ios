@@ -10,7 +10,10 @@ import SwiftyPing
 
 struct LocationSelectorRowView: View {
     var destination: VPNDestination
-    var pingResult: Result<(ping: Double, pingProportion: Double, isNearest: Bool), PingError>?
+    
+    var allPings: [Double]
+
+    var pingResult: Result<Double, PingError>?
     var isHighlighted: Bool
     
     var body: some View {
@@ -23,7 +26,7 @@ struct LocationSelectorRowView: View {
                     .font(.custom("Comfortaa", size: 12))
                     .foregroundStyle(Color.turquoise)
                     .shadow(color: .turquoise, radius: 2)
-                    .opacity((try? pingResult?.get())?.isNearest ?? false ? 1 : 0)
+                    .opacity((try? pingResult?.get()) == (allPings.min() ?? 0) ? 1 : 0) //TODO: this needs refactor
                     .offset(y: 1)
             }
             
@@ -33,7 +36,7 @@ struct LocationSelectorRowView: View {
                 switch pingResult {
                 case .success(let success):
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
-                        Text((success.ping*1000).formatted(.number.precision(.fractionLength(0))))
+                        Text((success*1000).formatted(.number.precision(.fractionLength(0))))
                             .font(.custom("Comfortaa", size: 16))
                             .bold()
                             .foregroundStyle(Color.text)
@@ -41,7 +44,7 @@ struct LocationSelectorRowView: View {
                             .font(.custom("Comfortaa", size: 12))
                             .foregroundStyle(Color.text)
                     }
-                    CapsulePingGraphView(value: success.pingProportion)
+                    CapsulePingGraphView(value: computePingProportion(ping: success, pings: allPings))
                         .frame(width: 13, height: 16)
                         .padding(.trailing)
                 case .failure:
@@ -64,6 +67,13 @@ struct LocationSelectorRowView: View {
         }
         .padding()
         .background(NeumorphicShape(isHighlighted: isHighlighted, shape: RoundedRectangle(cornerRadius: 15)))
+    }
+    
+    func computePingProportion(ping: Double, pings: [Double]) -> Double {
+        let minPing = pings.min()!
+        let maxPing = pings.max()!
+        
+        return (ping - maxPing) / (minPing - maxPing)
     }
 }
 

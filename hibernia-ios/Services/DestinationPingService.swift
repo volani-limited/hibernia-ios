@@ -11,11 +11,11 @@ import SwiftyPing
 class DestinationPingService: ObservableObject {
     //@Published var pingResults: [DestinationPingResult] Updating a single ping will require all pings to be updated (as the new ping has the potential to change the min/max and therefore all ping proportions
     
-    @Published var pingResults: [VPNDestination: Result<(ping: Double, pingProportion: Double, isNearest: Bool), PingError>?]
+    @Published var pingResults: [VPNDestination: Result<Double, PingError>?]
     @Published var processingFirstResult: Bool
     
     init() {
-        pingResults = [VPNDestination: Result<(ping: Double, pingProportion: Double, isNearest: Bool), PingError>?]()
+        pingResults = [VPNDestination: Result<Double, PingError>?]()
         processingFirstResult = false
         
         VPNDestination.allCases.forEach { destination in
@@ -38,14 +38,7 @@ class DestinationPingService: ObservableObject {
                 do {
                     let averagePing = try await getAveragePing(hostname: hostname, interval: 1, timeout: 2, attempts: 5)
                     
-                    let minPing = pingResults.values.compactMap{ $0 }.filter { $0.isSuccess }.map { try! $0.get().ping }.min() ?? averagePing
-                    let maxPing = pingResults.values.compactMap{ $0 }.filter { $0.isSuccess }.map { try! $0.get().ping }.max() ?? averagePing
-                    
-                    let pingProportion = (averagePing - maxPing) / (minPing - maxPing)
-                    
-                    let nearest = averagePing == minPing
-                    
-                    pingResults[destination] = .success((ping: averagePing, pingProportion: pingProportion, isNearest: nearest))
+                    pingResults[destination] = .success(averagePing)
                     processingFirstResult = false
                 } catch let error as PingError {
                     pingResults[destination] = .failure(error)

@@ -32,19 +32,22 @@ class DestinationPingService: ObservableObject {
         }
         
         Task {
-            await withTaskGroup(of: Double.self) { group in
+            await withTaskGroup(of: (destination: VPNDestination, result: Result<Double, PingError>).self) { group in
                 for destination in pingResults.keys {
-                    let hostname = destination.rawValue + "-1.vpn.hiberniavpn.com"
-                    do {
-                        let averagePing = try await getAveragePing(hostname: hostname, interval: 1, timeout: 2, attempts: 5)
-                        
-                        pingResults[destination] = .success(averagePing)
-                        processingFirstResult = false
-                    } catch let error as PingError {
-                        pingResults[destination] = .failure(error)
-                    } catch {
-                        fatalError("Unhandled error pinging: \(error)")
+                    group.addTask {
+                        let hostname = destination.rawValue + "-1.vpn.hiberniavpn.com"
+                        do {
+                            let averagePing = try await self.getAveragePing(hostname: hostname, interval: 1, timeout: 2, attempts: 5)
+                            return (destination: destination, .success(averagePing))
+                        } catch let pingError as PingError {
+                            return (destination: destination, .failure(pingError))
+                        } catch {
+                            fatalError("Unhandled error pinging destination \(destination.rawValue): \(error.localizedDescription)")
+                        }
                     }
+                }
+                for await pingResult in group {
+                    self.pingResults.updateValue(pingResult.result, forKey: pingResult.destination)
                 }
             }
         }

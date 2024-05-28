@@ -13,11 +13,11 @@ class DestinationPingService: ObservableObject {
     //@Published var pingResults: [DestinationPingResult] Updating a single ping will require all pings to be updated (as the new ping has the potential to change the min/max and therefore all ping proportions
     
     @Published var pingResults: [VPNDestination: Result<Double, PingError>?]
-    @Published var processingFirstResult: Bool
+    @Published var preparingResults: Bool
     
     init() {
         pingResults = [VPNDestination: Result<Double, PingError>?]()
-        processingFirstResult = false
+        preparingResults = false
         
         VPNDestination.allCases.forEach { destination in
             pingResults.updateValue(nil, forKey: destination)
@@ -25,7 +25,7 @@ class DestinationPingService: ObservableObject {
     }
     
     func pingAllDestinations() {
-        processingFirstResult = true
+        preparingResults = true
         
         VPNDestination.allCases.forEach { destination in
             pingResults.updateValue(nil, forKey: destination)
@@ -49,6 +49,7 @@ class DestinationPingService: ObservableObject {
                 for await pingResult in group {
                     self.pingResults.updateValue(pingResult.result, forKey: pingResult.destination)
                 }
+                self.preparingResults = false
             }
         }
     }

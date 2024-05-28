@@ -48,8 +48,8 @@ struct LocationSelectorView: View {
                     }
                     .padding()
                     .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
-                    .disabled(destinationPingService.processingFirstResult)
-                    .opacity(destinationPingService.processingFirstResult ? 0 : 1)
+                    .disabled(destinationPingService.preparingResults)
+                    .opacity(destinationPingService.preparingResults ? 0 : 1)
                 }
             }
             ScrollView {

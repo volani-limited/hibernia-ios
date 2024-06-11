@@ -17,7 +17,7 @@ struct SlideOverContainerView: View {
             ZStack {
                 TabBarContainerView(presentingLocationSelectorView: $inLeftHandPosition)
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                LocationSelectorView(presenting: $inLeftHandPosition)
+                DestinationSelectorView(presenting: $inLeftHandPosition)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: geometry.size.width)
             }

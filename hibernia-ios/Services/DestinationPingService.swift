@@ -10,8 +10,6 @@ import SwiftyPing
 
 @MainActor
 class DestinationPingService: ObservableObject {
-    //@Published var pingResults: [DestinationPingResult] Updating a single ping will require all pings to be updated (as the new ping has the potential to change the min/max and therefore all ping proportions
-    
     @Published var pingResults: [VPNDestination: Result<Double, PingError>?]
     @Published var preparingResults: Bool
     

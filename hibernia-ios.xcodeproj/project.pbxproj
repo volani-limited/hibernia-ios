@@ -41,8 +41,8 @@
 		AEC2C8B82B9B375400E210F7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8B72B9B375400E210F7 /* RootView.swift */; };
 		AEC2C8BA2B9B376800E210F7 /* SlideOverContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8B92B9B376800E210F7 /* SlideOverContainerView.swift */; };
 		AEC2C8BC2B9B378F00E210F7 /* TabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8BB2B9B378F00E210F7 /* TabBarContainerView.swift */; };
-		AEC2C8BE2B9B379900E210F7 /* LocationSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8BD2B9B379900E210F7 /* LocationSelectorView.swift */; };
-		AEC2C8C12B9B37E900E210F7 /* LocationSelectorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C02B9B37E900E210F7 /* LocationSelectorRowView.swift */; };
+		AEC2C8BE2B9B379900E210F7 /* DestinationSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8BD2B9B379900E210F7 /* DestinationSelectorView.swift */; };
+		AEC2C8C12B9B37E900E210F7 /* DestinationSelectorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C02B9B37E900E210F7 /* DestinationSelectorRowView.swift */; };
 		AEC2C8C52B9B381000E210F7 /* TabBarSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C42B9B381000E210F7 /* TabBarSelectorView.swift */; };
 		AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */; };
 		AEC2C8CA2B9B385D00E210F7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C92B9B385D00E210F7 /* MainView.swift */; };
@@ -110,8 +110,8 @@
 		AEC2C8B72B9B375400E210F7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		AEC2C8B92B9B376800E210F7 /* SlideOverContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOverContainerView.swift; sourceTree = "<group>"; };
 		AEC2C8BB2B9B378F00E210F7 /* TabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContainerView.swift; sourceTree = "<group>"; };
-		AEC2C8BD2B9B379900E210F7 /* LocationSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectorView.swift; sourceTree = "<group>"; };
-		AEC2C8C02B9B37E900E210F7 /* LocationSelectorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectorRowView.swift; sourceTree = "<group>"; };
+		AEC2C8BD2B9B379900E210F7 /* DestinationSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectorView.swift; sourceTree = "<group>"; };
+		AEC2C8C02B9B37E900E210F7 /* DestinationSelectorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectorRowView.swift; sourceTree = "<group>"; };
 		AEC2C8C42B9B381000E210F7 /* TabBarSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarSelectorView.swift; sourceTree = "<group>"; };
 		AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AEC2C8C92B9B385D00E210F7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 				AE22C7E92BEE92BA003B8ED7 /* ConnectButtonAndStatus */,
 				AEC2C8C62B9B383D00E210F7 /* Settings */,
 				AEC2C8C32B9B37FF00E210F7 /* TabBarContainer */,
-				AEC2C8BF2B9B37A000E210F7 /* LocationSelector */,
+				AEC2C8BF2B9B37A000E210F7 /* DestinationSelector */,
 				AE85D1C62AED7D410080B6EB /* Helpers */,
 			);
 			path = Views;
@@ -292,14 +292,14 @@
 			path = OpenVPNTunnel;
 			sourceTree = "<group>";
 		};
-		AEC2C8BF2B9B37A000E210F7 /* LocationSelector */ = {
+		AEC2C8BF2B9B37A000E210F7 /* DestinationSelector */ = {
 			isa = PBXGroup;
 			children = (
-				AEC2C8BD2B9B379900E210F7 /* LocationSelectorView.swift */,
-				AEC2C8C02B9B37E900E210F7 /* LocationSelectorRowView.swift */,
+				AEC2C8BD2B9B379900E210F7 /* DestinationSelectorView.swift */,
+				AEC2C8C02B9B37E900E210F7 /* DestinationSelectorRowView.swift */,
 				AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */,
 			);
-			path = LocationSelector;
+			path = DestinationSelector;
 			sourceTree = "<group>";
 		};
 		AEC2C8C22B9B37F100E210F7 /* Main */ = {
@@ -477,13 +477,13 @@
 				AEC2C8B82B9B375400E210F7 /* RootView.swift in Sources */,
 				AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */,
 				AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */,
-				AEC2C8BE2B9B379900E210F7 /* LocationSelectorView.swift in Sources */,
+				AEC2C8BE2B9B379900E210F7 /* DestinationSelectorView.swift in Sources */,
 				AEC2C8BA2B9B376800E210F7 /* SlideOverContainerView.swift in Sources */,
 				AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */,
 				AE22C7F12BF50B80003B8ED7 /* DestinationPingService.swift in Sources */,
 				AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */,
 				AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */,
-				AEC2C8C12B9B37E900E210F7 /* LocationSelectorRowView.swift in Sources */,
+				AEC2C8C12B9B37E900E210F7 /* DestinationSelectorRowView.swift in Sources */,
 				AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */,
 				AEFCD1D128EA1909008D9694 /* VPNConnectButtonView.swift in Sources */,
 				AEC2C8BC2B9B378F00E210F7 /* TabBarContainerView.swift in Sources */,

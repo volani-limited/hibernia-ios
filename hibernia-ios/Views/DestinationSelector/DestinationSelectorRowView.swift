@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftyPing
 
-struct LocationSelectorRowView: View {
+struct DestinationSelectorRowView: View {
     var destination: VPNDestination
     
     var allPings: [Double]
@@ -26,7 +26,7 @@ struct LocationSelectorRowView: View {
                     .font(.custom("Comfortaa", size: 12))
                     .foregroundStyle(Color.turquoise)
                     .shadow(color: .turquoise, radius: 2)
-                    .opacity((try? pingResult?.get()) == (allPings.min() ?? 0) ? 1 : 0) //TODO: this needs refactor
+                    .opacity((try? pingResult?.get()) == (allPings.min() ?? 0) ? 1 : 0)
                     .offset(y: 1)
             }
             

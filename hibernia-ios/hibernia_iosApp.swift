@@ -8,8 +8,6 @@
 import SwiftUI
 import Firebase
 import FirebaseAppCheck
-import Qonversion
-import RevenueCat
 
 @main
 struct hibernia_iosApp: App {

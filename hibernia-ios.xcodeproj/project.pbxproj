@@ -3,12 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE0212E629BA678300B63047 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = AE0212E529BA678300B63047 /* ReceiptParser */; };
-		AE0212E829BA678300B63047 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = AE0212E729BA678300B63047 /* RevenueCat */; };
 		AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0212EB29BA696400B63047 /* GoogleService-Info.plist */; };
 		AE1417A92C02438600D02808 /* DestinationPingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1417A82C02438600D02808 /* DestinationPingResult.swift */; };
 		AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */; };
@@ -20,6 +18,8 @@
 		AE22C7EF2BF0EBD3003B8ED7 /* SubscribeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7EE2BF0EBD3003B8ED7 /* SubscribeModalView.swift */; };
 		AE22C7F12BF50B80003B8ED7 /* DestinationPingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */; };
 		AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */; };
+		AE486FFD2C189FDB004C62A1 /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
+		AE486FFE2C189FDB004C62A1 /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
 		AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */; };
 		AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729728E21AE5001628E2 /* Assets.xcassets */; };
 		AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */; };
@@ -27,7 +27,6 @@
 		AE6C9C8C2BF530600057E088 /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = AE6C9C8B2BF530600057E088 /* TunnelKitOpenVPN */; };
 		AE6C9C8E2BF530720057E088 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = AE6C9C8D2BF530720057E088 /* TunnelKitOpenVPNAppExtension */; };
 		AE6C9CB32BF58D850057E088 /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = AE6C9CB22BF58D850057E088 /* SwiftyPing */; };
-		AE6F8AF829BFD97C00FDE418 /* Qonversion in Frameworks */ = {isa = PBXBuildFile; productRef = AE6F8AF729BFD97C00FDE418 /* Qonversion */; };
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
 		AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */; };
 		AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85D1C72AED7D830080B6EB /* SafariWebView.swift */; };
@@ -91,6 +90,8 @@
 		AE22C7EE2BF0EBD3003B8ED7 /* SubscribeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeModalView.swift; sourceTree = "<group>"; };
 		AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPingService.swift; sourceTree = "<group>"; };
 		AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePingGraphView.swift; sourceTree = "<group>"; };
+		AE486FF82C161D03004C62A1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		AE486FFC2C189FDB004C62A1 /* openssl.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2AY446Y6M9:Volani Limited"; lastKnownFileType = wrapper.xcframework; path = openssl.xcframework; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
 		AE6A729728E21AE5001628E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,11 +132,9 @@
 				AE6C9C8C2BF530600057E088 /* TunnelKitOpenVPN in Frameworks */,
 				AE6C9CB32BF58D850057E088 /* SwiftyPing in Frameworks */,
 				AEA6152B29174DF60039689C /* FirebaseFirestore in Frameworks */,
-				AE6F8AF829BFD97C00FDE418 /* Qonversion in Frameworks */,
+				AE486FFD2C189FDB004C62A1 /* openssl.xcframework in Frameworks */,
 				AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */,
-				AE0212E829BA678300B63047 /* RevenueCat in Frameworks */,
 				AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */,
-				AE0212E629BA678300B63047 /* ReceiptParser in Frameworks */,
 				AEA6152D29174DF60039689C /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +145,7 @@
 			files = (
 				AE6C9C8E2BF530720057E088 /* TunnelKitOpenVPNAppExtension in Frameworks */,
 				AEB4AC6A28EF79170076D0F6 /* NetworkExtension.framework in Frameworks */,
+				AE486FFE2C189FDB004C62A1 /* openssl.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,12 +221,14 @@
 		AE6A729228E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AE486FFC2C189FDB004C62A1 /* openssl.xcframework */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
 				AE7D104928ECDB00006BEB18 /* Products.storekit */,
 				AE6A729728E21AE5001628E2 /* Assets.xcassets */,
 				AE22C7EB2BF0EAF0003B8ED7 /* Comfortaa-VariableFont_wght.ttf */,
 				AE0EB82128F8EADA002939F9 /* Info.plist */,
 				AE0212EB29BA696400B63047 /* GoogleService-Info.plist */,
+				AE486FF82C161D03004C62A1 /* PrivacyInfo.xcprivacy */,
 				AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */,
 				AE7D104228EC9D96006BEB18 /* Helpers */,
 				AE27976D28E6586200DDACF5 /* Views */,
@@ -350,9 +352,6 @@
 				AEA6152A29174DF60039689C /* FirebaseFirestore */,
 				AEA6152C29174DF60039689C /* FirebaseFirestoreSwift */,
 				AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */,
-				AE0212E529BA678300B63047 /* ReceiptParser */,
-				AE0212E729BA678300B63047 /* RevenueCat */,
-				AE6F8AF729BFD97C00FDE418 /* Qonversion */,
 				AE6C9C8B2BF530600057E088 /* TunnelKitOpenVPN */,
 				AE6C9CB22BF58D850057E088 /* SwiftyPing */,
 			);
@@ -409,8 +408,6 @@
 			mainGroup = AE6A728728E21AE3001628E2;
 			packageReferences = (
 				AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */,
-				AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */,
 				AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */,
 				AE6C9C882BF52FDB0057E088 /* XCRemoteSwiftPackageReference "tunnelkit" */,
 			);
@@ -642,7 +639,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 49;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -682,7 +679,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 49;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -737,9 +734,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -767,9 +766,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -806,14 +807,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 		AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/samiyr/SwiftyPing.git";
@@ -826,15 +819,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:volani-limited/tunnelkit.git";
 			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/qonversion/qonversion-ios-sdk";
-			requirement = {
-				branch = develop;
+				branch = no_openssl;
 				kind = branch;
 			};
 		};
@@ -842,23 +827,13 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AE0212E529BA678300B63047 /* ReceiptParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = ReceiptParser;
-		};
-		AE0212E729BA678300B63047 /* RevenueCat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = RevenueCat;
-		};
 		AE6C9C8B2BF530600057E088 /* TunnelKitOpenVPN */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = AE6C9C882BF52FDB0057E088 /* XCRemoteSwiftPackageReference "tunnelkit" */;
@@ -873,11 +848,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */;
 			productName = SwiftyPing;
-		};
-		AE6F8AF729BFD97C00FDE418 /* Qonversion */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */;
-			productName = Qonversion;
 		};
 		AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;

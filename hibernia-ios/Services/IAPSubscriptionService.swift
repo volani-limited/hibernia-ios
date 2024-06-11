@@ -8,7 +8,6 @@
 import Foundation
 import StoreKit
 import Combine
-import RevenueCat
 
 typealias ProductIdentifier = String
 

@@ -32,7 +32,9 @@ struct LocationSelectorItemView: View {
                 } label: {
                     Image(systemName: "ellipsis")
                         .foregroundStyle(Color.titleText)
-                }.buttonStyle(NeumorphicButtonStyle(shape: Circle()))
+                        .padding()
+                }
+                .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
             }
             .padding(8)
             .background(

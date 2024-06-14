@@ -30,13 +30,13 @@ struct NeumorphicShape<S: Shape>: View {
 
 struct NeumorphicButtonStyle<S: Shape>: ButtonStyle {
     var shape: S
+    var isHighlighted: Bool = false
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding()
             .background(
                 Group {
-                    if configuration.isPressed {
+                    if configuration.isPressed || isHighlighted {
                         shape.fill(
                             Color.background
                                 .shadow(.inner(color: Color.vShadow, radius: 3, x: 3, y: 3))

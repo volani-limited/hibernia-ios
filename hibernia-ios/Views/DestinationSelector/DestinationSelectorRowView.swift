@@ -63,7 +63,6 @@ struct DestinationSelectorRowView: View {
                 .shadow(color: isHighlighted ? Color.turquoise : Color.text, radius: 4)
                 .padding(5)
                 .background(NeumorphicShape(isHighlighted: isHighlighted, shape: Circle()))
-            
         }
         .padding()
         .background(NeumorphicShape(isHighlighted: isHighlighted, shape: RoundedRectangle(cornerRadius: 15)))

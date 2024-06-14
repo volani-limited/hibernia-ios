@@ -18,8 +18,9 @@
 		AE22C7EF2BF0EBD3003B8ED7 /* SubscribeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7EE2BF0EBD3003B8ED7 /* SubscribeModalView.swift */; };
 		AE22C7F12BF50B80003B8ED7 /* DestinationPingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */; };
 		AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */; };
-		AE486FFD2C189FDB004C62A1 /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
-		AE486FFE2C189FDB004C62A1 /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
+		AE4870002C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */; };
+		AE4870022C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */; };
+		AE4870042C18ABAB004C62A1 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */; };
 		AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */; };
 		AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729728E21AE5001628E2 /* Assets.xcassets */; };
 		AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */; };
@@ -29,6 +30,11 @@
 		AE6C9CB32BF58D850057E088 /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = AE6C9CB22BF58D850057E088 /* SwiftyPing */; };
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
 		AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */; };
+		AE8051BB2C18B231002DF24A /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
+		AE8051BC2C18B231002DF24A /* openssl.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE8051BE2C18B31C002DF24A /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
+		AE8051BF2C18B31C002DF24A /* openssl.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE8051C92C1C9C70002DF24A /* SettingsVPNStatusCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */; };
 		AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85D1C72AED7D830080B6EB /* SafariWebView.swift */; };
 		AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */; };
 		AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */; };
@@ -64,6 +70,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		AE8051BD2C18B231002DF24A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AE8051BC2C18B231002DF24A /* openssl.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE8051C02C18B31D002DF24A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AE8051BF2C18B31C002DF24A /* openssl.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEB4AC4F28EF72540076D0F6 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,6 +120,9 @@
 		AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePingGraphView.swift; sourceTree = "<group>"; };
 		AE486FF82C161D03004C62A1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AE486FFC2C189FDB004C62A1 /* openssl.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2AY446Y6M9:Volani Limited"; lastKnownFileType = wrapper.xcframework; path = openssl.xcframework; sourceTree = "<group>"; };
+		AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubscriptionCardView.swift; sourceTree = "<group>"; };
+		AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVPNSettingsCardView.swift; sourceTree = "<group>"; };
+		AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
 		AE6A729728E21AE5001628E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +132,7 @@
 		AE7D104528ECA7CC006BEB18 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPSubscriptionService.swift; sourceTree = "<group>"; };
 		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
+		AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVPNStatusCardView.swift; sourceTree = "<group>"; };
 		AE85D1C72AED7D830080B6EB /* SafariWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
 		AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAttestAppCheckProviderFactory.swift; sourceTree = "<group>"; };
 		AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OpenVPNTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +164,7 @@
 				AE6C9C8C2BF530600057E088 /* TunnelKitOpenVPN in Frameworks */,
 				AE6C9CB32BF58D850057E088 /* SwiftyPing in Frameworks */,
 				AEA6152B29174DF60039689C /* FirebaseFirestore in Frameworks */,
-				AE486FFD2C189FDB004C62A1 /* openssl.xcframework in Frameworks */,
+				AE8051BB2C18B231002DF24A /* openssl.xcframework in Frameworks */,
 				AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */,
 				AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */,
 				AEA6152D29174DF60039689C /* FirebaseFirestoreSwift in Frameworks */,
@@ -145,7 +177,7 @@
 			files = (
 				AE6C9C8E2BF530720057E088 /* TunnelKitOpenVPNAppExtension in Frameworks */,
 				AEB4AC6A28EF79170076D0F6 /* NetworkExtension.framework in Frameworks */,
-				AE486FFE2C189FDB004C62A1 /* openssl.xcframework in Frameworks */,
+				AE8051BE2C18B31C002DF24A /* openssl.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +356,10 @@
 			isa = PBXGroup;
 			children = (
 				AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */,
+				AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */,
+				AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */,
+				AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */,
+				AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -340,6 +376,7 @@
 				AE6A728E28E21AE3001628E2 /* Resources */,
 				AEB4AC4F28EF72540076D0F6 /* Embed Foundation Extensions */,
 				AE22C7EA2BEE9D01003B8ED7 /* ShellScript */,
+				AE8051BD2C18B231002DF24A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -366,6 +403,7 @@
 				AEB4AC6528EF79170076D0F6 /* Sources */,
 				AEB4AC6628EF79170076D0F6 /* Frameworks */,
 				AEB4AC6728EF79170076D0F6 /* Resources */,
+				AE8051C02C18B31D002DF24A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -469,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEC2C8CC2B9B390600E210F7 /* LocationSelectorItemView.swift in Sources */,
+				AE4870022C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift in Sources */,
 				AE22C7E62BEE91FC003B8ED7 /* ArcProgressView.swift in Sources */,
 				AEC2C8CA2B9B385D00E210F7 /* MainView.swift in Sources */,
 				AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */,
@@ -486,13 +525,16 @@
 				AEC2C8C12B9B37E900E210F7 /* DestinationSelectorRowView.swift in Sources */,
 				AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */,
 				AEFCD1D128EA1909008D9694 /* VPNConnectButtonView.swift in Sources */,
+				AE4870042C18ABAB004C62A1 /* AcknowledgementsView.swift in Sources */,
 				AEC2C8BC2B9B378F00E210F7 /* TabBarContainerView.swift in Sources */,
 				AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */,
 				AEC2C8C52B9B381000E210F7 /* TabBarSelectorView.swift in Sources */,
 				AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */,
+				AE4870002C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift in Sources */,
 				AE22C7E82BEE9294003B8ED7 /* VPNControlStatusContainerView.swift in Sources */,
 				AE1417A92C02438600D02808 /* DestinationPingResult.swift in Sources */,
 				AE22C7E22BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift in Sources */,
+				AE8051C92C1C9C70002DF24A /* SettingsVPNStatusCardView.swift in Sources */,
 				AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -639,7 +681,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 49;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -679,7 +721,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 49;
+				CURRENT_PROJECT_VERSION = 50;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -723,7 +765,7 @@
 				INFOPLIST_FILE = OpenVPNTunnel/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OpenVPNTunnel;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -755,7 +797,7 @@
 				INFOPLIST_FILE = OpenVPNTunnel/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OpenVPNTunnel;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

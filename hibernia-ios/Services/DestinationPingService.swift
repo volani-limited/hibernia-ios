@@ -33,9 +33,10 @@ class DestinationPingService: ObservableObject {
             await withTaskGroup(of: (destination: VPNDestination, result: Result<Double, PingError>).self) { group in
                 for destination in pingResults.keys {
                     group.addTask {
-                        let hostname = destination.rawValue + "-1.vpn.hiberniavpn.com"
+                        let hostname = destination.hostname
+
                         do {
-                            let averagePing = try await self.getAveragePing(hostname: hostname, interval: 1, timeout: 2, attempts: 5)
+                            let averagePing = try await Self.getAveragePing(hostname: hostname)
                             return (destination: destination, .success(averagePing))
                         } catch let pingError as PingError {
                             return (destination: destination, .failure(pingError))
@@ -52,21 +53,27 @@ class DestinationPingService: ObservableObject {
         }
     }
     
-    private func getAveragePing(hostname:  String, interval: Double, timeout: Double, attempts: Int) async throws -> Double {
-        let manager = try SwiftyPing(host: hostname, configuration: PingConfiguration(interval: interval, with: timeout), queue: DispatchQueue.global())
+    public static func ping(hostname:  String, interval: Double, timeout: Double, attempts: Int) async throws -> PingResult {
+        let manager = try SwiftyPing(host: hostname, configuration: PingConfiguration(interval: interval, with: timeout), queue: DispatchQueue.global(qos: .userInteractive))
         
         manager.targetCount = attempts
             
         return try await withCheckedThrowingContinuation { continuation in
             manager.finished = { pingResult in
-                guard let roundtrip = pingResult.roundtrip else {
-                    continuation.resume(throwing: PingError.requestError)
-                    return
-                }
-                continuation.resume(returning: roundtrip.average)
+                continuation.resume(returning: pingResult)
             }
             try! manager.startPinging()
         }
+    }
+    
+    private static func getAveragePing(hostname:  String) async throws -> Double {
+        let pingResult = try await Self.ping(hostname: hostname, interval: 1, timeout: 2, attempts: 5)
+        
+        guard let roundtrip = pingResult.roundtrip else {
+            throw PingError.requestError
+        }
+        
+        return roundtrip.average
     }
 }
 

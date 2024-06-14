@@ -48,6 +48,7 @@ struct SubscribeModalView: View {
                         } label: {
                             Image(systemName: "xmark")
                                 .foregroundStyle(Color.text)
+                                .padding()
                         }
                         .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
                         .padding()
@@ -93,6 +94,7 @@ struct SubscribeModalView: View {
                                         ProgressView()
                                     }
                                 }
+                                .padding()
                             }
                             .disabled(processingSubscribe)
                             .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25)))

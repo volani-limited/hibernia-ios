@@ -31,6 +31,7 @@ struct DestinationSelectorView: View {
                     } label: {
                         Image(systemName: "arrow.backward")
                             .foregroundColor(.text)
+                            .padding()
                     }
                     .padding()
                     .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
@@ -45,17 +46,18 @@ struct DestinationSelectorView: View {
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                             .foregroundColor(.text)
+                            .padding()
                     }
                     .padding()
                     .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
-                    .disabled(destinationPingService.preparingResults)
-                    .opacity(destinationPingService.preparingResults ? 0 : 1)
+                    .disabled(destinationPingService.preparingResults || vpnService.status != .disconnected)
+                    .opacity(destinationPingService.preparingResults || vpnService.status != .disconnected ? 0 : 1)
                 }
             }
             ScrollView {
                 VStack(alignment: .center) {
                     ForEach(VPNDestination.allCases, id: \.self) { destination in
-                        LocationSelectorRowView(destination: destination, allPings: destinationPingService.pingResults.values.compactMap { try? $0.get() }, pingResult: destinationPingService.pingResults[destination]!, isHighlighted: vpnService.destination == destination)
+                        DestinationSelectorRowView(destination: destination, allPings: destinationPingService.pingResults.values.compactMap { try? $0?.get() }, pingResult: destinationPingService.pingResults[destination]!, isHighlighted: vpnService.destination == destination)
                             .onTapGesture {
                                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
                                 feedbackGenerator.impactOccurred()
@@ -63,8 +65,14 @@ struct DestinationSelectorView: View {
                             }
                     }
                 }
+                .disabled(vpnService.status != .disconnected)
                 .padding()
                 .padding(.top, 10)
+                if vpnService.status != .disconnected {
+                    Text("Please disconnect before changing locations")
+                        .font(.custom("Comfortaa", size: 15))
+                        .foregroundStyle(Color.text)
+                }
             }
         }
         .onAppear {

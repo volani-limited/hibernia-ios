@@ -16,6 +16,7 @@ import NetworkExtension
 
 import FirebaseAppCheck
 
+@MainActor
 class VPNService: ObservableObject {
     static let tunnelIdentifier = "uk.co.volani.hibernia-ios.OpenVPNTunnel" // Define identifiers
     static let appGroup = "group.uk.co.volani.hibernia-ios"
@@ -27,6 +28,8 @@ class VPNService: ObservableObject {
     @Published var keepAlive: Bool
     @Published var killSwitch: Bool
     @Published var connectedTime: String
+    
+    @Published var vpnIP: String?
     
     var timer: SimpleTimerService
     
@@ -119,6 +122,8 @@ class VPNService: ObservableObject {
             }
             
             try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: configurationExtras, after: .seconds(1))
+
+            self.vpnIP = providerConfiguration.configuration.ipv4?.address
             
             self.vpnServiceError = nil // set error to nill if connection successful
         } catch {
@@ -168,6 +173,11 @@ class VPNService: ObservableObject {
     @objc private func VPNStatusDidChange(notification: Notification) { // start and stop timer for status change
         switch notification.vpnStatus {
         case .connected:
+            
+            Task {
+                self.vpnIP = try await DestinationPingService.ping(hostname: destination.hostname, interval: 1, timeout: 5, attempts: 1).responses.first(where: {$0.ipAddress != nil})?.ipAddress
+            }
+            
             status = .connected
         case .connecting:
             status = .connecting
@@ -225,6 +235,27 @@ enum VPNDestination: String, CaseIterable { // Define destinations TODO: Update 
             return "🇩🇪 Frankfurt"
         case .mum:
             return "🇮🇳 Mumbai"
+        }
+    }
+    
+    var hostname: String {
+        switch self {
+        case .lon:
+            return "lon-1.vpn.hiberniavpn.com"
+        case .sgy:
+            return "sgy-1.vpn.hiberniavpn.com"
+        case .nyc:
+            return "nyc-1.vpn.hiberniavpn.com"
+        case .tyo:
+            return "tyo-1.vpn.hiberniavpn.com"
+        case .syd:
+            return "syd-1.vpn.hiberniavpn.com"
+        case .dal:
+            return "dal-1.vpn.hiberniavpn.com"
+        case .fra:
+            return "fra-1.vpn.hiberniavpn.com"
+        case .mum:
+            return "mum-1.vpn.hiberniavpn.com"
         }
     }
 }

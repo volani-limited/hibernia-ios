@@ -31,7 +31,7 @@ struct SubscribeModalView: View {
                             try await subscriptionService.loadSubscriptionProduct()
                             processingLoadSubscriptionProduct = false
                         } catch {
-                            print(error.localizedDescription) // TODO: Store error and present details contextually?
+                            print(error.localizedDescription) // TODO: Store error and present details contextually? Will be updated alongside UI and IAP service
                             presentingProductLoadError = true
                         }
                     }

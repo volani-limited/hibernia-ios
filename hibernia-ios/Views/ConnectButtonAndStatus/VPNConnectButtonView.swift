@@ -20,6 +20,8 @@ struct VPNConnectButtonView: View {
     
     @State private var vpnServiceTask: Task<Void, Error>?
     
+    @State private var presentingVPNConnectionError: Bool = false
+
     var body: some View {
         Button {
             let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
@@ -31,7 +33,12 @@ struct VPNConnectButtonView: View {
                 switch vpnService.status { // Define button action based on VPN status
                 case .disconnected:
                     vpnServiceTask = Task {
-                        await vpnService.connect(transactionID: subscriptionService.originalTransactionID!)
+                        do {
+                            try await vpnService.connect(transactionID: subscriptionService.originalTransactionID!)
+                        } catch {
+                            print("Error connecting to VPN: \(error.localizedDescription)")
+                            presentingVPNConnectionError = true
+                        }
                     }
                     
                 case .connected:
@@ -51,11 +58,14 @@ struct VPNConnectButtonView: View {
         } label: {
             Image(systemName: "power")
                 .font(.system(size: 55, weight: .heavy))
-                .foregroundColor(vpnService.status == .connected ? .white : .turquoise)
-                .shadow(color: vpnService.status == .connected ? .white : .turquoise, radius: 15)
+                .foregroundColor(vpnService.status == .connected ? Color.lightShadow : .turquoise)
+                .shadow(color: vpnService.status == .connected ? Color.lightShadow : .turquoise, radius: 15)
                 .padding(30)
         }
         .buttonStyle(NeumorphicMainButtonStyle(isProcessing: (vpnService.status != .connected) == (vpnService.status != .disconnected), isDepressed: vpnService.status == .connected))
         .disabled(vpnService.status == .disconnecting)
+        .alert("Could not connect to VPN. Check your connection.", isPresented: $presentingVPNConnectionError) {
+            Button("Ok") { }
+        }
     }
 }

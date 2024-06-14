@@ -23,7 +23,6 @@ class VPNService: ObservableObject {
     
     @Published var status: HiberniaVPNStatus // Define published varibles
     @Published var destination: VPNDestination
-    @Published var vpnServiceError: Error?
     
     @Published var keepAlive: Bool
     @Published var killSwitch: Bool
@@ -104,7 +103,7 @@ class VPNService: ObservableObject {
     }
     
     @MainActor
-    func connect(transactionID: UInt64) async { // Connect by first retreiving configuration, creating provider configuration and connecting to the VPN
+    func connect(transactionID: UInt64) async throws { // Connect by first retreiving configuration, creating provider configuration and connecting to the VPN
         do {
             self.status = .requestingConfiguration
 
@@ -124,15 +123,13 @@ class VPNService: ObservableObject {
             try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: configurationExtras, after: .seconds(1))
 
             self.vpnIP = providerConfiguration.configuration.ipv4?.address
-            
-            self.vpnServiceError = nil // set error to nill if connection successful
         } catch {
             if let urlError = error as? URLError, urlError.code == URLError.Code.cancelled {
                 return // Hide error if cancelled
             }
 
-            self.vpnServiceError = error
             self.status = .disconnected
+            throw error
         }
     }
     

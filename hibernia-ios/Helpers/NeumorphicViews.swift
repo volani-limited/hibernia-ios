@@ -16,14 +16,14 @@ struct NeumorphicShape<S: Shape>: View {
             shape
                 .fill(
                     Color.background
-                        .shadow(.inner(color: Color.vShadow, radius: 3, x: 3, y: 3))
-                        .shadow(.inner(color: .white, radius: 3, x: -3, y: -3))
+                        .shadow(.inner(color: Color.darkShadow, radius: 3, x: 3, y: 3))
+                        .shadow(.inner(color: Color.lightShadow, radius: 3, x: -3, y: -3))
                 )
         } else {
             shape
                 .fill(Color.background)
-                .shadow(color: Color.vShadow, radius: 10, x: 10, y: 10)
-                .shadow(color: Color.white, radius: 10, x: -5, y: -5)
+                .shadow(color: Color.darkShadow, radius: 10, x: 10, y: 10)
+                .shadow(color: Color.lightShadow, radius: 10, x: -5, y: -5)
         }
     }
 }
@@ -39,14 +39,14 @@ struct NeumorphicButtonStyle<S: Shape>: ButtonStyle {
                     if configuration.isPressed || isHighlighted {
                         shape.fill(
                             Color.background
-                                .shadow(.inner(color: Color.vShadow, radius: 3, x: 3, y: 3))
-                                .shadow(.inner(color: .white, radius: 3, x: -3, y: -3))
+                                .shadow(.inner(color: Color.darkShadow, radius: 3, x: 3, y: 3))
+                                .shadow(.inner(color: Color.lightShadow, radius: 3, x: -3, y: -3))
                         )
                     } else {
                         shape
                             .fill(Color.background)
-                            .shadow(color: Color.vShadow, radius: 10, x: 10, y: 10)
-                            .shadow(color: Color.white, radius: 10, x: -5, y: -5)
+                            .shadow(color: Color.darkShadow, radius: 10, x: 10, y: 10)
+                            .shadow(color: Color.lightShadow, radius: 10, x: -5, y: -5)
                     }
                 }
             )
@@ -84,8 +84,8 @@ struct NeumorphicMainButtonBackground<S: Shape>: View {
                 shape
                     .fill(LinearGradient(Color.vBlue, Color.turquoise))
                     .overlay(shape.stroke(LinearGradient(Color.turquoise, Color.vBlue), lineWidth: 5).shadow(color: Color.turquoise, radius: 2))
-                    .shadow(color: Color.white, radius: 10, x: 5, y: 5)
-                    .shadow(color: Color.vShadow, radius: 10, x: -5, y: -5)
+                    .shadow(color: Color.lightShadow, radius: 10, x: 5, y: 5)
+                    .shadow(color: Color.darkShadow, radius: 10, x: -5, y: -5)
                     .onAppear {
                         isAnimating = false
                     }
@@ -101,16 +101,16 @@ struct NeumorphicMainButtonBackground<S: Shape>: View {
                                 isAnimating = true
                             }
                     )
-                    .shadow(color: Color.white, radius: 10, x: -10, y: -10)
-                    .shadow(color: Color.vShadow, radius: 10, x: 10, y: 10)
+                    .shadow(color: Color.lightShadow, radius: 10, x: -10, y: -10)
+                    .shadow(color: Color.darkShadow, radius: 10, x: 10, y: 10)
                     .opacity(0.7)
             } else {
                 shape
                     .fill(Color.background)
                     .overlay(shape.stroke(LinearGradient(Color.turquoise, Color.vBlue), lineWidth: 5)
                         .shadow(color: Color.turquoise, radius: 1))
-                    .shadow(color: Color.white, radius: 10, x: -10, y: -10)
-                    .shadow(color: Color.vShadow, radius: 10, x: 10, y: 10)
+                    .shadow(color: Color.lightShadow, radius: 10, x: -10, y: -10)
+                    .shadow(color: Color.darkShadow, radius: 10, x: 10, y: 10)
                     .onAppear {
                         isAnimating = false
                     }

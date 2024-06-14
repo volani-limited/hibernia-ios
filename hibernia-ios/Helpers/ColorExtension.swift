@@ -16,7 +16,8 @@ extension Color {
     static let text = Color("text")
     static let titleText = Color("titleText")
     static let turquoise = Color("turquoise")
-    static let vShadow = Color("shadow")
+    static let darkShadow = Color("darkShadow")
+    static let lightShadow = Color("lightShadow")
 }
 
 extension LinearGradient {

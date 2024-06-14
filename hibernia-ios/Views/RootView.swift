@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RootView: View {
+    @EnvironmentObject var vpnService: VPNService
+    
     @State var presentingSubscriptionModal: Bool = false
     
     var body: some View {
@@ -15,7 +17,7 @@ struct RootView: View {
             .background(Color.background.edgesIgnoringSafeArea(.all))
             .onAppear {
                 Task {
-                   // await vpnService.prepare() //TODO: Confirm correct placment of prepare()
+                    await vpnService.prepare()
                 }
             }
     }

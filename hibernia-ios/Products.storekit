@@ -99,9 +99,9 @@
             },
             {
               "eligibility" : [
-                "expired",
+                "existing",
                 "new",
-                "existing"
+                "expired"
               ],
               "internalID" : "71726F31",
               "isStackable" : false,
@@ -161,8 +161,8 @@
             {
               "displayPrice" : "1.19",
               "eligibility" : [
-                "new",
-                "expired"
+                "expired",
+                "new"
               ],
               "internalID" : "E21E0D1A",
               "isStackable" : true,

@@ -5,8 +5,6 @@
 //  Created by Oliver Bevan on 08/03/2024.
 //
 
-// Would like to use ViewBuilder to create generic slideovercontainer but need to find a workaround as child views need to have access to inLeftHandPosition to dismiss themselves/return to other view
-
 import SwiftUI
 
 struct SlideOverContainerView: View {

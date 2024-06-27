@@ -16,26 +16,24 @@ public enum StoreError: Error {
 }
 
 class IAPSubscriptionService: NSObject, ObservableObject {
-    static let subscriptionProductID = "hp1m" // Define standard vpn IAP subscription product Id
+    static let subscriptionProductIds = ["hp1m", "hpf1m"] // Define standard vpn IAP subscription product Id
 
-    @Published var processing: Bool = false // Setup published varibles and error retry handler
-    @Published var iapSubscriptionServiceError: Error?
+    @Published var processing: Bool // Setup published varibles and error retry handler
     
-    @Published var originalTransactionID: UInt64?
-    @Published var subscriptionProduct: Product?
+    @Published var subscriptionTransactionId: UInt64?
+    @Published var subscriptionProducts: [Product]
     
-    private var updateListenerTask: Task<Void, Error>? = nil
+    @Published var subscribedProducts: [Product]
+    
+    private var updateListenerTask: Task<Void, Error>?
     private var subscriptionStatusSubscription: AnyCancellable?
     
     override init() {
-        let defaults = UserDefaults.standard
-        originalTransactionID = UInt64(defaults.integer(forKey: "transactionID")) // Retrieve original subscriber/transaction ID if cached
+        subscriptionProducts = [Product]()
+        
+        processing = false
         
         super.init()
-        
-        subscriptionStatusSubscription = $originalTransactionID.sink { value in
-            defaults.set(value, forKey: "transactionID") // Cache original transaction ID when modified
-        }
         
         updateListenerTask = listenForTransactions()
         
@@ -53,8 +51,12 @@ class IAPSubscriptionService: NSObject, ObservableObject {
     
     
     @MainActor
-    func loadSubscriptionProduct() async throws {
-        self.subscriptionProduct = try await getProduct(productIdentifier: IAPSubscriptionService.subscriptionProductID)
+    func loadSubscriptionProducts() async throws {
+        self.subscriptionProducts = try await Product.products(for: IAPSubscriptionService.subscriptionProductIds)
+        
+        if subscriptionProducts.count != 2 {
+            throw.IAPSubscriptionServiceError.couldNotRetrieveProducts
+        }
     }
     
     @MainActor
@@ -64,18 +66,39 @@ class IAPSubscriptionService: NSObject, ObservableObject {
     }
     
     @MainActor
-    func getProduct(productIdentifier: ProductIdentifier) async throws -> Product? { // Retreive product
-        let products = try await Product.products(for: Array(arrayLiteral: productIdentifier))
+    func updateSubscriptionStatus() async { // TODO: Check offline support
+        processing = true
         
-        if products.isEmpty {
-            throw IAPSubscriptionServiceError.couldNotRetrieveProducts
+        for await result in Transaction.currentEntitlements {
+            do {
+                let transaction = try checkVerified(result)
+                
+                
+                if let subscription = subscriptionProducts.first(where: { $0.id == transaction.productID }) {
+                    subscribedProducts.append(subscription)
+                }
+                
+            } catch {
+                print("Could not verify subscription")
+            }
         }
         
-        return products[0]
-    }
-    
-    @MainActor
-    func updateSubscriptionStatus() async { // TODO: Check offline support
+        let subscriptionInfos = subscribedProducts.compactMap { return $0.subscription }
+        let highestTierInfo = subscriptionInfos.max(by: { $0.groupLevel > $1.groupLevel })
+        
+        let statuses = try await highestTierInfo?.status
+        
+        for status in statuses? {
+            switch status.state {
+            case .expired, .revoked:
+                continue
+                default:
+                status.
+            }
+        }
+        
+        
+        
         processing = true
         let result = await Transaction.currentEntitlement(for: IAPSubscriptionService.subscriptionProductID) // Get and validate current entitlement
         
@@ -100,8 +123,8 @@ class IAPSubscriptionService: NSObject, ObservableObject {
     }
     
     @MainActor
-    func subscribe() async throws {
-        let result = try await subscriptionProduct?.purchase() // Purchase product and handle result
+    func subscribe(to product: Product) async throws {
+        let result = try await product.purchase() // Purchase product and handle result
         
         switch result {
         case .success(let verificationResult):

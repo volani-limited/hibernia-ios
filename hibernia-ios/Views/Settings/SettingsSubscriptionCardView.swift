@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsSubscriptionCardView: View {
-    @EnvironmentObject var subscriptionService: IAPSubscriptionService
+    @EnvironmentObject var subscriptionService: RevenueCatSubscriptionService
     
     @State private var presentingSubscribeModal: Bool = false
     
@@ -26,7 +26,7 @@ struct SettingsSubscriptionCardView: View {
                 
                 Spacer()
                 
-                if subscriptionService.originalTransactionID == nil {
+                if !subscriptionService.entitledToPremium {
                     Image(systemName: "circle.fill").foregroundStyle(.red)
                     Text("Not subscribed")
                         .font(.custom("Comfortaa", size: 20))
@@ -39,7 +39,7 @@ struct SettingsSubscriptionCardView: View {
                 }
             }
             
-            if subscriptionService.originalTransactionID == nil {
+            if !subscriptionService.entitledToPremium {
                 HStack {
                     Spacer()
                     

@@ -12,7 +12,7 @@ import FirebaseAppCheck
 @main
 struct hibernia_iosApp: App {
     var vpnService: VPNService
-    var subscriptionService: IAPSubscriptionService
+    var subscriptionService: RevenueCatSubscriptionService
     
     init() {
         if ProcessInfo.processInfo.isiOSAppOnMac { // Configure Firebase AppCheck
@@ -26,7 +26,7 @@ struct hibernia_iosApp: App {
         FirebaseApp.configure()
         
         vpnService = VPNService() // Instantiate local services
-        subscriptionService = IAPSubscriptionService()
+        subscriptionService = RevenueCatSubscriptionService()
     }
 
     var body: some Scene {

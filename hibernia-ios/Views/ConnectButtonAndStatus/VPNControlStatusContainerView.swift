@@ -9,7 +9,6 @@ import SwiftUI
 
 struct VPNControlStatusContainerView: View {
     @EnvironmentObject var vpnService: VPNService
-    @EnvironmentObject var subscriptionService: IAPSubscriptionService
     
     @Binding var presentingSubscribeModalView: Bool
     

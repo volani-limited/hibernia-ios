@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import RevenueCat
 
 struct SubscribeModalView: View {
-    @EnvironmentObject var subscriptionService: IAPSubscriptionService
+    @EnvironmentObject var subscriptionService: RevenueCatSubscriptionService
     
     @Environment(\.dismiss) var dismiss
+    
+    @State private var offering: Offering?
+    
+    @State private var selectedPackageIndex: Int = 0
     
     @State private var processingLoadSubscriptionProduct: Bool = true
     @State private var presentingProductLoadError: Bool = false
@@ -28,7 +33,7 @@ struct SubscribeModalView: View {
                 ProgressView()
                     .task {
                         do {
-                            try await subscriptionService.loadSubscriptionProduct()
+                            offering = try await subscriptionService.getOfferings().current
                             processingLoadSubscriptionProduct = false
                         } catch {
                             print(error.localizedDescription) // TODO: Store error and present details contextually? Will be updated alongside UI and IAP service
@@ -57,12 +62,12 @@ struct SubscribeModalView: View {
                     }
                     
                     
-                    Text("The world's simplest VPN\njust " + subscriptionService.subscriptionProduct!.displayPrice + " per month")
+                    Text("The world's simplest VPN\nfrom just " + offering!.availablePackages[0].localizedPriceString + " per month")
                         .bold()
                         .font(.title)
                         .foregroundColor(.turquoise)
                         .padding(.leading)
-                    Text("That's " + subscriptionService.subscriptionProduct!.displayPrice + " each month after a 3-day free trial. Cancel anytime.")
+                    Text("That's " + offering!.availablePackages[0].localizedPriceString + " each month after a 3-day free trial. Cancel anytime.")
                         .foregroundColor(.text)
                         .padding(.leading)
 
@@ -71,66 +76,83 @@ struct SubscribeModalView: View {
                     HStack {
                         Spacer()
                         
-                        VStack(spacing: 20) {
-                            Button {
-                                processingSubscribe = true
-                                Task {
-                                    do {
-                                        try await subscriptionService.subscribe()
-                                        dismiss()
-                                    } catch {
-                                        print(error.localizedDescription)
-                                        processingSubscribe = false
-                                        presentingSubscribeError = true
-                                    }
+                        VStack {
+                            VStack {
+                                ForEach((0...offering!.availablePackages.count - 1), id: \.self) { index in
+                                    Button {
+                                        self.selectedPackageIndex = index
+                                    } label: {
+                                        Text(offering!.availablePackages[index].storeProduct.localizedTitle + " for " + offering!.availablePackages[index].localizedPriceString)
+                                            .bold()
+                                            .font(.custom("Comfortaa", size: 18))
+                                            .foregroundStyle(Color.text)
+                                            .padding()
+                                    }.buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25), isHighlighted: index == selectedPackageIndex))
                                 }
-                            } label: {
-                                ZStack {
-                                    Text("Subscribe now for " + subscriptionService.subscriptionProduct!.displayPrice)
-                                        .bold()
-                                        .font(.custom("Comfortaa", size: 20))
-                                        .foregroundColor(.vBlue)
-                                    if processingSubscribe {
-                                        ProgressView()
-                                    }
-                                }
-                                .padding()
-                            }
-                            .disabled(processingSubscribe)
-                            .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25)))
-                            .alert("Could not load purchase, check your connection.", isPresented: $presentingSubscribeError) {
-                                Button("Ok") { }
                             }
                             
-                            HStack(spacing: 12) {
+                            
+                            VStack(spacing: 20) {
                                 Button {
+                                    processingSubscribe = true
                                     Task {
-                                        processingRestore = true
                                         do {
-                                            try await subscriptionService.restorePurchases()
+                                            try await subscriptionService.purchase(package: offering!.availablePackages[selectedPackageIndex])
                                             dismiss()
                                         } catch {
                                             print(error.localizedDescription)
-                                            processingRestore = false
-                                            presentingRestoreError = true
+                                            processingSubscribe = false
+                                            presentingSubscribeError = true
                                         }
                                     }
                                 } label: {
-                                    Text("Restore purchases")
-                                        .font(.caption)
-                                        .foregroundColor(.text)
+                                    ZStack {
+                                        Text("Subscribe now for " + offering!.availablePackages[selectedPackageIndex].localizedPriceString)
+                                            .bold()
+                                            .font(.custom("Comfortaa", size: 20))
+                                            .foregroundColor(.vBlue)
+                                        if processingSubscribe {
+                                            ProgressView()
+                                        }
+                                    }
+                                    .padding()
                                 }
-                                .alert("Could not restore purchases, check your connection.", isPresented: $presentingSubscribeError) {
+                                .disabled(processingSubscribe)
+                                .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25)))
+                                .alert("Could not load purchase, check your connection.", isPresented: $presentingSubscribeError) {
                                     Button("Ok") { }
                                 }
                                 
-                                Text("•")
-                                    .font(.caption)
-                                    .foregroundColor(.text)
-                                
-                                Link("Terms & privacy", destination: URL(string: "https://hiberniavpn.com#legal")!) // Present legal information before subscribe action
-                                    .font(.caption)
-                                    .foregroundColor(.text)
+                                HStack(spacing: 12) {
+                                    Button {
+                                        Task {
+                                            processingRestore = true
+                                            do {
+                                                try await subscriptionService.restorePurchases()
+                                                dismiss()
+                                            } catch {
+                                                print(error.localizedDescription)
+                                                processingRestore = false
+                                                presentingRestoreError = true
+                                            }
+                                        }
+                                    } label: {
+                                        Text("Restore purchases")
+                                            .font(.caption)
+                                            .foregroundColor(.text)
+                                    }
+                                    .alert("Could not restore purchases, check your connection.", isPresented: $presentingSubscribeError) {
+                                        Button("Ok") { }
+                                    }
+                                    
+                                    Text("•")
+                                        .font(.caption)
+                                        .foregroundColor(.text)
+                                    
+                                    Link("Terms & privacy", destination: URL(string: "https://hiberniavpn.com#legal")!) // Present legal information before subscribe action
+                                        .font(.caption)
+                                        .foregroundColor(.text)
+                                }
                             }
                         }
                         Spacer()

@@ -14,7 +14,7 @@ import TunnelKitOpenVPN
 
 struct VPNConnectButtonView: View {
     @EnvironmentObject var vpnService: VPNService
-    @EnvironmentObject var subscriptionService: IAPSubscriptionService
+    @EnvironmentObject var subscriptionService: RevenueCatSubscriptionService
 
     @Binding var presentingSubscribeModalView: Bool
     
@@ -27,14 +27,14 @@ struct VPNConnectButtonView: View {
             let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
             feedbackGenerator.impactOccurred()
             
-            if subscriptionService.originalTransactionID == nil {
+            if subscriptionService.entitledToPremium == false {
                 presentingSubscribeModalView = true
             } else {
                 switch vpnService.status { // Define button action based on VPN status
                 case .disconnected:
                     vpnServiceTask = Task {
                         do {
-                            try await vpnService.connect(transactionID: subscriptionService.originalTransactionID!)
+                            try await vpnService.connect(transactionID: UInt64()) //TODO: fix
                         } catch {
                             print("Error connecting to VPN: \(error.localizedDescription)")
                             presentingVPNConnectionError = true

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var subscriptionService: IAPSubscriptionService
     @EnvironmentObject var vpnService: VPNService
     
     @State private var presentingAcknowledgementsView: Bool = false

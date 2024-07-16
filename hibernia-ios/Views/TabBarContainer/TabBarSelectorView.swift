@@ -21,6 +21,7 @@ struct TabBarSelectorView: View {
                     .foregroundStyle(inLeftHandPosition ? Color.text : Color.turquoise)
                     .shadow(color: inLeftHandPosition ? Color.text : Color.turquoise, radius: 5, x: 0, y: 0)
                     .scaleEffect(1.6)
+                    .hoverEffect()
             }
             .buttonStyle(ScaleEffectButtonStyle())
             Button {
@@ -32,6 +33,7 @@ struct TabBarSelectorView: View {
                     .foregroundStyle(!inLeftHandPosition ? Color.text : Color.turquoise)
                     .shadow(color: !inLeftHandPosition ? Color.text : Color.turquoise, radius: 5, x: 0, y: 0)
                     .scaleEffect(1.6)
+                    .hoverEffect()
             }
             .buttonStyle(ScaleEffectButtonStyle())
         }

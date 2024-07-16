@@ -12,8 +12,10 @@
 		AE1501302C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */; };
 		AE1501332C2E384C0001A9C3 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = AE1501322C2E384C0001A9C3 /* RevenueCat */; };
 		AE1501352C2E384C0001A9C3 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = AE1501342C2E384C0001A9C3 /* RevenueCatUI */; };
+		AE1501372C3B68B60001A9C3 /* SubscriptionOptionsSubscribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1501362C3B68B60001A9C3 /* SubscriptionOptionsSubscribeView.swift */; };
 		AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */; };
 		AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */; };
+		AE1FAF972C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */; };
 		AE22C7E22BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7E12BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift */; };
 		AE22C7E62BEE91FC003B8ED7 /* ArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7E52BEE91FC003B8ED7 /* ArcProgressView.swift */; };
 		AE22C7E82BEE9294003B8ED7 /* VPNControlStatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7E72BEE9294003B8ED7 /* VPNControlStatusContainerView.swift */; };
@@ -100,8 +102,10 @@
 		AE0EB82128F8EADA002939F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE1417A82C02438600D02808 /* DestinationPingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPingResult.swift; sourceTree = "<group>"; };
 		AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueCatSubscriptionService.swift; sourceTree = "<group>"; };
+		AE1501362C3B68B60001A9C3 /* SubscriptionOptionsSubscribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOptionsSubscribeView.swift; sourceTree = "<group>"; };
 		AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTimerService.swift; sourceTree = "<group>"; };
 		AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCheckAppCheckProviderFactory.swift; sourceTree = "<group>"; };
+		AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemLicenseKeyModalView.swift; sourceTree = "<group>"; };
 		AE22C7E12BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleEffectButtonStyle.swift; sourceTree = "<group>"; };
 		AE22C7E52BEE91FC003B8ED7 /* ArcProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcProgressView.swift; sourceTree = "<group>"; };
 		AE22C7E72BEE9294003B8ED7 /* VPNControlStatusContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNControlStatusContainerView.swift; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				AE22C7EE2BF0EBD3003B8ED7 /* SubscribeModalView.swift */,
+				AE1501362C3B68B60001A9C3 /* SubscriptionOptionsSubscribeView.swift */,
+				AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */,
 			);
 			path = SubscribeModal;
 			sourceTree = "<group>";
@@ -506,6 +512,7 @@
 				AEC2C8CA2B9B385D00E210F7 /* MainView.swift in Sources */,
 				AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */,
 				AE22C7EF2BF0EBD3003B8ED7 /* SubscribeModalView.swift in Sources */,
+				AE1FAF972C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift in Sources */,
 				AEC2C8B82B9B375400E210F7 /* RootView.swift in Sources */,
 				AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */,
 				AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */,
@@ -520,6 +527,7 @@
 				AEFCD1D128EA1909008D9694 /* VPNConnectButtonView.swift in Sources */,
 				AE4870042C18ABAB004C62A1 /* AcknowledgementsView.swift in Sources */,
 				AEC2C8BC2B9B378F00E210F7 /* TabBarContainerView.swift in Sources */,
+				AE1501372C3B68B60001A9C3 /* SubscriptionOptionsSubscribeView.swift in Sources */,
 				AE1501302C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift in Sources */,
 				AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */,
 				AEC2C8C52B9B381000E210F7 /* TabBarSelectorView.swift in Sources */,
@@ -675,7 +683,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -715,7 +723,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 51;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;

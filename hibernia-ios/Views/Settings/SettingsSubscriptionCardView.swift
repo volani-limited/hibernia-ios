@@ -13,7 +13,7 @@ struct SettingsSubscriptionCardView: View {
     @State private var presentingSubscribeModal: Bool = false
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 7) {
             Text("SUBSCRIPTION")
                 .font(.caption)
                 .foregroundColor(.text)
@@ -26,23 +26,30 @@ struct SettingsSubscriptionCardView: View {
                 
                 Spacer()
                 
-                if !subscriptionService.entitledToPremium {
-                    Image(systemName: "circle.fill").foregroundStyle(.red)
-                    Text("Not subscribed")
-                        .font(.custom("Comfortaa", size: 20))
-                        .foregroundStyle(Color.titleText)
-                } else {
-                    Image(systemName: "circle.fill").foregroundStyle(.green)
-                    Text("Subscribed")
+                Image(systemName: "circle.fill").foregroundStyle(subscriptionService.subscriptionStatus == .notSubscribed ? .red : .green)
+                Text(subscriptionService.subscriptionStatus.statusDisplay)
+                    .font(.custom("Comfortaa", size: 20))
+                    .foregroundStyle(Color.titleText)
+            }
+            
+            if let expiryDate = subscriptionService.subscriptionExpiryDate {
+                HStack(spacing: 5) {
+                    Text("Expires")
+                        .font(.custom("Comfortaa", size: 22))
+                        .foregroundStyle(Color.text)
+                    
+                    Spacer()
+                    
+                    Text(expiryDate.formatted(date: .numeric, time: .omitted))
                         .font(.custom("Comfortaa", size: 20))
                         .foregroundStyle(Color.titleText)
                 }
             }
             
-            if !subscriptionService.entitledToPremium {
-                HStack {
-                    Spacer()
-                    
+            HStack {
+                Spacer()
+                
+                if subscriptionService.subscriptionStatus == .notSubscribed {
                     Button {
                         presentingSubscribeModal = true
                     } label: {
@@ -53,9 +60,20 @@ struct SettingsSubscriptionCardView: View {
                     }
                     .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25)))
                     .padding(.top, 4)
-                    
-                    Spacer()
+                } else if true {
+                    Button {
+                        presentingSubscribeModal = true
+                    } label: {
+                        Text("Upgrade")
+                            .font(.custom("Comfortaa", size: 15))
+                            .foregroundStyle(Color.titleText)
+                            .padding()
+                    }
+                    .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25)))
+                    .padding(.top, 4)
                 }
+                
+                Spacer()
             }
         }
         .padding()

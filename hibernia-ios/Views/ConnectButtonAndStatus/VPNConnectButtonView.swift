@@ -27,14 +27,14 @@ struct VPNConnectButtonView: View {
             let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
             feedbackGenerator.impactOccurred()
             
-            if subscriptionService.entitledToPremium == false {
+            if subscriptionService.subscriptionStatus == .notSubscribed {
                 presentingSubscribeModalView = true
             } else {
                 switch vpnService.status { // Define button action based on VPN status
                 case .disconnected:
                     vpnServiceTask = Task {
                         do {
-                            try await vpnService.connect(transactionID: UInt64()) //TODO: fix
+                            try await vpnService.connect(appUserId: subscriptionService.customerInfo!.id) //TODO: throw error if customerinfo is nil
                         } catch {
                             print("Error connecting to VPN: \(error.localizedDescription)")
                             presentingVPNConnectionError = true

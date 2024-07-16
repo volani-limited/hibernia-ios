@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NeumorphicShape<S: Shape>: View {
-    var isHighlighted: Bool
+    var isHighlighted: Bool = false
     var shape: S
 
     var body: some View {

@@ -44,8 +44,10 @@ class VPNService: ObservableObject {
         timer = SimpleTimerService()
         connectedTime = "--:--"
         
-        apiEndpoint = Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt" ? "https://europe-west2-hiberniavpn.cloudfunctions.net/v2-provision-configuration" : "https://europe-west2-hiberniavpn.cloudfunctions.net/v2-sandbox-provision-configuration"
+        //apiEndpoint = Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt" ? "https://europe-west2-hiberniavpn.cloudfunctions.net/v2-provision-configuration" : "https://europe-west2-hiberniavpn.cloudfunctions.net/v2-sandbox-provision-configuration"
 
+        apiEndpoint = "https://europe-west2-hiberniavpn.cloudfunctions.net/v3-provision-configuration"
+        
         let defaults = UserDefaults.standard // Load data from userdefaults
         destination = VPNDestination(rawValue: defaults.string(forKey: "destination") ?? "lon") ?? .lon
         
@@ -103,11 +105,11 @@ class VPNService: ObservableObject {
     }
     
     @MainActor
-    func connect(transactionID: UInt64) async throws { // Connect by first retreiving configuration, creating provider configuration and connecting to the VPN
+    func connect(appUserId: String) async throws { // Connect by first retreiving configuration, creating provider configuration and connecting to the VPN
         do {
             self.status = .requestingConfiguration
 
-            self.configuration = try await self.requestConfiguration(destination: self.destination, transactionID: transactionID)
+            self.configuration = try await self.requestConfiguration(destination: self.destination, appUserId: appUserId)
             
             let providerConfiguration = OpenVPN.ProviderConfiguration("HiberniaVPN", appGroup: VPNService.appGroup, configuration: self.configuration!)
            
@@ -139,7 +141,7 @@ class VPNService: ObservableObject {
         }
     }
     
-    func requestConfiguration(destination: VPNDestination, transactionID: UInt64) async throws -> OpenVPN.Configuration {
+    func requestConfiguration(destination: VPNDestination, appUserId: String) async throws -> OpenVPN.Configuration {
         let appCheckToken = try await AppCheck.appCheck().token(forcingRefresh: false) // Get app check token
         
         let url = URL(string: apiEndpoint + "?location=\(destination.rawValue)") // Create request url
@@ -147,7 +149,7 @@ class VPNService: ObservableObject {
         var request = URLRequest(url: url!)
         
         request.setValue(appCheckToken.token, forHTTPHeaderField: "App-Check-Token")
-        request.setValue(String(transactionID), forHTTPHeaderField: "Subscription-Id")
+        request.setValue(appUserId, forHTTPHeaderField: "App-User-Id")
         
         let (data, response) = try await URLSession.shared.data(for: request)
         

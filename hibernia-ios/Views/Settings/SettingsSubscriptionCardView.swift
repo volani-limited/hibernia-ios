@@ -11,6 +11,7 @@ struct SettingsSubscriptionCardView: View {
     @EnvironmentObject var subscriptionService: RevenueCatSubscriptionService
     
     @State private var presentingSubscribeModal: Bool = false
+    @State private var presentingManageSubscriptionModal: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 7) {
@@ -60,11 +61,24 @@ struct SettingsSubscriptionCardView: View {
                     }
                     .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25)))
                     .padding(.top, 4)
-                } else if true {
+                } else if subscriptionService.subscriptionStatus == .standardSubscription {
                     Button {
                         presentingSubscribeModal = true
                     } label: {
                         Text("Upgrade")
+                            .font(.custom("Comfortaa", size: 15))
+                            .foregroundStyle(Color.titleText)
+                            .padding()
+                    }
+                    .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25)))
+                    .padding(.top, 4)
+                }
+                
+                if subscriptionService.subscriptionStatus == .familyShareable || subscriptionService.subscriptionStatus == .standardSubscription {
+                    Button {
+                        presentingManageSubscriptionModal = true
+                    } label: {
+                        Text("Manage in settings")
                             .font(.custom("Comfortaa", size: 15))
                             .foregroundStyle(Color.titleText)
                             .padding()
@@ -81,6 +95,7 @@ struct SettingsSubscriptionCardView: View {
         .sheet(isPresented: $presentingSubscribeModal) {
             SubscribeModalView()
         }
+        .manageSubscriptionsSheet(isPresented: $presentingManageSubscriptionModal)
     }
 }
 

@@ -70,8 +70,8 @@ struct SubscriptionOptionsSubscribeView: View {
                         } label: {
                             HStack {
                                 Spacer()
-                                if subscriptionService.customerInfo?.activeSubscriptions.contains(selectedPackage.identifier) ?? false || subscriptionService.customerInfo?.nonSubscriptions.map({ return $0.productIdentifier }).contains(selectedPackage.storeProduct.productIdentifier) ?? false {
-                                    Text("Already Purchased")
+                                if subscriptionService.customerInfo?.activeSubscriptions.contains(selectedPackage.storeProduct.productIdentifier) ?? false || subscriptionService.customerInfo?.nonSubscriptions.map({ return $0.productIdentifier }).contains(selectedPackage.storeProduct.productIdentifier) ?? false {
+                                    Text("Purchased")
                                         .bold()
                                         .font(.custom("Comfortaa", size: 20))
                                         .foregroundColor(.text)
@@ -98,7 +98,7 @@ struct SubscriptionOptionsSubscribeView: View {
                             }
                             .padding()
                         }
-                        .disabled(processingSubscribe || processingRestore || subscriptionService.customerInfo?.activeSubscriptions.contains(selectedPackage.identifier) ?? false || subscriptionService.customerInfo?.nonSubscriptions.map({ return $0.productIdentifier }).contains(selectedPackage.storeProduct.productIdentifier) ?? false)
+                        .disabled(processingSubscribe || processingRestore || subscriptionService.customerInfo?.activeSubscriptions.contains(selectedPackage.storeProduct.productIdentifier) ?? false || subscriptionService.customerInfo?.nonSubscriptions.map({ return $0.productIdentifier }).contains(selectedPackage.storeProduct.productIdentifier) ?? false)
                         .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25)))
                         .alert("Could not purchase, check your connection.", isPresented: $presentingSubscribeError) {
                             Button("Ok") { }
@@ -112,24 +112,11 @@ struct SubscriptionOptionsSubscribeView: View {
                             .opacity(processingSubscribe ? 1 : 0)
                     }
                     
-                    Text("Purchasing a lifetime subscription will not automatically cancel\nany existing subscriptions. Do this manually in Settings.") //TODO: fix overrunning text
+                    Text("Purchasing a lifetime subscription will not automatically cancel any existing subscriptions. Do this manually in Settings.").fixedSize(horizontal: false, vertical: true)
                         .font(.caption)
                         .foregroundStyle(Color.text)
                         .padding()
                         .opacity(selectedPackage.packageType == .lifetime ? 1 : 0)
-                    
-                    if let settingsUrl = subscriptionService.customerInfo?.managementURL {
-                        if subscriptionService.subscriptionStatus != .notSubscribed {
-                            Button {
-                                UIApplication.shared.open(settingsUrl)
-                            } label: {
-                                Text("Manage in settings")
-                                    .font(.caption)
-                                    .foregroundStyle(Color.text)
-                                    .padding()
-                            }
-                        }
-                    }
                 }
                 
                 HStack(spacing: 12) {

@@ -90,6 +90,19 @@ class RevenueCatSubscriptionService: ObservableObject {
             throw SubscriptionServiceError.userCancelled
         }
     }
+    
+    static func getPaywallInformation(for offering: Offering) -> PaywallInformation { // TODO: Supply default values? (Potential move to Remote Config by redefining this function.
+        let headlineDict = offering.getMetadataValue(for: "headline", default: [:])
+        
+        let headline = headlineDict["text"] as! String
+        let headlineAppendsLocalizedPrice = headlineDict["appendsLocalizedPrice"] as! Bool
+        
+        let subhead = offering.getMetadataValue(for: "subhead", default: "")
+        
+        let bullets = offering.getMetadataValue(for: "bullets", default: [String]())
+        
+        return PaywallInformation(headline: headline, headlineAppendsLocalizedPrice: headlineAppendsLocalizedPrice, subhead: subhead, bullets: bullets)
+    }
 
     private func yearsBetweenDate(startDate: Date, endDate: Date) -> Int {
         let calendar = Calendar.current
@@ -132,6 +145,13 @@ class RevenueCatSubscriptionService: ObservableObject {
                 return "Activated"
             }
         }
+    }
+    
+    struct PaywallInformation {
+        var headline: String
+        var headlineAppendsLocalizedPrice: Bool
+        var subhead: String
+        var bullets: [String]
     }
 }
 

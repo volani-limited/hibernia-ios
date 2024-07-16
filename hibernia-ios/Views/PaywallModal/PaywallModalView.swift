@@ -8,15 +8,17 @@
 import SwiftUI
 import RevenueCat
 
-struct SubscribeModalView: View {
+struct PaywallModalView: View {
     @EnvironmentObject var subscriptionService: RevenueCatSubscriptionService
-    
     @Environment(\.dismiss) var dismiss
     
     @State private var offering: Offering?
+    @State private var paywallInformation: RevenueCatSubscriptionService.PaywallInformation?
     
     @State private var processingLoadSubscriptionProduct: Bool = true
     @State private var presentingProductLoadError: Bool = false
+    
+    @State private var processingStoreOperation: Bool = false
     
     var body: some View {
         ZStack {
@@ -26,10 +28,11 @@ struct SubscribeModalView: View {
                     .task {
                         do {
                             offering = try await subscriptionService.getOfferings().current
+                            paywallInformation = RevenueCatSubscriptionService.getPaywallInformation(for: offering!)
                             
                             processingLoadSubscriptionProduct = false
                         } catch {
-                            print(error.localizedDescription) // TODO: Store error and present details contextually? Will be updated alongside UI and IAP service
+                            print(error.localizedDescription)
                             presentingProductLoadError = true
                         }
                     }
@@ -39,7 +42,7 @@ struct SubscribeModalView: View {
                         }
                     }
             } else {
-                VStack(alignment: .leading) {
+                VStack {
                     HStack {
                         Button {
                             dismiss()
@@ -54,18 +57,15 @@ struct SubscribeModalView: View {
                         Spacer()
                     }
                     
-                    Text("The world's simplest VPN\nfrom just " + offering!.availablePackages[0].localizedPriceString + " per month") //TODO: configure with offering metadata
-                        .bold()
-                        .font(.title)
-                        .foregroundColor(.turquoise)
-                        .padding(.leading)
-                    Text("That's " + offering!.availablePackages[0].localizedPriceString + " each month after a 3-day free trial. Cancel anytime.")
-                        .foregroundColor(.text)
-                        .padding(.leading)
-
+                    PaywallInformationView(paywallInformation: paywallInformation!, offering: offering!)
+                        .offset(y: -40
+                        )
+                    
                     Spacer()
                     
-                    SubscriptionOptionsSubscribeView(packages: offering!.availablePackages, selectedPackage: offering!.availablePackages.first!)
+                    PaywallPackgeOptionsSubscribeView(packages: offering!.availablePackages, selectedPackage: offering!.availablePackages.first!, processingSubscribe: $processingStoreOperation)
+                    
+                    PaywallFooterView(processingRestore: $processingStoreOperation)
                 }
             }
         }
@@ -74,5 +74,5 @@ struct SubscribeModalView: View {
 }
 
 #Preview {
-    SubscribeModalView()
+    PaywallModalView()
 }

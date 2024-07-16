@@ -93,7 +93,7 @@ struct SettingsSubscriptionCardView: View {
         .padding()
         .background(NeumorphicShape(isHighlighted: false, shape: RoundedRectangle(cornerRadius: 25)))
         .sheet(isPresented: $presentingSubscribeModal) {
-            SubscribeModalView()
+            PaywallModalView()
         }
         .manageSubscriptionsSheet(isPresented: $presentingManageSubscriptionModal)
     }

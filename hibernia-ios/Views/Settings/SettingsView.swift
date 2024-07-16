@@ -9,8 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var vpnService: VPNService
-    
-    @State private var presentingAcknowledgementsView: Bool = false
 
     var body: some View {
         VStack {
@@ -28,48 +26,11 @@ struct SettingsView: View {
                     
                     SettingsVPNSettingsCardView()
                     
-                    VStack(alignment: .center) {
-                        HStack(spacing: 12) {
-                            Link("Terms & privacy", destination: URL(string: "https://hiberniavpn.com#legal")!) // Present legal information before subscribe action
-                                .font(.caption)
-                                .foregroundColor(.text)
-                            
-                            Text("•")
-                                .font(.caption)
-                                .foregroundColor(.text)
-                            
-                            Button {
-                                presentingAcknowledgementsView = true
-                            } label: {
-                                Text("Acknowledgements")
-                                    .font(.caption)
-                                    .foregroundColor(.text)
-                            }
-                        }
-                        Text("HiberniaVPN v\(Bundle.main.releaseVersionNumber!) (\(Bundle.main.buildVersionNumber!)) © Volani Limited MMXXIV")
-                            .font(.caption)
-                            .foregroundColor(.text)
-                    }.padding(.top, 10)
+                    SettingsFooterView()
                 }
                 .padding(.top, 10)
                 .padding()
             }
-            .sheet(isPresented: $presentingAcknowledgementsView) {
-                AcknowledgementsView()
-            }
         }
     }
-}
-
-extension Bundle {
-    var releaseVersionNumber: String? {
-        return infoDictionary?["CFBundleShortVersionString"] as? String
-    }
-    var buildVersionNumber: String? {
-        return infoDictionary?["CFBundleVersion"] as? String
-    }
-}
-
-#Preview {
-    SettingsView()
 }

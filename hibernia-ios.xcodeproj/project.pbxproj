@@ -12,7 +12,7 @@
 		AE1501302C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */; };
 		AE1501332C2E384C0001A9C3 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = AE1501322C2E384C0001A9C3 /* RevenueCat */; };
 		AE1501352C2E384C0001A9C3 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = AE1501342C2E384C0001A9C3 /* RevenueCatUI */; };
-		AE1501372C3B68B60001A9C3 /* SubscriptionOptionsSubscribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1501362C3B68B60001A9C3 /* SubscriptionOptionsSubscribeView.swift */; };
+		AE1501372C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1501362C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift */; };
 		AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */; };
 		AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */; };
 		AE1FAF972C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */; };
@@ -20,12 +20,15 @@
 		AE22C7E62BEE91FC003B8ED7 /* ArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7E52BEE91FC003B8ED7 /* ArcProgressView.swift */; };
 		AE22C7E82BEE9294003B8ED7 /* VPNControlStatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7E72BEE9294003B8ED7 /* VPNControlStatusContainerView.swift */; };
 		AE22C7EC2BF0EAF2003B8ED7 /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE22C7EB2BF0EAF0003B8ED7 /* Comfortaa-VariableFont_wght.ttf */; };
-		AE22C7EF2BF0EBD3003B8ED7 /* SubscribeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7EE2BF0EBD3003B8ED7 /* SubscribeModalView.swift */; };
+		AE22C7EF2BF0EBD3003B8ED7 /* PaywallModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7EE2BF0EBD3003B8ED7 /* PaywallModalView.swift */; };
 		AE22C7F12BF50B80003B8ED7 /* DestinationPingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */; };
 		AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */; };
 		AE4870002C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */; };
 		AE4870022C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */; };
 		AE4870042C18ABAB004C62A1 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */; };
+		AE641B182C4721600090B259 /* PaywallFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B172C4721600090B259 /* PaywallFooterView.swift */; };
+		AE641B1A2C47217D0090B259 /* PaywallInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B192C47217D0090B259 /* PaywallInformationView.swift */; };
+		AE641B1C2C4722490090B259 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B1B2C4722490090B259 /* SettingsFooterView.swift */; };
 		AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */; };
 		AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729728E21AE5001628E2 /* Assets.xcassets */; };
 		AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */; };
@@ -102,7 +105,7 @@
 		AE0EB82128F8EADA002939F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE1417A82C02438600D02808 /* DestinationPingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPingResult.swift; sourceTree = "<group>"; };
 		AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueCatSubscriptionService.swift; sourceTree = "<group>"; };
-		AE1501362C3B68B60001A9C3 /* SubscriptionOptionsSubscribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionOptionsSubscribeView.swift; sourceTree = "<group>"; };
+		AE1501362C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallPackgeOptionsSubscribeView.swift; sourceTree = "<group>"; };
 		AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTimerService.swift; sourceTree = "<group>"; };
 		AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCheckAppCheckProviderFactory.swift; sourceTree = "<group>"; };
 		AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemLicenseKeyModalView.swift; sourceTree = "<group>"; };
@@ -110,7 +113,7 @@
 		AE22C7E52BEE91FC003B8ED7 /* ArcProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcProgressView.swift; sourceTree = "<group>"; };
 		AE22C7E72BEE9294003B8ED7 /* VPNControlStatusContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNControlStatusContainerView.swift; sourceTree = "<group>"; };
 		AE22C7EB2BF0EAF0003B8ED7 /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
-		AE22C7EE2BF0EBD3003B8ED7 /* SubscribeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeModalView.swift; sourceTree = "<group>"; };
+		AE22C7EE2BF0EBD3003B8ED7 /* PaywallModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallModalView.swift; sourceTree = "<group>"; };
 		AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPingService.swift; sourceTree = "<group>"; };
 		AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePingGraphView.swift; sourceTree = "<group>"; };
 		AE486FF82C161D03004C62A1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -118,6 +121,9 @@
 		AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubscriptionCardView.swift; sourceTree = "<group>"; };
 		AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVPNSettingsCardView.swift; sourceTree = "<group>"; };
 		AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
+		AE641B172C4721600090B259 /* PaywallFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallFooterView.swift; sourceTree = "<group>"; };
+		AE641B192C47217D0090B259 /* PaywallInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallInformationView.swift; sourceTree = "<group>"; };
+		AE641B1B2C4722490090B259 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
 		AE6A729728E21AE5001628E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,14 +196,16 @@
 			path = ConnectButtonAndStatus;
 			sourceTree = "<group>";
 		};
-		AE22C7ED2BF0EBC7003B8ED7 /* SubscribeModal */ = {
+		AE22C7ED2BF0EBC7003B8ED7 /* PaywallModal */ = {
 			isa = PBXGroup;
 			children = (
-				AE22C7EE2BF0EBD3003B8ED7 /* SubscribeModalView.swift */,
-				AE1501362C3B68B60001A9C3 /* SubscriptionOptionsSubscribeView.swift */,
+				AE22C7EE2BF0EBD3003B8ED7 /* PaywallModalView.swift */,
+				AE641B192C47217D0090B259 /* PaywallInformationView.swift */,
+				AE1501362C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift */,
+				AE641B172C4721600090B259 /* PaywallFooterView.swift */,
 				AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */,
 			);
-			path = SubscribeModal;
+			path = PaywallModal;
 			sourceTree = "<group>";
 		};
 		AE27976B28E6584F00DDACF5 /* Services */ = {
@@ -219,7 +227,7 @@
 				AEC2C8B72B9B375400E210F7 /* RootView.swift */,
 				AEC2C8B92B9B376800E210F7 /* SlideOverContainerView.swift */,
 				AEC2C8C22B9B37F100E210F7 /* Main */,
-				AE22C7ED2BF0EBC7003B8ED7 /* SubscribeModal */,
+				AE22C7ED2BF0EBC7003B8ED7 /* PaywallModal */,
 				AE22C7E92BEE92BA003B8ED7 /* ConnectButtonAndStatus */,
 				AEC2C8C62B9B383D00E210F7 /* Settings */,
 				AEC2C8C32B9B37FF00E210F7 /* TabBarContainer */,
@@ -357,6 +365,7 @@
 				AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */,
 				AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */,
 				AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */,
+				AE641B1B2C4722490090B259 /* SettingsFooterView.swift */,
 				AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */,
 			);
 			path = Settings;
@@ -511,11 +520,12 @@
 				AE22C7E62BEE91FC003B8ED7 /* ArcProgressView.swift in Sources */,
 				AEC2C8CA2B9B385D00E210F7 /* MainView.swift in Sources */,
 				AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */,
-				AE22C7EF2BF0EBD3003B8ED7 /* SubscribeModalView.swift in Sources */,
+				AE22C7EF2BF0EBD3003B8ED7 /* PaywallModalView.swift in Sources */,
 				AE1FAF972C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift in Sources */,
 				AEC2C8B82B9B375400E210F7 /* RootView.swift in Sources */,
 				AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */,
 				AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */,
+				AE641B1A2C47217D0090B259 /* PaywallInformationView.swift in Sources */,
 				AEC2C8BE2B9B379900E210F7 /* DestinationSelectorView.swift in Sources */,
 				AEC2C8BA2B9B376800E210F7 /* SlideOverContainerView.swift in Sources */,
 				AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */,
@@ -527,13 +537,15 @@
 				AEFCD1D128EA1909008D9694 /* VPNConnectButtonView.swift in Sources */,
 				AE4870042C18ABAB004C62A1 /* AcknowledgementsView.swift in Sources */,
 				AEC2C8BC2B9B378F00E210F7 /* TabBarContainerView.swift in Sources */,
-				AE1501372C3B68B60001A9C3 /* SubscriptionOptionsSubscribeView.swift in Sources */,
+				AE1501372C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift in Sources */,
 				AE1501302C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift in Sources */,
+				AE641B182C4721600090B259 /* PaywallFooterView.swift in Sources */,
 				AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */,
 				AEC2C8C52B9B381000E210F7 /* TabBarSelectorView.swift in Sources */,
 				AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */,
 				AE4870002C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift in Sources */,
 				AE22C7E82BEE9294003B8ED7 /* VPNControlStatusContainerView.swift in Sources */,
+				AE641B1C2C4722490090B259 /* SettingsFooterView.swift in Sources */,
 				AE1417A92C02438600D02808 /* DestinationPingResult.swift in Sources */,
 				AE22C7E22BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift in Sources */,
 				AE8051C92C1C9C70002DF24A /* SettingsVPNStatusCardView.swift in Sources */,

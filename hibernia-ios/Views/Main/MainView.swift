@@ -27,7 +27,7 @@ struct MainView: View {
             }
             .frame(height: geometry.size.height * 0.8)
             .sheet(isPresented: $presentingSubscribeModalView) {
-                SubscribeModalView()
+                PaywallModalView()
             }
         }
     }

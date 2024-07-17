@@ -52,7 +52,7 @@ struct SettingsVPNStatusCardView: View {
                 
                 Spacer()
                 
-                Text(vpnService.destination.displayed)
+                Text(vpnService.selectedDestination.displayedName)
                     .font(.custom("Comfortaa", size: 20))
                     .foregroundStyle(Color.titleText)
             }
@@ -65,9 +65,15 @@ struct SettingsVPNStatusCardView: View {
                     
                     Spacer()
                     
-                    Text(vpnService.destination.hostname)
-                        .font(.custom("Comfortaa", size: 15))
-                        .foregroundStyle(Color.titleText)
+                    if let hostname = vpnService.vpnHostname {
+                        Text(hostname)
+                            .font(.custom("Comfortaa", size: 15))
+                            .foregroundStyle(Color.titleText)
+                    } else {
+                        Text("Could not determine hostname")
+                            .font(.custom("Comfortaa", size: 12))
+                            .foregroundStyle(Color.titleText)
+                    }
                 }
                 
                 HStack {
@@ -83,7 +89,7 @@ struct SettingsVPNStatusCardView: View {
                             .foregroundStyle(Color.titleText)
                     } else {
                         Text("Could not determine IP")
-                            .font(.custom("Comfortaa", size: 15))
+                            .font(.custom("Comfortaa", size: 12))
                             .foregroundStyle(Color.titleText)
                     }
                     

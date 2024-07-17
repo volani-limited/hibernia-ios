@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SlideOverContainerView: View {
+    @EnvironmentObject var rcService: RemoteConfigService
+    @EnvironmentObject var vpnService: VPNService
+    
     @State private var inLeftHandPosition: Bool = false
     
     var body: some View {
@@ -15,7 +18,7 @@ struct SlideOverContainerView: View {
             ZStack {
                 TabBarContainerView(presentingLocationSelectorView: $inLeftHandPosition)
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                DestinationSelectorView(presenting: $inLeftHandPosition)
+                DestinationSelectorView(presenting: $inLeftHandPosition, destinations: rcService.remoteConfiguration.destinations)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                     .offset(x: geometry.size.width)
             }

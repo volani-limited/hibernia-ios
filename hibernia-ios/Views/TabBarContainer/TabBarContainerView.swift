@@ -18,7 +18,7 @@ struct TabBarContainerView: View {
                     SettingsView()
                         .frame(width: geometry.size.width, height: geometry.size.height)
                 } else {
-                    MainView(presentingLocationSelectorView: $presentingLocationSelectorView)
+                    HomeView(presentingLocationSelectorView: $presentingLocationSelectorView)
                         .frame(width: geometry.size.width, height: geometry.size.height)
                 }
             }

@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import FirebaseRemoteConfig
 
-struct MainView: View {
+struct HomeView: View {
+    @RemoteConfigProperty(key: "serviceMessage", fallback: "") var serviceMessage: String
     @Binding var presentingLocationSelectorView: Bool
     
     var body: some View {
@@ -22,6 +24,8 @@ struct MainView: View {
                 VPNControlStatusContainerView()
                 
                 LocationSelectorItemView(presentingLocationSelectorView: $presentingLocationSelectorView)
+                
+                Text(serviceMessage)
             }
             .frame(height: geometry.size.height * 0.8)
         }

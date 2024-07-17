@@ -18,7 +18,7 @@ struct LocationSelectorItemView: View {
                 .foregroundStyle(Color.titleText)
                 .bold()
             HStack() {
-                Text(vpnService.destination.displayed)
+                Text(vpnService.selectedDestination.displayedName)
                     .font(.custom("Comfortaa", size: 16))
                     .foregroundStyle(Color.text)
                     .bold()

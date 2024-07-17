@@ -24,8 +24,6 @@ class VPNService: ObservableObject {
     @Published var status: HiberniaVPNStatus // Define published varibles
     @Published var selectedDestination: VPNDestination
     
-    var destinations: [VPNDestination]
-    
     @Published var keepAlive: Bool
     @Published var killSwitch: Bool
     @Published var connectedTime: String
@@ -47,14 +45,12 @@ class VPNService: ObservableObject {
         timer = SimpleTimerService()
         connectedTime = "--:--"
         
-        self.destinations = destinations
-        
         //apiEndpoint = Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt" ? "https://europe-west2-hiberniavpn.cloudfunctions.net/v2-provision-configuration" : "https://europe-west2-hiberniavpn.cloudfunctions.net/v2-sandbox-provision-configuration"
 
         apiEndpoint = "https://europe-west2-hiberniavpn.cloudfunctions.net/v3-provision-configuration"
         
         let defaults = UserDefaults.standard // Load data from userdefaults
-        selectedDestination = destinations.first(where: { $0.id == defaults.string(forKey: "destination")}) ?? destinations.first!
+        selectedDestination = destinations.first(where: { $0.id == defaults.string(forKey: "destination")}) ?? destinations.first! // Make selectedDestination nil if no selected destination
         
         keepAlive = defaults.bool(forKey: "keepAlive")
         killSwitch = defaults.bool(forKey: "keepAlive")
@@ -179,7 +175,7 @@ class VPNService: ObservableObject {
         case .connected:
             
             Task {
-                self.vpnIP = try await DestinationPingService.ping(hostname: selectedDestination.hostname, interval: 1, timeout: 5, attempts: 1).responses.first(where: {$0.ipAddress != nil})?.ipAddress
+                self.vpnIP = try await DestinationPingService.ping(hostname: (selectedDestination.id + ".vpn.hiberniavpn.com"), interval: 1, timeout: 5, attempts: 1).responses.first(where: {$0.ipAddress != nil})?.ipAddress
             }
             
             status = .connected
@@ -210,11 +206,9 @@ class VPNService: ObservableObject {
         let configuration: String
     }
     
-    struct VPNDestination: Identifiable, Codable {
+    struct VPNDestination: Identifiable, Hashable, Codable {
         var id: String
         var displayedName: String
-        
-        var hostname: String
     }
 }
 

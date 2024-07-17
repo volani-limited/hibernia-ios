@@ -12,7 +12,16 @@ struct DestinationSelectorView: View {
     @EnvironmentObject var vpnService: VPNService
     @Binding var presenting: Bool
     
-    @StateObject var destinationPingService = DestinationPingService()
+    @StateObject var destinationPingService: DestinationPingService
+    
+    var destinations: [VPNService.VPNDestination]
+    
+    init(presenting: Binding<Bool>, destinations: [VPNService.VPNDestination]) {
+        self._presenting = presenting
+        self._destinationPingService = StateObject(wrappedValue: DestinationPingService(destinations: destinations))
+        
+        self.destinations = destinations
+    }
 
     var body: some View {
         VStack {
@@ -43,7 +52,7 @@ struct DestinationSelectorView: View {
                         let generator = UIImpactFeedbackGenerator(style: .light)
                         generator.impactOccurred()
                         
-                        destinationPingService.pingAllDestinations()
+                        destinationPingService.pingDestinations(destinations: destinations)
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                             .foregroundColor(.text)
@@ -57,12 +66,12 @@ struct DestinationSelectorView: View {
             }
             ScrollView {
                 VStack(alignment: .center) {
-                    ForEach(VPNDestination.allCases, id: \.self) { destination in
-                        DestinationSelectorRowView(destination: destination, allPings: destinationPingService.pingResults.values.compactMap { try? $0?.get() }, pingResult: destinationPingService.pingResults[destination]!, isHighlighted: vpnService.destination == destination)
+                    ForEach(destinations) { destination in
+                        DestinationSelectorRowView(destination: destination, allPings: destinationPingService.pingResults.values.compactMap { try? $0?.get() }, pingResult: destinationPingService.pingResults[destination]!, isHighlighted: vpnService.selectedDestination == destination)
                             .onTapGesture {
                                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
                                 feedbackGenerator.impactOccurred()
-                                vpnService.destination = destination
+                                vpnService.selectedDestination = destination
                             }
                     }
                 }
@@ -77,7 +86,7 @@ struct DestinationSelectorView: View {
             }
         }
         .onAppear {
-            destinationPingService.pingAllDestinations()
+            destinationPingService.pingDestinations(destinations: destinations)
         }
     }
 }

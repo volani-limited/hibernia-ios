@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftyPing
 
 struct DestinationSelectorRowView: View {
-    var destination: VPNDestination
+    var destination: VPNService.VPNDestination
     
     var allPings: [Double]
 
@@ -19,7 +19,7 @@ struct DestinationSelectorRowView: View {
     var body: some View {
         HStack {
             HStack(alignment: .center, spacing: 5) {
-                Text(destination.displayed)
+                Text(destination.displayedName)
                     .font(.custom("Comfortaa", size: 24))
                     .foregroundStyle(Color.text)
                 Text("Nearest")

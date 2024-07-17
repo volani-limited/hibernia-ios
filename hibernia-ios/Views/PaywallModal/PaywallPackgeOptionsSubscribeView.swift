@@ -27,11 +27,13 @@ struct PaywallPackgeOptionsSubscribeView: View {
                     } label: {
                         HStack {
                             Spacer()
+                            
                             Text(package.storeProduct.localizedTitle + " for " + package.localizedPriceString)
                                 .bold()
                                 .font(.custom("Comfortaa", size: 18))
                                 .foregroundStyle(Color.text)
                                 .padding()
+                            
                             Spacer()
                         }
                     }

@@ -11,8 +11,8 @@ import FirebaseAppCheck
 
 @main
 struct hibernia_iosApp: App {
-    var vpnService: VPNService
-    var subscriptionService: RevenueCatSubscriptionService
+    private var vpnService: VPNService
+    private var subscriptionService: RevenueCatSubscriptionService
     
     init() {
         if ProcessInfo.processInfo.isiOSAppOnMac { // Configure Firebase AppCheck
@@ -31,7 +31,12 @@ struct hibernia_iosApp: App {
 
     var body: some Scene {
         WindowGroup {
-            RootView().environmentObject(vpnService).environmentObject(subscriptionService)
+            RootView()
+                .environmentObject(vpnService)
+                .environmentObject(subscriptionService)
+                .task {
+                    await vpnService.prepare()
+                }
         }
     }
 }

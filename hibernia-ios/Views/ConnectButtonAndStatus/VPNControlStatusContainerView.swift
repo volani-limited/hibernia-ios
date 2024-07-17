@@ -10,8 +10,6 @@ import SwiftUI
 struct VPNControlStatusContainerView: View {
     @EnvironmentObject var vpnService: VPNService
     
-    @Binding var presentingSubscribeModalView: Bool
-    
     private var statusProgress: Double {
         switch vpnService.status {
         case .requestingConfiguration:
@@ -45,7 +43,7 @@ struct VPNControlStatusContainerView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                VPNConnectButtonView(presentingSubscribeModalView: $presentingSubscribeModalView)
+                VPNConnectButtonView()
                 
                 VStack {
                     ArcProgressView(progress: statusProgress, color: statusColor)

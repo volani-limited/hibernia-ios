@@ -58,8 +58,7 @@ struct PaywallModalView: View {
                     }
                     
                     PaywallInformationView(paywallInformation: paywallInformation!, offering: offering!)
-                        .offset(y: -40
-                        )
+                        .offset(y: -40)
                     
                     Spacer()
                     

@@ -8,17 +8,10 @@
 import SwiftUI
 
 struct RootView: View {
-    @EnvironmentObject var vpnService: VPNService
-    
-    @State var presentingSubscriptionModal: Bool = false
-    
     var body: some View {
-        SlideOverContainerView()
-            .background(Color.background.edgesIgnoringSafeArea(.all))
-            .onAppear {
-                Task {
-                    await vpnService.prepare()
-                }
-            }
+        ZStack {
+            Color.background.edgesIgnoringSafeArea(.all)
+            SlideOverContainerView()
+        }
     }
 }

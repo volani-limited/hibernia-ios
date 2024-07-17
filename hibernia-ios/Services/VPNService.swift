@@ -79,7 +79,8 @@ class VPNService: ObservableObject {
             } else {
                 return  "--:--" // if formatter fails return blank value
             }
-        }.assign(to: &$connectedTime) // Assign elapsed time to published varible
+        }
+        .assign(to: &$connectedTime) // Assign elapsed time to published varible
         
         
         NotificationCenter.default.addObserver( // Add notification observers to VPN manager
@@ -135,10 +136,8 @@ class VPNService: ObservableObject {
         }
     }
     
-    func disconnect() {
-        Task {
-            await vpn.disconnect()
-        }
+    func disconnect() async {
+        await vpn.disconnect()
     }
     
     func requestConfiguration(destination: VPNDestination, appUserId: String) async throws -> OpenVPN.Configuration {

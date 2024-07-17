@@ -29,6 +29,7 @@
 		AE641B182C4721600090B259 /* PaywallFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B172C4721600090B259 /* PaywallFooterView.swift */; };
 		AE641B1A2C47217D0090B259 /* PaywallInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B192C47217D0090B259 /* PaywallInformationView.swift */; };
 		AE641B1C2C4722490090B259 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B1B2C4722490090B259 /* SettingsFooterView.swift */; };
+		AE641B1E2C4757570090B259 /* hibernia_root.crt in Resources */ = {isa = PBXBuildFile; fileRef = AE641B1D2C4757570090B259 /* hibernia_root.crt */; };
 		AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */; };
 		AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729728E21AE5001628E2 /* Assets.xcassets */; };
 		AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */; };
@@ -124,6 +125,7 @@
 		AE641B172C4721600090B259 /* PaywallFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallFooterView.swift; sourceTree = "<group>"; };
 		AE641B192C47217D0090B259 /* PaywallInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallInformationView.swift; sourceTree = "<group>"; };
 		AE641B1B2C4722490090B259 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
+		AE641B1D2C4757570090B259 /* hibernia_root.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hibernia_root.crt; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
 		AE6A729728E21AE5001628E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -226,12 +228,12 @@
 			children = (
 				AEC2C8B72B9B375400E210F7 /* RootView.swift */,
 				AEC2C8B92B9B376800E210F7 /* SlideOverContainerView.swift */,
-				AEC2C8C22B9B37F100E210F7 /* Main */,
-				AE22C7ED2BF0EBC7003B8ED7 /* PaywallModal */,
-				AE22C7E92BEE92BA003B8ED7 /* ConnectButtonAndStatus */,
-				AEC2C8C62B9B383D00E210F7 /* Settings */,
 				AEC2C8C32B9B37FF00E210F7 /* TabBarContainer */,
+				AEC2C8C22B9B37F100E210F7 /* Main */,
+				AE22C7E92BEE92BA003B8ED7 /* ConnectButtonAndStatus */,
 				AEC2C8BF2B9B37A000E210F7 /* DestinationSelector */,
+				AE22C7ED2BF0EBC7003B8ED7 /* PaywallModal */,
+				AEC2C8C62B9B383D00E210F7 /* Settings */,
 				AE85D1C62AED7D410080B6EB /* Helpers */,
 			);
 			path = Views;
@@ -259,6 +261,7 @@
 		AE6A729228E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AE641B1D2C4757570090B259 /* hibernia_root.crt */,
 				AE486FFC2C189FDB004C62A1 /* openssl.xcframework */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
 				AE7D104928ECDB00006BEB18 /* Products.storekit */,
@@ -473,6 +476,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE641B1E2C4757570090B259 /* hibernia_root.crt in Resources */,
 				AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
 				AE22C7EC2BF0EAF2003B8ED7 /* Comfortaa-VariableFont_wght.ttf in Resources */,

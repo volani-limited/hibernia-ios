@@ -10,8 +10,6 @@ import SwiftUI
 struct MainView: View {
     @Binding var presentingLocationSelectorView: Bool
     
-    @State private var presentingSubscribeModalView: Bool = false
-    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -21,14 +19,11 @@ struct MainView: View {
                     .foregroundColor(.titleText)
                     .padding()
                 
-                VPNControlStatusContainerView(presentingSubscribeModalView: $presentingSubscribeModalView)
+                VPNControlStatusContainerView()
                 
                 LocationSelectorItemView(presentingLocationSelectorView: $presentingLocationSelectorView)
             }
             .frame(height: geometry.size.height * 0.8)
-            .sheet(isPresented: $presentingSubscribeModalView) {
-                PaywallModalView()
-            }
         }
     }
 }

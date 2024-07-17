@@ -21,6 +21,7 @@ struct DestinationSelectorView: View {
                     .bold()
                     .font(.custom("Comfortaa", size: 30))
                     .foregroundColor(.titleText)
+               
                 HStack {
                     Button {
                         let generator = UIImpactFeedbackGenerator(style: .light)

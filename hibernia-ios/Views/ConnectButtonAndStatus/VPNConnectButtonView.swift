@@ -16,7 +16,7 @@ struct VPNConnectButtonView: View {
     @EnvironmentObject var vpnService: VPNService
     @EnvironmentObject var subscriptionService: RevenueCatSubscriptionService
 
-    @Binding var presentingSubscribeModalView: Bool
+    @State var presentingSubscribeModalView: Bool = false
     
     @State private var vpnServiceTask: Task<Void, Error>?
     
@@ -34,7 +34,7 @@ struct VPNConnectButtonView: View {
                 case .disconnected:
                     vpnServiceTask = Task {
                         do {
-                            try await vpnService.connect(appUserId: subscriptionService.customerInfo!.id) //TODO: throw error if customerinfo is nil
+                            try await vpnService.connect(appUserId: subscriptionService.customerInfo!.id)
                         } catch {
                             print("Error connecting to VPN: \(error.localizedDescription)")
                             presentingVPNConnectionError = true
@@ -66,6 +66,9 @@ struct VPNConnectButtonView: View {
         .disabled(vpnService.status == .disconnecting)
         .alert("Could not connect to VPN. Check your connection.", isPresented: $presentingVPNConnectionError) {
             Button("Ok") { }
+        }
+        .sheet(isPresented: $presentingSubscribeModalView) {
+            PaywallModalView()
         }
     }
 }

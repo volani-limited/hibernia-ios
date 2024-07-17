@@ -27,7 +27,6 @@ class RevenueCatSubscriptionService: ObservableObject {
         
         subscriptionStatus = .notSubscribed
         
-        
         Task {
             try? await syncStoreKitWithRevenueCat()
             await beginRecievingCustomerInfoStream()
@@ -47,7 +46,6 @@ class RevenueCatSubscriptionService: ObservableObject {
     
     private func updatedPublishedEntitlementStatus() {
         let entitlement = customerInfo?.entitlements[RevenueCatSubscriptionService.premiumEntitlementId]
-        
         
         guard let entitlement = entitlement, entitlement.isActive else {
             self.subscriptionStatus = .notSubscribed

@@ -8,15 +8,11 @@
 import SwiftUI
 import Firebase
 import FirebaseAppCheck
-import Qonversion
-import RevenueCat
 
 @main
 struct hibernia_iosApp: App {
-    var vpnService: VPNService
-    var subscriptionService: IAPSubscriptionService
-    var rcService: FirebaseRemoteConfigService
-    
+    private var vpnService: VPNService
+    private var subscriptionService: RevenueCatSubscriptionService
     
     init() {
         if ProcessInfo.processInfo.isiOSAppOnMac { // Configure Firebase AppCheck
@@ -30,23 +26,17 @@ struct hibernia_iosApp: App {
         FirebaseApp.configure()
         
         vpnService = VPNService() // Instantiate local services
-        subscriptionService = IAPSubscriptionService()
-        rcService = FirebaseRemoteConfigService()
-        
-        let config = Qonversion.Configuration(projectKey: "_VyGtgouQv_ECvbgQyoG0lseCF24vnp-", launchMode: .analytics)
-        Qonversion.initWithConfig(config)
-        
-        Purchases.configure( // Configure Qonversion and RevenueCat SDKs
-          with: Configuration.Builder(withAPIKey: "appl_dFHGAJLCuWiOtNQROyLQFnqYLZF")
-            .with(observerMode: true)
-            .build()
-        )
-        
+        subscriptionService = RevenueCatSubscriptionService()
     }
 
     var body: some Scene {
         WindowGroup {
-            MainView().environmentObject(vpnService).environmentObject(subscriptionService)
+            RootView()
+                .environmentObject(vpnService)
+                .environmentObject(subscriptionService)
+                .task {
+                    await vpnService.prepare()
+                }
         }
     }
 }

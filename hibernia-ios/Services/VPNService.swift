@@ -16,21 +16,23 @@ import NetworkExtension
 
 import FirebaseAppCheck
 
+@MainActor
 class VPNService: ObservableObject {
     static let tunnelIdentifier = "uk.co.volani.hibernia-ios.OpenVPNTunnel" // Define identifiers
     static let appGroup = "group.uk.co.volani.hibernia-ios"
-    static let caEndpoint = "https://provision-configuration-1-xgpoqrynja-lm.a.run.app"
     
-    @Published var status: VPNStatus // Define published varibles
+    @Published var status: HiberniaVPNStatus // Define published varibles
     @Published var destination: VPNDestination
-    @Published var vpnServiceError: Error?
-    @Published var retryHandler: (() -> Void)?
     
     @Published var keepAlive: Bool
     @Published var killSwitch: Bool
     @Published var connectedTime: String
     
+    @Published var vpnIP: String?
+    
     var timer: SimpleTimerService
+    
+    var apiEndpoint: String
     
     private var configuration: OpenVPN.Configuration?
     private var subscriptions: Set<AnyCancellable>
@@ -41,7 +43,11 @@ class VPNService: ObservableObject {
         status = .disconnected
         timer = SimpleTimerService()
         connectedTime = "--:--"
+        
+        //apiEndpoint = Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt" ? "https://europe-west2-hiberniavpn.cloudfunctions.net/v2-provision-configuration" : "https://europe-west2-hiberniavpn.cloudfunctions.net/v2-sandbox-provision-configuration"
 
+        apiEndpoint = "https://europe-west2-hiberniavpn.cloudfunctions.net/v3-provision-configuration"
+        
         let defaults = UserDefaults.standard // Load data from userdefaults
         destination = VPNDestination(rawValue: defaults.string(forKey: "destination") ?? "lon") ?? .lon
         
@@ -73,7 +79,8 @@ class VPNService: ObservableObject {
             } else {
                 return  "--:--" // if formatter fails return blank value
             }
-        }.assign(to: &$connectedTime) // Assign elapsed time to published varible
+        }
+        .assign(to: &$connectedTime) // Assign elapsed time to published varible
         
         
         NotificationCenter.default.addObserver( // Add notification observers to VPN manager
@@ -91,7 +98,7 @@ class VPNService: ObservableObject {
     }
     
     deinit {
-        subscriptions.map({ $0.cancel() }) // Remove subscriptions if manager removed.
+        let _ = subscriptions.map({ $0.cancel() }) // Remove subscriptions if manager removed.
     }
 
     func prepare() async {
@@ -99,9 +106,11 @@ class VPNService: ObservableObject {
     }
     
     @MainActor
-    func connect(transactionID: UInt64) async { // Connect by first retreiving configuration, creating provider configuration and connecting to the VPN
+    func connect(appUserId: String) async throws { // Connect by first retreiving configuration, creating provider configuration and connecting to the VPN
         do {
-            self.configuration = try await self.requestConfiguration(destination: self.destination, transactionID: transactionID)
+            self.status = .requestingConfiguration
+
+            self.configuration = try await self.requestConfiguration(destination: self.destination, appUserId: appUserId)
             
             let providerConfiguration = OpenVPN.ProviderConfiguration("HiberniaVPN", appGroup: VPNService.appGroup, configuration: self.configuration!)
            
@@ -115,31 +124,31 @@ class VPNService: ObservableObject {
             }
             
             try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: configurationExtras, after: .seconds(1))
-            
-            self.vpnServiceError = nil // set error to nill if connection successful
-            self.retryHandler = nil
+
+            self.vpnIP = providerConfiguration.configuration.ipv4?.address
         } catch {
             if let urlError = error as? URLError, urlError.code == URLError.Code.cancelled {
                 return // Hide error if cancelled
             }
 
-            self.vpnServiceError = error
             self.status = .disconnected
+            throw error
         }
     }
     
-    func disconnect() {
-        Task {
-            await vpn.disconnect()
-        }
+    func disconnect() async {
+        await vpn.disconnect()
     }
     
-    func requestConfiguration(destination: VPNDestination, transactionID: UInt64) async throws -> OpenVPN.Configuration {
+    func requestConfiguration(destination: VPNDestination, appUserId: String) async throws -> OpenVPN.Configuration {
         let appCheckToken = try await AppCheck.appCheck().token(forcingRefresh: false) // Get app check token
         
-        let url = URL(string: VPNService.caEndpoint + "?app_token=\(appCheckToken.token)&subscription_id=\(transactionID)&location=\(destination.rawValue)") // Create request url
+        let url = URL(string: apiEndpoint + "?location=\(destination.rawValue)") // Create request url
 
-        let request = URLRequest(url: url!)
+        var request = URLRequest(url: url!)
+        
+        request.setValue(appCheckToken.token, forHTTPHeaderField: "App-Check-Token")
+        request.setValue(appUserId, forHTTPHeaderField: "App-User-Id")
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
@@ -160,7 +169,22 @@ class VPNService: ObservableObject {
     }
     
     @objc private func VPNStatusDidChange(notification: Notification) { // start and stop timer for status change
-        status = notification.vpnStatus
+        switch notification.vpnStatus {
+        case .connected:
+            
+            Task {
+                self.vpnIP = try await DestinationPingService.ping(hostname: destination.hostname, interval: 1, timeout: 5, attempts: 1).responses.first(where: {$0.ipAddress != nil})?.ipAddress
+            }
+            
+            status = .connected
+        case .connecting:
+            status = .connecting
+        case .disconnected:
+            status = .disconnected
+        case .disconnecting:
+            status = .disconnecting
+        }
+        
         print("VPNStatusDidChange: \(status)")
         
         if status == .connected {
@@ -172,7 +196,7 @@ class VPNService: ObservableObject {
     }
 
     @objc private func VPNDidFail(notification: Notification) {
-        print("VPNStatusDidFail: \(notification.vpnError.localizedDescription)")
+        print("VPNStatusDidFail: \(notification.vpnError.localizedDescription)") // TODO: Handle this error here?
     }
 }
 
@@ -181,7 +205,7 @@ struct ConfigurationResponse: Codable {
     let configuration: String
 }
 
-enum VPNDestination: String , CaseIterable { // Define destinations
+enum VPNDestination: String, CaseIterable { // Define destinations TODO: Update with remote config
     case lon
     case sgy
     case nyc
@@ -194,21 +218,42 @@ enum VPNDestination: String , CaseIterable { // Define destinations
     var displayed: String {
         switch self {
         case .lon:
-            return "London 🇬🇧"
+            return "🇬🇧 London"
         case .sgy:
-            return "Singapore 🇸🇬"
+            return "🇸🇬 Singapore"
         case .nyc:
-            return "New York 🇺🇸"
+            return "🇺🇸 New York"
         case .tyo:
-            return "Tokyo 🇯🇵"
+            return "🇯🇵 Tokyo"
         case .syd:
-            return "Sydney 🇦🇺"
+            return "🇦🇺 Sydney"
         case .dal:
-            return "Dallas 🇺🇸"
+            return "🇺🇸 Dallas"
         case .fra:
-            return "Frankfurt 🇩🇪"
+            return "🇩🇪 Frankfurt"
         case .mum:
-            return "Mumbai 🇮🇳"
+            return "🇮🇳 Mumbai"
+        }
+    }
+    
+    var hostname: String {
+        switch self {
+        case .lon:
+            return "lon-1.vpn.hiberniavpn.com"
+        case .sgy:
+            return "sgy-1.vpn.hiberniavpn.com"
+        case .nyc:
+            return "nyc-1.vpn.hiberniavpn.com"
+        case .tyo:
+            return "tyo-1.vpn.hiberniavpn.com"
+        case .syd:
+            return "syd-1.vpn.hiberniavpn.com"
+        case .dal:
+            return "dal-1.vpn.hiberniavpn.com"
+        case .fra:
+            return "fra-1.vpn.hiberniavpn.com"
+        case .mum:
+            return "mum-1.vpn.hiberniavpn.com"
         }
     }
 }
@@ -226,4 +271,12 @@ enum VPNError: LocalizedError {
             return "Subscription could not be verified."
         }
     }
+}
+
+enum HiberniaVPNStatus: String {
+    case requestingConfiguration = "Requesting Configuration"
+    case connecting = "Connecting"
+    case connected = "Connected"
+    case disconnecting = "Disconnecting"
+    case disconnected = "Disconnected"
 }

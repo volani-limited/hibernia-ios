@@ -9,11 +9,15 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    static let backgroundStart = Color("vBackgroundStart")
-    static let backgroundEnd = Color("vBackgroundEnd")
-    
-    static let highlightStart = Color("vHighlightStart")
-    static let highlightEnd = Color("vHighlightEnd")
+    static let background = Color("background")
+    static let vBlue = Color("blue")
+    static let vRed = Color("red")
+    static let vOrange = Color("orange")
+    static let text = Color("text")
+    static let titleText = Color("titleText")
+    static let turquoise = Color("turquoise")
+    static let darkShadow = Color("darkShadow")
+    static let lightShadow = Color("lightShadow")
 }
 
 extension LinearGradient {

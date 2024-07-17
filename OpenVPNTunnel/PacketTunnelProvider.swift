@@ -8,6 +8,4 @@
 import NetworkExtension
 import TunnelKitOpenVPNAppExtension
 
-class PacketTunnelProvider: OpenVPNTunnelProvider {
-}
-
+class PacketTunnelProvider: OpenVPNTunnelProvider { }

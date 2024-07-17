@@ -3,28 +3,46 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE0212E629BA678300B63047 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = AE0212E529BA678300B63047 /* ReceiptParser */; };
-		AE0212E829BA678300B63047 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = AE0212E729BA678300B63047 /* RevenueCat */; };
 		AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE0212EB29BA696400B63047 /* GoogleService-Info.plist */; };
-		AE1D376B29256138003A46F4 /* ConnectionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376A29256138003A46F4 /* ConnectionToolbar.swift */; };
+		AE1417A92C02438600D02808 /* DestinationPingResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1417A82C02438600D02808 /* DestinationPingResult.swift */; };
+		AE1501302C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */; };
+		AE1501332C2E384C0001A9C3 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = AE1501322C2E384C0001A9C3 /* RevenueCat */; };
+		AE1501352C2E384C0001A9C3 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = AE1501342C2E384C0001A9C3 /* RevenueCatUI */; };
+		AE1501372C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1501362C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift */; };
 		AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */; };
 		AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */; };
+		AE1FAF972C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */; };
+		AE22C7E22BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7E12BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift */; };
+		AE22C7E62BEE91FC003B8ED7 /* ArcProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7E52BEE91FC003B8ED7 /* ArcProgressView.swift */; };
+		AE22C7E82BEE9294003B8ED7 /* VPNControlStatusContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7E72BEE9294003B8ED7 /* VPNControlStatusContainerView.swift */; };
+		AE22C7EC2BF0EAF2003B8ED7 /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE22C7EB2BF0EAF0003B8ED7 /* Comfortaa-VariableFont_wght.ttf */; };
+		AE22C7EF2BF0EBD3003B8ED7 /* PaywallModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7EE2BF0EBD3003B8ED7 /* PaywallModalView.swift */; };
+		AE22C7F12BF50B80003B8ED7 /* DestinationPingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */; };
+		AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */; };
+		AE4870002C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */; };
+		AE4870022C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */; };
+		AE4870042C18ABAB004C62A1 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */; };
+		AE641B182C4721600090B259 /* PaywallFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B172C4721600090B259 /* PaywallFooterView.swift */; };
+		AE641B1A2C47217D0090B259 /* PaywallInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B192C47217D0090B259 /* PaywallInformationView.swift */; };
+		AE641B1C2C4722490090B259 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B1B2C4722490090B259 /* SettingsFooterView.swift */; };
+		AE641B1E2C4757570090B259 /* hibernia_root.crt in Resources */ = {isa = PBXBuildFile; fileRef = AE641B1D2C4757570090B259 /* hibernia_root.crt */; };
 		AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */; };
-		AE6A729628E21AE4001628E2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729528E21AE4001628E2 /* MainView.swift */; };
 		AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729728E21AE5001628E2 /* Assets.xcassets */; };
 		AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */; };
 		AE6A72A428E21B31001628E2 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6A72A328E21B31001628E2 /* NetworkExtension.framework */; };
-		AE6F8AF829BFD97C00FDE418 /* Qonversion in Frameworks */ = {isa = PBXBuildFile; productRef = AE6F8AF729BFD97C00FDE418 /* Qonversion */; };
+		AE6C9C8C2BF530600057E088 /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = AE6C9C8B2BF530600057E088 /* TunnelKitOpenVPN */; };
+		AE6C9C8E2BF530720057E088 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = AE6C9C8D2BF530720057E088 /* TunnelKitOpenVPNAppExtension */; };
+		AE6C9CB32BF58D850057E088 /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = AE6C9CB22BF58D850057E088 /* SwiftyPing */; };
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
-		AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */; };
-		AE7D104C28EE53C5006BEB18 /* ErrorDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */; };
+		AE8051BB2C18B231002DF24A /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
+		AE8051BC2C18B231002DF24A /* openssl.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE8051BE2C18B31C002DF24A /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
+		AE8051C92C1C9C70002DF24A /* SettingsVPNStatusCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */; };
 		AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85D1C72AED7D830080B6EB /* SafariWebView.swift */; };
-		AE85D1CA2AED7DA40080B6EB /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE85D1C92AED7DA30080B6EB /* rc_defaults.plist */; };
-		AE85D1CC2AED7DB90080B6EB /* FirebaseRemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85D1CB2AED7DB90080B6EB /* FirebaseRemoteConfigService.swift */; };
 		AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */; };
 		AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */; };
 		AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152829174DF60039689C /* FirebaseAuth */; };
@@ -33,16 +51,19 @@
 		AEB4AC6A28EF79170076D0F6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6A72A328E21B31001628E2 /* NetworkExtension.framework */; };
 		AEB4AC6D28EF79170076D0F6 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */; };
 		AEB4AC7228EF79170076D0F6 /* OpenVPNTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */; };
-		AEB4AC7928EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = AEB4AC7828EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension */; };
+		AEC2C8B82B9B375400E210F7 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8B72B9B375400E210F7 /* RootView.swift */; };
+		AEC2C8BA2B9B376800E210F7 /* SlideOverContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8B92B9B376800E210F7 /* SlideOverContainerView.swift */; };
+		AEC2C8BC2B9B378F00E210F7 /* TabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8BB2B9B378F00E210F7 /* TabBarContainerView.swift */; };
+		AEC2C8BE2B9B379900E210F7 /* DestinationSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8BD2B9B379900E210F7 /* DestinationSelectorView.swift */; };
+		AEC2C8C12B9B37E900E210F7 /* DestinationSelectorRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C02B9B37E900E210F7 /* DestinationSelectorRowView.swift */; };
+		AEC2C8C52B9B381000E210F7 /* TabBarSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C42B9B381000E210F7 /* TabBarSelectorView.swift */; };
+		AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */; };
+		AEC2C8CA2B9B385D00E210F7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C92B9B385D00E210F7 /* MainView.swift */; };
+		AEC2C8CC2B9B390600E210F7 /* LocationSelectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
 		AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNService.swift */; };
 		AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */; };
-		AEFCD1D128EA1909008D9694 /* VPNConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D028EA1909008D9694 /* VPNConnectButton.swift */; };
-		AEFCD1D328EA1945008D9694 /* CountrySelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */; };
-		AEFCD1D528EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D428EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift */; };
-		AEFCD1D728EC6D0C008D9694 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */; };
-		AEFCD1DA28EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */; };
+		AEFCD1D128EA1909008D9694 /* VPNConnectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D028EA1909008D9694 /* VPNConnectButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +77,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		AE8051BD2C18B231002DF24A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AE8051BC2C18B231002DF24A /* openssl.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AEB4AC4F28EF72540076D0F6 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,36 +104,56 @@
 /* Begin PBXFileReference section */
 		AE0212EB29BA696400B63047 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE0EB82128F8EADA002939F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AE1D376A29256138003A46F4 /* ConnectionToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionToolbar.swift; sourceTree = "<group>"; };
+		AE1417A82C02438600D02808 /* DestinationPingResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPingResult.swift; sourceTree = "<group>"; };
+		AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueCatSubscriptionService.swift; sourceTree = "<group>"; };
+		AE1501362C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallPackgeOptionsSubscribeView.swift; sourceTree = "<group>"; };
 		AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTimerService.swift; sourceTree = "<group>"; };
 		AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCheckAppCheckProviderFactory.swift; sourceTree = "<group>"; };
+		AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemLicenseKeyModalView.swift; sourceTree = "<group>"; };
+		AE22C7E12BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleEffectButtonStyle.swift; sourceTree = "<group>"; };
+		AE22C7E52BEE91FC003B8ED7 /* ArcProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcProgressView.swift; sourceTree = "<group>"; };
+		AE22C7E72BEE9294003B8ED7 /* VPNControlStatusContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNControlStatusContainerView.swift; sourceTree = "<group>"; };
+		AE22C7EB2BF0EAF0003B8ED7 /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		AE22C7EE2BF0EBD3003B8ED7 /* PaywallModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallModalView.swift; sourceTree = "<group>"; };
+		AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPingService.swift; sourceTree = "<group>"; };
+		AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsulePingGraphView.swift; sourceTree = "<group>"; };
+		AE486FF82C161D03004C62A1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		AE486FFC2C189FDB004C62A1 /* openssl.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2AY446Y6M9:Volani Limited"; lastKnownFileType = wrapper.xcframework; path = openssl.xcframework; sourceTree = "<group>"; };
+		AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubscriptionCardView.swift; sourceTree = "<group>"; };
+		AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVPNSettingsCardView.swift; sourceTree = "<group>"; };
+		AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
+		AE641B172C4721600090B259 /* PaywallFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallFooterView.swift; sourceTree = "<group>"; };
+		AE641B192C47217D0090B259 /* PaywallInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallInformationView.swift; sourceTree = "<group>"; };
+		AE641B1B2C4722490090B259 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
+		AE641B1D2C4757570090B259 /* hibernia_root.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hibernia_root.crt; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
-		AE6A729528E21AE4001628E2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		AE6A729728E21AE5001628E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "hibernia-ios.entitlements"; sourceTree = "<group>"; };
 		AE6A72A328E21B31001628E2 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		AE7D104528ECA7CC006BEB18 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPSubscriptionService.swift; sourceTree = "<group>"; };
 		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
-		AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDisplayView.swift; sourceTree = "<group>"; };
+		AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVPNStatusCardView.swift; sourceTree = "<group>"; };
 		AE85D1C72AED7D830080B6EB /* SafariWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
-		AE85D1C92AED7DA30080B6EB /* rc_defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = rc_defaults.plist; path = "hibernia-ios/rc_defaults.plist"; sourceTree = SOURCE_ROOT; };
-		AE85D1CB2AED7DB90080B6EB /* FirebaseRemoteConfigService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseRemoteConfigService.swift; sourceTree = "<group>"; };
 		AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAttestAppCheckProviderFactory.swift; sourceTree = "<group>"; };
 		AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OpenVPNTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		AEB4AC6E28EF79170076D0F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEB4AC6F28EF79170076D0F6 /* OpenVPNTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenVPNTunnel.entitlements; sourceTree = "<group>"; };
+		AEC2C8B72B9B375400E210F7 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		AEC2C8B92B9B376800E210F7 /* SlideOverContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideOverContainerView.swift; sourceTree = "<group>"; };
+		AEC2C8BB2B9B378F00E210F7 /* TabBarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContainerView.swift; sourceTree = "<group>"; };
+		AEC2C8BD2B9B379900E210F7 /* DestinationSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectorView.swift; sourceTree = "<group>"; };
+		AEC2C8C02B9B37E900E210F7 /* DestinationSelectorRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectorRowView.swift; sourceTree = "<group>"; };
+		AEC2C8C42B9B381000E210F7 /* TabBarSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarSelectorView.swift; sourceTree = "<group>"; };
+		AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AEC2C8C92B9B385D00E210F7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectorItemView.swift; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
 		AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicViews.swift; sourceTree = "<group>"; };
-		AEFCD1D028EA1909008D9694 /* VPNConnectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectButton.swift; sourceTree = "<group>"; };
-		AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySelectorView.swift; sourceTree = "<group>"; };
-		AEFCD1D428EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSwitcherBarButtonView.swift; sourceTree = "<group>"; };
-		AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
-		AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseSubscriptionButtonView.swift; sourceTree = "<group>"; };
+		AEFCD1D028EA1909008D9694 /* VPNConnectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,13 +163,14 @@
 			files = (
 				AE6A72A428E21B31001628E2 /* NetworkExtension.framework in Frameworks */,
 				AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */,
-				AEB4AC7728EF79930076D0F6 /* TunnelKitOpenVPN in Frameworks */,
+				AE1501332C2E384C0001A9C3 /* RevenueCat in Frameworks */,
+				AE1501352C2E384C0001A9C3 /* RevenueCatUI in Frameworks */,
+				AE6C9C8C2BF530600057E088 /* TunnelKitOpenVPN in Frameworks */,
+				AE6C9CB32BF58D850057E088 /* SwiftyPing in Frameworks */,
 				AEA6152B29174DF60039689C /* FirebaseFirestore in Frameworks */,
-				AE6F8AF829BFD97C00FDE418 /* Qonversion in Frameworks */,
+				AE8051BB2C18B231002DF24A /* openssl.xcframework in Frameworks */,
 				AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */,
-				AE0212E829BA678300B63047 /* RevenueCat in Frameworks */,
 				AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */,
-				AE0212E629BA678300B63047 /* ReceiptParser in Frameworks */,
 				AEA6152D29174DF60039689C /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,22 +179,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEB4AC7928EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension in Frameworks */,
+				AE6C9C8E2BF530720057E088 /* TunnelKitOpenVPNAppExtension in Frameworks */,
 				AEB4AC6A28EF79170076D0F6 /* NetworkExtension.framework in Frameworks */,
+				AE8051BE2C18B31C002DF24A /* openssl.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE22C7E92BEE92BA003B8ED7 /* ConnectButtonAndStatus */ = {
+			isa = PBXGroup;
+			children = (
+				AE22C7E72BEE9294003B8ED7 /* VPNControlStatusContainerView.swift */,
+				AEFCD1D028EA1909008D9694 /* VPNConnectButtonView.swift */,
+				AE22C7E52BEE91FC003B8ED7 /* ArcProgressView.swift */,
+			);
+			path = ConnectButtonAndStatus;
+			sourceTree = "<group>";
+		};
+		AE22C7ED2BF0EBC7003B8ED7 /* PaywallModal */ = {
+			isa = PBXGroup;
+			children = (
+				AE22C7EE2BF0EBD3003B8ED7 /* PaywallModalView.swift */,
+				AE641B192C47217D0090B259 /* PaywallInformationView.swift */,
+				AE1501362C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift */,
+				AE641B172C4721600090B259 /* PaywallFooterView.swift */,
+				AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */,
+			);
+			path = PaywallModal;
+			sourceTree = "<group>";
+		};
 		AE27976B28E6584F00DDACF5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				AE6F94D029C9D38C00B006E3 /* AppCheck */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
-				AE85D1CB2AED7DB90080B6EB /* FirebaseRemoteConfigService.swift */,
 				AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */,
-				AE7D104728ECAD23006BEB18 /* IAPSubscriptionService.swift */,
+				AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */,
+				AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */,
+				AE1417A82C02438600D02808 /* DestinationPingResult.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -149,14 +226,15 @@
 		AE27976D28E6586200DDACF5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AEC2C8B72B9B375400E210F7 /* RootView.swift */,
+				AEC2C8B92B9B376800E210F7 /* SlideOverContainerView.swift */,
+				AEC2C8C32B9B37FF00E210F7 /* TabBarContainer */,
+				AEC2C8C22B9B37F100E210F7 /* Main */,
+				AE22C7E92BEE92BA003B8ED7 /* ConnectButtonAndStatus */,
+				AEC2C8BF2B9B37A000E210F7 /* DestinationSelector */,
+				AE22C7ED2BF0EBC7003B8ED7 /* PaywallModal */,
+				AEC2C8C62B9B383D00E210F7 /* Settings */,
 				AE85D1C62AED7D410080B6EB /* Helpers */,
-				AE6A729528E21AE4001628E2 /* MainView.swift */,
-				AE7D104B28EE53C5006BEB18 /* ErrorDisplayView.swift */,
-				AEFCD1D228EA1945008D9694 /* CountrySelectorView.swift */,
-				AEFCD1D928EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift */,
-				AE1D376A29256138003A46F4 /* ConnectionToolbar.swift */,
-				AEFCD1D028EA1909008D9694 /* VPNConnectButton.swift */,
-				AEFCD1D428EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,13 +261,15 @@
 		AE6A729228E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXGroup;
 			children = (
+				AE641B1D2C4757570090B259 /* hibernia_root.crt */,
+				AE486FFC2C189FDB004C62A1 /* openssl.xcframework */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
 				AE7D104928ECDB00006BEB18 /* Products.storekit */,
-				AEFCD1D628EC6CB4008D9694 /* Comfortaa-Bold.ttf */,
 				AE6A729728E21AE5001628E2 /* Assets.xcassets */,
+				AE22C7EB2BF0EAF0003B8ED7 /* Comfortaa-VariableFont_wght.ttf */,
 				AE0EB82128F8EADA002939F9 /* Info.plist */,
 				AE0212EB29BA696400B63047 /* GoogleService-Info.plist */,
-				AE85D1C92AED7DA30080B6EB /* rc_defaults.plist */,
+				AE486FF82C161D03004C62A1 /* PrivacyInfo.xcprivacy */,
 				AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */,
 				AE7D104228EC9D96006BEB18 /* Helpers */,
 				AE27976D28E6586200DDACF5 /* Views */,
@@ -228,6 +308,7 @@
 		AE7D104228EC9D96006BEB18 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				AE22C7E12BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift */,
 				AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */,
 				AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */,
 			);
@@ -252,6 +333,47 @@
 			path = OpenVPNTunnel;
 			sourceTree = "<group>";
 		};
+		AEC2C8BF2B9B37A000E210F7 /* DestinationSelector */ = {
+			isa = PBXGroup;
+			children = (
+				AEC2C8BD2B9B379900E210F7 /* DestinationSelectorView.swift */,
+				AEC2C8C02B9B37E900E210F7 /* DestinationSelectorRowView.swift */,
+				AE22C7F22BF50BC1003B8ED7 /* CapsulePingGraphView.swift */,
+			);
+			path = DestinationSelector;
+			sourceTree = "<group>";
+		};
+		AEC2C8C22B9B37F100E210F7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AEC2C8C92B9B385D00E210F7 /* MainView.swift */,
+				AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		AEC2C8C32B9B37FF00E210F7 /* TabBarContainer */ = {
+			isa = PBXGroup;
+			children = (
+				AEC2C8BB2B9B378F00E210F7 /* TabBarContainerView.swift */,
+				AEC2C8C42B9B381000E210F7 /* TabBarSelectorView.swift */,
+			);
+			path = TabBarContainer;
+			sourceTree = "<group>";
+		};
+		AEC2C8C62B9B383D00E210F7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */,
+				AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */,
+				AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */,
+				AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */,
+				AE641B1B2C4722490090B259 /* SettingsFooterView.swift */,
+				AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -263,6 +385,8 @@
 				AE6A728D28E21AE3001628E2 /* Frameworks */,
 				AE6A728E28E21AE3001628E2 /* Resources */,
 				AEB4AC4F28EF72540076D0F6 /* Embed Foundation Extensions */,
+				AE22C7EA2BEE9D01003B8ED7 /* ShellScript */,
+				AE8051BD2C18B231002DF24A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -271,14 +395,14 @@
 			);
 			name = "hibernia-ios";
 			packageProductDependencies = (
-				AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */,
 				AEA6152829174DF60039689C /* FirebaseAuth */,
 				AEA6152A29174DF60039689C /* FirebaseFirestore */,
 				AEA6152C29174DF60039689C /* FirebaseFirestoreSwift */,
 				AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */,
-				AE0212E529BA678300B63047 /* ReceiptParser */,
-				AE0212E729BA678300B63047 /* RevenueCat */,
-				AE6F8AF729BFD97C00FDE418 /* Qonversion */,
+				AE6C9C8B2BF530600057E088 /* TunnelKitOpenVPN */,
+				AE6C9CB22BF58D850057E088 /* SwiftyPing */,
+				AE1501322C2E384C0001A9C3 /* RevenueCat */,
+				AE1501342C2E384C0001A9C3 /* RevenueCatUI */,
 			);
 			productName = "hibernia-ios";
 			productReference = AE6A729028E21AE3001628E2 /* hibernia-ios.app */;
@@ -298,7 +422,7 @@
 			);
 			name = OpenVPNTunnel;
 			packageProductDependencies = (
-				AEB4AC7828EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension */,
+				AE6C9C8D2BF530720057E088 /* TunnelKitOpenVPNAppExtension */,
 			);
 			productName = OpenVPNTunnel;
 			productReference = AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */;
@@ -332,10 +456,10 @@
 			);
 			mainGroup = AE6A728728E21AE3001628E2;
 			packageReferences = (
-				AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */,
 				AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */,
-				AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */,
+				AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */,
+				AE6C9C882BF52FDB0057E088 /* XCRemoteSwiftPackageReference "tunnelkit" */,
+				AE1501312C2E384C0001A9C3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
 			);
 			productRefGroup = AE6A729128E21AE3001628E2 /* Products */;
 			projectDirPath = "";
@@ -352,10 +476,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEFCD1D728EC6D0C008D9694 /* Comfortaa-Bold.ttf in Resources */,
+				AE641B1E2C4757570090B259 /* hibernia_root.crt in Resources */,
 				AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */,
-				AE85D1CA2AED7DA40080B6EB /* rc_defaults.plist in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
+				AE22C7EC2BF0EAF2003B8ED7 /* Comfortaa-VariableFont_wght.ttf in Resources */,
 				AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,27 +493,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AE22C7EA2BEE9D01003B8ED7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AE6A728C28E21AE3001628E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE7D104C28EE53C5006BEB18 /* ErrorDisplayView.swift in Sources */,
-				AEFCD1DA28EC6FE8008D9694 /* PurchaseSubscriptionButtonView.swift in Sources */,
-				AE7D104828ECAD23006BEB18 /* IAPSubscriptionService.swift in Sources */,
+				AEC2C8CC2B9B390600E210F7 /* LocationSelectorItemView.swift in Sources */,
+				AE4870022C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift in Sources */,
+				AE22C7E62BEE91FC003B8ED7 /* ArcProgressView.swift in Sources */,
+				AEC2C8CA2B9B385D00E210F7 /* MainView.swift in Sources */,
+				AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */,
+				AE22C7EF2BF0EBD3003B8ED7 /* PaywallModalView.swift in Sources */,
+				AE1FAF972C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift in Sources */,
+				AEC2C8B82B9B375400E210F7 /* RootView.swift in Sources */,
 				AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */,
 				AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */,
+				AE641B1A2C47217D0090B259 /* PaywallInformationView.swift in Sources */,
+				AEC2C8BE2B9B379900E210F7 /* DestinationSelectorView.swift in Sources */,
+				AEC2C8BA2B9B376800E210F7 /* SlideOverContainerView.swift in Sources */,
 				AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */,
+				AE22C7F12BF50B80003B8ED7 /* DestinationPingService.swift in Sources */,
 				AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */,
-				AE6A729628E21AE4001628E2 /* MainView.swift in Sources */,
-				AEFCD1D328EA1945008D9694 /* CountrySelectorView.swift in Sources */,
 				AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */,
+				AEC2C8C12B9B37E900E210F7 /* DestinationSelectorRowView.swift in Sources */,
 				AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */,
-				AE1D376B29256138003A46F4 /* ConnectionToolbar.swift in Sources */,
-				AEFCD1D128EA1909008D9694 /* VPNConnectButton.swift in Sources */,
+				AEFCD1D128EA1909008D9694 /* VPNConnectButtonView.swift in Sources */,
+				AE4870042C18ABAB004C62A1 /* AcknowledgementsView.swift in Sources */,
+				AEC2C8BC2B9B378F00E210F7 /* TabBarContainerView.swift in Sources */,
+				AE1501372C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift in Sources */,
+				AE1501302C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift in Sources */,
+				AE641B182C4721600090B259 /* PaywallFooterView.swift in Sources */,
+				AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */,
+				AEC2C8C52B9B381000E210F7 /* TabBarSelectorView.swift in Sources */,
 				AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */,
-				AE85D1CC2AED7DB90080B6EB /* FirebaseRemoteConfigService.swift in Sources */,
-				AEFCD1D528EBB7CC008D9694 /* ViewSwitcherBarButtonView.swift in Sources */,
+				AE4870002C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift in Sources */,
+				AE22C7E82BEE9294003B8ED7 /* VPNControlStatusContainerView.swift in Sources */,
+				AE641B1C2C4722490090B259 /* SettingsFooterView.swift in Sources */,
+				AE1417A92C02438600D02808 /* DestinationPingResult.swift in Sources */,
+				AE22C7E22BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift in Sources */,
+				AE8051C92C1C9C70002DF24A /* SettingsVPNStatusCardView.swift in Sources */,
 				AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,7 +626,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -517,7 +680,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -536,7 +699,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -549,12 +712,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -563,7 +726,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -576,7 +739,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 52;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -589,12 +752,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -603,7 +766,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -620,20 +783,22 @@
 				INFOPLIST_FILE = OpenVPNTunnel/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OpenVPNTunnel;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.8;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -650,20 +815,22 @@
 				INFOPLIST_FILE = OpenVPNTunnel/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = OpenVPNTunnel;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.4.8;
+				MARKETING_VERSION = 1.6.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.OpenVPNTunnel";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -700,19 +867,27 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+		AE1501312C2E384C0001A9C3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.0.0;
 			};
 		};
-		AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */ = {
+		AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/qonversion/qonversion-ios-sdk";
+			repositoryURL = "https://github.com/samiyr/SwiftyPing.git";
 			requirement = {
-				branch = develop;
+				branch = master;
+				kind = branch;
+			};
+		};
+		AE6C9C882BF52FDB0057E088 /* XCRemoteSwiftPackageReference "tunnelkit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:volani-limited/tunnelkit.git";
+			requirement = {
+				branch = no_openssl;
 				kind = branch;
 			};
 		};
@@ -720,35 +895,37 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/passepartoutvpn/tunnelkit.git";
-			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AE0212E529BA678300B63047 /* ReceiptParser */ = {
+		AE1501322C2E384C0001A9C3 /* RevenueCat */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = ReceiptParser;
-		};
-		AE0212E729BA678300B63047 /* RevenueCat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AE0212E429BA678300B63047 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			package = AE1501312C2E384C0001A9C3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
 			productName = RevenueCat;
 		};
-		AE6F8AF729BFD97C00FDE418 /* Qonversion */ = {
+		AE1501342C2E384C0001A9C3 /* RevenueCatUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AE6F8AF629BFD97C00FDE418 /* XCRemoteSwiftPackageReference "qonversion-ios-sdk" */;
-			productName = Qonversion;
+			package = AE1501312C2E384C0001A9C3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
+		AE6C9C8B2BF530600057E088 /* TunnelKitOpenVPN */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE6C9C882BF52FDB0057E088 /* XCRemoteSwiftPackageReference "tunnelkit" */;
+			productName = TunnelKitOpenVPN;
+		};
+		AE6C9C8D2BF530720057E088 /* TunnelKitOpenVPNAppExtension */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE6C9C882BF52FDB0057E088 /* XCRemoteSwiftPackageReference "tunnelkit" */;
+			productName = TunnelKitOpenVPNAppExtension;
+		};
+		AE6C9CB22BF58D850057E088 /* SwiftyPing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */;
+			productName = SwiftyPing;
 		};
 		AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -769,16 +946,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AEA6152729174DF60039689C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
-		};
-		AEB4AC7628EF79930076D0F6 /* TunnelKitOpenVPN */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */;
-			productName = TunnelKitOpenVPN;
-		};
-		AEB4AC7828EF79A00076D0F6 /* TunnelKitOpenVPNAppExtension */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AEB4AC4528EF6E900076D0F6 /* XCRemoteSwiftPackageReference "tunnelkit" */;
-			productName = TunnelKitOpenVPNAppExtension;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

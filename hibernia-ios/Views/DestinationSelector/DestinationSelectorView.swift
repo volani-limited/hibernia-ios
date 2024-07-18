@@ -14,12 +14,7 @@ struct DestinationSelectorView: View {
 
     @Binding var presenting: Bool
     
-    @StateObject var destinationPingService: DestinationPingService
-    
-    init(presenting: Binding<Bool>, destinations: [VPNService.VPNDestination]) {
-        self._presenting = presenting
-        self._destinationPingService = StateObject(wrappedValue: DestinationPingService(destinations: destinations))
-    }
+    @StateObject var destinationPingService: DestinationPingService = DestinationPingService()
 
     var body: some View {
         VStack {
@@ -65,12 +60,13 @@ struct DestinationSelectorView: View {
             ScrollView {
                 VStack(alignment: .center) {
                     ForEach(rcService.remoteConfiguration.destinations) { destination in
-                        DestinationSelectorRowView(destination: destination, allPings: destinationPingService.pingResults.values.compactMap { try? $0?.get() }, pingResult: destinationPingService.pingResults[destination]!, isHighlighted: vpnService.selectedDestination == destination)
+                        DestinationSelectorRowView(destination: destination, allPings: destinationPingService.pingResults.values.compactMap { try? $0.get() }, pingResult: destinationPingService.pingResults[destination], isHighlighted: vpnService.selectedDestination == destination)
                             .onTapGesture {
                                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
                                 feedbackGenerator.impactOccurred()
-                                vpnService.selectedDestination = destination
+                                vpnService.selectedDestination = destination  
                             }
+                            .disabled((destinationPingService.pingResults[destination]?.isSuccess != true ?? false))
                     }
                 }
                 .disabled(vpnService.status != .disconnected)

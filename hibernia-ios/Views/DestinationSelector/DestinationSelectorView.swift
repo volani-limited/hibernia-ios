@@ -10,17 +10,15 @@ import SwiftyPing
 
 struct DestinationSelectorView: View {
     @EnvironmentObject var vpnService: VPNService
+    @EnvironmentObject var rcService: RemoteConfigService
+
     @Binding var presenting: Bool
     
     @StateObject var destinationPingService: DestinationPingService
     
-    var destinations: [VPNService.VPNDestination]
-    
     init(presenting: Binding<Bool>, destinations: [VPNService.VPNDestination]) {
         self._presenting = presenting
         self._destinationPingService = StateObject(wrappedValue: DestinationPingService(destinations: destinations))
-        
-        self.destinations = destinations
     }
 
     var body: some View {
@@ -52,7 +50,7 @@ struct DestinationSelectorView: View {
                         let generator = UIImpactFeedbackGenerator(style: .light)
                         generator.impactOccurred()
                         
-                        destinationPingService.pingDestinations(destinations: destinations)
+                        destinationPingService.pingDestinations(destinations: rcService.remoteConfiguration.destinations)
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                             .foregroundColor(.text)
@@ -66,7 +64,7 @@ struct DestinationSelectorView: View {
             }
             ScrollView {
                 VStack(alignment: .center) {
-                    ForEach(destinations) { destination in
+                    ForEach(rcService.remoteConfiguration.destinations) { destination in
                         DestinationSelectorRowView(destination: destination, allPings: destinationPingService.pingResults.values.compactMap { try? $0?.get() }, pingResult: destinationPingService.pingResults[destination]!, isHighlighted: vpnService.selectedDestination == destination)
                             .onTapGesture {
                                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
@@ -86,7 +84,7 @@ struct DestinationSelectorView: View {
             }
         }
         .onAppear {
-            destinationPingService.pingDestinations(destinations: destinations)
+            destinationPingService.pingDestinations(destinations: rcService.remoteConfiguration.destinations)
         }
     }
 }

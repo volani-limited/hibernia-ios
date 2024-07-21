@@ -45,7 +45,9 @@ struct DestinationSelectorView: View {
                         let generator = UIImpactFeedbackGenerator(style: .light)
                         generator.impactOccurred()
                         
-                        destinationPingService.pingDestinations(destinations: rcService.remoteConfiguration.destinations)
+                        Task {
+                            await destinationPingService.pingDestinations(destinations: rcService.remoteConfiguration.destinations)
+                        }
                     } label: {
                         Image(systemName: "arrow.counterclockwise")
                             .foregroundColor(.text)
@@ -66,7 +68,7 @@ struct DestinationSelectorView: View {
                                 feedbackGenerator.impactOccurred()
                                 vpnService.selectedDestination = destination  
                             }
-                            .disabled((destinationPingService.pingResults[destination]?.isSuccess != true ?? false))
+                            //.disabled((destinationPingService.pingResults[destination]?.isSuccess != true ?? false))
                     }
                 }
                 .disabled(vpnService.status != .disconnected)
@@ -79,8 +81,8 @@ struct DestinationSelectorView: View {
                 }
             }
         }
-        .onAppear {
-            destinationPingService.pingDestinations(destinations: rcService.remoteConfiguration.destinations)
+        .task {
+            await destinationPingService.pingDestinations(destinations: rcService.remoteConfiguration.destinations)
         }
     }
 }

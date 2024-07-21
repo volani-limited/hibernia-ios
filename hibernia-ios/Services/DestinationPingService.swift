@@ -18,36 +18,34 @@ class DestinationPingService: ObservableObject {
         preparingResults = false
     }
     
-    func pingDestinations(destinations: [VPNService.VPNDestination]) {
+    func pingDestinations(destinations: [VPNService.VPNDestination]) async {
         preparingResults = true
         
         self.pingResults.removeAll()
         
-        Task {
-            await withTaskGroup(of: (destination: VPNService.VPNDestination, result: Result<Double, PingError>).self) { group in
-                for destination in destinations {
-                    group.addTask {
-                        let hostname = destination.id + ".vpn.hiberniavpn.com"
+        await withTaskGroup(of: (destination: VPNService.VPNDestination, result: Result<Double, PingError>).self) { group in
+            for destination in destinations {
+                group.addTask {
+                    let hostname = destination.id + ".vpn.hiberniavpn.com"
 
-                        do {
-                            let averagePing = try await Self.getAveragePing(hostname: hostname)
-                            return (destination: destination, .success(averagePing))
-                        } catch let pingError as PingError {
-                            return (destination: destination, .failure(pingError))
-                        } catch {
-                            fatalError("Unhandled error pinging destination \(destination.id): \(error.localizedDescription)")
-                        }
+                    do {
+                        let averagePing = try await Self.getAveragePing(hostname: hostname)
+                        return (destination: destination, .success(averagePing))
+                    } catch let pingError as PingError {
+                        return (destination: destination, .failure(pingError))
+                    } catch {
+                        fatalError("Unhandled error pinging destination \(destination.id): \(error.localizedDescription)")
                     }
                 }
-                for await pingResult in group {
-                    self.pingResults[pingResult.destination] = pingResult.result
-                }
-                self.preparingResults = false
             }
+            for await pingResult in group {
+                self.pingResults[pingResult.destination] = pingResult.result
+            }
+            self.preparingResults = false
         }
     }
     
-    nonisolated public static func ping(hostname:  String, interval: Double, timeout: Double, attempts: Int) async throws -> PingResult {
+    public static func ping(hostname: String, interval: Double, timeout: Double, attempts: Int) async throws -> PingResult {
         let manager = try SwiftyPing(host: hostname, configuration: PingConfiguration(interval: interval, with: timeout), queue: DispatchQueue.global(qos: .userInteractive))
         
         manager.targetCount = attempts

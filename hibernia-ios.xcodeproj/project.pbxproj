@@ -32,7 +32,6 @@
 		AE641B222C480B890090B259 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = AE641B212C480B890090B259 /* FirebaseRemoteConfig */; };
 		AE641B242C480B890090B259 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AE641B232C480B890090B259 /* FirebaseRemoteConfigSwift */; };
 		AE641B262C48343E0090B259 /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B252C48343E0090B259 /* RemoteConfigService.swift */; };
-		AE641B282C486EBC0090B259 /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE641B272C486EBB0090B259 /* rc_defaults.plist */; };
 		AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */; };
 		AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729728E21AE5001628E2 /* Assets.xcassets */; };
 		AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */; };
@@ -63,6 +62,7 @@
 		AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */; };
 		AEC2C8CA2B9B385D00E210F7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C92B9B385D00E210F7 /* HomeView.swift */; };
 		AEC2C8CC2B9B390600E210F7 /* LocationSelectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */; };
+		AEE908DE2C4DCC5700A3796C /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEE908DD2C4DCC5700A3796C /* rc_defaults.plist */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
 		AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNService.swift */; };
 		AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */; };
@@ -129,7 +129,6 @@
 		AE641B1B2C4722490090B259 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
 		AE641B1D2C4757570090B259 /* hibernia_root.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hibernia_root.crt; sourceTree = "<group>"; };
 		AE641B252C48343E0090B259 /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
-		AE641B272C486EBB0090B259 /* rc_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
 		AE6A729728E21AE5001628E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,6 +153,7 @@
 		AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AEC2C8C92B9B385D00E210F7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectorItemView.swift; sourceTree = "<group>"; };
+		AEE908DD2C4DCC5700A3796C /* rc_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
 		AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicViews.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 		AE6A729228E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXGroup;
 			children = (
-				AE641B272C486EBB0090B259 /* rc_defaults.plist */,
+				AEE908DD2C4DCC5700A3796C /* rc_defaults.plist */,
 				AE641B1D2C4757570090B259 /* hibernia_root.crt */,
 				AE486FFC2C189FDB004C62A1 /* openssl.xcframework */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
@@ -487,7 +487,7 @@
 			files = (
 				AE641B1E2C4757570090B259 /* hibernia_root.crt in Resources */,
 				AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */,
-				AE641B282C486EBC0090B259 /* rc_defaults.plist in Resources */,
+				AEE908DE2C4DCC5700A3796C /* rc_defaults.plist in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
 				AE22C7EC2BF0EAF2003B8ED7 /* Comfortaa-VariableFont_wght.ttf in Resources */,
 				AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */,
@@ -735,6 +735,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -775,6 +776,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

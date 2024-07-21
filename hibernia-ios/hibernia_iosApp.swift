@@ -26,8 +26,6 @@ struct hibernia_iosApp: App {
         }
         
         FirebaseApp.configure()
-
-        let destinations = [VPNService.VPNDestination(id: "lon-1", displayedName: "London")]
         
         rcService = RemoteConfigService()
         vpnService = VPNService(destinations: rcService.remoteConfiguration.destinations) // Instantiate local services

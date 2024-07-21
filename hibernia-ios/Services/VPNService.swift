@@ -143,7 +143,7 @@ class VPNService: ObservableObject {
     func requestConfiguration(destination: VPNDestination, appUserId: String) async throws -> OpenVPN.Configuration {
         let appCheckToken = try await AppCheck.appCheck().token(forcingRefresh: false) // Get app check token
         
-        let url = URL(string: apiEndpoint + "?location=\(destination.rawValue)") // Create request url
+        let url = URL(string: apiEndpoint + "?location=\(destination.code)") // Create request url
 
         var request = URLRequest(url: url!)
         
@@ -233,6 +233,27 @@ enum VPNDestination: String, CaseIterable { // Define destinations TODO: Update 
             return "🇩🇪 Frankfurt"
         case .mum:
             return "🇮🇳 Mumbai"
+        }
+    }
+    
+    var code: String {
+        switch self {
+        case .lon:
+            return "lon-1"
+        case .sgy:
+            return "sgy-1"
+        case .nyc:
+            return "nyc-1"
+        case .tyo:
+            return "tyo-1"
+        case .syd:
+            return "syd-1"
+        case .dal:
+            return "dal-1"
+        case .fra:
+            return "fra-1"
+        case .mum:
+            return "mum-1"
         }
     }
     

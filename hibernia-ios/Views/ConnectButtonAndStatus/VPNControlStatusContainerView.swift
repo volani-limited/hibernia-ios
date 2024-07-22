@@ -60,7 +60,8 @@ struct VPNControlStatusContainerView: View {
                         .foregroundColor(.text)
                         .padding(.bottom)
                         .opacity(vpnService.status == .connected ? 1 : 0)
-                }.offset(y: 45)
+                }
+                .offset(y: 45)
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
         }

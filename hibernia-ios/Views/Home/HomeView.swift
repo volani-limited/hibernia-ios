@@ -6,26 +6,26 @@
 //
 
 import SwiftUI
-import FirebaseRemoteConfig
 
 struct HomeView: View {
-    @RemoteConfigProperty(key: "serviceMessage", fallback: "") var serviceMessage: String
     @Binding var presentingLocationSelectorView: Bool
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            VStack(spacing: 0) {
                 Text("HiberniaVPN")
                     .fontWeight(.black)
                     .font(.custom("Comfortaa", size: 40))
-                    .foregroundColor(.titleText)
+                    .foregroundStyle(Color.titleText)
                     .padding()
                 
                 VPNControlStatusContainerView()
                 
+                ServiceMessageView()
+                    .padding()
+                
                 LocationSelectorItemView(presentingLocationSelectorView: $presentingLocationSelectorView)
                 
-                Text(serviceMessage)
             }
             .frame(height: geometry.size.height * 0.8)
         }

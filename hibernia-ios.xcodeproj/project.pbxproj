@@ -62,7 +62,8 @@
 		AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */; };
 		AEC2C8CA2B9B385D00E210F7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C92B9B385D00E210F7 /* HomeView.swift */; };
 		AEC2C8CC2B9B390600E210F7 /* LocationSelectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */; };
-		AEE908DE2C4DCC5700A3796C /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEE908DD2C4DCC5700A3796C /* rc_defaults.plist */; };
+		AEE908E02C4DED9C00A3796C /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEE908DF2C4DED9B00A3796C /* rc_defaults.plist */; };
+		AEE908E22C4E9D6200A3796C /* ServiceMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
 		AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNService.swift */; };
 		AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */; };
@@ -153,7 +154,8 @@
 		AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AEC2C8C92B9B385D00E210F7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectorItemView.swift; sourceTree = "<group>"; };
-		AEE908DD2C4DCC5700A3796C /* rc_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
+		AEE908DF2C4DED9B00A3796C /* rc_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
+		AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessageView.swift; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
 		AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicViews.swift; sourceTree = "<group>"; };
@@ -267,8 +269,8 @@
 		AE6A729228E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXGroup;
 			children = (
-				AEE908DD2C4DCC5700A3796C /* rc_defaults.plist */,
 				AE641B1D2C4757570090B259 /* hibernia_root.crt */,
+				AEE908DF2C4DED9B00A3796C /* rc_defaults.plist */,
 				AE486FFC2C189FDB004C62A1 /* openssl.xcframework */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
 				AE7D104928ECDB00006BEB18 /* Products.storekit */,
@@ -355,6 +357,7 @@
 			children = (
 				AEC2C8C92B9B385D00E210F7 /* HomeView.swift */,
 				AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */,
+				AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -487,7 +490,7 @@
 			files = (
 				AE641B1E2C4757570090B259 /* hibernia_root.crt in Resources */,
 				AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */,
-				AEE908DE2C4DCC5700A3796C /* rc_defaults.plist in Resources */,
+				AEE908E02C4DED9C00A3796C /* rc_defaults.plist in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
 				AE22C7EC2BF0EAF2003B8ED7 /* Comfortaa-VariableFont_wght.ttf in Resources */,
 				AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */,
@@ -533,6 +536,7 @@
 				AE4870022C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift in Sources */,
 				AE22C7E62BEE91FC003B8ED7 /* ArcProgressView.swift in Sources */,
 				AEC2C8CA2B9B385D00E210F7 /* HomeView.swift in Sources */,
+				AEE908E22C4E9D6200A3796C /* ServiceMessageView.swift in Sources */,
 				AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */,
 				AE22C7EF2BF0EBD3003B8ED7 /* PaywallModalView.swift in Sources */,
 				AE1FAF972C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift in Sources */,

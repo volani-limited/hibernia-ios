@@ -2,11 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>serviceMessage</key>
-  <string></string>
-  <key>locationSelectorCheckmarks</key>
-  <string>false</string>
-  <key>destinations</key>
-  <string>[{"id":"lon-1","displayedName":"🇬🇧 London"},{"id":"sgy-1","displayedName":"🇸🇬 Singapore"},{"id":"nyc-1","displayedName":"🇺🇸 New York"},{"id":"tyo-1","displayedName":"🇯🇵 Tokyo"},{"id":"syd-1","displayedName":"🇦🇺 Sydney"},{"id":"dal-1","displayedName":"🇺🇸 Dallas"},{"id":"fra-1","displayedName":"🇩🇪 Frankfurt"},{"id":"mum-1","displayedName":"🇮🇳 Mumbai"},{"id":"dub-1","displayedName":"🇦🇪 Dubai"}]</string>
+	<key>destinationSelectorCheckmarks</key>
+	<string>true</string>
+	<key>serviceMessage</key>
+	<string></string>
+	<key>destinations</key>
+	<string>[{&quot;id&quot;:&quot;lon-1&quot;,&quot;displayedName&quot;:&quot;🇬🇧 London&quot;},{&quot;id&quot;:&quot;sgy-1&quot;,&quot;displayedName&quot;:&quot;🇸🇬 Singapore&quot;},{&quot;id&quot;:&quot;nyc-1&quot;,&quot;displayedName&quot;:&quot;🇺🇸 New York&quot;},{&quot;id&quot;:&quot;tyo-1&quot;,&quot;displayedName&quot;:&quot;🇯🇵 Tokyo&quot;},{&quot;id&quot;:&quot;syd-1&quot;,&quot;displayedName&quot;:&quot;🇦🇺 Sydney&quot;},{&quot;id&quot;:&quot;dal-1&quot;,&quot;displayedName&quot;:&quot;🇺🇸 Dallas&quot;},{&quot;id&quot;:&quot;fra-1&quot;,&quot;displayedName&quot;:&quot;🇩🇪 Frankfurt&quot;},{&quot;id&quot;:&quot;mum-1&quot;,&quot;displayedName&quot;:&quot;🇮🇳 Mumbai&quot;}]</string>
 </dict>
 </plist>

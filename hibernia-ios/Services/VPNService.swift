@@ -212,62 +212,6 @@ class VPNService: ObservableObject {
     }
 }
 
-
-
-/*enum VPNDestination: String, CaseIterable { // Define destinations TODO: Update with remote config
-    case lon
-    case sgy
-    case nyc
-    case tyo
-    case syd
-    case dal
-    case fra
-    case mum
-    
-    var displayed: String {
-        switch self {
-        case .lon:
-            return "🇬🇧 London"
-        case .sgy:
-            return "🇸🇬 Singapore"
-        case .nyc:
-            return "🇺🇸 New York"
-        case .tyo:
-            return "🇯🇵 Tokyo"
-        case .syd:
-            return "🇦🇺 Sydney"
-        case .dal:
-            return "🇺🇸 Dallas"
-        case .fra:
-            return "🇩🇪 Frankfurt"
-        case .mum:
-            return "🇮🇳 Mumbai"
-        }
-    }
-    
-    var hostname: String {
-        switch self {
-        case .lon:
-            return "lon-1.vpn.hiberniavpn.com"
-        case .sgy:
-            return "sgy-1.vpn.hiberniavpn.com"
-        case .nyc:
-            return "nyc-1.vpn.hiberniavpn.com"
-        case .tyo:
-            return "tyo-1.vpn.hiberniavpn.com"
-        case .syd:
-            return "syd-1.vpn.hiberniavpn.com"
-        case .dal:
-            return "dal-1.vpn.hiberniavpn.com"
-        case .fra:
-            return "fra-1.vpn.hiberniavpn.com"
-        case .mum:
-            return "mum-1.vpn.hiberniavpn.com"
-        }
-    }
-}*/
-
-
 enum VPNError: LocalizedError {
     case configurationRequestError
     case subscriptionPaymentError

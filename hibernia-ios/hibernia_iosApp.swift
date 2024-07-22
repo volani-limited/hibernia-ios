@@ -15,6 +15,7 @@ struct hibernia_iosApp: App {
     private var vpnService: VPNService
     private var subscriptionService: RevenueCatSubscriptionService
     private var rcService: RemoteConfigService
+    private var settingsService: UserSettingsService
 
     init() {
         if ProcessInfo.processInfo.isiOSAppOnMac { // Configure Firebase AppCheck
@@ -30,6 +31,7 @@ struct hibernia_iosApp: App {
         rcService = RemoteConfigService()
         vpnService = VPNService(destinations: rcService.remoteConfiguration.destinations) // Instantiate local services
         subscriptionService = RevenueCatSubscriptionService()
+        settingsService = UserSettingsService()
     }
 
     var body: some Scene {
@@ -38,6 +40,7 @@ struct hibernia_iosApp: App {
                 .environmentObject(vpnService)
                 .environmentObject(subscriptionService)
                 .environmentObject(rcService)
+                .environmentObject(settingsService)
                 .task {
                     await vpnService.prepare()
                 }

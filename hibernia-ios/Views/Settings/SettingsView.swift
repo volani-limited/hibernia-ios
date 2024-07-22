@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseRemoteConfig
 
 struct SettingsView: View {
     @EnvironmentObject var vpnService: VPNService
+    
+    @RemoteConfigProperty(key: "presentsExtraSettings", fallback: true) var presentsExtraSettings: Bool
 
     var body: some View {
         VStack {
@@ -25,6 +28,10 @@ struct SettingsView: View {
                     SettingsVPNStatusCardView()
                     
                     SettingsVPNSettingsCardView()
+                    
+                    if presentsExtraSettings {
+                        SettingsExtraSettingsCardView()
+                    }
                     
                     SettingsFooterView()
                 }

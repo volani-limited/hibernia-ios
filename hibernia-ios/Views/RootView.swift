@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
+    @EnvironmentObject var settingsService: UserSettingsService
     @EnvironmentObject var rcService: RemoteConfigService
 
     var body: some View {
@@ -15,6 +16,7 @@ struct RootView: View {
             Color.background.edgesIgnoringSafeArea(.all)
             SlideOverContainerView()
         }
+        .preferredColorScheme(settingsService.preferredAppAppearance.colorSchemeEquivalent)
         .task {
             do {
                 try await rcService.fetchAndActivate()

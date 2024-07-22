@@ -50,6 +50,9 @@
 		AEA6152929174DF60039689C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152829174DF60039689C /* FirebaseAuth */; };
 		AEA6152B29174DF60039689C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152A29174DF60039689C /* FirebaseFirestore */; };
 		AEA6152D29174DF60039689C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152C29174DF60039689C /* FirebaseFirestoreSwift */; };
+		AEA9B3A52C4F1ECA003B2DD4 /* UserSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA9B3A42C4F1ECA003B2DD4 /* UserSettingsService.swift */; };
+		AEA9B3A72C4F2373003B2DD4 /* SettingsExtraSettingsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA9B3A62C4F2373003B2DD4 /* SettingsExtraSettingsCardView.swift */; };
+		AEA9B3AB2C4F294C003B2DD4 /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEA9B3AA2C4F294B003B2DD4 /* rc_defaults.plist */; };
 		AEB4AC6A28EF79170076D0F6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6A72A328E21B31001628E2 /* NetworkExtension.framework */; };
 		AEB4AC6D28EF79170076D0F6 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */; };
 		AEB4AC7228EF79170076D0F6 /* OpenVPNTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -62,7 +65,6 @@
 		AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */; };
 		AEC2C8CA2B9B385D00E210F7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C92B9B385D00E210F7 /* HomeView.swift */; };
 		AEC2C8CC2B9B390600E210F7 /* LocationSelectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */; };
-		AEE908E02C4DED9C00A3796C /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEE908DF2C4DED9B00A3796C /* rc_defaults.plist */; };
 		AEE908E22C4E9D6200A3796C /* ServiceMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
 		AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNService.swift */; };
@@ -141,6 +143,9 @@
 		AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVPNStatusCardView.swift; sourceTree = "<group>"; };
 		AE85D1C72AED7D830080B6EB /* SafariWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
 		AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAttestAppCheckProviderFactory.swift; sourceTree = "<group>"; };
+		AEA9B3A42C4F1ECA003B2DD4 /* UserSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsService.swift; sourceTree = "<group>"; };
+		AEA9B3A62C4F2373003B2DD4 /* SettingsExtraSettingsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExtraSettingsCardView.swift; sourceTree = "<group>"; };
+		AEA9B3AA2C4F294B003B2DD4 /* rc_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
 		AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OpenVPNTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		AEB4AC6E28EF79170076D0F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,7 +159,6 @@
 		AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AEC2C8C92B9B385D00E210F7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectorItemView.swift; sourceTree = "<group>"; };
-		AEE908DF2C4DED9B00A3796C /* rc_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
 		AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessageView.swift; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */,
 				AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */,
 				AE641B252C48343E0090B259 /* RemoteConfigService.swift */,
+				AEA9B3A42C4F1ECA003B2DD4 /* UserSettingsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -270,8 +275,8 @@
 			isa = PBXGroup;
 			children = (
 				AE641B1D2C4757570090B259 /* hibernia_root.crt */,
-				AEE908DF2C4DED9B00A3796C /* rc_defaults.plist */,
 				AE486FFC2C189FDB004C62A1 /* openssl.xcframework */,
+				AEA9B3AA2C4F294B003B2DD4 /* rc_defaults.plist */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
 				AE7D104928ECDB00006BEB18 /* Products.storekit */,
 				AE6A729728E21AE5001628E2 /* Assets.xcassets */,
@@ -378,6 +383,7 @@
 				AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */,
 				AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */,
 				AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */,
+				AEA9B3A62C4F2373003B2DD4 /* SettingsExtraSettingsCardView.swift */,
 				AE641B1B2C4722490090B259 /* SettingsFooterView.swift */,
 				AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */,
 			);
@@ -489,8 +495,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE641B1E2C4757570090B259 /* hibernia_root.crt in Resources */,
+				AEA9B3AB2C4F294C003B2DD4 /* rc_defaults.plist in Resources */,
 				AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */,
-				AEE908E02C4DED9C00A3796C /* rc_defaults.plist in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
 				AE22C7EC2BF0EAF2003B8ED7 /* Comfortaa-VariableFont_wght.ttf in Resources */,
 				AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */,
@@ -542,6 +548,7 @@
 				AE1FAF972C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift in Sources */,
 				AEC2C8B82B9B375400E210F7 /* RootView.swift in Sources */,
 				AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */,
+				AEA9B3A52C4F1ECA003B2DD4 /* UserSettingsService.swift in Sources */,
 				AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */,
 				AE641B1A2C47217D0090B259 /* PaywallInformationView.swift in Sources */,
 				AEC2C8BE2B9B379900E210F7 /* DestinationSelectorView.swift in Sources */,
@@ -554,6 +561,7 @@
 				AEC2C8C12B9B37E900E210F7 /* DestinationSelectorRowView.swift in Sources */,
 				AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */,
 				AEFCD1D128EA1909008D9694 /* VPNConnectButtonView.swift in Sources */,
+				AEA9B3A72C4F2373003B2DD4 /* SettingsExtraSettingsCardView.swift in Sources */,
 				AE4870042C18ABAB004C62A1 /* AcknowledgementsView.swift in Sources */,
 				AEC2C8BC2B9B378F00E210F7 /* TabBarContainerView.swift in Sources */,
 				AE1501372C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift in Sources */,
@@ -594,6 +602,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -654,6 +663,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

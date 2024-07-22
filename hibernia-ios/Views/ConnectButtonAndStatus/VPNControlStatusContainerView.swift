@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import FirebaseRemoteConfig
 
 struct VPNControlStatusContainerView: View {
+    @RemoteConfigProperty(key: "maxConnectionDuration", fallback: "") var maximumDuration: String
+    
     @EnvironmentObject var vpnService: VPNService
     
     private var statusProgress: Double {
@@ -55,11 +58,20 @@ struct VPNControlStatusContainerView: View {
                         .foregroundColor(.titleText)
                         .padding(.top)
                     
-                    Text(vpnService.connectedTime)
-                        .font(.custom("Comfortaa", size: 15))
-                        .foregroundColor(.text)
-                        .padding(.bottom)
-                        .opacity(vpnService.status == .connected ? 1 : 0)
+                    if maximumDuration.isEmpty {
+                        Text(vpnService.connectedTime)
+                            .font(.custom("Comfortaa", size: 15))
+                            .foregroundColor(.text)
+                            .padding(.bottom)
+                            .opacity(vpnService.status == .connected ? 1 : 0)
+                    } else {
+                        Text(vpnService.connectedTime + " / " + maximumDuration)
+                            .font(.custom("Comfortaa", size: 15))
+                            .foregroundColor(.text)
+                            .padding(.bottom)
+                            .opacity(vpnService.status == .connected ? 1 : 0)
+                    }
+                    
                 }
                 .offset(y: 45)
             }

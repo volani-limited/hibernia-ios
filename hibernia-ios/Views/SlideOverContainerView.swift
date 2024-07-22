@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SlideOverContainerView: View {
+    @EnvironmentObject var vpnService: VPNService
+    
     @State private var inLeftHandPosition: Bool = false
     
     var body: some View {

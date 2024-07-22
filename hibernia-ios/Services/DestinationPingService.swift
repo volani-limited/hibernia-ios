@@ -10,50 +10,42 @@ import SwiftyPing
 
 @MainActor
 class DestinationPingService: ObservableObject {
-    @Published var pingResults: [VPNDestination: Result<Double, PingError>?]
+    @Published var pingResults: [VPNService.VPNDestination: Result<Double, PingError>]
     @Published var preparingResults: Bool
     
     init() {
-        pingResults = [VPNDestination: Result<Double, PingError>?]()
+        pingResults = [VPNService.VPNDestination: Result<Double, PingError>]()
         preparingResults = false
-        
-        VPNDestination.allCases.forEach { destination in
-            pingResults.updateValue(nil, forKey: destination)
-        }
     }
     
-    func pingAllDestinations() {
+    func pingDestinations(destinations: [VPNService.VPNDestination]) async {
         preparingResults = true
         
-        VPNDestination.allCases.forEach { destination in
-            pingResults.updateValue(nil, forKey: destination)
-        }
+        self.pingResults.removeAll()
         
-        Task {
-            await withTaskGroup(of: (destination: VPNDestination, result: Result<Double, PingError>).self) { group in
-                for destination in pingResults.keys {
-                    group.addTask {
-                        let hostname = destination.hostname
+        await withTaskGroup(of: (destination: VPNService.VPNDestination, result: Result<Double, PingError>).self) { group in
+            for destination in destinations {
+                group.addTask {
+                    let hostname = destination.id + ".vpn.hiberniavpn.com"
 
-                        do {
-                            let averagePing = try await Self.getAveragePing(hostname: hostname)
-                            return (destination: destination, .success(averagePing))
-                        } catch let pingError as PingError {
-                            return (destination: destination, .failure(pingError))
-                        } catch {
-                            fatalError("Unhandled error pinging destination \(destination.rawValue): \(error.localizedDescription)")
-                        }
+                    do {
+                        let averagePing = try await Self.getAveragePing(hostname: hostname)
+                        return (destination: destination, .success(averagePing))
+                    } catch let pingError as PingError {
+                        return (destination: destination, .failure(pingError))
+                    } catch {
+                        fatalError("Unhandled error pinging destination \(destination.id): \(error.localizedDescription)")
                     }
                 }
-                for await pingResult in group {
-                    self.pingResults.updateValue(pingResult.result, forKey: pingResult.destination)
-                }
-                self.preparingResults = false
             }
+            for await pingResult in group {
+                self.pingResults[pingResult.destination] = pingResult.result
+            }
+            self.preparingResults = false
         }
     }
     
-    public static func ping(hostname:  String, interval: Double, timeout: Double, attempts: Int) async throws -> PingResult {
+    public static func ping(hostname: String, interval: Double, timeout: Double, attempts: Int) async throws -> PingResult {
         let manager = try SwiftyPing(host: hostname, configuration: PingConfiguration(interval: interval, with: timeout), queue: DispatchQueue.global(qos: .userInteractive))
         
         manager.targetCount = attempts

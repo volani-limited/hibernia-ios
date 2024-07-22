@@ -43,13 +43,13 @@ struct VPNConnectButtonView: View {
                     
                 case .connected:
                     vpnServiceTask = Task {
-                        await vpnService.disconnect()
+                       await vpnService.disconnect()
                     }
                 case .requestingConfiguration, .connecting:
                     vpnServiceTask?.cancel()
                     
                     vpnServiceTask = Task {
-                        await vpnService.disconnect()
+                       await vpnService.disconnect()
                     }
                 case .disconnecting:
                     break

@@ -7,21 +7,25 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct HomeView: View {
     @Binding var presentingLocationSelectorView: Bool
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            VStack(spacing: 0) {
                 Text("HiberniaVPN")
                     .fontWeight(.black)
                     .font(.custom("Comfortaa", size: 40))
-                    .foregroundColor(.titleText)
+                    .foregroundStyle(Color.titleText)
                     .padding()
                 
                 VPNControlStatusContainerView()
                 
+                ServiceMessageView()
+                    .padding()
+                
                 LocationSelectorItemView(presentingLocationSelectorView: $presentingLocationSelectorView)
+                
             }
             .frame(height: geometry.size.height * 0.8)
         }

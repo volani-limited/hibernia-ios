@@ -8,10 +8,19 @@
 import SwiftUI
 
 struct RootView: View {
+    @EnvironmentObject var rcService: RemoteConfigService
+
     var body: some View {
         ZStack {
             Color.background.edgesIgnoringSafeArea(.all)
             SlideOverContainerView()
+        }
+        .task {
+            do {
+                try await rcService.fetchAndActivate()
+            } catch {
+                print("Could not load remote configuration")
+            }
         }
     }
 }

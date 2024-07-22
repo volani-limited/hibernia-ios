@@ -7,13 +7,15 @@
 
 import SwiftUI
 import Firebase
+import FirebaseRemoteConfig
 import FirebaseAppCheck
 
 @main
 struct hibernia_iosApp: App {
     private var vpnService: VPNService
     private var subscriptionService: RevenueCatSubscriptionService
-    
+    private var rcService: RemoteConfigService
+
     init() {
         if ProcessInfo.processInfo.isiOSAppOnMac { // Configure Firebase AppCheck
             let providerFactory = DeviceCheckAppCheckProviderFactory()
@@ -25,7 +27,8 @@ struct hibernia_iosApp: App {
         
         FirebaseApp.configure()
         
-        vpnService = VPNService() // Instantiate local services
+        rcService = RemoteConfigService()
+        vpnService = VPNService(destinations: rcService.remoteConfiguration.destinations) // Instantiate local services
         subscriptionService = RevenueCatSubscriptionService()
     }
 
@@ -34,6 +37,7 @@ struct hibernia_iosApp: App {
             RootView()
                 .environmentObject(vpnService)
                 .environmentObject(subscriptionService)
+                .environmentObject(rcService)
                 .task {
                     await vpnService.prepare()
                 }

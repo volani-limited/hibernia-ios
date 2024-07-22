@@ -8,8 +8,12 @@
 import SwiftUI
 import SwiftyPing
 
+import FirebaseRemoteConfig
+
 struct DestinationSelectorRowView: View {
-    var destination: VPNDestination
+    @RemoteConfigProperty(key: "destinationSelectorCheckmarks", fallback: true) var selectorCheckmarks: Bool
+    
+    var destination: VPNService.VPNDestination
     
     var allPings: [Double]
 
@@ -19,7 +23,7 @@ struct DestinationSelectorRowView: View {
     var body: some View {
         HStack {
             HStack(alignment: .center, spacing: 5) {
-                Text(destination.displayed)
+                Text(destination.displayedName)
                     .font(.custom("Comfortaa", size: 24))
                     .foregroundStyle(Color.text)
                 Text("Nearest")
@@ -58,11 +62,13 @@ struct DestinationSelectorRowView: View {
                     .padding(.trailing, 5)
             }
             
-            Image(systemName: isHighlighted ? "checkmark.circle" : "circle")
-                .foregroundStyle(isHighlighted ? Color.turquoise : Color.text)
-                .shadow(color: isHighlighted ? Color.turquoise : Color.text, radius: 4)
-                .padding(5)
-                .background(NeumorphicShape(isHighlighted: isHighlighted, shape: Circle()))
+            if selectorCheckmarks {
+                Image(systemName: isHighlighted ? "checkmark.circle" : "circle")
+                    .foregroundStyle(isHighlighted ? Color.turquoise : Color.text)
+                    .shadow(color: isHighlighted ? Color.turquoise : Color.text, radius: 4)
+                    .padding(5)
+                    .background(NeumorphicShape(isHighlighted: isHighlighted, shape: Circle()))
+            }
         }
         .lineLimit(1)
         .minimumScaleFactor(0.2)

@@ -120,7 +120,7 @@ class VPNService: ObservableObject {
             try await vpn.reconnect(VPNService.tunnelIdentifier, configuration: providerConfiguration, extra: configurationExtras, after: .seconds(1))
 
             self.vpnIP = providerConfiguration.configuration.ipv4?.address
-            self.vpnHostname = providerConfiguration.configuration.sanHost
+            self.vpnHostname = providerConfiguration.configuration.remotes?[0].address
         } catch {
             if let urlError = error as? URLError, urlError.code == URLError.Code.cancelled {
                 return // Hide error if cancelled
@@ -170,7 +170,11 @@ class VPNService: ObservableObject {
         case .connected:
             
             Task {
-                self.vpnIP = try await DestinationPingService.ping(hostname: (selectedDestination.id + ".vpn.hiberniavpn.com"), interval: 1, timeout: 5, attempts: 1).responses.first(where: {$0.ipAddress != nil})?.ipAddress
+                do {
+                    self.vpnIP = try await DestinationPingService.ping(hostname: (selectedDestination.id + ".vpn.hiberniavpn.com"), interval: 1, timeout: 5, attempts: 1).responses.first(where: {$0.ipAddress != nil})?.ipAddress
+                } catch {
+                    print("Could not determine VPN IP")
+                }
             }
             
             status = .connected

@@ -7,11 +7,14 @@
 
 import SwiftUI
 import SwiftyPing
+import FirebaseRemoteConfig
 
 struct DestinationSelectorView: View {
     @EnvironmentObject var vpnService: VPNService
     @EnvironmentObject var rcService: RemoteConfigService
 
+    @RemoteConfigProperty(key: "destinationSelectorDisabledForPingError", fallback: false) var destinationSelectorDisabledForPingError: Bool
+    
     @Binding var presenting: Bool
     
     @StateObject var destinationPingService: DestinationPingService = DestinationPingService()
@@ -68,7 +71,7 @@ struct DestinationSelectorView: View {
                                 feedbackGenerator.impactOccurred()
                                 vpnService.selectedDestination = destination  
                             }
-                            //.disabled((destinationPingService.pingResults[destination]?.isSuccess != true ?? false))
+                            .disabled((destinationPingService.pingResults[destination]?.isSuccess != true ?? false) && destinationSelectorDisabledForPingError)
                     }
                 }
                 .disabled(vpnService.status != .disconnected)

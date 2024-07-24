@@ -33,8 +33,6 @@ class VPNService: ObservableObject {
     
     var timer: SimpleTimerService
     
-    var apiEndpoint: String
-    
     private var configuration: OpenVPN.Configuration?
     private var subscriptions: Set<AnyCancellable>
     private var vpn: NetworkExtensionVPN
@@ -44,10 +42,6 @@ class VPNService: ObservableObject {
         status = .disconnected
         timer = SimpleTimerService()
         connectedTime = "--:--"
-        
-        //apiEndpoint = Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt" ? "https://europe-west2-hiberniavpn.cloudfunctions.net/v2-provision-configuration" : "https://europe-west2-hiberniavpn.cloudfunctions.net/v2-sandbox-provision-configuration"
-
-        apiEndpoint = "https://europe-west2-hiberniavpn.cloudfunctions.net/v3-provision-configuration"
         
         let defaults = UserDefaults.standard // Load data from userdefaults
         selectedDestination = destinations.first(where: { $0.id == defaults.string(forKey: "destination")}) ?? destinations.first! // Make selectedDestination nil if no selected destination
@@ -144,6 +138,8 @@ class VPNService: ObservableObject {
     
     func requestConfiguration(appUserId: String) async throws -> OpenVPN.Configuration {
         let appCheckToken = try await AppCheck.appCheck().token(forcingRefresh: false) // Get app check token
+        
+        let apiEndpoint = "https://europe-west2-hiberniavpn.cloudfunctions.net/v3-provision-configuration"
         
         let url = URL(string: apiEndpoint + "?location=\(self.selectedDestination.id)") // Create request url
 

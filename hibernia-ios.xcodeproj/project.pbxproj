@@ -28,7 +28,6 @@
 		AE641B182C4721600090B259 /* PaywallFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B172C4721600090B259 /* PaywallFooterView.swift */; };
 		AE641B1A2C47217D0090B259 /* PaywallInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B192C47217D0090B259 /* PaywallInformationView.swift */; };
 		AE641B1C2C4722490090B259 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B1B2C4722490090B259 /* SettingsFooterView.swift */; };
-		AE641B1E2C4757570090B259 /* hibernia_root.crt in Resources */ = {isa = PBXBuildFile; fileRef = AE641B1D2C4757570090B259 /* hibernia_root.crt */; };
 		AE641B222C480B890090B259 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = AE641B212C480B890090B259 /* FirebaseRemoteConfig */; };
 		AE641B242C480B890090B259 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AE641B232C480B890090B259 /* FirebaseRemoteConfigSwift */; };
 		AE641B262C48343E0090B259 /* RemoteConfigService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B252C48343E0090B259 /* RemoteConfigService.swift */; };
@@ -44,6 +43,7 @@
 		AE8051BC2C18B231002DF24A /* openssl.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE8051BE2C18B31C002DF24A /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
 		AE8051C92C1C9C70002DF24A /* SettingsVPNStatusCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */; };
+		AE8212692C50962F00903CE6 /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE8212682C50962F00903CE6 /* rc_defaults.plist */; };
 		AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85D1C72AED7D830080B6EB /* SafariWebView.swift */; };
 		AE8EF993291FA1B300C554A0 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */; };
 		AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */; };
@@ -52,7 +52,6 @@
 		AEA6152D29174DF60039689C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AEA6152C29174DF60039689C /* FirebaseFirestoreSwift */; };
 		AEA9B3A52C4F1ECA003B2DD4 /* UserSettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA9B3A42C4F1ECA003B2DD4 /* UserSettingsService.swift */; };
 		AEA9B3A72C4F2373003B2DD4 /* SettingsExtraSettingsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA9B3A62C4F2373003B2DD4 /* SettingsExtraSettingsCardView.swift */; };
-		AEA9B3AB2C4F294C003B2DD4 /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEA9B3AA2C4F294B003B2DD4 /* rc_defaults.plist */; };
 		AEB4AC6A28EF79170076D0F6 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6A72A328E21B31001628E2 /* NetworkExtension.framework */; };
 		AEB4AC6D28EF79170076D0F6 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */; };
 		AEB4AC7228EF79170076D0F6 /* OpenVPNTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -130,7 +129,6 @@
 		AE641B172C4721600090B259 /* PaywallFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallFooterView.swift; sourceTree = "<group>"; };
 		AE641B192C47217D0090B259 /* PaywallInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallInformationView.swift; sourceTree = "<group>"; };
 		AE641B1B2C4722490090B259 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
-		AE641B1D2C4757570090B259 /* hibernia_root.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hibernia_root.crt; sourceTree = "<group>"; };
 		AE641B252C48343E0090B259 /* RemoteConfigService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigService.swift; sourceTree = "<group>"; };
 		AE6A729028E21AE3001628E2 /* hibernia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hibernia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hibernia_iosApp.swift; sourceTree = "<group>"; };
@@ -141,11 +139,11 @@
 		AE7D104528ECA7CC006BEB18 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
 		AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVPNStatusCardView.swift; sourceTree = "<group>"; };
+		AE8212682C50962F00903CE6 /* rc_defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
 		AE85D1C72AED7D830080B6EB /* SafariWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
 		AE8EF994291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAttestAppCheckProviderFactory.swift; sourceTree = "<group>"; };
 		AEA9B3A42C4F1ECA003B2DD4 /* UserSettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsService.swift; sourceTree = "<group>"; };
 		AEA9B3A62C4F2373003B2DD4 /* SettingsExtraSettingsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsExtraSettingsCardView.swift; sourceTree = "<group>"; };
-		AEA9B3AA2C4F294B003B2DD4 /* rc_defaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
 		AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OpenVPNTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEB4AC6C28EF79170076D0F6 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		AEB4AC6E28EF79170076D0F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -274,9 +272,8 @@
 		AE6A729228E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXGroup;
 			children = (
-				AE641B1D2C4757570090B259 /* hibernia_root.crt */,
 				AE486FFC2C189FDB004C62A1 /* openssl.xcframework */,
-				AEA9B3AA2C4F294B003B2DD4 /* rc_defaults.plist */,
+				AE8212682C50962F00903CE6 /* rc_defaults.plist */,
 				AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */,
 				AE7D104928ECDB00006BEB18 /* Products.storekit */,
 				AE6A729728E21AE5001628E2 /* Assets.xcassets */,
@@ -494,8 +491,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE641B1E2C4757570090B259 /* hibernia_root.crt in Resources */,
-				AEA9B3AB2C4F294C003B2DD4 /* rc_defaults.plist in Resources */,
+				AE8212692C50962F00903CE6 /* rc_defaults.plist in Resources */,
 				AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
 				AE22C7EC2BF0EAF2003B8ED7 /* Comfortaa-VariableFont_wght.ttf in Resources */,

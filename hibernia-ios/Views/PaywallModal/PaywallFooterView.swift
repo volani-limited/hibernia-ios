@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import FirebaseRemoteConfig
 
 struct PaywallFooterView: View {
     @EnvironmentObject var subscriptionService: RevenueCatSubscriptionService
     @Environment(\.dismiss) var dismiss
+    
+    @RemoteConfigProperty(key: "displaysRedeemKey", fallback: false) var displaysRedeemKey: Bool
     
     @Binding var processingRestore: Bool
     
@@ -53,16 +56,18 @@ struct PaywallFooterView: View {
                 .font(.caption)
                 .foregroundColor(.text)
             
-            Text("•")
-                .font(.caption)
-                .foregroundColor(.text)
-            
-            Button {
-                presentingRedeemLicenseKeyModal = true
-            } label: {
-                Text("Redeem license key")
+            if displaysRedeemKey {
+                Text("•")
                     .font(.caption)
                     .foregroundColor(.text)
+                
+                Button {
+                    presentingRedeemLicenseKeyModal = true
+                } label: {
+                    Text("Redeem license key")
+                        .font(.caption)
+                        .foregroundColor(.text)
+                }
             }
         }
         .sheet(isPresented: $presentingRedeemLicenseKeyModal) {

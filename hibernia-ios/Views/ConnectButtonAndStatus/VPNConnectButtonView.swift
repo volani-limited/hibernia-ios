@@ -17,9 +17,7 @@ struct VPNConnectButtonView: View {
     @EnvironmentObject var subscriptionService: RevenueCatSubscriptionService
 
     @State var presentingSubscribeModalView: Bool = false
-    
     @State private var vpnServiceTask: Task<Void, Error>?
-    
     @State private var presentingVPNConnectionError: Bool = false
 
     var body: some View {

@@ -15,7 +15,7 @@ struct SlideOverContainerView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                TabBarContainerView(presentingLocationSelectorView: $inLeftHandPosition)
+                TabBarContainerView(presentingDestinationSelectorView: $inLeftHandPosition)
                     .frame(width: geometry.size.width, height: geometry.size.height)
                 DestinationSelectorView(presenting: $inLeftHandPosition)
                     .frame(width: geometry.size.width, height: geometry.size.height)

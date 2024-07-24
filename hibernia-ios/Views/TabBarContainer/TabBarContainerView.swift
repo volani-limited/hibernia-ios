@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarContainerView: View {
     @State private var inLeftHandPosition: Bool = false
-    @Binding var presentingLocationSelectorView: Bool
+    @Binding var presentingDestinationSelectorView: Bool
 
     var body: some View {
         GeometryReader { geometry in
@@ -18,7 +18,7 @@ struct TabBarContainerView: View {
                     SettingsView()
                         .frame(width: geometry.size.width, height: geometry.size.height)
                 } else {
-                    HomeView(presentingLocationSelectorView: $presentingLocationSelectorView)
+                    HomeView(presentingDestinationSelectorView: $presentingDestinationSelectorView)
                         .frame(width: geometry.size.width, height: geometry.size.height)
                 }
             }

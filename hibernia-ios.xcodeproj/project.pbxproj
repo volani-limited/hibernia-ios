@@ -63,7 +63,7 @@
 		AEC2C8C52B9B381000E210F7 /* TabBarSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C42B9B381000E210F7 /* TabBarSelectorView.swift */; };
 		AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */; };
 		AEC2C8CA2B9B385D00E210F7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C92B9B385D00E210F7 /* HomeView.swift */; };
-		AEC2C8CC2B9B390600E210F7 /* LocationSelectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */; };
+		AEC2C8CC2B9B390600E210F7 /* DestinationSelectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8CB2B9B390600E210F7 /* DestinationSelectorItemView.swift */; };
 		AEE908E22C4E9D6200A3796C /* ServiceMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
 		AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNService.swift */; };
@@ -156,7 +156,7 @@
 		AEC2C8C42B9B381000E210F7 /* TabBarSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarSelectorView.swift; sourceTree = "<group>"; };
 		AEC2C8C72B9B384A00E210F7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AEC2C8C92B9B385D00E210F7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectorItemView.swift; sourceTree = "<group>"; };
+		AEC2C8CB2B9B390600E210F7 /* DestinationSelectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectorItemView.swift; sourceTree = "<group>"; };
 		AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessageView.swift; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
@@ -358,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				AEC2C8C92B9B385D00E210F7 /* HomeView.swift */,
-				AEC2C8CB2B9B390600E210F7 /* LocationSelectorItemView.swift */,
+				AEC2C8CB2B9B390600E210F7 /* DestinationSelectorItemView.swift */,
 				AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */,
 			);
 			path = Home;
@@ -534,7 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEC2C8CC2B9B390600E210F7 /* LocationSelectorItemView.swift in Sources */,
+				AEC2C8CC2B9B390600E210F7 /* DestinationSelectorItemView.swift in Sources */,
 				AE4870022C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift in Sources */,
 				AE22C7E62BEE91FC003B8ED7 /* ArcProgressView.swift in Sources */,
 				AEC2C8CA2B9B385D00E210F7 /* HomeView.swift in Sources */,
@@ -719,7 +719,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 55;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -760,7 +760,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 54;
+				CURRENT_PROJECT_VERSION = 55;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;

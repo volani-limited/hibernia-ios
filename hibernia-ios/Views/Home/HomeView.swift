@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Binding var presentingLocationSelectorView: Bool
+    @Binding var presentingDestinationSelectorView: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -24,7 +24,7 @@ struct HomeView: View {
                 ServiceMessageView()
                     .padding()
                 
-                LocationSelectorItemView(presentingLocationSelectorView: $presentingLocationSelectorView)
+                DestinationSelectorItemView(presentingDestinationSelectorView: $presentingDestinationSelectorView)
                 
             }
             .frame(height: geometry.size.height * 0.8)

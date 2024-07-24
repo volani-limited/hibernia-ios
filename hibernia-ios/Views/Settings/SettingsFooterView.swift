@@ -10,8 +10,21 @@ import SwiftUI
 struct SettingsFooterView: View {
     @State private var presentingAcknowledgementsView: Bool = false
     
+    @Environment(\.openURL) var openURL
+    
     var body: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .center, spacing: 5) {
+            
+            Button {
+                openURL(URL(string: "https://status.hiberniavpn.com")!)
+            } label: {
+                Text("Infrastructure status")
+
+                Image(systemName: "arrow.up.right.square.fill")
+            }
+            .font(.caption)
+            .foregroundColor(Color.text)
+            
             HStack(spacing: 12) {
                 Link("Terms & privacy", destination: URL(string: "https://hiberniavpn.com#legal")!) // Present legal information before subscribe action
                     .font(.caption)

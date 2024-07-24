@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct LocationSelectorItemView: View {
+struct DestinationSelectorItemView: View {
     @EnvironmentObject var vpnService: VPNService
-    @Binding var presentingLocationSelectorView: Bool
+    @Binding var presentingDestinationSelectorView: Bool
     
     var body: some View {
         VStack {
@@ -27,7 +27,7 @@ struct LocationSelectorItemView: View {
                     generator.impactOccurred()
                     
                     withAnimation {
-                        presentingLocationSelectorView = true
+                        presentingDestinationSelectorView = true
                     }
                 } label: {
                     Image(systemName: "ellipsis")

@@ -44,11 +44,12 @@ struct AcknowledgementsView: View {
                 Text("HiberniaVPN may make use of and/or include the following open-source code")
                     .font(.custom("Comfortaa", size: 15))
                     .foregroundStyle(Color.text)
+                    .padding(.horizontal)
                 
                 
                 ScrollView {
                     VStack(spacing: 15) {
-                        Spacer().frame(minWidth: 15)
+                        Spacer()
                         ForEach(acknowledgements, id: \.title) { acknowledgement in
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(acknowledgement.title)

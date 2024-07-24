@@ -103,7 +103,8 @@ struct PaywallPackgeOptionsSubscribeView: View {
                         .opacity(processingSubscribe ? 1 : 0)
                 }
                 
-                Spacer().frame(height: 10)
+                Spacer()
+                    .frame(height: 10)
                 
                 Text("Purchasing a lifetime subscription will not automatically cancel any existing subscriptions. Do this manually in Settings.").fixedSize(horizontal: false, vertical: true)
                     .font(.caption)

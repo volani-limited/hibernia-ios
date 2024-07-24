@@ -14,29 +14,34 @@ struct SettingsView: View {
     @RemoteConfigProperty(key: "presentsExtraSettings", fallback: true) var presentsExtraSettings: Bool
 
     var body: some View {
-        VStack {
-            Text("Settings")
-                .fontWeight(.black)
-                .font(.custom("Comfortaa", size: 40))
-                .foregroundColor(.titleText)
-                .padding()
-            
-            ScrollView {
-                VStack(spacing: 15) {
-                    SettingsSubscriptionCardView()
-                    
-                    SettingsVPNStatusCardView()
-                    
-                    SettingsVPNSettingsCardView()
-                    
-                    if presentsExtraSettings {
-                        SettingsExtraSettingsCardView()
+        GeometryReader { geometry in
+            VStack {
+                Text("Settings")
+                    .fontWeight(.black)
+                    .font(.custom("Comfortaa", size: 40))
+                    .foregroundColor(.titleText)
+                    .padding()
+                
+                ScrollView {
+                    VStack(spacing: 15) {
+                        SettingsSubscriptionCardView()
+                        
+                        SettingsVPNStatusCardView()
+                        
+                        SettingsVPNSettingsCardView()
+                        
+                        if presentsExtraSettings {
+                            SettingsExtraSettingsCardView()
+                        }
+                        
+                        SettingsFooterView()
+                       
+                        Spacer()
+                            .frame(minHeight: geometry.size.height * 0.15)
                     }
-                    
-                    SettingsFooterView()
+                    .padding(.top, 10)
+                    .padding()
                 }
-                .padding(.top, 10)
-                .padding()
             }
         }
     }

@@ -32,8 +32,7 @@ class VPNService: ObservableObject {
     @Published var vpnHostname: String?
     
     var timer: SimpleTimerService
-    
-    private var configuration: OpenVPN.Configuration?
+
     private var subscriptions: Set<AnyCancellable>
     private var vpn: NetworkExtensionVPN
 
@@ -105,9 +104,9 @@ class VPNService: ObservableObject {
         do {
             self.status = .requestingConfiguration
 
-            self.configuration = try await self.requestConfiguration(appUserId: appUserId)
+            let configuration = try await self.requestConfiguration(appUserId: appUserId)
             
-            let providerConfiguration = OpenVPN.ProviderConfiguration("HiberniaVPN", appGroup: VPNService.appGroup, configuration: self.configuration!)
+            let providerConfiguration = OpenVPN.ProviderConfiguration("HiberniaVPN", appGroup: VPNService.appGroup, configuration: configuration)
            
             var configurationExtras = NetworkExtensionExtra()
             

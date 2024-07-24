@@ -40,6 +40,7 @@ struct SettingsVPNStatusCardView: View {
                 Spacer()
                 
                 Image(systemName: "circle.fill").foregroundStyle(statusColor)
+                
                 Text(vpnService.status.rawValue)
                     .font(.custom("Comfortaa", size: 20))
                     .foregroundStyle(Color.titleText)

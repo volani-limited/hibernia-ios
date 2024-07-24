@@ -14,9 +14,7 @@ struct DestinationSelectorRowView: View {
     @RemoteConfigProperty(key: "destinationSelectorCheckmarks", fallback: true) var selectorCheckmarks: Bool
     
     var destination: VPNService.VPNDestination
-    
     var allPings: [Double]
-
     var pingResult: Result<Double, PingError>?
     var isHighlighted: Bool
     

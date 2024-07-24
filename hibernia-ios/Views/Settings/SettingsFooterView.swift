@@ -29,6 +29,7 @@ struct SettingsFooterView: View {
                         .foregroundColor(.text)
                 }
             }
+            
             Text("HiberniaVPN v\(Bundle.main.releaseVersionNumber!) (\(Bundle.main.buildVersionNumber!)) © Volani Limited MMXXIV")
                 .font(.caption)
                 .foregroundColor(.text)

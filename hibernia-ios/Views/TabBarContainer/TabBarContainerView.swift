@@ -25,7 +25,7 @@ struct TabBarContainerView: View {
             .overlay(
                 TabBarSelectorView(inLeftHandPosition: $inLeftHandPosition)
                     .frame(width: geometry.size.width / 5, height: 70)
-                    .offset(y: geometry.size.height * 0.4) //TODO: use geometry reader correctly
+                    .offset(y: geometry.size.height * 0.4)
             )
         }
     }

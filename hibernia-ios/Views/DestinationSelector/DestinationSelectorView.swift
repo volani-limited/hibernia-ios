@@ -71,7 +71,7 @@ struct DestinationSelectorView: View {
                                 feedbackGenerator.impactOccurred()
                                 vpnService.selectedDestination = destination  
                             }
-                            .disabled((destinationPingService.pingResults[destination]?.isSuccess != true ?? false) && destinationSelectorDisabledForPingError)
+                            .disabled((destinationPingService.pingResults[destination]?.isSuccess != true) && destinationSelectorDisabledForPingError)
                     }
                 }
                 .disabled(vpnService.status != .disconnected)

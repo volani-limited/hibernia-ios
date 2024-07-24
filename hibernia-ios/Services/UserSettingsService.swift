@@ -24,7 +24,8 @@ class UserSettingsService: ObservableObject {
         
         $preferredAppAppearance.sink { [weak self] value in
             self?.recievePreferredAppearanceUpdate(value: value)
-        }.store(in: &subscriptions)
+        }
+        .store(in: &subscriptions)
     }
     
     deinit {

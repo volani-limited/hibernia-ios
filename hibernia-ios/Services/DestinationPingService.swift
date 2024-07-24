@@ -54,7 +54,11 @@ class DestinationPingService: ObservableObject {
             manager.finished = { pingResult in
                 continuation.resume(returning: pingResult)
             }
-            try! manager.startPinging()
+            do {
+                try manager.startPinging()
+            } catch {
+                continuation.resume(throwing: error)
+            }
         }
     }
     

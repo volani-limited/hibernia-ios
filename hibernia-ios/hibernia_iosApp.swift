@@ -7,15 +7,16 @@
 
 import SwiftUI
 import Firebase
+import FirebaseRemoteConfig
 import FirebaseAppCheck
-import Qonversion
-import RevenueCat
 
 @main
 struct hibernia_iosApp: App {
-    var vpnService: VPNService
-    var subscriptionService: IAPSubscriptionService
-    
+    private var vpnService: VPNService
+    private var subscriptionService: RevenueCatSubscriptionService
+    private var rcService: RemoteConfigService
+    private var settingsService: UserSettingsService
+
     init() {
         if ProcessInfo.processInfo.isiOSAppOnMac { // Configure Firebase AppCheck
             let providerFactory = DeviceCheckAppCheckProviderFactory()
@@ -27,23 +28,22 @@ struct hibernia_iosApp: App {
         
         FirebaseApp.configure()
         
-        vpnService = VPNService() // Instantiate local services
-        subscriptionService = IAPSubscriptionService()
-        
-        let config = Qonversion.Configuration(projectKey: "_VyGtgouQv_ECvbgQyoG0lseCF24vnp-", launchMode: .analytics)
-        Qonversion.initWithConfig(config)
-        
-        Purchases.configure( // Configure Qonversion and RevenueCat SDKs
-          with: Configuration.Builder(withAPIKey: "appl_dFHGAJLCuWiOtNQROyLQFnqYLZF")
-            .with(observerMode: true)
-            .build()
-        )
-        
+        rcService = RemoteConfigService()
+        vpnService = VPNService(destinations: rcService.remoteConfiguration.destinations) // Instantiate local services
+        subscriptionService = RevenueCatSubscriptionService()
+        settingsService = UserSettingsService()
     }
 
     var body: some Scene {
         WindowGroup {
-            MainView().environmentObject(vpnService).environmentObject(subscriptionService)
+            RootView()
+                .environmentObject(vpnService)
+                .environmentObject(subscriptionService)
+                .environmentObject(rcService)
+                .environmentObject(settingsService)
+                .task {
+                    await vpnService.prepare()
+                }
         }
     }
 }

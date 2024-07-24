@@ -4,13 +4,30 @@
 
   ],
   "products" : [
-
+    {
+      "displayPrice" : "44.99",
+      "familyShareable" : false,
+      "internalID" : "6504958065",
+      "localizations" : [
+        {
+          "description" : "Lifetime family subscription to HiberniaVPN",
+          "displayName" : "Hibernia Family Lifetime",
+          "locale" : "en_GB"
+        }
+      ],
+      "productID" : "hpflt",
+      "referenceName" : "Hibernia Family Lifetime",
+      "type" : "NonConsumable"
+    }
   ],
   "settings" : {
     "_applicationInternalID" : "6443544329",
+    "_askToBuyEnabled" : false,
     "_developerTeamID" : "2AY446Y6M9",
-    "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 714061681.26872694,
+    "_failTransactionsEnabled" : true,
+    "_lastSynchronizedDate" : 742797325.64587498,
+    "_locale" : "en_US",
+    "_storefront" : "GBR",
     "_storeKitErrors" : [
       {
         "current" : null,
@@ -18,8 +35,11 @@
         "name" : "Load Products"
       },
       {
-        "current" : null,
-        "enabled" : false,
+        "current" : {
+          "index" : 2,
+          "type" : "generic"
+        },
+        "enabled" : true,
         "name" : "Purchase"
       },
       {
@@ -65,8 +85,54 @@
       "localizations" : [
 
       ],
-      "name" : "Hibernia Premium",
+      "name" : "Hibernia Premium (Standard)",
       "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "14.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6445888738",
+          "introductoryOffer" : null,
+          "localizations" : [
+
+          ],
+          "productID" : "hps1m",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Hibernia Private Server 1-Month",
+          "subscriptionGroupID" : "21022208",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "3.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6504251850",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "One month of premium VPN, with Family Sharing",
+              "displayName" : "Hibernia Family 1-Month",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "hpf1m",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Hibernia Standard (Family) 1-Month",
+          "subscriptionGroupID" : "21022208",
+          "type" : "RecurringSubscription"
+        },
         {
           "adHocOffers" : [
 
@@ -76,7 +142,7 @@
               "eligibility" : [
                 "new"
               ],
-              "internalID" : "65225CE8",
+              "internalID" : "8FCBA913",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -87,7 +153,7 @@
               "eligibility" : [
                 "new"
               ],
-              "internalID" : "D1F41280",
+              "internalID" : "362329FC",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -96,11 +162,11 @@
             },
             {
               "eligibility" : [
-                "expired",
                 "existing",
+                "expired",
                 "new"
               ],
-              "internalID" : "98EF3FB4",
+              "internalID" : "27F378DB",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -109,11 +175,11 @@
             },
             {
               "eligibility" : [
-                "existing",
                 "expired",
-                "new"
+                "new",
+                "existing"
               ],
-              "internalID" : "EBB32C40",
+              "internalID" : "94927AEA",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -124,7 +190,7 @@
               "eligibility" : [
                 "new"
               ],
-              "internalID" : "D2A5D57B",
+              "internalID" : "8BDB7857",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -135,7 +201,7 @@
               "eligibility" : [
                 "new"
               ],
-              "internalID" : "124F8BC4",
+              "internalID" : "BE0FE8DF",
               "isStackable" : false,
               "numberOfPeriods" : 1,
               "paymentMode" : "free",
@@ -148,11 +214,11 @@
                 "new",
                 "expired"
               ],
-              "internalID" : "35B9FC5E",
+              "internalID" : "3C5BAB46",
               "isStackable" : true,
               "numberOfPeriods" : 12,
               "paymentMode" : "payAsYouGo",
-              "referenceName" : "Hibernia Reddit 3",
+              "referenceName" : "Hibernia Reddit Deal 23",
               "subscriptionPeriod" : "P1M"
             },
             {
@@ -160,7 +226,7 @@
               "eligibility" : [
                 "new"
               ],
-              "internalID" : "9A283F9F",
+              "internalID" : "A85DAE8A",
               "isStackable" : true,
               "numberOfPeriods" : 1,
               "paymentMode" : "payAsYouGo",
@@ -173,33 +239,33 @@
                 "new",
                 "expired"
               ],
-              "internalID" : "03662962",
-              "isStackable" : true,
-              "numberOfPeriods" : 12,
-              "paymentMode" : "payAsYouGo",
-              "referenceName" : "Hibernia Reddit Deal 23",
-              "subscriptionPeriod" : "P1M"
-            },
-            {
-              "displayPrice" : "1.19",
-              "eligibility" : [
-                "new",
-                "expired"
-              ],
-              "internalID" : "5577C9BC",
+              "internalID" : "8A6D0C3F",
               "isStackable" : true,
               "numberOfPeriods" : 12,
               "paymentMode" : "payAsYouGo",
               "referenceName" : "Hibernia Reddit 2",
               "subscriptionPeriod" : "P1M"
+            },
+            {
+              "displayPrice" : "1.19",
+              "eligibility" : [
+                "expired",
+                "new"
+              ],
+              "internalID" : "9EC68C2C",
+              "isStackable" : true,
+              "numberOfPeriods" : 12,
+              "paymentMode" : "payAsYouGo",
+              "referenceName" : "Hibernia Reddit 3",
+              "subscriptionPeriod" : "P1M"
             }
           ],
           "displayPrice" : "1.99",
           "familyShareable" : false,
-          "groupNumber" : 1,
+          "groupNumber" : 3,
           "internalID" : "1646980445",
           "introductoryOffer" : {
-            "internalID" : "22B286EB",
+            "internalID" : "352E663E",
             "numberOfPeriods" : 1,
             "paymentMode" : "free",
             "subscriptionPeriod" : "P3D"

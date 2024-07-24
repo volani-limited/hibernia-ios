@@ -17,6 +17,7 @@ struct RootView: View {
             SlideOverContainerView()
         }
         .preferredColorScheme(settingsService.preferredAppAppearance.colorSchemeEquivalent)
+        .dynamicTypeSize(.large)
         .task {
             do {
                 try await rcService.fetchAndActivate()

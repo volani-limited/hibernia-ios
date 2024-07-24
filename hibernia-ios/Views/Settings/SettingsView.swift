@@ -9,10 +9,15 @@ import SwiftUI
 import FirebaseRemoteConfig
 
 struct SettingsView: View {
+    @EnvironmentObject var subscriptionService: RevenueCatSubscriptionService
+
     @EnvironmentObject var vpnService: VPNService
     
     @RemoteConfigProperty(key: "presentsExtraSettings", fallback: true) var presentsExtraSettings: Bool
+    @RemoteConfigProperty(key: "allowsDebugInfoAlert", fallback: true) var allowsDebugInfoAlert: Bool
 
+    @State private var presentingDebugInfoAlert: Bool = false
+    
     var body: some View {
         GeometryReader { geometry in
             VStack {
@@ -21,6 +26,11 @@ struct SettingsView: View {
                     .font(.custom("Comfortaa", size: 40))
                     .foregroundColor(.titleText)
                     .padding()
+                    .onTapGesture {
+                        if allowsDebugInfoAlert {
+                            presentingDebugInfoAlert = true
+                        }
+                    }
                 
                 ScrollView {
                     VStack(spacing: 15) {
@@ -42,6 +52,17 @@ struct SettingsView: View {
                     .padding(.top, 10)
                     .padding()
                 }
+            }
+            .alert("Debug information", isPresented: $presentingDebugInfoAlert) {
+                Button("Copy") {
+                    if let id = subscriptionService.customerInfo?.id {
+                        UIPasteboard.general.string = id
+                    }
+                }
+                Button("Close") { }
+                    .keyboardShortcut(.defaultAction)
+            } message: {
+                Text("nMade with ❤️ in the South of England" + "\nApp User ID: " + (subscriptionService.customerInfo?.id ?? "nil"))
             }
         }
     }

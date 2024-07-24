@@ -18,7 +18,6 @@ class RemoteConfigService: ObservableObject {
         remoteConfigManager = RemoteConfig.remoteConfig()
         
         let settings = RemoteConfigSettings()
-        settings.minimumFetchInterval = 0
         remoteConfigManager.configSettings = settings
         
         remoteConfigManager.setDefaults(fromPlist: "rc_defaults")

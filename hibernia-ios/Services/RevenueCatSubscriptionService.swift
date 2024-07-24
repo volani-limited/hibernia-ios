@@ -22,7 +22,6 @@ class RevenueCatSubscriptionService: ObservableObject {
     private(set) var customerInfo: CustomerInfo?
     
     init() {
-        Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: RevenueCatSubscriptionService.apiKey)
         
         subscriptionStatus = .notSubscribed

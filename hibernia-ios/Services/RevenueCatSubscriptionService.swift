@@ -24,7 +24,7 @@ class RevenueCatSubscriptionService: ObservableObject {
     init() {
         Purchases.configure(withAPIKey: RevenueCatSubscriptionService.apiKey)
         
-        subscriptionStatus = .notSubscribed
+        subscriptionStatus = .standardSubscription
         
         Task {
             try? await syncStoreKitWithRevenueCat()

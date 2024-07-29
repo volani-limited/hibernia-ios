@@ -32,7 +32,10 @@ struct VPNConnectButtonView: View {
                 case .disconnected:
                     vpnServiceTask = Task {
                         do {
-                            try await vpnService.connect(appUserId: subscriptionService.customerInfo!.id)
+                            if subscriptionService.customerInfo != nil {
+                                try await subscriptionService.forceRefreshCustomerInfo()
+                            }
+                            try await vpnService.connect(appUserId: subscriptionService.customerInfo!.id) //TODO: Fix crashing error here
                         } catch {
                             print("Error connecting to VPN: \(error.localizedDescription)")
                             presentingVPNConnectionError = true

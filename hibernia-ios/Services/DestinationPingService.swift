@@ -53,6 +53,8 @@ class DestinationPingService: ObservableObject {
         return try await withCheckedThrowingContinuation { continuation in
             manager.finished = { pingResult in
                 continuation.resume(returning: pingResult)
+                
+                manager.finished = nil
             }
             do {
                 try manager.startPinging()

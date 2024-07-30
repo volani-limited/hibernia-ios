@@ -32,7 +32,7 @@ struct VPNConnectButtonView: View {
                 case .disconnected:
                     vpnServiceTask = Task {
                         do {
-                            if subscriptionService.customerInfo != nil {
+                            if subscriptionService.customerInfo == nil {
                                 try await subscriptionService.forceRefreshCustomerInfo()
                             }
                             

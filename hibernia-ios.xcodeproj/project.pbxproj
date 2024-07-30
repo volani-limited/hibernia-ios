@@ -64,7 +64,7 @@
 		AEC2C8CA2B9B385D00E210F7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8C92B9B385D00E210F7 /* HomeView.swift */; };
 		AEC2C8CC2B9B390600E210F7 /* DestinationSelectorItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEC2C8CB2B9B390600E210F7 /* DestinationSelectorItemView.swift */; };
 		AEE908E22C4E9D6200A3796C /* ServiceMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */; };
-		AEE9CC552C50C79900A49D4D /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEE9CC542C50C79900A49D4D /* rc_defaults.plist */; };
+		AEF77D512C58842D008AEF81 /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEF77D502C58842D008AEF81 /* rc_defaults.plist */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
 		AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNService.swift */; };
 		AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */; };
@@ -157,7 +157,7 @@
 		AEC2C8C92B9B385D00E210F7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AEC2C8CB2B9B390600E210F7 /* DestinationSelectorItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectorItemView.swift; sourceTree = "<group>"; };
 		AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessageView.swift; sourceTree = "<group>"; };
-		AEE9CC542C50C79900A49D4D /* rc_defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
+		AEF77D502C58842D008AEF81 /* rc_defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
 		AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicViews.swift; sourceTree = "<group>"; };
@@ -277,8 +277,8 @@
 				AE7D104928ECDB00006BEB18 /* Products.storekit */,
 				AE6A729728E21AE5001628E2 /* Assets.xcassets */,
 				AE22C7EB2BF0EAF0003B8ED7 /* Comfortaa-VariableFont_wght.ttf */,
-				AEE9CC542C50C79900A49D4D /* rc_defaults.plist */,
 				AE0EB82128F8EADA002939F9 /* Info.plist */,
+				AEF77D502C58842D008AEF81 /* rc_defaults.plist */,
 				AE0212EB29BA696400B63047 /* GoogleService-Info.plist */,
 				AE486FF82C161D03004C62A1 /* PrivacyInfo.xcprivacy */,
 				AE6A729328E21AE4001628E2 /* hibernia_iosApp.swift */,
@@ -491,9 +491,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEE9CC552C50C79900A49D4D /* rc_defaults.plist in Resources */,
 				AE0212EC29BA696400B63047 /* GoogleService-Info.plist in Resources */,
 				AE6A729B28E21AE5001628E2 /* Preview Assets.xcassets in Resources */,
+				AEF77D512C58842D008AEF81 /* rc_defaults.plist in Resources */,
 				AE22C7EC2BF0EAF2003B8ED7 /* Comfortaa-VariableFont_wght.ttf in Resources */,
 				AE6A729828E21AE5001628E2 /* Assets.xcassets in Resources */,
 			);

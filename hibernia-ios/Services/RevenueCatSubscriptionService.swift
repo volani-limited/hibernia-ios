@@ -88,7 +88,7 @@ class RevenueCatSubscriptionService: ObservableObject {
         }
     }
     
-    static func getPaywallInformation(for offering: Offering) -> PaywallInformation { // TODO: Supply default values? (Potential move to Remote Config by redefining this function.
+    static func getPaywallInformation(for offering: Offering) -> PaywallInformation {
         let headlineDict = offering.getMetadataValue(for: "headline", default: [:])
         
         let headline = headlineDict["text"] as! String

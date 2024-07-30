@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: Neumorphic view modifiers/shape, using iOS 16.4+ shadow
+
 struct NeumorphicShape<S: Shape>: View {
     var isHighlighted: Bool = false
     var shape: S
@@ -54,7 +56,7 @@ struct NeumorphicButtonStyle<S: Shape>: ButtonStyle {
         }
 }
 
-// MARK: Neumorpic main button
+// MARK: Neumorpic main button, using legacy shadows
 
 struct NeumorphicMainButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) var isEnabled

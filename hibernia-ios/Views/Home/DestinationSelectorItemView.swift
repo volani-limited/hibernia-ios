@@ -17,6 +17,7 @@ struct DestinationSelectorItemView: View {
                 .font(.custom("Comfortaa", size: 17))
                 .foregroundStyle(Color.titleText)
                 .bold()
+            
             HStack() {
                 Text(vpnService.selectedDestination.displayedName)
                     .font(.custom("Comfortaa", size: 16))

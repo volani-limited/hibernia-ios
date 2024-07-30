@@ -24,6 +24,7 @@ struct TabBarSelectorView: View {
                     .hoverEffect()
             }
             .buttonStyle(ScaleEffectButtonStyle())
+
             Button {
                 let generator = UIImpactFeedbackGenerator(style: .light)
                 generator.impactOccurred()

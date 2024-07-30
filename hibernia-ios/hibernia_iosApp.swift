@@ -28,8 +28,8 @@ struct hibernia_iosApp: App {
         
         FirebaseApp.configure()
         
-        rcService = RemoteConfigService()
-        vpnService = VPNService(destinations: rcService.remoteConfiguration.destinations) // Instantiate local services
+        rcService = RemoteConfigService() // Instantiate servcices
+        vpnService = VPNService(destinations: rcService.remoteConfiguration.destinations)
         subscriptionService = RevenueCatSubscriptionService()
         settingsService = UserSettingsService()
     }
@@ -41,9 +41,6 @@ struct hibernia_iosApp: App {
                 .environmentObject(subscriptionService)
                 .environmentObject(rcService)
                 .environmentObject(settingsService)
-                .task {
-                    await vpnService.prepare()
-                }
         }
     }
 }

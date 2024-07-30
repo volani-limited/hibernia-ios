@@ -22,7 +22,7 @@ struct DestinationSelectorView: View {
     var body: some View {
         VStack {
             ZStack {
-                Text("Locations")
+                Text("Destinations")
                     .bold()
                     .font(.custom("Comfortaa", size: 30))
                     .foregroundColor(.titleText)
@@ -77,8 +77,9 @@ struct DestinationSelectorView: View {
                 .disabled(vpnService.status != .disconnected)
                 .padding()
                 .padding(.top, 10)
+
                 if vpnService.status != .disconnected {
-                    Text("Please disconnect before changing locations")
+                    Text("Please disconnect before changing destinations")
                         .font(.custom("Comfortaa", size: 15))
                         .foregroundStyle(Color.text)
                 }

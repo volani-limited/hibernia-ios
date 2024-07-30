@@ -12,7 +12,7 @@ struct AcknowledgementsView: View {
     @Environment(\.openURL) var openURL
     
     var acknowledgements = [
-        Acknowledgement(title: "HiberniaVPN Client", copyright: "© Volani Limited MMXXIV.", licensed: "Source code provided under the GPLv3.", licenseLink: URL(string: "https://www.gnu.org/licenses/gpl-3.0.en.html")!, sourceCodeLink: URL(string: "https://github.com/volani-limited/hibernia-ios")!),
+        Acknowledgement(title: "HiberniaVPN Client", copyright: "© Volani Limited MMXXIV. All rights reserved.", licensed: "Source code provided under the GPLv3.", licenseLink: URL(string: "https://www.gnu.org/licenses/gpl-3.0.en.html")!, sourceCodeLink: URL(string: "https://github.com/volani-limited/hibernia-ios")!),
         Acknowledgement(title: "TunnelKit", copyright: "© Davide De Rosa. All rights reserved.", licensed: "Licensed under the MPLv2.", licenseLink: URL(string: "https://www.mozilla.org/en-US/MPL/2.0/")!, sourceCodeLink: URL(string: "https://github.com/volani-limited/tunnelkit")!),
         Acknowledgement(title: "OpenSSL", copyright: "© The Open SSL Project. All rights reserved.", licensed: "Licensed under the Apache License 2.0. OpenVPN is a registered trademark of OpenVPN, Inc.", licenseLink: URL(string: "https://www.apache.org/licenses/LICENSE-2.0")!, sourceCodeLink: URL(string: "https://github.com/openssl/openssl")!)]
     

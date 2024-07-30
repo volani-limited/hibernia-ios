@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
+    @EnvironmentObject var vpnService: VPNService
     @EnvironmentObject var settingsService: UserSettingsService
     @EnvironmentObject var rcService: RemoteConfigService
 
@@ -17,8 +18,10 @@ struct RootView: View {
             SlideOverContainerView()
         }
         .preferredColorScheme(settingsService.preferredAppAppearance.colorSchemeEquivalent)
-        .dynamicTypeSize(.large)
+        .dynamicTypeSize(.large) // Fix/override dyanmic type size, this will be addressed in a future update.
         .task {
+            await vpnService.prepare()
+
             do {
                 try await rcService.fetchAndActivate()
             } catch {

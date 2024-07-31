@@ -719,7 +719,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 55;
+				CURRENT_PROJECT_VERSION = 64;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -760,7 +760,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 55;
+				CURRENT_PROJECT_VERSION = 64;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;

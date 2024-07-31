@@ -20,6 +20,7 @@ struct PaywallFooterView: View {
     @State private var presentingRestoreSuccess: Bool = false
     
     @State private var presentingRedeemLicenseKeyModal: Bool = false
+    @State private var presentingTermsModal: Bool = false
     
     var body: some View {
         HStack(spacing: 12) {
@@ -52,9 +53,13 @@ struct PaywallFooterView: View {
                 .font(.caption)
                 .foregroundColor(.text)
             
-            Link("Terms & privacy", destination: URL(string: "https://hiberniavpn.com#legal")!) // Present legal information before subscribe action
-                .font(.caption)
-                .foregroundColor(.text)
+            Button {
+                presentingTermsModal = true
+            } label: {
+                Text("Terms & privacy")// Present legal information before subscribe action
+                    .font(.caption)
+                    .foregroundColor(.text)
+            }
             
             if displaysRedeemKey {
                 Text("•")
@@ -72,6 +77,9 @@ struct PaywallFooterView: View {
         }
         .sheet(isPresented: $presentingRedeemLicenseKeyModal) {
             RedeemLicenseKeyModalView(parentDismissAction: dismiss)
+        }
+        .sheet(isPresented: $presentingTermsModal) {
+            SafariWebView(url: URL(string: "https://hiberniavpn.com#legal")!)
         }
     }
 }

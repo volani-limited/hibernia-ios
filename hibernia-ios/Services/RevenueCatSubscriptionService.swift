@@ -20,15 +20,19 @@ class RevenueCatSubscriptionService: ObservableObject {
     @Published private(set) var subscriptionExpiryDate: Date?
     
     private(set) var customerInfo: CustomerInfo?
+    private(set) var appUserId: String
     
     init() {
         Purchases.configure(withAPIKey: RevenueCatSubscriptionService.apiKey)
         
-        subscriptionStatus = .standardSubscription
+        let defaults = UserDefaults.standard
+        subscriptionStatus = SubscriptionStatusType(rawValue: defaults.string(forKey: "cachedSubscriptionStatus") ?? "notSubscribed") ?? .notSubscribed
+
+        self.appUserId = Purchases.shared.appUserID
         
         Task {
-            try? await syncStoreKitWithRevenueCat()
-            await beginRecievingCustomerInfoStream()
+            async let _ = beginRecievingCustomerInfoStream()
+            async let _ = syncStoreKitWithRevenueCat()
         }
     }
     
@@ -66,6 +70,9 @@ class RevenueCatSubscriptionService: ObservableObject {
         }
         
         self.subscriptionExpiryDate = entitlement.expirationDate
+        
+        let defaults = UserDefaults.standard
+        defaults.set(self.subscriptionStatus.rawValue, forKey: "cachedSubscriptionStatus")
     }
     
     func forceRefreshCustomerInfo() async throws {
@@ -118,7 +125,7 @@ class RevenueCatSubscriptionService: ObservableObject {
         case invalidLicenseKeyError
     }
     
-    enum SubscriptionStatusType {
+    enum SubscriptionStatusType: String {
         case notSubscribed
         case standardSubscription
         case familyShareable
@@ -153,7 +160,7 @@ class RevenueCatSubscriptionService: ObservableObject {
 }
 
 extension RevenueCatSubscriptionService {
-    private func syncStoreKitWithRevenueCat() async throws {
+    private func syncStoreKitWithRevenueCat() async {
         func checkVerified<T>(_ result: StoreKit.VerificationResult<T>) throws -> T {
             switch result {
                 case .unverified:
@@ -163,17 +170,22 @@ extension RevenueCatSubscriptionService {
             }
         }
         
-        let result = await Transaction.currentEntitlement(for: "hp1m")
-        
-        if let result {
-            let transaction = try checkVerified(result)
-            print("Successfully verified transaction: \(transaction.id) from StoreKit")
+        do {
+            let result = await Transaction.currentEntitlement(for: "hp1m")
             
-            let customerInfo = try await Purchases.shared.customerInfo()
-            
-            if customerInfo.entitlements.active.isEmpty {
-                let _ = try await Purchases.shared.syncPurchases()
+            if let result {
+                let transaction = try checkVerified(result)
+                print("Successfully verified transaction: \(transaction.id) from StoreKit")
+                
+                let customerInfo = try await Purchases.shared.customerInfo()
+                
+                if customerInfo.entitlements.active.isEmpty {
+                    let _ = try await Purchases.shared.syncPurchases()
+                    try await forceRefreshCustomerInfo()
+                }
             }
+        } catch {
+            print("Could not sync StoreKit with RevenueCat: \(error.localizedDescription)")
         }
     }
 

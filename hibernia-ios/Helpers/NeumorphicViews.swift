@@ -52,7 +52,7 @@ struct NeumorphicButtonStyle<S: Shape>: ButtonStyle {
                     }
                 }
             )
-            .animation(.easeInOut(duration: 0.19), value: configuration.isPressed)
+            .animation(.linear(duration: 0.08), value: configuration.isPressed)
         }
 }
 

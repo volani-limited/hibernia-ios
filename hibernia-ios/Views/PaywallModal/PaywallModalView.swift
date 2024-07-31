@@ -45,12 +45,17 @@ struct PaywallModalView: View {
                 VStack {
                     HStack {
                         Button {
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                            
                             dismiss()
                         } label: {
                             Image(systemName: "xmark")
                                 .foregroundStyle(Color.text)
                                 .padding()
                         }
+                        .disabled(processingStoreOperation)
+                        .opacity(processingStoreOperation ? 0 : 1)
                         .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
                         .padding()
                         
@@ -69,6 +74,7 @@ struct PaywallModalView: View {
             }
         }
         .ignoresSafeArea(.keyboard)
+        .interactiveDismissDisabled(processingStoreOperation)
     }
 }
 

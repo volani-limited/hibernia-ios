@@ -31,8 +31,10 @@ class RevenueCatSubscriptionService: ObservableObject {
         self.appUserId = Purchases.shared.appUserID
         
         Task {
-            async let _ = beginRecievingCustomerInfoStream()
-            async let _ = syncStoreKitWithRevenueCat()
+            await withTaskGroup(of: Void.self) { taskGroup in
+                taskGroup.addTask { await self.beginRecievingCustomerInfoStream() }
+                taskGroup.addTask { await self.syncStoreKitWithRevenueCat() }
+            }
         }
     }
     

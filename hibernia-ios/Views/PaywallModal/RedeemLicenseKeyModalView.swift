@@ -32,6 +32,8 @@ struct RedeemLicenseKeyModalView: View {
                             .foregroundStyle(Color.text)
                             .padding()
                     }
+                    .disabled(processingLicenseKey)
+                    .opacity(processingLicenseKey ? 0 : 1)
                     .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
                     Spacer()
                 }
@@ -48,6 +50,7 @@ struct RedeemLicenseKeyModalView: View {
                 ZStack {
                     Button {
                         processingLicenseKey = true
+                        
                         Task {
                             do {
                                 try await subscriptionService.redeemLicenseKey(enteredLicenseKey)
@@ -88,5 +91,6 @@ struct RedeemLicenseKeyModalView: View {
             .padding()
         }
         .presentationDetents([.fraction(0.3)])
+        .interactiveDismissDisabled(processingLicenseKey)
     }
 }

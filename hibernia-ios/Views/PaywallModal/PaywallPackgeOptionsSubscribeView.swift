@@ -47,6 +47,9 @@ struct PaywallPackgeOptionsSubscribeView: View {
                     Button {
                         processingSubscribe = true
                         Task {
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                            
                             do {
                                 try await subscriptionService.purchase(package: selectedPackage)
                                 dismiss()

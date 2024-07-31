@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsFooterView: View {
     @State private var presentingAcknowledgementsView: Bool = false
+    @State private var presentingTermsModal: Bool = false
     
     @Environment(\.openURL) var openURL
     
@@ -26,9 +27,13 @@ struct SettingsFooterView: View {
             .foregroundColor(Color.text)
             
             HStack(spacing: 12) {
-                Link("Terms & privacy", destination: URL(string: "https://hiberniavpn.com#legal")!) // Present legal information before subscribe action
-                    .font(.caption)
-                    .foregroundColor(.text)
+                Button {
+                    presentingTermsModal = true
+                } label: {
+                    Text("Terms & privacy")
+                        .font(.caption)
+                        .foregroundColor(.text)
+                }
                 
                 Text("•")
                     .font(.caption)
@@ -50,6 +55,9 @@ struct SettingsFooterView: View {
         .padding(.top, 10)
         .sheet(isPresented: $presentingAcknowledgementsView) {
             AcknowledgementsView()
+        }
+        .sheet(isPresented: $presentingTermsModal) {
+            SafariWebView(url: URL(string: "https://hiberniavpn.com#legal")!)
         }
     }
 }

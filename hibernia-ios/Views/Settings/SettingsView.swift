@@ -62,7 +62,7 @@ struct SettingsView: View {
                 Button("Close") { }
                     .keyboardShortcut(.defaultAction)
             } message: {
-                Text("Made with ❤️ in the South of England" + "\nApp User ID: " + (subscriptionService.customerInfo?.id ?? "nil"))
+                Text("Made with ❤️ in the South of England" + "\nApp User ID: " + (subscriptionService.appUserId))
             }
         }
     }

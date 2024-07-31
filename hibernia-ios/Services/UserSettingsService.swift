@@ -36,12 +36,10 @@ class UserSettingsService: ObservableObject {
         let defaults = UserDefaults.standard
         defaults.set(value.rawValue, forKey: "preferredAppAppearance")
         
-        if #unavailable(iOS 18) {
-            if value == .dark {
-                UIApplication.shared.setAlternateIconName("AppIcon-Dark")
-            } else {
-                UIApplication.shared.setAlternateIconName(nil)
-            }
+        if value == .dark {
+            UIApplication.shared.setAlternateIconName("AppIcon-Dark")
+        } else {
+            UIApplication.shared.setAlternateIconName(nil)
         }
     }
         

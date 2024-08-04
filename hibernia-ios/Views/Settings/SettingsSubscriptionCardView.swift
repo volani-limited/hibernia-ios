@@ -78,7 +78,7 @@ struct SettingsSubscriptionCardView: View {
                     Button {
                         presentingManageSubscriptionModal = true
                     } label: {
-                        Text("Manage in settings")
+                        Text("Manage")
                             .font(.custom("Comfortaa", size: 15))
                             .foregroundStyle(Color.titleText)
                             .padding()

@@ -20,8 +20,8 @@ struct PaywallInformationView: View {
                 VStack {
                     Image(colorScheme == .light ? "logo" : "logoDark")
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geometry.size.width / 2.5)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: geometry.size.width / 3.5)
                     
                     VStack(spacing: 15) {
                         if paywallInformation.headlineAppendsLocalizedPrice {
@@ -29,6 +29,8 @@ struct PaywallInformationView: View {
                                 .fontWeight(.bold)
                                 .font(.custom("Comfortaa", size: 25))
                                 .foregroundColor(.turquoise)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .multilineTextAlignment(.center)
                         } else {
                             Text(.init(paywallInformation.headline))
                                 .fontWeight(.bold)
@@ -40,17 +42,18 @@ struct PaywallInformationView: View {
                             .fontWeight(.bold)
                             .font(.custom("Comfortaa", size: 20))
                             .foregroundColor(.text)
-                    }
-                    .padding()
-                    
-                    VStack(alignment: .leading) {
-                        ForEach(paywallInformation.bullets, id: \.self) { bullet in
-                            Text(.init("• " + bullet))
-                                .font(.custom("Comfortaa", size: 15))
-                                .foregroundColor(.titleText)
+                        
+                        VStack(alignment: .leading) {
+                            ForEach(paywallInformation.bullets, id: \.self) { bullet in
+                                Text(.init("• " + bullet))
+                                    .font(.custom("Comfortaa", size: 15))
+                                    .foregroundColor(.titleText)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
                         }
                     }
                 }
+                .padding(.horizontal)
             }
         }
     }

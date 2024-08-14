@@ -74,7 +74,7 @@ struct SettingsSubscriptionCardView: View {
                     .padding(.top, 4)
                 }
                 
-                if subscriptionService.subscriptionStatus == .familyShareable || subscriptionService.subscriptionStatus == .standardSubscription {
+                if (subscriptionService.subscriptionStatus == .familyShareable || subscriptionService.subscriptionStatus == .standardSubscription) && subscriptionService.customerInfo?.managementURL != nil {
                     Button {
                         presentingManageSubscriptionModal = true
                     } label: {

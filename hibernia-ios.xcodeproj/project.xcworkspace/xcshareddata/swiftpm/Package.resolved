@@ -114,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RevenueCat/purchases-ios-spm.git",
       "state" : {
-        "revision" : "7d55b964114a3d4a76791227cdc28577617596db",
-        "version" : "4.43.2"
+        "revision" : "1357d57a38d09e60f967d0e78a912254fe46137c",
+        "version" : "4.43.3"
       }
     },
     {
@@ -123,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "e17d61f26df0f0e06f58f6977ba05a097a720106",
-        "version" : "1.27.1"
+        "revision" : "ebc7251dd5b37f627c93698e4374084d98409633",
+        "version" : "1.28.2"
       }
     },
     {

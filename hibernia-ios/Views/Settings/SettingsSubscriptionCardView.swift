@@ -74,11 +74,11 @@ struct SettingsSubscriptionCardView: View {
                     .padding(.top, 4)
                 }
                 
-                if subscriptionService.subscriptionStatus == .familyShareable || subscriptionService.subscriptionStatus == .standardSubscription {
+                if (subscriptionService.subscriptionStatus == .familyShareable || subscriptionService.subscriptionStatus == .standardSubscription) && subscriptionService.customerInfo?.managementURL != nil {
                     Button {
                         presentingManageSubscriptionModal = true
                     } label: {
-                        Text("Manage in settings")
+                        Text("Manage")
                             .font(.custom("Comfortaa", size: 15))
                             .foregroundStyle(Color.titleText)
                             .padding()

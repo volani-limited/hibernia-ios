@@ -27,7 +27,7 @@ struct SettingsVPNStatusCardView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 7) {
-            Text("VPN STATUS")
+            Text("VPN")
                 .font(.caption)
                 .foregroundColor(.text)
                 .padding(.bottom, 2)

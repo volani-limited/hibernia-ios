@@ -32,6 +32,8 @@ struct PaywallPackgeOptionsSubscribeView: View {
                                 .bold()
                                 .font(.custom("Comfortaa", size: 18))
                                 .foregroundStyle(Color.text)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.7)
                                 .padding()
                             
                             Spacer()
@@ -80,6 +82,8 @@ struct PaywallPackgeOptionsSubscribeView: View {
                                         .bold()
                                         .font(.custom("Comfortaa", size: 20))
                                         .foregroundColor(.vBlue)
+                                        .lineLimit(1)
+                                        .minimumScaleFactor(0.7)
                                 } else {
                                     Text("Subscribe")
                                         .bold()

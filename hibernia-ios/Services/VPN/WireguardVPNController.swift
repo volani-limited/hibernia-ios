@@ -9,7 +9,7 @@ import Foundation
 import NetworkExtension
 
 class WireguardVPNController {
-    static let tunnelIdentifier = "uk.co.volani.hibernia-ios.WireguardVPNManager"
+    static let tunnelIdentifier = "uk.co.volani.hibernia-ios.WireGuardTunnel"
     
     func connect(with configuration: WireguardVPNConfiguration) async throws {
         let existingManagers: [NETunnelProviderManager] = try await withCheckedThrowingContinuation { continuation in

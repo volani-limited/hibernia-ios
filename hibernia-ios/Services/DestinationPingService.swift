@@ -10,20 +10,20 @@ import SwiftyPing
 
 @MainActor
 class DestinationPingService: ObservableObject {
-    @Published var pingResults: [VPNService.VPNDestination: Result<Double, PingError>]
+    @Published var pingResults: [VPNDestination: Result<Double, PingError>]
     @Published var preparingResults: Bool
     
     init() {
-        pingResults = [VPNService.VPNDestination: Result<Double, PingError>]()
+        pingResults = [VPNDestination: Result<Double, PingError>]()
         preparingResults = false
     }
     
-    func pingDestinations(destinations: [VPNService.VPNDestination]) async {
+    func pingDestinations(destinations: [VPNDestination]) async {
         preparingResults = true
         
         self.pingResults.removeAll()
         
-        await withTaskGroup(of: (destination: VPNService.VPNDestination, result: Result<Double, PingError>).self) { group in
+        await withTaskGroup(of: (destination: VPNDestination, result: Result<Double, PingError>).self) { group in
             for destination in destinations {
                 group.addTask {
                     let hostname = destination.id + ".vpn.hiberniavpn.com"

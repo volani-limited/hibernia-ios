@@ -13,7 +13,6 @@ struct WireguardVPNConfiguration: Codable {
     let dns: String
     
     let publicKey: String
-    let allowedIPs: String
     let endpoint: String
     
     enum CodingKeys: String, CodingKey {
@@ -26,13 +25,21 @@ struct WireguardVPNConfiguration: Codable {
         case keepAlive = "keep_alive"
     }
     
+    init(privateKey: String?, keepAlive: Bool?, address: String, dns: String, publicKey: String, endpoint: String) {
+        self.privateKey = privateKey
+        self.keepAlive = keepAlive
+        self.address = address
+        self.dns = dns
+        self.publicKey = publicKey
+        self.endpoint = endpoint
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
         self.address = try container.decode(String.self, forKey: .address)
         self.dns = try container.decode(String.self, forKey: .dns)
         self.publicKey = try container.decode(String.self, forKey: .publicKey)
-        self.allowedIPs = try container.decode(String.self, forKey: .allowedIPs)
         self.endpoint = try container.decode(String.self, forKey: .endpoint)
         
         self.privateKey = try? container.decode(String.self, forKey: .privateKey)
@@ -45,7 +52,6 @@ struct WireguardVPNConfiguration: Codable {
         try container.encode(address, forKey: .address)
         try container.encode(dns, forKey: .dns)
         try container.encode(publicKey, forKey: .publicKey)
-        try container.encode(allowedIPs, forKey: .allowedIPs)
         try container.encode(endpoint, forKey: .endpoint)
         
         try container.encodeIfPresent(privateKey, forKey: CodingKeys.privateKey)

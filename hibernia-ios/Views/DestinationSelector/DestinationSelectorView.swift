@@ -63,8 +63,16 @@ struct DestinationSelectorView: View {
                 }
             }
             ScrollView {
-                VStack(alignment: .center) {
-                    ForEach(rcService.remoteConfiguration.destinations) { destination in
+                VStack(alignment: .center) { // TODO: add paywall stuff
+                    HStack {
+                        Text("Classic")
+                            .font(.custom("Comfortaa", size: 22))
+                            .foregroundStyle(Color.text)
+                            .padding()
+                        Spacer()
+                    }
+
+                    ForEach(rcService.remoteConfiguration.destinations.filter { $0.type == .classic}) { destination in
                         DestinationSelectorRowView(destination: destination, allPings: destinationPingService.pingResults.values.compactMap { try? $0.get() }, pingResult: destinationPingService.pingResults[destination], isHighlighted: vpnService.selectedDestination == destination)
                             .onTapGesture {
                                 let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
@@ -72,6 +80,23 @@ struct DestinationSelectorView: View {
                                 vpnService.selectedDestination = destination  
                             }
                             .disabled((destinationPingService.pingResults[destination]?.isSuccess != true) && destinationSelectorDisabledForPingError)
+                    }
+                    
+                    HStack {
+                        Text("Dedicated")
+                            .font(.custom("Comfortaa", size: 22))
+                            .foregroundStyle(Color.text)
+                            .padding()
+                        Spacer()
+                    }
+                    
+                    ForEach(rcService.remoteConfiguration.destinations.filter { $0.type == .dedicated}) { destination in
+                        DestinationSelectorRowView(destination: destination, isHighlighted: vpnService.selectedDestination == destination)
+                            .onTapGesture {
+                            let feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+                            feedbackGenerator.impactOccurred()
+                            vpnService.selectedDestination = destination
+                        }
                     }
                 }
                 .disabled(vpnService.status != .disconnected)

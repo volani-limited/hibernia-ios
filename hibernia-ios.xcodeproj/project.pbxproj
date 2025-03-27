@@ -49,8 +49,9 @@
 		AE7B38192D955FB10001774F /* VPNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B38182D955FB00001774F /* VPNError.swift */; };
 		AE7B381B2D959A540001774F /* WireguardVPNConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B381A2D959A540001774F /* WireguardVPNConfiguration.swift */; };
 		AE7B38202D959CA80001774F /* WireguardVPNConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B381A2D959A540001774F /* WireguardVPNConfiguration.swift */; };
-		AE7B382B2D95AAA70001774F /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = AE7B382A2D95AAA70001774F /* WireGuardKit */; };
 		AE7B382D2D95ABCD0001774F /* TunnelConfiguration+WireguardVPNConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B382C2D95ABC50001774F /* TunnelConfiguration+WireguardVPNConfiguration.swift */; };
+		AE7B38342D95BCD40001774F /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = AE7B38332D95BCD40001774F /* WireGuardKit */; };
+		AE7B38362D95BD940001774F /* TunnelKit in Frameworks */ = {isa = PBXBuildFile; productRef = AE7B38352D95BD940001774F /* TunnelKit */; };
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
 		AE8051BB2C18B231002DF24A /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
 		AE8051BC2C18B231002DF24A /* openssl.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -211,7 +212,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE7B382B2D95AAA70001774F /* WireGuardKit in Frameworks */,
+				AE7B38362D95BD940001774F /* TunnelKit in Frameworks */,
+				AE7B38342D95BCD40001774F /* WireGuardKit in Frameworks */,
 				AE4F40DE2D6E665A00253814 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,7 +504,8 @@
 			);
 			name = WireGuardTunnel;
 			packageProductDependencies = (
-				AE7B382A2D95AAA70001774F /* WireGuardKit */,
+				AE7B38332D95BCD40001774F /* WireGuardKit */,
+				AE7B38352D95BD940001774F /* TunnelKit */,
 			);
 			productName = WireGuardTunnel;
 			productReference = AE4F40DD2D6E665A00253814 /* WireGuardTunnel.appex */;
@@ -600,7 +603,7 @@
 				AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */,
 				AE6C9C882BF52FDB0057E088 /* XCRemoteSwiftPackageReference "tunnelkit" */,
 				AE1501312C2E384C0001A9C3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
-				AE7B38292D95AAA70001774F /* XCRemoteSwiftPackageReference "wireguard-apple" */,
+				AE7B38322D95BCD40001774F /* XCRemoteSwiftPackageReference "wireguard-apple" */,
 			);
 			productRefGroup = AE6A729128E21AE3001628E2 /* Products */;
 			projectDirPath = "";
@@ -947,7 +950,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 64;
+				CURRENT_PROJECT_VERSION = 65;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -988,7 +991,7 @@
 				CODE_SIGN_ENTITLEMENTS = "hibernia-ios/hibernia-ios.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 64;
+				CURRENT_PROJECT_VERSION = 65;
 				DEVELOPMENT_ASSET_PATHS = "\"hibernia-ios/Preview Content\"";
 				DEVELOPMENT_TEAM = 2AY446Y6M9;
 				ENABLE_PREVIEWS = YES;
@@ -1196,7 +1199,7 @@
 				kind = branch;
 			};
 		};
-		AE7B38292D95AAA70001774F /* XCRemoteSwiftPackageReference "wireguard-apple" */ = {
+		AE7B38322D95BCD40001774F /* XCRemoteSwiftPackageReference "wireguard-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/volani-limited/wireguard-apple.git";
 			requirement = {
@@ -1250,10 +1253,15 @@
 			package = AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */;
 			productName = SwiftyPing;
 		};
-		AE7B382A2D95AAA70001774F /* WireGuardKit */ = {
+		AE7B38332D95BCD40001774F /* WireGuardKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AE7B38292D95AAA70001774F /* XCRemoteSwiftPackageReference "wireguard-apple" */;
+			package = AE7B38322D95BCD40001774F /* XCRemoteSwiftPackageReference "wireguard-apple" */;
 			productName = WireGuardKit;
+		};
+		AE7B38352D95BD940001774F /* TunnelKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE6C9C882BF52FDB0057E088 /* XCRemoteSwiftPackageReference "tunnelkit" */;
+			productName = TunnelKit;
 		};
 		AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;

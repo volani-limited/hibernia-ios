@@ -17,8 +17,8 @@ enum WireguardPacketTunnelProviderError: String, Error {
 class PacketTunnelProvider: NEPacketTunnelProvider {
     
     private lazy var adapter: WireGuardAdapter = {
-        return WireGuardAdapter(with: self) {_,_ in // TODO: tidy this up
-            
+        return WireGuardAdapter(with: self) {_, message in // TODO: tidy this up
+            NSLog("Wireguard Tunnel %@\n", message)
         }
     }()
     
@@ -33,6 +33,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             
             notifyError(error: WireguardPacketTunnelProviderError.invalidProviderConfiguration)
             notifyStatusChange(status: .disconnected)
+            return
         }
         
         adapter.start(tunnelConfiguration: tunnelConfiguration) { [weak self] adapterError in

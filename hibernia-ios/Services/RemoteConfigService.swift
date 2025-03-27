@@ -21,7 +21,7 @@ class RemoteConfigService: ObservableObject {
         remoteConfigManager.configSettings = settings
         
         remoteConfigManager.setDefaults(fromPlist: "rc_defaults")
-        
+
         self.remoteConfiguration = try! remoteConfigManager.decoded(asType: RemoteConfiguration.self)
     }
     

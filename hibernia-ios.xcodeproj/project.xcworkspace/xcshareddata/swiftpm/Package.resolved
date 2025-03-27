@@ -1,5 +1,5 @@
 {
-  "originHash" : "59f3adc182785e0f3112d6c990102f10b0ab66539daf74a8d9afcedb303b9d8d",
+  "originHash" : "9220991806ca7f3021fc458f176d44d16b3f51a9db95af97e85a34f367e170e2",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -114,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RevenueCat/purchases-ios-spm.git",
       "state" : {
-        "revision" : "7d55b964114a3d4a76791227cdc28577617596db",
-        "version" : "4.43.2"
+        "revision" : "2dee6e69c5ecf149a464a141e83f6c6ed2446899",
+        "version" : "4.43.4"
       }
     },
     {
@@ -123,8 +123,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-protobuf.git",
       "state" : {
-        "revision" : "e17d61f26df0f0e06f58f6977ba05a097a720106",
-        "version" : "1.27.1"
+        "revision" : "d72aed98f8253ec1aa9ea1141e28150f408cf17f",
+        "version" : "1.29.0"
       }
     },
     {
@@ -151,15 +151,16 @@
       "location" : "git@github.com:volani-limited/tunnelkit.git",
       "state" : {
         "branch" : "no_openssl",
-        "revision" : "1dc7cdedb6ddb7214ddc0aa165c889781ef5fb4d"
+        "revision" : "4d5ed350ce2fbae12e4fb9832c1c1ffe4af404b6"
       }
     },
     {
       "identity" : "wireguard-apple",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/passepartoutvpn/wireguard-apple",
+      "location" : "https://github.com/volani-limited/wireguard-apple.git",
       "state" : {
-        "revision" : "b79f0f150356d8200a64922ecf041dd020140aa0"
+        "branch" : "master",
+        "revision" : "d6632ca5905e471c0fcde75bb08e870b44ec972c"
       }
     }
   ],

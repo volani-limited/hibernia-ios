@@ -43,7 +43,9 @@ class VPNService: ObservableObject {
         classicVPNController = OpenVPNController()
         dedicatedVPNController = WireguardVPNController()
         
+        timer = SimpleTimerService()
         connectedTime = "--:--"
+        status = .disconnected
         
         let defaults = UserDefaults.standard // Load data from userdefaults
         selectedDestination = destinations.first(where: { $0.id == defaults.string(forKey: "destination")}) ?? destinations.first!
@@ -53,7 +55,7 @@ class VPNService: ObservableObject {
         subscriptions = Set<AnyCancellable>()
         
         subscriptions.insert($selectedDestination.sink { value in
-            defaults.set(value, forKey: "destination")
+            defaults.set(value.id, forKey: "destination")
         })
         
         subscriptions.insert($keepAlive.sink { value in
@@ -77,11 +79,11 @@ class VPNService: ObservableObject {
                 .assign(to: &$connectedTime) // Assign elapsed time to published variable
         
         NotificationCenter.default.addObserver( // Add notification observers to VPN manager
-                    self,
-                    selector: #selector(VPNStatusDidChange(notification:)),
-                    name: VPNNotification.didChangeStatus,
-                    object: nil
-                )
+            self,
+            selector: #selector(VPNStatusDidChange(notification:)),
+            name: VPNNotification.didChangeStatus,
+            object: nil
+        )
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(VPNDidFail(notification:)),
@@ -103,7 +105,7 @@ class VPNService: ObservableObject {
         try await dedicatedVPNController.disconnect()
         
         self.status = .requestingConfiguration
-
+        
         switch selectedDestination.type {
         case .classic:
             let configuration = try await requestClassicConfiguration(appUserId: appUserId)
@@ -159,6 +161,8 @@ class VPNService: ObservableObject {
     }
     
     private func requestDedicatedConfiguration(appUserId: String) async throws -> WireguardVPNConfiguration {
+        
+        return WireguardVPNConfiguration(privateKey: "sLybemb2F2oWILfh8KuHKeVAwQQoVydM0mrzYbz582s", keepAlive: true, address: "10.8.8.2/30", dns: "1.1.1.1", publicKey: "vNj79aoRtoSUMwrOHTIUAJhkUxqikmP", endpoint: "157.245.39.74:51820")
         func generateWireguardKeyPair() -> (publicKey: String, privateKey: String) {
             let privateKey = Curve25519.KeyAgreement.PrivateKey()
             let publicKey = privateKey.publicKey.rawRepresentation

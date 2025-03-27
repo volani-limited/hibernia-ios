@@ -11,12 +11,12 @@ struct ConfigurationRepsonse: Codable {
 }
 
 struct VPNDestination: Identifiable, Hashable, Codable {
-    var id: String
-    var type: VPNDestinationType
-    var displayedName: String
-}
+    enum VPNDestinationType: String, Codable {
+        case classic
+        case dedicated
+    }
 
-enum VPNDestinationType: String, Codable {
-    case classic
-    case dedicated
+    var id: String
+    var displayedName: String
+    var type: VPNDestinationType
 }

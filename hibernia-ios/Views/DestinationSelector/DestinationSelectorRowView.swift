@@ -13,8 +13,8 @@ import FirebaseRemoteConfig
 struct DestinationSelectorRowView: View {
     @RemoteConfigProperty(key: "destinationSelectorCheckmarks", fallback: true) var selectorCheckmarks: Bool
     
-    var destination: VPNService.VPNDestination
-    var allPings: [Double]
+    var destination: VPNDestination
+    var allPings: [Double]?
     var pingResult: Result<Double, PingError>?
     var isHighlighted: Bool
     
@@ -24,12 +24,14 @@ struct DestinationSelectorRowView: View {
                 Text(destination.displayedName)
                     .font(.custom("Comfortaa", size: 24))
                     .foregroundStyle(Color.text)
-                Text("Nearest")
-                    .font(.custom("Comfortaa", size: 12))
-                    .foregroundStyle(Color.turquoise)
-                    .shadow(color: .turquoise, radius: 2)
-                    .opacity((try? pingResult?.get()) == (allPings.min() ?? 0) ? 1 : 0)
-                    .offset(y: 1)
+                if let allPings = allPings {
+                    Text("Nearest")
+                        .font(.custom("Comfortaa", size: 12))
+                        .foregroundStyle(Color.turquoise)
+                        .shadow(color: .turquoise, radius: 2)
+                        .opacity((try? pingResult?.get()) == (allPings.min() ?? 0) ? 1 : 0)
+                        .offset(y: 1)
+                }
             }
             
             Spacer()
@@ -46,7 +48,7 @@ struct DestinationSelectorRowView: View {
                             .font(.custom("Comfortaa", size: 12))
                             .foregroundStyle(Color.text)
                     }
-                    CapsulePingGraphView(value: computePingProportion(ping: success, pings: allPings))
+                    CapsulePingGraphView(value: computePingProportion(ping: success, pings: allPings!)) //FIXME: this is not great and can be done better
                         .frame(width: 13, height: 16)
                         .padding(.trailing)
                 case .failure:
@@ -54,7 +56,7 @@ struct DestinationSelectorRowView: View {
                         .foregroundStyle(Color.red)
                         .padding(5)
                 }
-            } else {
+            } else if let allPings = allPings {
                 Spacer()
                 ProgressView()
                     .padding(.trailing, 5)

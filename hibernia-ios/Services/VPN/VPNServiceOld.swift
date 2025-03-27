@@ -17,7 +17,7 @@ import NetworkExtension
 import FirebaseAppCheck
 
 @MainActor
-class VPNService: ObservableObject {
+class VPNServiceOld: ObservableObject {
     static let tunnelIdentifier = "uk.co.volani.hibernia-ios.OpenVPNTunnel" // Define identifiers
     static let appGroup = "group.uk.co.volani.hibernia-ios"
     
@@ -199,36 +199,4 @@ class VPNService: ObservableObject {
     @objc private func VPNDidFail(notification: Notification) {
         print("VPNStatusDidFail: \(notification.vpnError.localizedDescription)") // TODO: Handle this error here?
     }
-    
-    struct ConfigurationResponse: Codable {
-        let response: String
-        let configuration: String
-    }
-    
-    struct VPNDestination: Identifiable, Hashable, Codable {
-        var id: String
-        var displayedName: String
-    }
-}
-
-enum VPNError: LocalizedError {
-    case configurationRequestError
-    case subscriptionPaymentError
-    
-    public var errorDescription: String? { // Define VPN specific errors
-        switch self {
-        case .configurationRequestError:
-            return "Configuration request failed."
-        case .subscriptionPaymentError:
-            return "Subscription could not be verified."
-        }
-    }
-}
-
-enum HiberniaVPNStatus: String {
-    case requestingConfiguration = "Requesting Configuration"
-    case connecting = "Connecting"
-    case connected = "Connected"
-    case disconnecting = "Disconnecting"
-    case disconnected = "Disconnected"
 }

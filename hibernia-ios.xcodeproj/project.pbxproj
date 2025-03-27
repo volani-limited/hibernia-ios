@@ -25,6 +25,11 @@
 		AE4870002C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */; };
 		AE4870022C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */; };
 		AE4870042C18ABAB004C62A1 /* AcknowledgementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */; };
+		AE4F40DE2D6E665A00253814 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6A72A328E21B31001628E2 /* NetworkExtension.framework */; };
+		AE4F40E12D6E665A00253814 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F40E02D6E665A00253814 /* PacketTunnelProvider.swift */; };
+		AE4F40E62D6E665A00253814 /* WireGuardTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AE4F40DD2D6E665A00253814 /* WireGuardTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AE4F40EF2D7167F900253814 /* OpenVPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F40EE2D7167E700253814 /* OpenVPNController.swift */; };
+		AE4F40F12D71687400253814 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4F40F02D71686100253814 /* VPNService.swift */; };
 		AE641B182C4721600090B259 /* PaywallFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B172C4721600090B259 /* PaywallFooterView.swift */; };
 		AE641B1A2C47217D0090B259 /* PaywallInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B192C47217D0090B259 /* PaywallInformationView.swift */; };
 		AE641B1C2C4722490090B259 /* SettingsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE641B1B2C4722490090B259 /* SettingsFooterView.swift */; };
@@ -38,6 +43,10 @@
 		AE6C9C8C2BF530600057E088 /* TunnelKitOpenVPN in Frameworks */ = {isa = PBXBuildFile; productRef = AE6C9C8B2BF530600057E088 /* TunnelKitOpenVPN */; };
 		AE6C9C8E2BF530720057E088 /* TunnelKitOpenVPNAppExtension in Frameworks */ = {isa = PBXBuildFile; productRef = AE6C9C8D2BF530720057E088 /* TunnelKitOpenVPNAppExtension */; };
 		AE6C9CB32BF58D850057E088 /* SwiftyPing in Frameworks */ = {isa = PBXBuildFile; productRef = AE6C9CB22BF58D850057E088 /* SwiftyPing */; };
+		AE7B37FD2D9502A60001774F /* VPNDestination+ConfigurationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B37FC2D9502A00001774F /* VPNDestination+ConfigurationResponse.swift */; };
+		AE7B37FF2D950E180001774F /* HiberniaVPNStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B37FE2D950E180001774F /* HiberniaVPNStatus.swift */; };
+		AE7B38022D955C0B0001774F /* WireguardVPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B38012D955C0B0001774F /* WireguardVPNController.swift */; };
+		AE7B38192D955FB10001774F /* VPNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B38182D955FB00001774F /* VPNError.swift */; };
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
 		AE8051BB2C18B231002DF24A /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
 		AE8051BC2C18B231002DF24A /* openssl.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -66,12 +75,19 @@
 		AEE908E22C4E9D6200A3796C /* ServiceMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */; };
 		AEF77D512C58842D008AEF81 /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEF77D502C58842D008AEF81 /* rc_defaults.plist */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
-		AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNService.swift */; };
+		AEFCD1CD28E8F44A008D9694 /* VPNServiceOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNServiceOld.swift */; };
 		AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */; };
 		AEFCD1D128EA1909008D9694 /* VPNConnectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D028EA1909008D9694 /* VPNConnectButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		AE4F40E42D6E665A00253814 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE6A728828E21AE3001628E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE4F40DC2D6E665A00253814;
+			remoteInfo = WireGuardTunnel;
+		};
 		AEB4AC7028EF79170076D0F6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AE6A728828E21AE3001628E2 /* Project object */;
@@ -100,6 +116,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				AEB4AC7228EF79170076D0F6 /* OpenVPNTunnel.appex in Embed Foundation Extensions */,
+				AE4F40E62D6E665A00253814 /* WireGuardTunnel.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,6 +143,12 @@
 		AE486FFF2C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSubscriptionCardView.swift; sourceTree = "<group>"; };
 		AE4870012C18A9C2004C62A1 /* SettingsVPNSettingsCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVPNSettingsCardView.swift; sourceTree = "<group>"; };
 		AE4870032C18ABAB004C62A1 /* AcknowledgementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcknowledgementsView.swift; sourceTree = "<group>"; };
+		AE4F40DD2D6E665A00253814 /* WireGuardTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WireGuardTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE4F40E02D6E665A00253814 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		AE4F40E22D6E665A00253814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE4F40E32D6E665A00253814 /* WireGuardTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WireGuardTunnel.entitlements; sourceTree = "<group>"; };
+		AE4F40EE2D7167E700253814 /* OpenVPNController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenVPNController.swift; sourceTree = "<group>"; };
+		AE4F40F02D71686100253814 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
 		AE641B172C4721600090B259 /* PaywallFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallFooterView.swift; sourceTree = "<group>"; };
 		AE641B192C47217D0090B259 /* PaywallInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallInformationView.swift; sourceTree = "<group>"; };
 		AE641B1B2C4722490090B259 /* SettingsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooterView.swift; sourceTree = "<group>"; };
@@ -136,6 +159,10 @@
 		AE6A729A28E21AE5001628E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AE6A72A128E21B31001628E2 /* hibernia-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "hibernia-ios.entitlements"; sourceTree = "<group>"; };
 		AE6A72A328E21B31001628E2 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		AE7B37FC2D9502A00001774F /* VPNDestination+ConfigurationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VPNDestination+ConfigurationResponse.swift"; sourceTree = "<group>"; };
+		AE7B37FE2D950E180001774F /* HiberniaVPNStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiberniaVPNStatus.swift; sourceTree = "<group>"; };
+		AE7B38012D955C0B0001774F /* WireguardVPNController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireguardVPNController.swift; sourceTree = "<group>"; };
+		AE7B38182D955FB00001774F /* VPNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNError.swift; sourceTree = "<group>"; };
 		AE7D104528ECA7CC006BEB18 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
 		AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVPNStatusCardView.swift; sourceTree = "<group>"; };
@@ -159,12 +186,20 @@
 		AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessageView.swift; sourceTree = "<group>"; };
 		AEF77D502C58842D008AEF81 /* rc_defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		AEFCD1CC28E8F44A008D9694 /* VPNService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNService.swift; sourceTree = "<group>"; };
+		AEFCD1CC28E8F44A008D9694 /* VPNServiceOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNServiceOld.swift; sourceTree = "<group>"; };
 		AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicViews.swift; sourceTree = "<group>"; };
 		AEFCD1D028EA1909008D9694 /* VPNConnectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		AE4F40DA2D6E665A00253814 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE4F40DE2D6E665A00253814 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AE6A728D28E21AE3001628E2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -223,8 +258,8 @@
 		AE27976B28E6584F00DDACF5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				AE4F40EC2D715E5C00253814 /* VPN */,
 				AE6F94D029C9D38C00B006E3 /* AppCheck */,
-				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
 				AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */,
 				AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */,
 				AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */,
@@ -250,11 +285,36 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		AE4F40EC2D715E5C00253814 /* VPN */ = {
+			isa = PBXGroup;
+			children = (
+				AE7B38182D955FB00001774F /* VPNError.swift */,
+				AE4F40F02D71686100253814 /* VPNService.swift */,
+				AE4F40EE2D7167E700253814 /* OpenVPNController.swift */,
+				AEFCD1CC28E8F44A008D9694 /* VPNServiceOld.swift */,
+				AE7B37FE2D950E180001774F /* HiberniaVPNStatus.swift */,
+				AE7B37FC2D9502A00001774F /* VPNDestination+ConfigurationResponse.swift */,
+				AE7B38012D955C0B0001774F /* WireguardVPNController.swift */,
+			);
+			path = VPN;
+			sourceTree = "<group>";
+		};
+		AE4F40ED2D71605000253814 /* WireGuardTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				AE4F40E02D6E665A00253814 /* PacketTunnelProvider.swift */,
+				AE4F40E22D6E665A00253814 /* Info.plist */,
+				AE4F40E32D6E665A00253814 /* WireGuardTunnel.entitlements */,
+			);
+			path = WireGuardTunnel;
+			sourceTree = "<group>";
+		};
 		AE6A728728E21AE3001628E2 = {
 			isa = PBXGroup;
 			children = (
 				AE6A729228E21AE3001628E2 /* hibernia-ios */,
 				AEB4AC6B28EF79170076D0F6 /* OpenVPNTunnel */,
+				AE4F40ED2D71605000253814 /* WireGuardTunnel */,
 				AE6A729128E21AE3001628E2 /* Products */,
 				AE6A72A228E21B31001628E2 /* Frameworks */,
 			);
@@ -265,6 +325,7 @@
 			children = (
 				AE6A729028E21AE3001628E2 /* hibernia-ios.app */,
 				AEB4AC6928EF79170076D0F6 /* OpenVPNTunnel.appex */,
+				AE4F40DD2D6E665A00253814 /* WireGuardTunnel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -390,6 +451,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		AE4F40DC2D6E665A00253814 /* WireGuardTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE4F40EA2D6E665A00253814 /* Build configuration list for PBXNativeTarget "WireGuardTunnel" */;
+			buildPhases = (
+				AE4F40D92D6E665A00253814 /* Sources */,
+				AE4F40DA2D6E665A00253814 /* Frameworks */,
+				AE4F40DB2D6E665A00253814 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WireGuardTunnel;
+			packageProductDependencies = (
+			);
+			productName = WireGuardTunnel;
+			productReference = AE4F40DD2D6E665A00253814 /* WireGuardTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		AE6A728F28E21AE3001628E2 /* hibernia-ios */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE6A729E28E21AE5001628E2 /* Build configuration list for PBXNativeTarget "hibernia-ios" */;
@@ -405,6 +485,7 @@
 			);
 			dependencies = (
 				AEB4AC7128EF79170076D0F6 /* PBXTargetDependency */,
+				AE4F40E52D6E665A00253814 /* PBXTargetDependency */,
 			);
 			name = "hibernia-ios";
 			packageProductDependencies = (
@@ -450,9 +531,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					AE4F40DC2D6E665A00253814 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					AE6A728F28E21AE3001628E2 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -482,11 +566,19 @@
 			targets = (
 				AE6A728F28E21AE3001628E2 /* hibernia-ios */,
 				AEB4AC6828EF79170076D0F6 /* OpenVPNTunnel */,
+				AE4F40DC2D6E665A00253814 /* WireGuardTunnel */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		AE4F40DB2D6E665A00253814 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AE6A728E28E21AE3001628E2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -530,6 +622,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		AE4F40D92D6E665A00253814 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE4F40E12D6E665A00253814 /* PacketTunnelProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AE6A728C28E21AE3001628E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -542,15 +642,17 @@
 				AEC2C8C82B9B384A00E210F7 /* SettingsView.swift in Sources */,
 				AE22C7EF2BF0EBD3003B8ED7 /* PaywallModalView.swift in Sources */,
 				AE1FAF972C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift in Sources */,
+				AE7B37FF2D950E180001774F /* HiberniaVPNStatus.swift in Sources */,
 				AEC2C8B82B9B375400E210F7 /* RootView.swift in Sources */,
 				AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */,
 				AEA9B3A52C4F1ECA003B2DD4 /* UserSettingsService.swift in Sources */,
-				AEFCD1CD28E8F44A008D9694 /* VPNService.swift in Sources */,
+				AEFCD1CD28E8F44A008D9694 /* VPNServiceOld.swift in Sources */,
 				AE641B1A2C47217D0090B259 /* PaywallInformationView.swift in Sources */,
 				AEC2C8BE2B9B379900E210F7 /* DestinationSelectorView.swift in Sources */,
 				AEC2C8BA2B9B376800E210F7 /* SlideOverContainerView.swift in Sources */,
 				AE641B262C48343E0090B259 /* RemoteConfigService.swift in Sources */,
 				AE8EF995291FA39D00C554A0 /* AppAttestAppCheckProviderFactory.swift in Sources */,
+				AE7B38192D955FB10001774F /* VPNError.swift in Sources */,
 				AE22C7F12BF50B80003B8ED7 /* DestinationPingService.swift in Sources */,
 				AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */,
 				AE6A729428E21AE4001628E2 /* hibernia_iosApp.swift in Sources */,
@@ -567,11 +669,15 @@
 				AEC2C8C52B9B381000E210F7 /* TabBarSelectorView.swift in Sources */,
 				AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */,
 				AE4870002C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift in Sources */,
+				AE4F40EF2D7167F900253814 /* OpenVPNController.swift in Sources */,
 				AE22C7E82BEE9294003B8ED7 /* VPNControlStatusContainerView.swift in Sources */,
 				AE641B1C2C4722490090B259 /* SettingsFooterView.swift in Sources */,
 				AE22C7E22BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift in Sources */,
+				AE4F40F12D71687400253814 /* VPNService.swift in Sources */,
 				AE8051C92C1C9C70002DF24A /* SettingsVPNStatusCardView.swift in Sources */,
+				AE7B38022D955C0B0001774F /* WireguardVPNController.swift in Sources */,
 				AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */,
+				AE7B37FD2D9502A60001774F /* VPNDestination+ConfigurationResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +692,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		AE4F40E52D6E665A00253814 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE4F40DC2D6E665A00253814 /* WireGuardTunnel */;
+			targetProxy = AE4F40E42D6E665A00253814 /* PBXContainerItemProxy */;
+		};
 		AEB4AC7128EF79170076D0F6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = AEB4AC6828EF79170076D0F6 /* OpenVPNTunnel */;
@@ -594,6 +705,73 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		AE4F40E72D6E665A00253814 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = WireGuardTunnel/WireGuardTunnel.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AY446Y6M9;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WireGuardTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WireGuardTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.WireGuardTunnel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AE4F40E82D6E665A00253814 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = WireGuardTunnel/WireGuardTunnel.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2AY446Y6M9;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WireGuardTunnel/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WireGuardTunnel;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios.WireGuardTunnel";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		AE6A729C28E21AE5001628E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -737,7 +915,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -778,7 +956,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6.0;
+				MARKETING_VERSION = 1.7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.volani.hibernia-ios";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -859,6 +1037,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		AE4F40EA2D6E665A00253814 /* Build configuration list for PBXNativeTarget "WireGuardTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE4F40E72D6E665A00253814 /* Debug */,
+				AE4F40E82D6E665A00253814 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AE6A728B28E21AE3001628E2 /* Build configuration list for PBXProject "hibernia-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

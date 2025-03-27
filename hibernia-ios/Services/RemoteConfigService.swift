@@ -32,7 +32,7 @@ class RemoteConfigService: ObservableObject {
         let destinationsString = remoteConfig.configValue(forKey: "destinations").stringValue!
         let destinationsJson = destinationsString.data(using: .utf8)!
         
-        let destinations = try! JSONDecoder().decode([VPNService.VPNDestination].self, from: destinationsJson)
+        let destinations = try! JSONDecoder().decode([VPNDestination].self, from: destinationsJson)
         
         return RemoteConfiguration(destinations: destinations, destinationSelectorCheckmarks: destinationSelectorCheckmarks, serviceMessage: serviceMessage)
     }
@@ -52,7 +52,7 @@ class RemoteConfigService: ObservableObject {
     }
     
     struct RemoteConfiguration: Decodable {
-        var destinations: [VPNService.VPNDestination]
+        var destinations: [VPNDestination]
         var destinationSelectorCheckmarks: Bool
         var serviceMessage: String
     }

@@ -15,19 +15,35 @@ enum WireguardPacketTunnelProviderError: String, Error {
 }
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
-
+    
     private lazy var adapter: WireGuardAdapter = {
-        return WireGuardAdapter(with: self)
-    }
+        return WireGuardAdapter(with: self) {_,_ in // TODO: tidy this up
+            
+        }
+    }()
     
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         notifyStatusChange(status: .connecting)
         
-        guard let protocolConfiguration = self.protocolConfiguration as? NETunnelProviderProtocol, let providerConfiguration = protocolConfiguration.providerConfiguration, let wireguardConfigurationDict = providerConfiguration else {
+        guard let protocolConfiguration = self.protocolConfiguration as? NETunnelProviderProtocol,
+              let providerConfiguration = protocolConfiguration.providerConfiguration,
+              let providerConfigurationData = try? JSONSerialization.data(withJSONObject: providerConfiguration, options: []),
+              let wireguardConfiguration = try? JSONDecoder().decode(WireguardVPNConfiguration.self, from: providerConfigurationData),
+              let tunnelConfiguration = try? TunnelConfiguration(from: wireguardConfiguration) else {
+            
             notifyError(error: WireguardPacketTunnelProviderError.invalidProviderConfiguration)
+            notifyStatusChange(status: .disconnected)
         }
         
-        let host
+        adapter.start(tunnelConfiguration: tunnelConfiguration) { [weak self] adapterError in
+            if let adapterError = adapterError {
+                self?.notifyError(error: WireguardPacketTunnelProviderError.invalidProviderConfiguration)
+                self?.notifyStatusChange(status: .disconnected)
+            } else {
+                self?.notifyStatusChange(status: .connected)
+            }
+            completionHandler(adapterError)
+        }
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
@@ -37,7 +53,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             if let error = error {
                 self?.notifyError(error: error)
             } else {
-                notifyStatusChange(status: .disconnected)
+                self?.notifyStatusChange(status: .disconnected)
             }
         }
         
@@ -72,11 +88,5 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         notification.vpnError = error
         
         NotificationCenter.default.post(notification)
-    }
-    
-    private func getTunnelConfiguration(from configuration: [String: Any]) throws -> TunnelConfiguration {
-        
-        
-        let peerConfiguration = PeerConfiguration(publicKey: configuration["public_key"] as! String)
     }
 }

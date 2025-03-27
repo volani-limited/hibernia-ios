@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -47,6 +47,10 @@
 		AE7B37FF2D950E180001774F /* HiberniaVPNStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B37FE2D950E180001774F /* HiberniaVPNStatus.swift */; };
 		AE7B38022D955C0B0001774F /* WireguardVPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B38012D955C0B0001774F /* WireguardVPNController.swift */; };
 		AE7B38192D955FB10001774F /* VPNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B38182D955FB00001774F /* VPNError.swift */; };
+		AE7B381B2D959A540001774F /* WireguardVPNConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B381A2D959A540001774F /* WireguardVPNConfiguration.swift */; };
+		AE7B38202D959CA80001774F /* WireguardVPNConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B381A2D959A540001774F /* WireguardVPNConfiguration.swift */; };
+		AE7B382B2D95AAA70001774F /* WireGuardKit in Frameworks */ = {isa = PBXBuildFile; productRef = AE7B382A2D95AAA70001774F /* WireGuardKit */; };
+		AE7B382D2D95ABCD0001774F /* TunnelConfiguration+WireguardVPNConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B382C2D95ABC50001774F /* TunnelConfiguration+WireguardVPNConfiguration.swift */; };
 		AE7D104628ECA7CC006BEB18 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7D104528ECA7CC006BEB18 /* StoreKit.framework */; };
 		AE8051BB2C18B231002DF24A /* openssl.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; };
 		AE8051BC2C18B231002DF24A /* openssl.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE486FFC2C189FDB004C62A1 /* openssl.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -75,7 +79,6 @@
 		AEE908E22C4E9D6200A3796C /* ServiceMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */; };
 		AEF77D512C58842D008AEF81 /* rc_defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEF77D502C58842D008AEF81 /* rc_defaults.plist */; };
 		AEFCD1CB28E8875B008D9694 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */; };
-		AEFCD1CD28E8F44A008D9694 /* VPNServiceOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CC28E8F44A008D9694 /* VPNServiceOld.swift */; };
 		AEFCD1CF28E9EC81008D9694 /* NeumorphicViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */; };
 		AEFCD1D128EA1909008D9694 /* VPNConnectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEFCD1D028EA1909008D9694 /* VPNConnectButtonView.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +90,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = AE4F40DC2D6E665A00253814;
 			remoteInfo = WireGuardTunnel;
+		};
+		AE7B38272D95A98F0001774F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE6A728828E21AE3001628E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE7B38212D95A8B80001774F;
+			remoteInfo = "wg-go-bridge";
 		};
 		AEB4AC7028EF79170076D0F6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -163,6 +173,8 @@
 		AE7B37FE2D950E180001774F /* HiberniaVPNStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiberniaVPNStatus.swift; sourceTree = "<group>"; };
 		AE7B38012D955C0B0001774F /* WireguardVPNController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireguardVPNController.swift; sourceTree = "<group>"; };
 		AE7B38182D955FB00001774F /* VPNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNError.swift; sourceTree = "<group>"; };
+		AE7B381A2D959A540001774F /* WireguardVPNConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WireguardVPNConfiguration.swift; sourceTree = "<group>"; };
+		AE7B382C2D95ABC50001774F /* TunnelConfiguration+WireguardVPNConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TunnelConfiguration+WireguardVPNConfiguration.swift"; sourceTree = "<group>"; };
 		AE7D104528ECA7CC006BEB18 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		AE7D104928ECDB00006BEB18 /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Products.storekit; path = "hibernia-ios/Products.storekit"; sourceTree = SOURCE_ROOT; };
 		AE8051C82C1C9C70002DF24A /* SettingsVPNStatusCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVPNStatusCardView.swift; sourceTree = "<group>"; };
@@ -186,16 +198,20 @@
 		AEE908E12C4E9D6200A3796C /* ServiceMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMessageView.swift; sourceTree = "<group>"; };
 		AEF77D502C58842D008AEF81 /* rc_defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = rc_defaults.plist; sourceTree = "<group>"; };
 		AEFCD1CA28E8875B008D9694 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		AEFCD1CC28E8F44A008D9694 /* VPNServiceOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNServiceOld.swift; sourceTree = "<group>"; };
 		AEFCD1CE28E9EC81008D9694 /* NeumorphicViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicViews.swift; sourceTree = "<group>"; };
 		AEFCD1D028EA1909008D9694 /* VPNConnectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNConnectButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AE7B38262D95A8C70001774F /* script */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = script; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AE4F40DA2D6E665A00253814 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE7B382B2D95AAA70001774F /* WireGuardKit in Frameworks */,
 				AE4F40DE2D6E665A00253814 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,10 +304,10 @@
 		AE4F40EC2D715E5C00253814 /* VPN */ = {
 			isa = PBXGroup;
 			children = (
+				AE7B381A2D959A540001774F /* WireguardVPNConfiguration.swift */,
 				AE7B38182D955FB00001774F /* VPNError.swift */,
 				AE4F40F02D71686100253814 /* VPNService.swift */,
 				AE4F40EE2D7167E700253814 /* OpenVPNController.swift */,
-				AEFCD1CC28E8F44A008D9694 /* VPNServiceOld.swift */,
 				AE7B37FE2D950E180001774F /* HiberniaVPNStatus.swift */,
 				AE7B37FC2D9502A00001774F /* VPNDestination+ConfigurationResponse.swift */,
 				AE7B38012D955C0B0001774F /* WireguardVPNController.swift */,
@@ -302,6 +318,7 @@
 		AE4F40ED2D71605000253814 /* WireGuardTunnel */ = {
 			isa = PBXGroup;
 			children = (
+				AE7B382C2D95ABC50001774F /* TunnelConfiguration+WireguardVPNConfiguration.swift */,
 				AE4F40E02D6E665A00253814 /* PacketTunnelProvider.swift */,
 				AE4F40E22D6E665A00253814 /* Info.plist */,
 				AE4F40E32D6E665A00253814 /* WireGuardTunnel.entitlements */,
@@ -312,6 +329,7 @@
 		AE6A728728E21AE3001628E2 = {
 			isa = PBXGroup;
 			children = (
+				AE7B38262D95A8C70001774F /* script */,
 				AE6A729228E21AE3001628E2 /* hibernia-ios */,
 				AEB4AC6B28EF79170076D0F6 /* OpenVPNTunnel */,
 				AE4F40ED2D71605000253814 /* WireGuardTunnel */,
@@ -450,6 +468,24 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXLegacyTarget section */
+		AE7B38212D95A8B80001774F /* wg-go-bridge */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = AE7B38222D95A8B80001774F /* Build configuration list for PBXLegacyTarget "wg-go-bridge" */;
+			buildPhases = (
+			);
+			buildToolPath = "$(PROJECT_DIR)/script/build_wireguard_go_bridge.sh";
+			dependencies = (
+			);
+			name = "wg-go-bridge";
+			packageProductDependencies = (
+			);
+			passBuildSettingsInEnvironment = 1;
+			productName = "wg-go-bridge";
+		};
+/* End PBXLegacyTarget section */
+
 /* Begin PBXNativeTarget section */
 		AE4F40DC2D6E665A00253814 /* WireGuardTunnel */ = {
 			isa = PBXNativeTarget;
@@ -462,9 +498,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				AE7B38282D95A98F0001774F /* PBXTargetDependency */,
 			);
 			name = WireGuardTunnel;
 			packageProductDependencies = (
+				AE7B382A2D95AAA70001774F /* WireGuardKit */,
 			);
 			productName = WireGuardTunnel;
 			productReference = AE4F40DD2D6E665A00253814 /* WireGuardTunnel.appex */;
@@ -540,6 +578,9 @@
 					AE6A728F28E21AE3001628E2 = {
 						CreatedOnToolsVersion = 14.0;
 					};
+					AE7B38212D95A8B80001774F = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					AEB4AC6828EF79170076D0F6 = {
 						CreatedOnToolsVersion = 14.0.1;
 					};
@@ -559,6 +600,7 @@
 				AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */,
 				AE6C9C882BF52FDB0057E088 /* XCRemoteSwiftPackageReference "tunnelkit" */,
 				AE1501312C2E384C0001A9C3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+				AE7B38292D95AAA70001774F /* XCRemoteSwiftPackageReference "wireguard-apple" */,
 			);
 			productRefGroup = AE6A729128E21AE3001628E2 /* Products */;
 			projectDirPath = "";
@@ -567,6 +609,7 @@
 				AE6A728F28E21AE3001628E2 /* hibernia-ios */,
 				AEB4AC6828EF79170076D0F6 /* OpenVPNTunnel */,
 				AE4F40DC2D6E665A00253814 /* WireGuardTunnel */,
+				AE7B38212D95A8B80001774F /* wg-go-bridge */,
 			);
 		};
 /* End PBXProject section */
@@ -626,6 +669,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE7B38202D959CA80001774F /* WireguardVPNConfiguration.swift in Sources */,
+				AE7B382D2D95ABCD0001774F /* TunnelConfiguration+WireguardVPNConfiguration.swift in Sources */,
 				AE4F40E12D6E665A00253814 /* PacketTunnelProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -646,7 +691,6 @@
 				AEC2C8B82B9B375400E210F7 /* RootView.swift in Sources */,
 				AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */,
 				AEA9B3A52C4F1ECA003B2DD4 /* UserSettingsService.swift in Sources */,
-				AEFCD1CD28E8F44A008D9694 /* VPNServiceOld.swift in Sources */,
 				AE641B1A2C47217D0090B259 /* PaywallInformationView.swift in Sources */,
 				AEC2C8BE2B9B379900E210F7 /* DestinationSelectorView.swift in Sources */,
 				AEC2C8BA2B9B376800E210F7 /* SlideOverContainerView.swift in Sources */,
@@ -667,6 +711,7 @@
 				AE641B182C4721600090B259 /* PaywallFooterView.swift in Sources */,
 				AE22C7F32BF50BC1003B8ED7 /* CapsulePingGraphView.swift in Sources */,
 				AEC2C8C52B9B381000E210F7 /* TabBarSelectorView.swift in Sources */,
+				AE7B381B2D959A540001774F /* WireguardVPNConfiguration.swift in Sources */,
 				AE85D1C82AED7D830080B6EB /* SafariWebView.swift in Sources */,
 				AE4870002C18A9AF004C62A1 /* SettingsSubscriptionCardView.swift in Sources */,
 				AE4F40EF2D7167F900253814 /* OpenVPNController.swift in Sources */,
@@ -696,6 +741,11 @@
 			isa = PBXTargetDependency;
 			target = AE4F40DC2D6E665A00253814 /* WireGuardTunnel */;
 			targetProxy = AE4F40E42D6E665A00253814 /* PBXContainerItemProxy */;
+		};
+		AE7B38282D95A98F0001774F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE7B38212D95A8B80001774F /* wg-go-bridge */;
+			targetProxy = AE7B38272D95A98F0001774F /* PBXContainerItemProxy */;
 		};
 		AEB4AC7128EF79170076D0F6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -970,6 +1020,43 @@
 			};
 			name = Release;
 		};
+		AE7B38232D95A8B80001774F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2AY446Y6M9;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AE7B38242D95A8B80001774F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2AY446Y6M9;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		AEB4AC7428EF79170076D0F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1064,6 +1151,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		AE7B38222D95A8B80001774F /* Build configuration list for PBXLegacyTarget "wg-go-bridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE7B38232D95A8B80001774F /* Debug */,
+				AE7B38242D95A8B80001774F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AEB4AC7328EF79170076D0F6 /* Build configuration list for PBXNativeTarget "OpenVPNTunnel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1097,6 +1193,14 @@
 			repositoryURL = "git@github.com:volani-limited/tunnelkit.git";
 			requirement = {
 				branch = no_openssl;
+				kind = branch;
+			};
+		};
+		AE7B38292D95AAA70001774F /* XCRemoteSwiftPackageReference "wireguard-apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/volani-limited/wireguard-apple.git";
+			requirement = {
+				branch = master;
 				kind = branch;
 			};
 		};
@@ -1145,6 +1249,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AE6C9C862BF51CFE0057E088 /* XCRemoteSwiftPackageReference "SwiftyPing" */;
 			productName = SwiftyPing;
+		};
+		AE7B382A2D95AAA70001774F /* WireGuardKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE7B38292D95AAA70001774F /* XCRemoteSwiftPackageReference "wireguard-apple" */;
+			productName = WireGuardKit;
 		};
 		AE8EF992291FA1B300C554A0 /* FirebaseAppCheck */ = {
 			isa = XCSwiftPackageProductDependency;

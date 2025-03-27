@@ -34,7 +34,7 @@ class WireguardVPNController {
         try protocolConfiguration.providerConfiguration = configuration.asDictionary()
         
         manager.onDemandRules = [NEOnDemandRuleConnect()]
-        manager.isOnDemandEnabled = configuration.keepAlive
+        manager.isOnDemandEnabled = configuration.keepAlive ?? false
         
         manager.protocolConfiguration = protocolConfiguration
         manager.isEnabled = true
@@ -43,7 +43,7 @@ class WireguardVPNController {
         try await manager.loadFromPreferences()
         
         guard let session = manager.connection as? NETunnelProviderSession else {
-            fatalError("tunnel manager.connection is invalid")
+            fatalError("tunnelManager.connection is invalid")
         }
         
         try session.startTunnel()
@@ -63,67 +63,9 @@ class WireguardVPNController {
         let manager = existingManagers.first { $0.localizedDescription == "HiberniaVPN Dedicated"} ?? NETunnelProviderManager()
        
         guard let session = manager.connection as? NETunnelProviderSession else {
-            fatalError("tunnel manager.connection is invalid")
+            fatalError("tunnelManager.connection is invalid")
         }
         
         session.stopTunnel()
-    }
-}
-
-struct WireguardVPNConfiguration: Codable {
-    var privateKey: String
-    let address: String
-    let dns: String
-    
-    let publicKey: String
-    let allowedIPs: String
-    let endpoint: String
-    
-    var keepAlive: Bool
-    
-    enum CodingKeys: String, CodingKey {
-        case address
-        case dns
-        case publicKey = "public_key"
-        case privateKey = "private_key"
-        case allowedIPs = "allowed_ips"
-        case endpoint
-    }
-    
-    init(address: String, dns: String, publicKey: String, allowedIPs: String, endpoint: String) {
-        self.privateKey = ""
-        self.keepAlive = false
-        
-        self.address = address
-        self.dns = dns
-        self.publicKey = publicKey
-        self.allowedIPs = allowedIPs
-        self.endpoint = endpoint
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.address = try container.decode(String.self, forKey: .address)
-        self.dns = try container.decode(String.self, forKey: .dns)
-        self.publicKey = try container.decode(String.self, forKey: .publicKey)
-        self.allowedIPs = try container.decode(String.self, forKey: .allowedIPs)
-        self.endpoint = try container.decode(String.self, forKey: .endpoint)
-        
-        self.privateKey = "" // Private key is not decoded as it is recieved separatly.
-                             // Note: It may be wise to decompose this struct into actual configuration that is handed to the VPNController and the configuration recieved from server to avoid this workaround.
-        self.keepAlive = false
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(address, forKey: .address)
-        try container.encode(dns, forKey: .dns)
-        try container.encode(publicKey, forKey: .publicKey)
-        try container.encode(allowedIPs, forKey: .allowedIPs)
-        try container.encode(endpoint, forKey: .endpoint)
-        
-        try container.encode(privateKey, forKey: CodingKeys.privateKey)
     }
 }

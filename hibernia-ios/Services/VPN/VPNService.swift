@@ -190,6 +190,7 @@ class VPNService: ObservableObject {
             
             var configuration = try JSONDecoder().decode(WireguardVPNConfiguration.self, from: configurationResponse.configuration.data(using: .utf8)!)
             
+            
             configuration.privateKey = keypair.privateKey // Set additional configuration parameters
             configuration.keepAlive = self.keepAlive
             

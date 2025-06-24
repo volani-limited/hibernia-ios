@@ -18,7 +18,6 @@ struct RootView: View {
             SlideOverContainerView()
         }
         .preferredColorScheme(settingsService.preferredAppAppearance.colorSchemeEquivalent)
-        .dynamicTypeSize(.large) // Fix/override dyanmic type size, this will be addressed in a future update.
         .task {
             await vpnService.prepare()
 

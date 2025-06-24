@@ -14,13 +14,13 @@ struct DestinationSelectorItemView: View {
     var body: some View {
         VStack {
             Text("Location")
-                .font(.custom("Comfortaa", size: 17))
+                .font(.custom("Comfortaa", size: 17, relativeTo: .title))
                 .foregroundStyle(Color.titleText)
                 .bold()
             
             HStack() {
                 Text(vpnService.selectedDestination.displayedName)
-                    .font(.custom("Comfortaa", size: 16))
+                    .font(.custom("Comfortaa", size: 16, relativeTo: .title))
                     .foregroundStyle(Color.text)
                     .bold()
                 Button {
@@ -33,7 +33,9 @@ struct DestinationSelectorItemView: View {
                 } label: {
                     Image(systemName: "ellipsis")
                         .foregroundStyle(Color.titleText)
+                        .font(.body)
                         .padding()
+                        .dynamicTypeSize(.large)
                 }
                 .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
             }

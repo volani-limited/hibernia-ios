@@ -19,23 +19,23 @@ struct SettingsVPNSettingsCardView: View {
             
             HStack {
                 Text("Protocol")
-                    .font(.custom("Comfortaa", size: 22))
+                    .font(.custom("Comfortaa", size: 22, relativeTo: .largeTitle))
                     .foregroundStyle(Color.text)
                 
                 Spacer()
                 
                 Text("OpenVPN")
-                    .font(.custom("Comfortaa", size: 20))
+                    .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                     .foregroundStyle(Color.titleText)
             }
             
             HStack {
                 VStack(alignment: .leading) {
                     Text("Always-on")
-                        .font(.custom("Comfortaa", size: 22))
+                        .font(.custom("Comfortaa", size: 22, relativeTo: .largeTitle))
                         .foregroundStyle(Color.text)
                     Text("Reconnect if the connection is lost")
-                        .font(.custom("Comfortaa", size: 15))
+                        .font(.custom("Comfortaa", size: 15, relativeTo: .largeTitle))
                         .foregroundStyle(Color.text)
                 }
                 
@@ -55,6 +55,7 @@ struct SettingsVPNSettingsCardView: View {
                 .buttonStyle(NeumorphicButtonStyle(shape: Circle(), isHighlighted: vpnService.keepAlive))
                 .opacity(vpnService.status == .connected ? 0.5 : 1 )
                 .disabled(vpnService.status == .connected)
+                .dynamicTypeSize(.large)
             }
         }
         .padding()

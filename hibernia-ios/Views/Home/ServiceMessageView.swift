@@ -17,7 +17,7 @@ struct ServiceMessageView: View {
         if !serviceMessage.isEmpty {
             HStack {
                 Text(.init(serviceMessage))
-                    .font(.custom("Comfortaa", size: 17))
+                    .font(.custom("Comfortaa", size: 17, relativeTo: .title2))
                     .foregroundStyle(Color.titleText)
                     .bold()
                 

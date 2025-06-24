@@ -19,7 +19,7 @@ struct SettingsExtraSettingsCardView: View {
             
             HStack {
                 Text("Appearance")
-                    .font(.custom("Comfortaa", size: 22))
+                    .font(.custom("Comfortaa", size: 22, relativeTo: .largeTitle))
                     .foregroundStyle(Color.text)
                 
                 Spacer()
@@ -33,8 +33,9 @@ struct SettingsExtraSettingsCardView: View {
                 } label: {
                     HStack (alignment: .center) {
                         Text(settingsService.preferredAppAppearance.displayed)
-                            .font(.custom("Comfortaa", size: 18))
+                            .font(.custom("Comfortaa", size: 18, relativeTo: .largeTitle))
                         Image(systemName: "chevron.up.chevron.down")
+                            .dynamicTypeSize(.large)
                     }
                     .foregroundStyle(Color.turquoise)
                 }

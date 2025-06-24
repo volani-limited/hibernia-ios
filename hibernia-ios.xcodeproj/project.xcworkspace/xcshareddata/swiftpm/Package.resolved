@@ -150,16 +150,8 @@
       "kind" : "remoteSourceControl",
       "location" : "git@github.com:volani-limited/tunnelkit.git",
       "state" : {
-        "branch" : "no_openssl",
-        "revision" : "1dc7cdedb6ddb7214ddc0aa165c889781ef5fb4d"
-      }
-    },
-    {
-      "identity" : "wireguard-apple",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/passepartoutvpn/wireguard-apple",
-      "state" : {
-        "revision" : "b79f0f150356d8200a64922ecf041dd020140aa0"
+        "branch" : "hiberniavpn",
+        "revision" : "4d5ed350ce2fbae12e4fb9832c1c1ffe4af404b6"
       }
     }
   ],

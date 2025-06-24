@@ -42,34 +42,36 @@ struct PaywallModalView: View {
                         }
                     }
             } else {
-                VStack {
-                    HStack {
-                        Button {
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+                ScrollView {
+                    VStack {
+                        HStack {
+                            Button {
+                                let generator = UIImpactFeedbackGenerator(style: .light)
+                                generator.impactOccurred()
+                                
+                                dismiss()
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .foregroundStyle(Color.text)
+                                    .padding()
+                            }
+                            .disabled(processingStoreOperation)
+                            .opacity(processingStoreOperation ? 0 : 1)
+                            .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
+                            .padding()
+                            .dynamicTypeSize(.large)
                             
-                            dismiss()
-                        } label: {
-                            Image(systemName: "xmark")
-                                .foregroundStyle(Color.text)
-                                .padding()
+                            Spacer()
                         }
-                        .disabled(processingStoreOperation)
-                        .opacity(processingStoreOperation ? 0 : 1)
-                        .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
-                        .padding()
                         
-                        Spacer()
+                        PaywallInformationView(paywallInformation: paywallInformation!, offering: offering!)
+                        
+                        Spacer(minLength: 20)
+                        
+                        PaywallPackgeOptionsSubscribeView(packages: offering!.availablePackages, selectedPackage: offering!.availablePackages.first!, processingSubscribe: $processingStoreOperation)
+                        
+                        PaywallFooterView(processingRestore: $processingStoreOperation)
                     }
-                    
-                    PaywallInformationView(paywallInformation: paywallInformation!, offering: offering!)
-                        .offset(y: -40)
-                    
-                    Spacer()
-                    
-                    PaywallPackgeOptionsSubscribeView(packages: offering!.availablePackages, selectedPackage: offering!.availablePackages.first!, processingSubscribe: $processingStoreOperation)
-                    
-                    PaywallFooterView(processingRestore: $processingStoreOperation)
                 }
             }
         }

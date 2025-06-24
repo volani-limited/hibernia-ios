@@ -34,63 +34,66 @@ struct SettingsVPNStatusCardView: View {
             
             HStack(alignment: .center) {
                 Text("Status")
-                    .font(.custom("Comfortaa", size: 22))
+                    .font(.custom("Comfortaa", size: 22, relativeTo: .largeTitle))
                     .foregroundStyle(Color.text)
                 
                 Spacer()
                 
-                Image(systemName: "circle.fill").foregroundStyle(statusColor)
+                Image(systemName: "circle.fill")
+                    .foregroundStyle(statusColor)
+                    .dynamicTypeSize(.large)
                 
                 Text(vpnService.status.rawValue)
-                    .font(.custom("Comfortaa", size: 20))
+                    .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                     .foregroundStyle(Color.titleText)
             }
             
             HStack {
                 Text("Destination")
-                    .font(.custom("Comfortaa", size: 22))
+                    .font(.custom("Comfortaa", size: 22, relativeTo: .largeTitle))
                     .foregroundStyle(Color.text)
                 
                 Spacer()
                 
                 Text(vpnService.selectedDestination.displayedName)
-                    .font(.custom("Comfortaa", size: 20))
+                    .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                     .foregroundStyle(Color.titleText)
             }
             
             if vpnService.status == .connected {
                 HStack {
                     Text("Hostname")
-                        .font(.custom("Comfortaa", size: 22))
+                        .font(.custom("Comfortaa", size: 22, relativeTo: .largeTitle))
                         .foregroundStyle(Color.text)
                     
                     Spacer()
                     
                     if let hostname = vpnService.vpnHostname {
                         Text(hostname)
-                            .font(.custom("Comfortaa", size: 15))
+                            .font(.custom("Comfortaa", size: 15, relativeTo: .largeTitle))
                             .foregroundStyle(Color.titleText)
                     } else {
                         Text("Could not determine hostname")
-                            .font(.custom("Comfortaa", size: 12))
+                            .font(.custom("Comfortaa", size: 12, relativeTo: .largeTitle))
                             .foregroundStyle(Color.titleText)
                     }
                 }
                 
                 HStack {
                     Text("IP address")
-                        .font(.custom("Comfortaa", size: 22))
+                        .font(.custom("Comfortaa", size: 22, relativeTo: .largeTitle))
                         .foregroundStyle(Color.text)
                     
                     Spacer()
                     
                     if let ip = vpnService.vpnIP {
                         Text(ip)
-                            .font(.custom("Comfortaa", size: 15))
+                            .font(.custom("Comfortaa", size: 15, relativeTo: .largeTitle))
                             .foregroundStyle(Color.titleText)
+                            .monospaced()
                     } else {
                         Text("Could not determine IP")
-                            .font(.custom("Comfortaa", size: 12))
+                            .font(.custom("Comfortaa", size: 12, relativeTo: .largeTitle))
                             .foregroundStyle(Color.titleText)
                     }
                     
@@ -98,17 +101,19 @@ struct SettingsVPNStatusCardView: View {
                 
                 HStack {
                     Text("Connected time")
-                        .font(.custom("Comfortaa", size: 22))
+                        .font(.custom("Comfortaa", size: 22, relativeTo: .largeTitle))
                         .foregroundStyle(Color.text)
                     
                     Spacer()
                     
-                    Text(vpnService.connectedTime)
-                        .font(.custom("Comfortaa", size: 20))
-                        .foregroundStyle(Color.titleText)
+                    TimelineView(.periodic(from: .now, by: vpnService.status == .connected ? 1 : .infinity)) { context in
+                        Text(vpnService.getConnectedTime())
+                            .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
+                            .foregroundStyle(Color.titleText)
+                            .monospaced()
+
+                    }
                 }
-                
-                
             }
         }
         .padding()

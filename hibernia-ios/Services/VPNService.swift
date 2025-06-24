@@ -26,27 +26,36 @@ class VPNService: ObservableObject {
     
     @Published var keepAlive: Bool
     @Published var killSwitch: Bool
-    @Published var connectedTime: String
+    @Published var connectedDate: Date?
     
     @Published var vpnIP: String?
     @Published var vpnHostname: String?
-    
-    var timer: SimpleTimerService
 
     private var subscriptions: Set<AnyCancellable>
     private var vpn: NetworkExtensionVPN
+    
+    private static let formatter: DateComponentsFormatter = { // Create and cache DateComponentsFormmatter for use in getConnec
+        let formatter = DateComponentsFormatter()
+        
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        formatter.unitsStyle = .positional
+        return formatter
+    }()
 
     init(destinations: [VPNDestination]) {
         vpn = NetworkExtensionVPN()
         status = .disconnected
-        timer = SimpleTimerService()
-        connectedTime = "--:--"
         
         let defaults = UserDefaults.standard // Load data from userdefaults
         selectedDestination = destinations.first(where: { $0.id == defaults.string(forKey: "destination")}) ?? destinations.first! // Make selectedDestination nil if no selected destination
         
         keepAlive = defaults.bool(forKey: "keepAlive")
         killSwitch = defaults.bool(forKey: "keepAlive")
+        
+        if let connectedTimeIntervalSince1970 = defaults.object(forKey: "connectedDate") as? Double {
+            connectedDate = Date(timeIntervalSince1970: connectedTimeIntervalSince1970)
+        }
         
         subscriptions = Set<AnyCancellable>()
         
@@ -59,23 +68,13 @@ class VPNService: ObservableObject {
         subscriptions.insert($killSwitch.sink { value in
             defaults.set(value, forKey: "killSwitch")
         })
-        
-        timer.$elapsedTime.map {
-            let formatter = DateComponentsFormatter() // Use dateFormatter to convert date interval into minutes and seconds
-            
-            formatter.allowedUnits = [.hour, .minute, .second]
-            formatter.zeroFormattingBehavior = .pad
-            formatter.unitsStyle = .positional
-            
-            
-            if let output = formatter.string(from: $0) {
-                return output // return this value
+        subscriptions.insert($connectedDate.sink { value in
+            if let value = value {
+                defaults.set(value.timeIntervalSince1970, forKey: "connectedDate")
             } else {
-                return  "--:--" // if formatter fails return blank value
+                defaults.removeObject(forKey: "connectedDate")
             }
-        }
-        .assign(to: &$connectedTime) // Assign elapsed time to published varible
-        
+        })
         
         NotificationCenter.default.addObserver( // Add notification observers to VPN manager
             self,
@@ -97,6 +96,14 @@ class VPNService: ObservableObject {
 
     func prepare() async {
         await vpn.prepare()
+    }
+    
+    func getConnectedTime() -> String { // Use a helper function to compute the connected time from the connected date (this allows views to control their updates with TimelineView as opposed to running the timer here)
+        guard let connectedDate = connectedDate else { return "--:--:--" }
+        
+        let interval = Date().timeIntervalSince(connectedDate)
+        
+        return Self.formatter.string(from: interval) ?? "--:--:--"
     }
     
     @MainActor
@@ -177,27 +184,27 @@ class VPNService: ObservableObject {
                 }
             }
             
+            connectedDate = notification.connectionDate
+            
             status = .connected
         case .connecting:
             status = .connecting
         case .disconnected:
             status = .disconnected
+            
+            connectedDate = nil
         case .disconnecting:
             status = .disconnecting
         }
         
         print("VPNStatusDidChange: \(status)")
-        
-        if status == .connected {
-            timer.reset()
-            timer.start()
-        } else if status == .disconnecting {
-            timer.stop()
-        }
     }
 
     @objc private func VPNDidFail(notification: Notification) {
         print("VPNStatusDidFail: \(notification.vpnError.localizedDescription)") // TODO: Handle this error here?
+        Task {
+            await self.disconnect()
+        }
     }
     
     struct ConfigurationResponse: Codable {

@@ -24,7 +24,7 @@ struct DestinationSelectorView: View {
             ZStack {
                 Text("Destinations")
                     .bold()
-                    .font(.custom("Comfortaa", size: 30))
+                    .font(.custom("Comfortaa", fixedSize: 30))
                     .foregroundColor(.titleText)
                
                 HStack {
@@ -61,6 +61,7 @@ struct DestinationSelectorView: View {
                     .disabled(destinationPingService.preparingResults || vpnService.status != .disconnected)
                     .opacity(destinationPingService.preparingResults || vpnService.status != .disconnected ? 0 : 1)
                 }
+                .dynamicTypeSize(.large)
             }
             ScrollView {
                 VStack(alignment: .center) {
@@ -80,7 +81,7 @@ struct DestinationSelectorView: View {
 
                 if vpnService.status != .disconnected {
                     Text("Please disconnect before changing destinations")
-                        .font(.custom("Comfortaa", size: 15))
+                        .font(.custom("Comfortaa", size: 15, relativeTo: .body))
                         .foregroundStyle(Color.text)
                 }
             }

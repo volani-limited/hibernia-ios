@@ -56,6 +56,7 @@ struct VPNConnectButtonView: View {
         } label: {
             Image(systemName: "power")
                 .font(.system(size: 55, weight: .heavy))
+                .dynamicTypeSize(.large)
                 .foregroundColor(vpnService.status == .connected ? Color.lightShadow : .turquoise)
                 .shadow(color: vpnService.status == .connected ? Color.lightShadow : .turquoise, radius: 15)
                 .padding(30)

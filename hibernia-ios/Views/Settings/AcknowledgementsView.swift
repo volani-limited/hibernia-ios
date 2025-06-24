@@ -11,8 +11,10 @@ struct AcknowledgementsView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.openURL) var openURL
     
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
+    
     var acknowledgements = [
-        Acknowledgement(title: "HiberniaVPN Client", copyright: "© Volani Limited MMXXIV. All rights reserved.", licensed: "Source code provided under the GPLv3.", licenseLink: URL(string: "https://www.gnu.org/licenses/gpl-3.0.en.html")!, sourceCodeLink: URL(string: "https://github.com/volani-limited/hibernia-ios")!),
+        Acknowledgement(title: "HiberniaVPN Client", copyright: "© Volani Limited MMXXV. All rights reserved.", licensed: "Source code provided under the GPLv3.", licenseLink: URL(string: "https://www.gnu.org/licenses/gpl-3.0.en.html")!, sourceCodeLink: URL(string: "https://github.com/volani-limited/hibernia-ios")!),
         Acknowledgement(title: "TunnelKit", copyright: "© Davide De Rosa. All rights reserved.", licensed: "Licensed under the MPLv2.", licenseLink: URL(string: "https://www.mozilla.org/en-US/MPL/2.0/")!, sourceCodeLink: URL(string: "https://github.com/volani-limited/tunnelkit")!),
         Acknowledgement(title: "OpenSSL", copyright: "© The Open SSL Project. All rights reserved.", licensed: "Licensed under the Apache License 2.0. OpenVPN is a registered trademark of OpenVPN, Inc.", licenseLink: URL(string: "https://www.apache.org/licenses/LICENSE-2.0")!, sourceCodeLink: URL(string: "https://github.com/openssl/openssl")!)]
     
@@ -23,7 +25,7 @@ struct AcknowledgementsView: View {
                 ZStack {
                     Text("Acknowledgments")
                         .fontWeight(.black)
-                        .font(.custom("Comfortaa", size: 22))
+                        .font(.custom("Comfortaa", fixedSize: 22))
                         .foregroundStyle(Color.titleText)
                         .padding()
                     HStack {
@@ -40,9 +42,10 @@ struct AcknowledgementsView: View {
                         Spacer()
                     }
                 }
+                .dynamicTypeSize(.large)
                 
                 Text("HiberniaVPN may make use of and/or include the following open-source code")
-                    .font(.custom("Comfortaa", size: 15))
+                    .font(.custom("Comfortaa", size: 15, relativeTo: .title3))
                     .foregroundStyle(Color.text)
                     .padding(.horizontal)
                 
@@ -54,39 +57,59 @@ struct AcknowledgementsView: View {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(acknowledgement.title)
                                     .bold()
-                                    .font(.custom("Comfortaa", size: 20))
+                                    .font(.custom("Comfortaa", size: 20, relativeTo: .title3))
                                     .foregroundStyle(Color.text)
                                 Text(acknowledgement.copyright)
                                     .bold()
-                                    .font(.custom("Comfortaa", size: 12))
+                                    .font(.custom("Comfortaa", size: 12, relativeTo: .title3))
                                     .foregroundStyle(Color.text)
                                 Text(acknowledgement.licensed)
                                     .bold()
-                                    .font(.custom("Comfortaa", size: 14))
+                                    .font(.custom("Comfortaa", size: 14, relativeTo: .title3))
                                     .foregroundStyle(Color.text)
-                                HStack {
-                                    Spacer()
-                                    
-                                    Button {
-                                        openURL(acknowledgement.licenseLink)
-                                    } label: {
-                                        Text("License")
-                                        Image(systemName: "arrow.up.right.square.fill")
+                                if (dynamicTypeSize.isAccessibilitySize) {
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        Button {
+                                            openURL(acknowledgement.licenseLink)
+                                        } label: {
+                                            Text("License")
+                                            Image(systemName: "arrow.up.right.square.fill")
+                                        }
+                                        
+                                        Button {
+                                            openURL(acknowledgement.sourceCodeLink)
+                                        } label: {
+                                            Text("Source")
+                                            Image(systemName: "arrow.up.right.square.fill")
+                                        }
                                     }
-                                    
-                                    Text("•")
-
-                                    Button {
-                                        openURL(acknowledgement.sourceCodeLink)
-                                    } label: {
-                                        Text("Source")
-                                        Image(systemName: "arrow.up.right.square.fill")
+                                    .font(.body)
+                                    .foregroundStyle(Color.turquoise)
+                                } else {
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Button {
+                                            openURL(acknowledgement.licenseLink)
+                                        } label: {
+                                            Text("License")
+                                            Image(systemName: "arrow.up.right.square.fill")
+                                        }
+                                        
+                                        Text("•")
+                                        
+                                        Button {
+                                            openURL(acknowledgement.sourceCodeLink)
+                                        } label: {
+                                            Text("Source")
+                                            Image(systemName: "arrow.up.right.square.fill")
+                                        }
+                                        
+                                        Spacer()
                                     }
-                                    
-                                    Spacer()
+                                    .font(.body)
+                                    .foregroundStyle(Color.turquoise)
                                 }
-                                .font(.system(size: 15))
-                                .foregroundStyle(Color.turquoise)
                             }
                         }
                         .padding()

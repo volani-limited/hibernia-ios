@@ -13,6 +13,8 @@ struct VPNControlStatusContainerView: View {
     
     @EnvironmentObject var vpnService: VPNService
     
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
+
     private var statusProgress: Double {
         switch vpnService.status {
         case .requestingConfiguration:
@@ -53,27 +55,23 @@ struct VPNControlStatusContainerView: View {
                         .frame(width: 155, height: 155)
                     
                     Text(vpnService.status.rawValue)
-                        .font(.custom("Comfortaa", size: 18))
+                        .font(.custom("Comfortaa", size: 18, relativeTo: .title))
                         .bold()
                         .foregroundColor(.titleText)
                         .padding(.top)
                     
-                    if maximumDuration.isEmpty {
-                        Text(vpnService.connectedTime)
-                            .font(.custom("Comfortaa", size: 15))
-                            .foregroundColor(.text)
-                            .padding(.bottom)
-                            .opacity(vpnService.status == .connected ? 1 : 0)
-                    } else {
-                        Text(vpnService.connectedTime + " / " + maximumDuration)
-                            .font(.custom("Comfortaa", size: 15))
-                            .foregroundColor(.text)
-                            .padding(.bottom)
-                            .opacity(vpnService.status == .connected ? 1 : 0)
-                    }
                     
+                    
+                    TimelineView(.periodic(from: .now, by: vpnService.status == .connected ? 1 : .infinity)) { context in
+                        Text(!maximumDuration.isEmpty ? vpnService.getConnectedTime() + " / " + maximumDuration : vpnService.getConnectedTime())
+                            .font(.custom("Comfortaa", size: 15, relativeTo: .title))
+                            .foregroundColor(.text)
+                            .padding(.bottom)
+                            .opacity(vpnService.status == .connected ? 1 : 0)
+                            .monospaced()
+                    }
                 }
-                .offset(y: 45)
+                .offset(y: dynamicTypeSize.isAccessibilitySize ? 55 : 45)
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
         }

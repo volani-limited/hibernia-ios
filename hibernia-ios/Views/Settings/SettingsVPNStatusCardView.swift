@@ -90,6 +90,7 @@ struct SettingsVPNStatusCardView: View {
                         Text(ip)
                             .font(.custom("Comfortaa", size: 15, relativeTo: .largeTitle))
                             .foregroundStyle(Color.titleText)
+                            .monospaced()
                     } else {
                         Text("Could not determine IP")
                             .font(.custom("Comfortaa", size: 12, relativeTo: .largeTitle))
@@ -105,9 +106,13 @@ struct SettingsVPNStatusCardView: View {
                     
                     Spacer()
                     
-                    Text(vpnService.connectedTime)
-                        .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
-                        .foregroundStyle(Color.titleText)
+                    TimelineView(.periodic(from: .now, by: vpnService.status == .connected ? 1 : .infinity)) { context in
+                        Text(vpnService.getConnectedTime())
+                            .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
+                            .foregroundStyle(Color.titleText)
+                            .monospaced()
+
+                    }
                 }
             }
         }

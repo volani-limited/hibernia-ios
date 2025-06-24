@@ -12,7 +12,6 @@
 		AE1501332C2E384C0001A9C3 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = AE1501322C2E384C0001A9C3 /* RevenueCat */; };
 		AE1501352C2E384C0001A9C3 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = AE1501342C2E384C0001A9C3 /* RevenueCatUI */; };
 		AE1501372C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1501362C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift */; };
-		AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */; };
 		AE1D376F29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */; };
 		AE1FAF972C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */; };
 		AE22C7E22BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE22C7E12BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift */; };
@@ -111,7 +110,6 @@
 		AE0EB82128F8EADA002939F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevenueCatSubscriptionService.swift; sourceTree = "<group>"; };
 		AE1501362C3B68B60001A9C3 /* PaywallPackgeOptionsSubscribeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallPackgeOptionsSubscribeView.swift; sourceTree = "<group>"; };
-		AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTimerService.swift; sourceTree = "<group>"; };
 		AE1D376E29279C2D003A46F4 /* DeviceCheckAppCheckProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCheckAppCheckProviderFactory.swift; sourceTree = "<group>"; };
 		AE1FAF962C3DEC71003FA7BA /* RedeemLicenseKeyModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedeemLicenseKeyModalView.swift; sourceTree = "<group>"; };
 		AE22C7E12BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleEffectButtonStyle.swift; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 			children = (
 				AE6F94D029C9D38C00B006E3 /* AppCheck */,
 				AEFCD1CC28E8F44A008D9694 /* VPNService.swift */,
-				AE1D376C2925A919003A46F4 /* SimpleTimerService.swift */,
 				AE15012F2C2E35C70001A9C3 /* RevenueCatSubscriptionService.swift */,
 				AE22C7F02BF50B7F003B8ED7 /* DestinationPingService.swift */,
 				AE641B252C48343E0090B259 /* RemoteConfigService.swift */,
@@ -571,7 +568,6 @@
 				AE641B1C2C4722490090B259 /* SettingsFooterView.swift in Sources */,
 				AE22C7E22BEE8619003B8ED7 /* ScaleEffectButtonStyle.swift in Sources */,
 				AE8051C92C1C9C70002DF24A /* SettingsVPNStatusCardView.swift in Sources */,
-				AE1D376D2925A919003A46F4 /* SimpleTimerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

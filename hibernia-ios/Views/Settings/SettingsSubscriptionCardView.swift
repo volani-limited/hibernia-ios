@@ -27,7 +27,10 @@ struct SettingsSubscriptionCardView: View {
                 
                 Spacer()
                 
-                Image(systemName: "circle.fill").foregroundStyle(subscriptionService.subscriptionStatus == .notSubscribed ? .red : .green)
+                Image(systemName: "circle.fill")
+                    .foregroundStyle(subscriptionService.subscriptionStatus == .notSubscribed ? .red : .green)
+                    .dynamicTypeSize(.large)
+                
                 Text(subscriptionService.subscriptionStatus.statusDisplay)
                     .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                     .foregroundStyle(Color.titleText)

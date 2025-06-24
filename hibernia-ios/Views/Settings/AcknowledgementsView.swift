@@ -23,7 +23,7 @@ struct AcknowledgementsView: View {
                 ZStack {
                     Text("Acknowledgments")
                         .fontWeight(.black)
-                        .font(.custom("Comfortaa", size: 22))
+                        .font(.custom("Comfortaa", fixedSize: 22))
                         .foregroundStyle(Color.titleText)
                         .padding()
                     HStack {
@@ -42,7 +42,7 @@ struct AcknowledgementsView: View {
                 }
                 
                 Text("HiberniaVPN may make use of and/or include the following open-source code")
-                    .font(.custom("Comfortaa", size: 15))
+                    .font(.custom("Comfortaa", size: 15, relativeTo: .title3))
                     .foregroundStyle(Color.text)
                     .padding(.horizontal)
                 
@@ -54,15 +54,15 @@ struct AcknowledgementsView: View {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(acknowledgement.title)
                                     .bold()
-                                    .font(.custom("Comfortaa", size: 20))
+                                    .font(.custom("Comfortaa", size: 20, relativeTo: .title3))
                                     .foregroundStyle(Color.text)
                                 Text(acknowledgement.copyright)
                                     .bold()
-                                    .font(.custom("Comfortaa", size: 12))
+                                    .font(.custom("Comfortaa", size: 12, relativeTo: .title3))
                                     .foregroundStyle(Color.text)
                                 Text(acknowledgement.licensed)
                                     .bold()
-                                    .font(.custom("Comfortaa", size: 14))
+                                    .font(.custom("Comfortaa", size: 14, relativeTo: .title3))
                                     .foregroundStyle(Color.text)
                                 HStack {
                                     Spacer()
@@ -85,7 +85,7 @@ struct AcknowledgementsView: View {
                                     
                                     Spacer()
                                 }
-                                .font(.system(size: 15))
+                                .font(.body)
                                 .foregroundStyle(Color.turquoise)
                             }
                         }

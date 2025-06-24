@@ -22,27 +22,27 @@ struct SettingsSubscriptionCardView: View {
             
             HStack(spacing: 5) {
                 Text("Status")
-                    .font(.custom("Comfortaa", size: 22))
+                    .font(.custom("Comfortaa", size: 22, relativeTo: .largeTitle))
                     .foregroundStyle(Color.text)
                 
                 Spacer()
                 
                 Image(systemName: "circle.fill").foregroundStyle(subscriptionService.subscriptionStatus == .notSubscribed ? .red : .green)
                 Text(subscriptionService.subscriptionStatus.statusDisplay)
-                    .font(.custom("Comfortaa", size: 20))
+                    .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                     .foregroundStyle(Color.titleText)
             }
             
             if let expiryDate = subscriptionService.subscriptionExpiryDate {
                 HStack(spacing: 5) {
                     Text("Expires")
-                        .font(.custom("Comfortaa", size: 22))
+                        .font(.custom("Comfortaa", size: 22, relativeTo: .largeTitle))
                         .foregroundStyle(Color.text)
                     
                     Spacer()
                     
                     Text(expiryDate.formatted(date: .numeric, time: .omitted))
-                        .font(.custom("Comfortaa", size: 20))
+                        .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                         .foregroundStyle(Color.titleText)
                 }
             }
@@ -55,7 +55,7 @@ struct SettingsSubscriptionCardView: View {
                         presentingSubscribeModal = true
                     } label: {
                         Text("Subscribe now")
-                            .font(.custom("Comfortaa", size: 15))
+                            .font(.custom("Comfortaa", size: 15, relativeTo: .subheadline))
                             .foregroundStyle(Color.titleText)
                             .padding()
                     }
@@ -66,7 +66,7 @@ struct SettingsSubscriptionCardView: View {
                         presentingSubscribeModal = true
                     } label: {
                         Text("Upgrade")
-                            .font(.custom("Comfortaa", size: 15))
+                            .font(.custom("Comfortaa", size: 15, relativeTo: .subheadline))
                             .foregroundStyle(Color.titleText)
                             .padding()
                     }
@@ -79,7 +79,7 @@ struct SettingsSubscriptionCardView: View {
                         presentingManageSubscriptionModal = true
                     } label: {
                         Text("Manage")
-                            .font(.custom("Comfortaa", size: 15))
+                            .font(.custom("Comfortaa", size: 15, relativeTo: .subheadline))
                             .foregroundStyle(Color.titleText)
                             .padding()
                     }

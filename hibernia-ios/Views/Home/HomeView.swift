@@ -15,7 +15,7 @@ struct HomeView: View {
             VStack(spacing: 0) {
                 Text("HiberniaVPN")
                     .fontWeight(.black)
-                    .font(.custom("Comfortaa", size: 40))
+                    .font(.custom("Comfortaa", fixedSize: 40))
                     .foregroundStyle(Color.titleText)
                     .padding()
                 

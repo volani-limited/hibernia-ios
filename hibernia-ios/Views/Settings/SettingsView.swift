@@ -23,7 +23,7 @@ struct SettingsView: View {
             VStack {
                 Text("Settings")
                     .fontWeight(.black)
-                    .font(.custom("Comfortaa", size: 40))
+                    .font(.custom("Comfortaa", fixedSize: 40))
                     .foregroundColor(.titleText)
                     .padding()
                     .onTapGesture {

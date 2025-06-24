@@ -22,10 +22,10 @@ struct DestinationSelectorRowView: View {
         HStack {
             HStack(alignment: .center, spacing: 5) {
                 Text(destination.displayedName)
-                    .font(.custom("Comfortaa", size: 24))
+                    .font(.custom("Comfortaa", size: 24, relativeTo: .title))
                     .foregroundStyle(Color.text)
                 Text("Nearest")
-                    .font(.custom("Comfortaa", size: 12))
+                    .font(.custom("Comfortaa", fixedSize: 12))
                     .foregroundStyle(Color.turquoise)
                     .shadow(color: .turquoise, radius: 2)
                     .opacity((try? pingResult?.get()) == (allPings.min() ?? 0) ? 1 : 0)
@@ -39,11 +39,11 @@ struct DestinationSelectorRowView: View {
                 case .success(let success):
                     HStack(alignment: .lastTextBaseline, spacing: 0) {
                         Text((success*1000).formatted(.number.precision(.fractionLength(0))))
-                            .font(.custom("Comfortaa", size: 16))
+                            .font(.custom("Comfortaa", fixedSize: 16))
                             .bold()
                             .foregroundStyle(Color.text)
                         Text("ms")
-                            .font(.custom("Comfortaa", size: 12))
+                            .font(.custom("Comfortaa", fixedSize: 12))
                             .foregroundStyle(Color.text)
                     }
                     CapsulePingGraphView(value: computePingProportion(ping: success, pings: allPings))
@@ -58,6 +58,7 @@ struct DestinationSelectorRowView: View {
                 Spacer()
                 ProgressView()
                     .padding(.trailing, 5)
+                    .dynamicTypeSize(.large)
             }
             
             if selectorCheckmarks {
@@ -66,9 +67,9 @@ struct DestinationSelectorRowView: View {
                     .shadow(color: isHighlighted ? Color.turquoise : Color.text, radius: 4)
                     .padding(5)
                     .background(NeumorphicShape(isHighlighted: isHighlighted, shape: Circle()))
+                    .dynamicTypeSize(.large)
             }
         }
-        .lineLimit(1)
         .minimumScaleFactor(0.2)
         .padding()
         .background(NeumorphicShape(isHighlighted: isHighlighted, shape: RoundedRectangle(cornerRadius: 15)))

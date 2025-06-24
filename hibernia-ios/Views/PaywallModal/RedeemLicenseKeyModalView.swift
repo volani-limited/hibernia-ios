@@ -69,7 +69,7 @@ struct RedeemLicenseKeyModalView: View {
                     } label: {
                         Text("Redeem")
                             .bold()
-                            .font(.custom("Comfortaa", size: 20))
+                            .font(.custom("Comfortaa", size: 20, relativeTo: .body))
                             .foregroundColor(.vBlue)
                             .padding()
                     }

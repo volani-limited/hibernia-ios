@@ -15,7 +15,6 @@ struct PaywallInformationView: View {
     var offering: Offering
     
     var body: some View {
-        GeometryReader { geometry in
             GeometryReader { geometry in
                 VStack {
                     Image(colorScheme == .light ? "logo" : "logoDark")
@@ -55,7 +54,6 @@ struct PaywallInformationView: View {
                 }
                 .padding(.horizontal)
             }
-        }
     }
 }
 

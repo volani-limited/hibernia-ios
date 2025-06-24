@@ -53,20 +53,20 @@ struct VPNControlStatusContainerView: View {
                         .frame(width: 155, height: 155)
                     
                     Text(vpnService.status.rawValue)
-                        .font(.custom("Comfortaa", size: 18))
+                        .font(.custom("Comfortaa", size: 18, relativeTo: .title))
                         .bold()
                         .foregroundColor(.titleText)
                         .padding(.top)
                     
                     if maximumDuration.isEmpty {
                         Text(vpnService.connectedTime)
-                            .font(.custom("Comfortaa", size: 15))
+                            .font(.custom("Comfortaa", size: 15, relativeTo: .title))
                             .foregroundColor(.text)
                             .padding(.bottom)
                             .opacity(vpnService.status == .connected ? 1 : 0)
                     } else {
                         Text(vpnService.connectedTime + " / " + maximumDuration)
-                            .font(.custom("Comfortaa", size: 15))
+                            .font(.custom("Comfortaa", size: 15, relativeTo: .title))
                             .foregroundColor(.text)
                             .padding(.bottom)
                             .opacity(vpnService.status == .connected ? 1 : 0)

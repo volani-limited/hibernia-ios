@@ -13,6 +13,8 @@ struct VPNControlStatusContainerView: View {
     
     @EnvironmentObject var vpnService: VPNService
     
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
+    
     private var statusProgress: Double {
         switch vpnService.status {
         case .requestingConfiguration:
@@ -73,7 +75,7 @@ struct VPNControlStatusContainerView: View {
                     }
                     
                 }
-                .offset(y: 45)
+                .offset(y: dynamicTypeSize.isAccessibilitySize ? 55 : 45)
             }
             .frame(width: geometry.size.width, height: geometry.size.height)
         }

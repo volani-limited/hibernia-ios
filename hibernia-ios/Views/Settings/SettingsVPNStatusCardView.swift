@@ -47,7 +47,6 @@ struct SettingsVPNStatusCardView: View {
                     .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                     .foregroundStyle(Color.titleText)
             }
-            .dynamicTypeSize(.accessibility1)
             
             HStack {
                 Text("Destination")
@@ -60,7 +59,6 @@ struct SettingsVPNStatusCardView: View {
                     .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                     .foregroundStyle(Color.titleText)
             }
-            .dynamicTypeSize(.accessibility1)
             
             if vpnService.status == .connected {
                 HStack {
@@ -80,7 +78,6 @@ struct SettingsVPNStatusCardView: View {
                             .foregroundStyle(Color.titleText)
                     }
                 }
-                .dynamicTypeSize(.accessibility1)
                 
                 HStack {
                     Text("IP address")
@@ -100,7 +97,6 @@ struct SettingsVPNStatusCardView: View {
                     }
                     
                 }
-                .dynamicTypeSize(.accessibility1)
                 
                 HStack {
                     Text("Connected time")
@@ -113,9 +109,6 @@ struct SettingsVPNStatusCardView: View {
                         .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                         .foregroundStyle(Color.titleText)
                 }
-                .dynamicTypeSize(.accessibility1)
-                
-                
             }
         }
         .padding()

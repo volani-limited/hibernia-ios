@@ -19,7 +19,7 @@ struct PaywallPackgeOptionsSubscribeView: View {
     @State private var presentingSubscribeError: Bool = false
     
     var body: some View {
-        VStack (spacing: 20 ) {
+        VStack (spacing: 20) {
             VStack(spacing: 12) {
                 ForEach(packages, id: \.identifier) { package in
                     Button {
@@ -110,8 +110,8 @@ struct PaywallPackgeOptionsSubscribeView: View {
                         .opacity(processingSubscribe ? 1 : 0)
                 }
                 
-                Spacer()
-                    .frame(height: 10)
+                //Spacer()
+                   // .frame(height: 10)
                 
                 Text("Purchasing a lifetime subscription will not automatically cancel any existing subscriptions. Do this manually in Settings.").fixedSize(horizontal: false, vertical: true)
                     .font(.caption)

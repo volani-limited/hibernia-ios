@@ -45,7 +45,6 @@ struct SettingsView: View {
                         }
                         
                         SettingsFooterView()
-                            .dynamicTypeSize(.accessibility2)
                        
                         Spacer()
                             .frame(minHeight: geometry.size.height * 0.15)

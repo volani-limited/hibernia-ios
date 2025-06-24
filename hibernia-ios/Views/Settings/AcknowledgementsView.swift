@@ -11,6 +11,8 @@ struct AcknowledgementsView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.openURL) var openURL
     
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
+    
     var acknowledgements = [
         Acknowledgement(title: "HiberniaVPN Client", copyright: "© Volani Limited MMXXIV. All rights reserved.", licensed: "Source code provided under the GPLv3.", licenseLink: URL(string: "https://www.gnu.org/licenses/gpl-3.0.en.html")!, sourceCodeLink: URL(string: "https://github.com/volani-limited/hibernia-ios")!),
         Acknowledgement(title: "TunnelKit", copyright: "© Davide De Rosa. All rights reserved.", licensed: "Licensed under the MPLv2.", licenseLink: URL(string: "https://www.mozilla.org/en-US/MPL/2.0/")!, sourceCodeLink: URL(string: "https://github.com/volani-limited/tunnelkit")!),
@@ -40,6 +42,7 @@ struct AcknowledgementsView: View {
                         Spacer()
                     }
                 }
+                .dynamicTypeSize(.large)
                 
                 Text("HiberniaVPN may make use of and/or include the following open-source code")
                     .font(.custom("Comfortaa", size: 15, relativeTo: .title3))
@@ -64,29 +67,49 @@ struct AcknowledgementsView: View {
                                     .bold()
                                     .font(.custom("Comfortaa", size: 14, relativeTo: .title3))
                                     .foregroundStyle(Color.text)
-                                HStack {
-                                    Spacer()
-                                    
-                                    Button {
-                                        openURL(acknowledgement.licenseLink)
-                                    } label: {
-                                        Text("License")
-                                        Image(systemName: "arrow.up.right.square.fill")
+                                if (dynamicTypeSize.isAccessibilitySize) {
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        Button {
+                                            openURL(acknowledgement.licenseLink)
+                                        } label: {
+                                            Text("License")
+                                            Image(systemName: "arrow.up.right.square.fill")
+                                        }
+                                        
+                                        Button {
+                                            openURL(acknowledgement.sourceCodeLink)
+                                        } label: {
+                                            Text("Source")
+                                            Image(systemName: "arrow.up.right.square.fill")
+                                        }
                                     }
-                                    
-                                    Text("•")
-
-                                    Button {
-                                        openURL(acknowledgement.sourceCodeLink)
-                                    } label: {
-                                        Text("Source")
-                                        Image(systemName: "arrow.up.right.square.fill")
+                                    .font(.body)
+                                    .foregroundStyle(Color.turquoise)
+                                } else {
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Button {
+                                            openURL(acknowledgement.licenseLink)
+                                        } label: {
+                                            Text("License")
+                                            Image(systemName: "arrow.up.right.square.fill")
+                                        }
+                                        
+                                        Text("•")
+                                        
+                                        Button {
+                                            openURL(acknowledgement.sourceCodeLink)
+                                        } label: {
+                                            Text("Source")
+                                            Image(systemName: "arrow.up.right.square.fill")
+                                        }
+                                        
+                                        Spacer()
                                     }
-                                    
-                                    Spacer()
+                                    .font(.body)
+                                    .foregroundStyle(Color.turquoise)
                                 }
-                                .font(.body)
-                                .foregroundStyle(Color.turquoise)
                             }
                         }
                         .padding()

@@ -44,10 +44,13 @@ struct PaywallInformationView: View {
                         
                         VStack(alignment: .leading) {
                             ForEach(paywallInformation.bullets, id: \.self) { bullet in
-                                Text(.init("• " + bullet))
-                                    .font(.custom("Comfortaa", size: 15))
-                                    .foregroundColor(.titleText)
-                                    .fixedSize(horizontal: false, vertical: true)
+                                HStack {
+                                    Text("•")
+                                    Text(.init(bullet))
+                                }
+                                .font(.custom("Comfortaa", size: 15))
+                                .foregroundColor(.titleText)
+                                .fixedSize(horizontal: false, vertical: true)
                             }
                         }
                     }

@@ -40,9 +40,9 @@ struct DestinationSelectorRowView: View {
                 switch pingResult {
                 case .success(let success):
                     if(dynamicTypeSize.isAccessibilitySize) {
-                        VStack(alignment: .trailing, spacing: 10) {
+                        VStack(alignment: .center, spacing: 12) {
                             CapsulePingGraphView(value: computePingProportion(ping: success, pings: allPings))
-                                .frame(width: 13, height: 16)
+                                .frame(width: 13 * dynamicTypeScaleFactor, height: 16 * dynamicTypeScaleFactor)
                                 .padding(.trailing)
                             HStack(alignment: .lastTextBaseline, spacing: 0) {
                                 Text((success*1000).formatted(.number.precision(.fractionLength(0))))
@@ -53,7 +53,6 @@ struct DestinationSelectorRowView: View {
                                     .font(.custom("Comfortaa", size: 12, relativeTo: .title2))
                                     .foregroundStyle(Color.text)
                             }
-                            .dynamicTypeSize(.xxxLarge)
                         }
                     } else {
                         HStack(alignment: .lastTextBaseline, spacing: 0) {
@@ -65,9 +64,8 @@ struct DestinationSelectorRowView: View {
                                 .font(.custom("Comfortaa", size: 12, relativeTo: .title2))
                                 .foregroundStyle(Color.text)
                         }
-                        .dynamicTypeSize(.xxxLarge)
                         CapsulePingGraphView(value: computePingProportion(ping: success, pings: allPings))
-                            .frame(width: 13 * dynamicTypeScaleFactor, height: 16 * dynamicTypeScaleFactor)
+                            .frame(width: 13, height: 16)
                             .padding(.trailing)
                     }
                 case .failure:

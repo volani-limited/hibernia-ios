@@ -27,7 +27,7 @@ struct PaywallModalView: View {
                 ProgressView()
                     .task {
                         do {
-                            offering = try await subscriptionService.getOfferings().offering(identifier: "hibernia-premium-withlifetime")
+                            offering = try await subscriptionService.getOfferings().current
                             paywallInformation = RevenueCatSubscriptionService.getPaywallInformation(for: offering!)
                             
                             processingLoadSubscriptionProduct = false

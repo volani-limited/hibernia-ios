@@ -62,7 +62,7 @@ struct PaywallFooterView: View {
                     Button("Ok") { dismiss() }
                 }
                 
-                if true {
+                if displaysRedeemKey {
                     Text("•")
                         .font(.caption)
                         .foregroundColor(.text)

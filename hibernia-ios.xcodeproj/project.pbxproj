@@ -905,7 +905,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:volani-limited/tunnelkit.git";
 			requirement = {
-				branch = no_openssl;
+				branch = hiberniavpn;
 				kind = branch;
 			};
 		};

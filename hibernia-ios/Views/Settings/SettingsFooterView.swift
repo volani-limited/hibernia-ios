@@ -48,7 +48,7 @@ struct SettingsFooterView: View {
                 }
             }
             
-            Text("HiberniaVPN v\(Bundle.main.releaseVersionNumber!) (\(Bundle.main.buildVersionNumber!)) © Volani Limited MMXXIV")
+            Text("HiberniaVPN v\(Bundle.main.releaseVersionNumber!) (\(Bundle.main.buildVersionNumber!)) © Volani Limited MMXXV")
                 .font(.caption)
                 .foregroundColor(.text)
         }

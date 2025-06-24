@@ -12,6 +12,8 @@ struct RedeemLicenseKeyModalView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
+    
     var parentDismissAction: DismissAction
     
     @State var enteredLicenseKey: String = ""
@@ -37,6 +39,7 @@ struct RedeemLicenseKeyModalView: View {
                     .buttonStyle(NeumorphicButtonStyle(shape: Circle()))
                     Spacer()
                 }
+                .dynamicTypeSize(.large)
                 
                 VStack {
                     TextField("License key..", text: $enteredLicenseKey)
@@ -45,6 +48,8 @@ struct RedeemLicenseKeyModalView: View {
                     Text("Redeeming a license key will not cancel any existing subscriptions.")
                         .font(.caption)
                         .foregroundColor(.text)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.top, 5)
                 }
                 
                 ZStack {
@@ -90,7 +95,7 @@ struct RedeemLicenseKeyModalView: View {
             }
             .padding()
         }
-        .presentationDetents([.fraction(0.3)])
+        .presentationDetents([.fraction(dynamicTypeSize.isAccessibilitySize ? 0.65 : 0.4)])
         .interactiveDismissDisabled(processingLicenseKey)
     }
 }

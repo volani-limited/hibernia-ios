@@ -10,8 +10,11 @@ import RevenueCat
 
 struct PaywallPackgeOptionsSubscribeView: View {
     @EnvironmentObject var subscriptionService: RevenueCatSubscriptionService
+    
     var packages: [Package]
     @Environment(\.dismiss) var dismiss
+    
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
     
     @State var selectedPackage: Package
     
@@ -21,7 +24,7 @@ struct PaywallPackgeOptionsSubscribeView: View {
     var body: some View {
         VStack (spacing: 20) {
             VStack(spacing: 12) {
-                ForEach(packages, id: \.identifier) { package in
+                ForEach(packages.filter { package in !(subscriptionService.subscriptionStatus != .notSubscribed && package.packageType == .lifetime) }, id: \.identifier) { package in
                     Button {
                         self.selectedPackage = package
                     } label: {
@@ -30,10 +33,10 @@ struct PaywallPackgeOptionsSubscribeView: View {
                             
                             Text(package.storeProduct.localizedTitle + " for " + package.localizedPriceString)
                                 .bold()
-                                .font(.custom("Comfortaa", size: 18))
+                                .font(.custom("Comfortaa", size: 18, relativeTo: .largeTitle))
                                 .foregroundStyle(Color.text)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
+                                .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 1)
+                                .minimumScaleFactor(0.9)
                                 .padding()
                             
                             Spacer()
@@ -44,83 +47,73 @@ struct PaywallPackgeOptionsSubscribeView: View {
                 }
             }
             
-            VStack {
-                ZStack {
-                    Button {
-                        processingSubscribe = true
-                        Task {
-                            let generator = UIImpactFeedbackGenerator(style: .light)
-                            generator.impactOccurred()
+            ZStack {
+                Button {
+                    processingSubscribe = true
+                    Task {
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                        
+                        do {
+                            try await subscriptionService.purchase(package: selectedPackage)
+                            dismiss()
+                        } catch RevenueCatSubscriptionService.SubscriptionServiceError.userCancelled {
                             
-                            do {
-                                try await subscriptionService.purchase(package: selectedPackage)
-                                dismiss()
-                            } catch RevenueCatSubscriptionService.SubscriptionServiceError.userCancelled {
-                                
-                            } catch {
-                                print(error.localizedDescription)
-                                presentingSubscribeError = true
-                            }
-                            processingSubscribe = false
+                        } catch {
+                            print(error.localizedDescription)
+                            presentingSubscribeError = true
                         }
-                    } label: {
-                        HStack {
-                            Spacer()
-                            if subscriptionService.customerInfo?.activeSubscriptions.contains(selectedPackage.storeProduct.productIdentifier) ?? false || subscriptionService.customerInfo?.nonSubscriptions.map({ return $0.productIdentifier }).contains(selectedPackage.storeProduct.productIdentifier) ?? false {
-                                Text("Purchased")
+                        processingSubscribe = false
+                    }
+                } label: {
+                    HStack {
+                        Spacer()
+                        if subscriptionService.customerInfo?.activeSubscriptions.contains(selectedPackage.storeProduct.productIdentifier) ?? false || subscriptionService.customerInfo?.nonSubscriptions.map({ return $0.productIdentifier }).contains(selectedPackage.storeProduct.productIdentifier) ?? false {
+                            Text("Purchased")
+                                .bold()
+                                .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
+                                .foregroundColor(.text)
+                        } else if selectedPackage.packageType == .lifetime {
+                            Text("Purchase")
+                                .bold()
+                                .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
+                                .foregroundColor(.vBlue)
+                        } else {
+                            if let introductoryDiscount = selectedPackage.storeProduct.introductoryDiscount {
+                                Text("Subscribe with a \(introductoryDiscount.subscriptionPeriod.displayed()) free trial")
                                     .bold()
-                                    .font(.custom("Comfortaa", size: 20))
-                                    .foregroundColor(.text)
-                            } else if selectedPackage.packageType == .lifetime {
-                                Text("Purchase")
-                                    .bold()
-                                    .font(.custom("Comfortaa", size: 20))
+                                    .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                                     .foregroundColor(.vBlue)
+                                    .lineLimit(dynamicTypeSize.isAccessibilitySize ? nil : 1)
+                                    .minimumScaleFactor(0.7)
                             } else {
-                                if let introductoryDiscount = selectedPackage.storeProduct.introductoryDiscount {
-                                    Text("Subscribe with a \(introductoryDiscount.subscriptionPeriod.displayed()) free trial")
-                                        .bold()
-                                        .font(.custom("Comfortaa", size: 20))
-                                        .foregroundColor(.vBlue)
-                                        .lineLimit(1)
-                                        .minimumScaleFactor(0.7)
-                                } else {
-                                    Text("Subscribe")
-                                        .bold()
-                                        .font(.custom("Comfortaa", size: 20))
-                                        .foregroundColor(.vBlue)
-                                }
-                                
+                                Text("Subscribe")
+                                    .bold()
+                                    .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
+                                    .foregroundColor(.vBlue)
                             }
-                            Spacer()
+                            
                         }
-                        .padding()
+                        Spacer()
                     }
-                    .disabled(processingSubscribe || subscriptionService.customerInfo?.activeSubscriptions.contains(selectedPackage.storeProduct.productIdentifier) ?? false || subscriptionService.customerInfo?.nonSubscriptions.map({ return $0.productIdentifier }).contains(selectedPackage.storeProduct.productIdentifier) ?? false)
-                    .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25)))
-                    .alert("Could not purchase, check your connection.", isPresented: $presentingSubscribeError) {
-                        Button("Ok") { }
-                    }
-                    .opacity(processingSubscribe ? 0 : 1)
-                    
-                    ProgressView()
-                        .font(.system(size: 20))
-                        .padding()
-                        .background(NeumorphicShape(shape: Circle()))
-                        .opacity(processingSubscribe ? 1 : 0)
+                    .padding(15)
                 }
+                .disabled(processingSubscribe || subscriptionService.customerInfo?.activeSubscriptions.contains(selectedPackage.storeProduct.productIdentifier) ?? false || subscriptionService.customerInfo?.nonSubscriptions.map({ return $0.productIdentifier }).contains(selectedPackage.storeProduct.productIdentifier) ?? false)
+                .buttonStyle(NeumorphicButtonStyle(shape: RoundedRectangle(cornerRadius: 25)))
+                .alert("Could not purchase, check your connection.", isPresented: $presentingSubscribeError) {
+                    Button("Ok") { }
+                }
+                .opacity(processingSubscribe ? 0 : 1)
                 
-                //Spacer()
-                   // .frame(height: 10)
-                
-                Text("Purchasing a lifetime subscription will not automatically cancel any existing subscriptions. Do this manually in Settings.").fixedSize(horizontal: false, vertical: true)
-                    .font(.caption)
-                    .foregroundStyle(Color.text)
-                    .padding(.horizontal)
-                    .opacity(selectedPackage.packageType == .lifetime && !(subscriptionService.subscriptionStatus != .notSubscribed || subscriptionService.subscriptionStatus != .lifetime) ? 1 : 0)
+                ProgressView()
+                    .font(.system(size: 20))
+                    .padding()
+                    .background(NeumorphicShape(shape: Circle()))
+                    .opacity(processingSubscribe ? 1 : 0)
+                    .dynamicTypeSize(.large)
             }
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 

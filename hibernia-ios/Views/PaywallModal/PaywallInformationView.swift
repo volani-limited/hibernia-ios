@@ -15,40 +15,39 @@ struct PaywallInformationView: View {
     var offering: Offering
     
     var body: some View {
-            GeometryReader { geometry in
                 VStack {
                     Image(colorScheme == .light ? "logo" : "logoDark")
                         .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: geometry.size.width / 3.5)
+                        .scaledToFit()
+                        .frame(maxHeight: 275)
                     
                     VStack(spacing: 15) {
                         if paywallInformation.headlineAppendsLocalizedPrice {
                             Text(.init(paywallInformation.headline + offering.availablePackages.first!.localizedPriceString + " " + (offering.availablePackages.first!.packageType.displayedDuration ?? "")))
                                 .fontWeight(.bold)
-                                .font(.custom("Comfortaa", size: 25))
+                                .font(.custom("Comfortaa", size: 25, relativeTo: .largeTitle))
                                 .foregroundColor(.turquoise)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .multilineTextAlignment(.center)
                         } else {
                             Text(.init(paywallInformation.headline))
                                 .fontWeight(.bold)
-                                .font(.custom("Comfortaa", size: 25))
+                                .font(.custom("Comfortaa", size: 25, relativeTo: .largeTitle))
                                 .foregroundColor(.turquoise)
                         }
                         
                         Text(.init(paywallInformation.subhead))
                             .fontWeight(.bold)
-                            .font(.custom("Comfortaa", size: 20))
+                            .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                             .foregroundColor(.text)
                         
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 5) {
                             ForEach(paywallInformation.bullets, id: \.self) { bullet in
                                 HStack {
                                     Text("•")
                                     Text(.init(bullet))
                                 }
-                                .font(.custom("Comfortaa", size: 15))
+                                .font(.custom("Comfortaa", size: 15, relativeTo: .title2))
                                 .foregroundColor(.titleText)
                                 .fixedSize(horizontal: false, vertical: true)
                             }
@@ -56,7 +55,6 @@ struct PaywallInformationView: View {
                     }
                 }
                 .padding(.horizontal)
-            }
     }
 }
 

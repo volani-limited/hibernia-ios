@@ -90,7 +90,6 @@ struct SettingsVPNStatusCardView: View {
                         Text(ip)
                             .font(.custom("Comfortaa", size: 15, relativeTo: .largeTitle))
                             .foregroundStyle(Color.titleText)
-                            .monospaced()
                     } else {
                         Text("Could not determine IP")
                             .font(.custom("Comfortaa", size: 12, relativeTo: .largeTitle))
@@ -110,7 +109,6 @@ struct SettingsVPNStatusCardView: View {
                         Text(vpnService.getConnectedTime())
                             .font(.custom("Comfortaa", size: 20, relativeTo: .largeTitle))
                             .foregroundStyle(Color.titleText)
-                            .monospaced()
 
                     }
                 }
